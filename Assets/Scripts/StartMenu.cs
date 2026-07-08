@@ -5,6 +5,6 @@ public class StartMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("CinemaR1");
+        SceneManager.LoadScene("CinemaR1Story");
     }
 }
