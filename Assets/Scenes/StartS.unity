@@ -497,10 +497,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAC00\uC81C - \uBE4C\uB7F0 \uD1F4\uCE58 \uAC8C\uC784\n"
+  m_text: "GaJe \nVILLAN GAME\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 15d915694a7cec745b5ff68016276421, type: 2}
-  m_sharedMaterial: {fileID: -7298788881825081509, guid: 15d915694a7cec745b5ff68016276421, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -884,10 +884,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2DC\uC791"
+  m_text: START
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 15d915694a7cec745b5ff68016276421, type: 2}
-  m_sharedMaterial: {fileID: -7298788881825081509, guid: 15d915694a7cec745b5ff68016276421, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
