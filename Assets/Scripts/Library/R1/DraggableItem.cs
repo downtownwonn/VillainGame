@@ -10,11 +10,13 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Transform originalParent;
     private Canvas canvas;
 
-    [HideInInspector] public bool wasDropped = false;
+    [HideInInspector]
+    public bool wasDropped = false;
 
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
@@ -25,6 +27,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
         Image img = GetComponent<Image>();
+
         if (img.sprite == null)
         {
             eventData.pointerDrag = null;
@@ -49,7 +52,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("OnEndDrag 호출됨. wasDropped = " + wasDropped);
-        
+
         canvasGroup.blocksRaycasts = true;
 
         if (!wasDropped)
