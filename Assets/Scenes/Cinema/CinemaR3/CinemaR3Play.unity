@@ -5224,7 +5224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b335be6a8b65a419d56664d8c754e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryPopup
-  itemPopup: {fileID: 0}
+  itemPopup: {fileID: 1041007827}
 --- !u!61 &1641225068
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6005,9 +6005,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 700459703}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: PlayClick
+        m_MethodName: PlayObjectClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
