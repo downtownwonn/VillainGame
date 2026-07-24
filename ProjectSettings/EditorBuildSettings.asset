@@ -14,5 +14,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cinema/CinemaR1/CinemaR1Play.unity
     guid: d4b9a300792645743a6432026331bbf3
+  - enabled: 1
+    path: Assets/Scenes/Cinema/CinemaR1/CinemaR1Clear.unity
+    guid: 0c95577c547d11d42970e45851cdf916
+  - enabled: 1
+    path: Assets/Scenes/Cinema/CinemaR2/CinemaR2Clear.unity
+    guid: 3915aa768f5103644bf5f2eda2cbaadc
+  - enabled: 1
+    path: Assets/Scenes/Cinema/CinemaR2/CinemaR2Play.unity
+    guid: 12f340a1c25ac494f936211b8b5a3784
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
