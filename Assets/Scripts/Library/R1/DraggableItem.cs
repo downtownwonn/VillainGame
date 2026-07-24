@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+using System;
+
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private RectTransform rectTransform;
@@ -12,6 +14,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     [HideInInspector]
     public bool wasDropped = false;
+
+    public Action<PointerEventData> OnDragEnded;
 
     void Awake()
     {
@@ -60,5 +64,13 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             transform.SetParent(originalParent);
             rectTransform.anchoredPosition = originalPosition;
         }
+
+        OnDragEnded?.Invoke(eventData);
+    }
+
+    public void ReturnToOriginalPosition()
+    {
+        transform.SetParent(originalParent);
+        rectTransform.anchoredPosition = originalPosition;
     }
 }
