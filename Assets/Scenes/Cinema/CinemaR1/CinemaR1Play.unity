@@ -3005,8 +3005,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.9882353}
-  m_RaycastTarget: 1
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3663,6 +3663,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c0afb7b5cac5347a548de24dbadd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FeatherPuzzleController
+  fadePanel: {fileID: 1029967483}
+  fadeTime: 0.5
+  nextSceneName: CinemaR1Clear
   featherUI: {fileID: 499013104}
   shoeCollider: {fileID: 334728996}
   shoeTransform: {fileID: 334728993}
