@@ -1,14 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-<<<<<<< Updated upstream
-using System;
-
-public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
-=======
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
->>>>>>> Stashed changes
 {
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
