@@ -2,9 +2,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+<<<<<<< Updated upstream
 using System;
 
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+=======
+public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+>>>>>>> Stashed changes
 {
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
@@ -72,5 +76,13 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         transform.SetParent(originalParent);
         rectTransform.anchoredPosition = originalPosition;
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Image img = GetComponent<Image>();
+        if (img.sprite != null)
+        {
+            ItemPopupManager.Instance.ShowPopup(img.sprite);
+        }
     }
 }
