@@ -1,0 +1,34 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class SubwayInventoryManager : MonoBehaviour
+{
+    public static SubwayInventoryManager Instance;
+
+    public Image[] itemIcons;
+
+    private void Awake()
+    {
+        Instance = this;
+
+        // 시작할 때 아이콘 숨기기
+        foreach (Image img in itemIcons)
+        {
+            img.sprite = null;
+            img.enabled = false;
+        }
+    }
+
+    public void AddItem(Sprite sprite)
+    {
+        for (int i = 0; i < itemIcons.Length; i++)
+        {
+            if (!itemIcons[i].enabled)
+            {
+                itemIcons[i].sprite = sprite;
+                itemIcons[i].enabled = true;
+                return;
+            }
+        }
+    }
+}
