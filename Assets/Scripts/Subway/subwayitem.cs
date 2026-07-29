@@ -1,9 +1,18 @@
 using UnityEngine;
 
+public enum ItemType
+{
+    HandleLeft,
+    HandleRight,
+    Scissors,
+    Sunglasses
+}
+
 public class SubwayItem : MonoBehaviour
 {
     public string itemName;
     public Sprite inventorySprite;
+    public ItemType itemType;
 
     private SpriteRenderer spriteRenderer;
 
@@ -14,7 +23,7 @@ public class SubwayItem : MonoBehaviour
 
     private void OnMouseDown()
     {
-        SubwayInventoryManager.Instance.AddItem(inventorySprite);
+        SubwayInventoryManager.Instance.AddItem(inventorySprite, itemType);
         
         Debug.Log(itemName + " 획득");
 
