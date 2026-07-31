@@ -26,6 +26,7 @@ public class SubwayInventoryManager : MonoBehaviour
             if (!itemIcons[i].enabled)
             {
                 itemIcons[i].sprite = sprite;
+                itemIcons[i].preserveAspect = true;
                 itemIcons[i].enabled = true;
                 return;
             }
