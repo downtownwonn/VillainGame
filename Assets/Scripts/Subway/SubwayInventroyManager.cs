@@ -19,16 +19,25 @@ public class SubwayInventoryManager : MonoBehaviour
         }
     }
 
-    public void AddItem(Sprite sprite)
+    public void AddItem(Sprite sprite, ItemType itemType)
+{
+    for (int i = 0; i < itemIcons.Length; i++)
     {
-        for (int i = 0; i < itemIcons.Length; i++)
+        if (!itemIcons[i].enabled)
         {
-            if (!itemIcons[i].enabled)
+            itemIcons[i].sprite = sprite;
+            itemIcons[i].preserveAspect = true;
+            itemIcons[i].enabled = true;
+
+            InventoryItemData data = itemIcons[i].GetComponent<InventoryItemData>();
+
+            if (data != null)
             {
-                itemIcons[i].sprite = sprite;
-                itemIcons[i].enabled = true;
-                return;
+                data.itemType = itemType;
             }
+
+            return;
         }
     }
+}
 }
