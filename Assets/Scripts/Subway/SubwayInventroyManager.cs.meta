@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: 7bfed6812344a4ad0b485e09035cc6ba
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - scissorsSprite: {fileID: 3402906710997957559, guid: 7ee64d050331b4749b8fa8b19348525d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

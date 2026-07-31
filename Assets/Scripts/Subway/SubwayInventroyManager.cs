@@ -6,6 +6,7 @@ public class SubwayInventoryManager : MonoBehaviour
     public static SubwayInventoryManager Instance;
 
     public Image[] itemIcons;
+    public Sprite scissorsSprite;
 
     private void Awake()
     {
