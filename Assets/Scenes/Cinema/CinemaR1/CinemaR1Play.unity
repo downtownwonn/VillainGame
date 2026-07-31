@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 334728993}
   - component: {fileID: 334728994}
   - component: {fileID: 334728996}
-  - component: {fileID: 334728995}
+  - component: {fileID: 334728997}
   m_Layer: 0
   m_Name: "\uC2E0\uBC1C_0"
   m_TagString: shoe
@@ -451,27 +451,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!114 &334728995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 334728992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 486c35f4d085e42499509603327c65a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShoeAnimation
-  inventoryShoe: {fileID: 1061026432}
-  tickleSound: {fileID: 414944401}
-  fallSound: {fileID: 829974261}
-  pickupSound: {fileID: 445917734}
-  shakeTime: 0.8
-  shakeAmount: 0.06
-  fallDistance: 4
-  fallSpeed: 5
-  rotateSpeed: 180
 --- !u!61 &334728996
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -518,6 +497,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.2185998, y: 1.6523169}
   m_EdgeRadius: 0
+--- !u!114 &334728997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334728992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9620cf78a31db6e4998f80bdc04e7dae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShoePickup
+  inventoryShoe: {fileID: 1061026432}
+  audioSource: {fileID: 1999065208}
+  pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
+  disableObject: 1
 --- !u!1 &338804747
 GameObject:
   m_ObjectHideFlags: 0
@@ -3737,7 +3732,7 @@ MonoBehaviour:
   objectClickSound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
   ambienceSource: {fileID: 1011125551}
   kissSource: {fileID: 1550581234}
-  projectorSound: {fileID: 8300000, guid: bc3cfa3a66762d046bd9443c52fd067f, type: 3}
+  projectorSound: {fileID: 8300000, guid: bc286c4620ef6fe4c8b0877fd120810b, type: 3}
   kissSound: {fileID: 8300000, guid: 01de89a40d2e31d45bae717febc8e46a, type: 3}
 --- !u!4 &1446206724
 Transform:
@@ -4558,8 +4553,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 728290185}
-  - {fileID: 1754145942}
   - {fileID: 1322755417}
+  - {fileID: 1754145942}
   - {fileID: 860374223}
   - {fileID: 33357095}
   m_Father: {fileID: 406524747}

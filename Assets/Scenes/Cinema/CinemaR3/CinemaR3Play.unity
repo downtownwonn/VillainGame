@@ -4255,7 +4255,7 @@ MonoBehaviour:
   objectClickSound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
   ambienceSource: {fileID: 40498516}
   kissSource: {fileID: 18730148}
-  projectorSound: {fileID: 8300000, guid: bc3cfa3a66762d046bd9443c52fd067f, type: 3}
+  projectorSound: {fileID: 8300000, guid: bc286c4620ef6fe4c8b0877fd120810b, type: 3}
   kissSound: {fileID: 8300000, guid: 01de89a40d2e31d45bae717febc8e46a, type: 3}
 --- !u!4 &700459704
 Transform:
@@ -4869,7 +4869,7 @@ MonoBehaviour:
   onColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   startDelay: 0.34
   blinkTime: 0.17
-  clearDelay: 0.1
+  clearDelay: 0.05
   failDelay: 0.165
   targetSeatIndex: 59
   bgmSource: {fileID: 1628938391}

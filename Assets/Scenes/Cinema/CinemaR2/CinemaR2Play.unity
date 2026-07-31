@@ -562,7 +562,7 @@ MonoBehaviour:
   objectClickSound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
   ambienceSource: {fileID: 1926312405}
   kissSource: {fileID: 824959802}
-  projectorSound: {fileID: 8300000, guid: bc3cfa3a66762d046bd9443c52fd067f, type: 3}
+  projectorSound: {fileID: 8300000, guid: bc286c4620ef6fe4c8b0877fd120810b, type: 3}
   kissSound: {fileID: 8300000, guid: 1d5de3aec4e92b44fa865ffab782d25e, type: 3}
 --- !u!4 &252014630
 Transform:
@@ -582,6 +582,7 @@ Transform:
   - {fileID: 824959801}
   - {fileID: 1926312406}
   - {fileID: 1607713496}
+  - {fileID: 2076239348}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &256776763
@@ -5645,12 +5646,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076239345}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -592.83496, y: -180.58229, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 252014630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2076239349
 MonoBehaviour:
@@ -5990,5 +5991,4 @@ SceneRoots:
   - {fileID: 1290846542}
   - {fileID: 2083324603}
   - {fileID: 74343258}
-  - {fileID: 2076239348}
   - {fileID: 252014630}
