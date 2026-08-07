@@ -10,13 +10,24 @@ public class SceneViewManager : MonoBehaviour
     public GameObject leftShelfUI;
     public GameObject rightShelfUI;
 
+    public GameObject stackedBooksContainer;
+    public GameObject villainDropZone; // ★ 새로 추가
+
     public void GoToLeftShelf()
     {
+        Debug.Log("=== GoToLeftShelf 실행됨 ===");
+
         mainView.SetActive(false);
         leftShelfView.SetActive(true);
 
         mainViewUI.SetActive(false);
         leftShelfUI.SetActive(true);
+
+        if (stackedBooksContainer != null)
+            stackedBooksContainer.SetActive(false);
+
+        if (villainDropZone != null)
+            villainDropZone.SetActive(false); // ★ 드롭존도 끄기
     }
 
     public void GoToRightShelf()
@@ -26,6 +37,12 @@ public class SceneViewManager : MonoBehaviour
 
         mainViewUI.SetActive(false);
         rightShelfUI.SetActive(true);
+
+        if (stackedBooksContainer != null)
+            stackedBooksContainer.SetActive(false);
+
+        if (villainDropZone != null)
+            villainDropZone.SetActive(false); // ★ 드롭존도 끄기
     }
 
     public void GoToMainView()
@@ -36,7 +53,13 @@ public class SceneViewManager : MonoBehaviour
         leftShelfUI.SetActive(false);
         rightShelfUI.SetActive(false);
 
-        mainView.SetActive(true);   // ← 이 줄 추가!
+        mainView.SetActive(true);
         mainViewUI.SetActive(true);
+
+        if (stackedBooksContainer != null)
+            stackedBooksContainer.SetActive(true);
+
+        if (villainDropZone != null)
+            villainDropZone.SetActive(true); // ★ 다시 켜기
     }
 }
