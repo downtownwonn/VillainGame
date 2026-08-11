@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 64b8b33f882146c40ae4422ab294c38e
+guid: 3ce2b01072735264683c11e5d42ad7b2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8558667534816641131
-    second: "\uCC3D\uACE0\uBC30\uACBD_0"
+      213: -4024710785952163994
+    second: controller_0
+  - first:
+      213: -1661508637701066994
+    second: controller_1
+  - first:
+      213: 5197492861090702183
+    second: controller_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uCC3D\uACE0\uBC30\uACBD_0"
+      name: controller_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1694
-        height: 929
+        x: 104
+        y: 60
+        width: 938
+        height: 1133
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 59ff59c0931893980800000000000000
-      internalID: -8558667534816641131
+      spriteID: 66753af2dda5528c0800000000000000
+      internalID: -4024710785952163994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: controller_1
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 773
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0fa59272b221f8e0800000000000000
+      internalID: -1661508637701066994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: controller_2
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 742
+        width: 11
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 763a0fb3834312840800000000000000
+      internalID: 5197492861090702183
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uCC3D\uACE0\uBC30\uACBD_0": -8558667534816641131
+      controller_0: -4024710785952163994
+      controller_1: -1661508637701066994
+      controller_2: 5197492861090702183
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
