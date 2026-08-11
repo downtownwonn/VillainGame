@@ -1078,6 +1078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubwayItem
   itemName: "\uD754\uB4E4\uB9AC\uB294 \uC190\uC7A1\uC7741"
   inventorySprite: {fileID: -2681750607476299508, guid: 194c4d557a535474ab957d463ef6929c, type: 3}
+  itemType: 0
 --- !u!61 &311477531
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1129,7 +1130,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3361412538327434046, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
   m_PrefabInstance: {fileID: 1754398819}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1419551442}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -3153,6 +3154,7 @@ GameObject:
   - component: {fileID: 1228071966}
   - component: {fileID: 1228071968}
   - component: {fileID: 1228071967}
+  - component: {fileID: 1228071969}
   m_Layer: 5
   m_Name: InventorySlot 2
   m_TagString: Untagged
@@ -3218,6 +3220,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228071965}
   m_CullTransparentMesh: 1
+--- !u!114 &1228071969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228071965}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf6459df138947aca1f7e8970740a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayCombineDropZone
 --- !u!1 &1352287521
 GameObject:
   m_ObjectHideFlags: 0
@@ -3349,6 +3363,7 @@ MonoBehaviour:
   - {fileID: 643179005}
   - {fileID: 751288527}
   - {fileID: 1739394746}
+  scissorsSprite: {fileID: 0}
 --- !u!4 &1395542970
 Transform:
   m_ObjectHideFlags: 0
@@ -3508,6 +3523,49 @@ RectTransform:
   m_AnchoredPosition: {x: 395, y: 0}
   m_SizeDelta: {x: 25, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1419551442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6883078111269885043, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+  m_PrefabInstance: {fileID: 1754398819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1419551445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419551442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ca831bf47b745b78643817c2ecb8c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryItemData
+  itemType: 0
+--- !u!114 &1419551447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419551442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf6459df138947aca1f7e8970740a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayCombineDropZone
+--- !u!114 &1419551449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419551442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bd252d91f514b3eb8cd763341c4936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
+  wasDropped: 0
 --- !u!1 &1473256762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3835,6 +3893,30 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5970983802602367949, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970983802602367949, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970983802602367949, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970983802602367949, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970983802602367949, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970983802602367949, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6287731026013989668, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3956,6 +4038,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6772969267230995429, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1754398825}
+    - targetCorrespondingSourceObject: {fileID: 6772969267230995429, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1754398829}
+    - targetCorrespondingSourceObject: {fileID: 6883078111269885043, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1419551445}
+    - targetCorrespondingSourceObject: {fileID: 6883078111269885043, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1419551447}
+    - targetCorrespondingSourceObject: {fileID: 6883078111269885043, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1419551449}
   m_SourcePrefab: {fileID: 100100000, guid: bc59b734b3aaf4d0e868f99e60153ab9, type: 3}
 --- !u!224 &1754398820 stripped
 RectTransform:
@@ -4105,6 +4199,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1754398829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754398822}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf6459df138947aca1f7e8970740a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayCombineDropZone
 --- !u!1 &1783016460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4117,6 +4223,8 @@ GameObject:
   - component: {fileID: 1783016464}
   - component: {fileID: 1783016463}
   - component: {fileID: 1783016462}
+  - component: {fileID: 1783016465}
+  - component: {fileID: 1783016466}
   m_Layer: 5
   m_Name: ItemIcon
   m_TagString: Untagged
@@ -4194,6 +4302,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783016460}
   m_CullTransparentMesh: 1
+--- !u!114 &1783016465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783016460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ca831bf47b745b78643817c2ecb8c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryItemData
+  itemType: 0
+--- !u!114 &1783016466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783016460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf6459df138947aca1f7e8970740a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayCombineDropZone
 --- !u!1 &1844881799
 GameObject:
   m_ObjectHideFlags: 0
@@ -4325,6 +4458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubwayItem
   itemName: "\uD754\uB4E4\uB9AC\uB294 \uC190\uC7A1\uC7742"
   inventorySprite: {fileID: -2681750607476299508, guid: 194c4d557a535474ab957d463ef6929c, type: 3}
+  itemType: 0
 --- !u!61 &1844881804
 BoxCollider2D:
   m_ObjectHideFlags: 0

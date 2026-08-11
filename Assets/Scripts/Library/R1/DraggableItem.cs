@@ -45,6 +45,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetAsLastSibling();
 
         canvasGroup.blocksRaycasts = false;
+
+        Debug.Log("pointerDrag = " + eventData.pointerDrag);
     }
 
     public void OnDrag(PointerEventData eventData)
