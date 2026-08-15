@@ -17,6 +17,7 @@ public class SubwayDraggableItem : MonoBehaviour,
 
     public Action<PointerEventData> OnDragEnded;
 
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -29,11 +30,13 @@ public class SubwayDraggableItem : MonoBehaviour,
         canvas = GetComponentInParent<Canvas>();
     }
 
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         Image img = GetComponent<Image>();
 
-        if (img.sprite == null)
+        // 아이템이 없는 슬롯이면 드래그하지 않음
+        if (img == null || img.sprite == null)
         {
             eventData.pointerDrag = null;
             return;
@@ -44,11 +47,14 @@ public class SubwayDraggableItem : MonoBehaviour,
         originalPosition = rectTransform.anchoredPosition;
         originalParent = transform.parent;
 
+        // 드래그 중에는 Canvas의 가장 위로 올림
         transform.SetParent(canvas.transform);
         transform.SetAsLastSibling();
 
+        // 드래그 중에는 다른 UI의 Raycast를 방해하지 않음
         canvasGroup.blocksRaycasts = false;
     }
+
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -56,13 +62,46 @@ public class SubwayDraggableItem : MonoBehaviour,
             eventData.delta / canvas.scaleFactor;
     }
 
+
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
 
-        // =====================================================
-        // 1. 먼저 기존의 인벤토리 아이템 합치기 확인
-        // =====================================================
+
+        // =========================================================
+        // R2
+        // 상모를 장구 부원에게 드래그했는지 확인
+        // =========================================================
+
+        InventoryItemData draggedItemData =
+            GetComponent<InventoryItemData>();
+
+        if (draggedItemData != null &&
+            draggedItemData.itemType == ItemType.Sangmo)
+        {
+            foreach (GameObject obj in eventData.hovered)
+            {
+                JangguCharacter jangguCharacter =
+                    obj.GetComponent<JangguCharacter>();
+
+                if (jangguCharacter != null)
+                {
+                    // 장구 부원이 춤추기 시작
+                    jangguCharacter.ReceiveSangmo();
+
+                    // 사용한 상모 아이템 제거
+                    gameObject.SetActive(false);
+
+                    return;
+                }
+            }
+        }
+
+
+        // =========================================================
+        // 기존 R1
+        // 인벤토리 아이템끼리 합치기
+        // =========================================================
 
         Image targetImage = null;
 
@@ -73,9 +112,11 @@ public class SubwayDraggableItem : MonoBehaviour,
             if (image == null)
                 continue;
 
+            // 자기 자신이면 무시
             if (image == GetComponent<Image>())
                 continue;
 
+            // 아이템이 없는 슬롯이면 무시
             if (image.sprite == null)
                 continue;
 
@@ -89,7 +130,11 @@ public class SubwayDraggableItem : MonoBehaviour,
             }
         }
 
-        // 합치기
+
+        // =========================================================
+        // 아이템 합치기
+        // =========================================================
+
         if (targetImage != null)
         {
             bool combined =
@@ -105,45 +150,9 @@ public class SubwayDraggableItem : MonoBehaviour,
         }
 
 
-        // =====================================================
-        // 2. 백팩 빌런 확인
-        // =====================================================
-
-        Vector3 screenPosition = eventData.position;
-
-        Vector3 worldPosition =
-            Camera.main.ScreenToWorldPoint(screenPosition);
-
-        worldPosition.z = 0f;
-
-        Collider2D hitCollider =
-            Physics2D.OverlapPoint(worldPosition);
-
-        if (hitCollider != null)
-        {
-            BackpackVillainTarget backpack =
-                hitCollider.GetComponent<BackpackVillainTarget>();
-
-            if (backpack != null)
-            {
-                bool used =
-                    backpack.UseScissors(
-                        GetComponent<Image>()
-                    );
-
-                if (used)
-                {
-                    Debug.Log("백팩에 가위를 사용했습니다.");
-
-                    return;
-                }
-            }
-        }
-
-
-        // =====================================================
-        // 3. 아무것도 안 했으면 원래 자리로 복귀
-        // =====================================================
+        // =========================================================
+        // 아무것도 성공하지 못했으면 원래 자리로 돌아감
+        // =========================================================
 
         transform.SetParent(originalParent);
         rectTransform.anchoredPosition = originalPosition;
@@ -151,17 +160,19 @@ public class SubwayDraggableItem : MonoBehaviour,
         OnDragEnded?.Invoke(eventData);
     }
 
+
     public void ReturnToOriginalPosition()
     {
         transform.SetParent(originalParent);
         rectTransform.anchoredPosition = originalPosition;
     }
 
+
     public void OnPointerClick(PointerEventData eventData)
     {
         Image img = GetComponent<Image>();
 
-        if (img.sprite != null)
+        if (img != null && img.sprite != null)
         {
             ItemPopupManager.Instance.ShowPopup(img.sprite);
         }
