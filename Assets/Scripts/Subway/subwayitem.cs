@@ -8,7 +8,8 @@ public enum ItemType
     Scissors,
     Sunglasses,
     Sangmo,
-    Janggu
+    Janggu,
+    Bodyguards
 }
 
 
