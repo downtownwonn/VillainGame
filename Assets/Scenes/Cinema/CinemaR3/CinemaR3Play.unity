@@ -4867,9 +4867,9 @@ MonoBehaviour:
   lineE: {fileID: 1032874710}
   offColor: {r: 0.45, g: 0.45, b: 0.45, a: 1}
   onColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  startDelay: 0.34
+  startDelay: 0.5
   blinkTime: 0.17
-  clearDelay: 0.05
+  clearDelay: 0.16
   failDelay: 0.165
   targetSeatIndex: 59
   bgmSource: {fileID: 1628938391}
