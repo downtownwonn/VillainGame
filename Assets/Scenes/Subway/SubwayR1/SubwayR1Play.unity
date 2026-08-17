@@ -1099,6 +1099,7 @@ MonoBehaviour:
   itemName: "\uD754\uB4E4\uB9AC\uB294 \uC190\uC7A1\uC7741"
   inventorySprite: {fileID: -2681750607476299508, guid: 194c4d557a535474ab957d463ef6929c, type: 3}
   itemType: 0
+  sangmoCharacter: {fileID: 0}
 --- !u!61 &311477531
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2928,7 +2929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1133863807
 SpriteRenderer:
   serializedVersion: 3
@@ -3360,7 +3361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1352287522
 SpriteRenderer:
   serializedVersion: 3
@@ -4829,6 +4830,7 @@ MonoBehaviour:
   itemName: "\uD754\uB4E4\uB9AC\uB294 \uC190\uC7A1\uC7742"
   inventorySprite: {fileID: -2681750607476299508, guid: 194c4d557a535474ab957d463ef6929c, type: 3}
   itemType: 1
+  sangmoCharacter: {fileID: 0}
 --- !u!61 &1844881804
 BoxCollider2D:
   m_ObjectHideFlags: 0
