@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 915574f13e1511246a0264f700e8611b
+guid: 5acfe65175e858f46acca511976714bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2086953958035171508
-    second: "\uD3B8\uC758\uC810 \uC88C\uCE21\uD654\uBA74 \uC218\uC815_0"
+      213: -6428883083336623882
+    second: waterbucket 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uD3B8\uC758\uC810 \uC88C\uCE21\uD654\uBA74 \uC218\uC815_0"
+      name: waterbucket 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1678
-        height: 937
+        x: 109
+        y: 236
+        width: 611
+        height: 803
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b82843519956fc10800000000000000
-      internalID: 2086953958035171508
+      spriteID: 6f8d33bb5e408c6a0800000000000000
+      internalID: -6428883083336623882
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uD3B8\uC758\uC810 \uC88C\uCE21\uD654\uBA74 \uC218\uC815_0": 2086953958035171508
+      waterbucket 1_0: -6428883083336623882
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

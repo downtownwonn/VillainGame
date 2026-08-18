@@ -29,5 +29,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cinema/CinemaR3/CinemaR3Clear.unity
     guid: 8564de5790aa2594d8bc73d3c69e059d
+  - enabled: 1
+    path: Assets/Scenes/Store/StoreR2/R2Clear/StoreR2Clear.unity
+    guid: 3e4418723f5a028459363986f5ed1cd1
+  - enabled: 1
+    path: Assets/Scenes/Store/StoreR3/R3Clear/StoreR3Clear.unity
+    guid: b203daccf0075dc4e9b9c686532d9845
+  - enabled: 1
+    path: Assets/Scenes/Store/StoreR1/R1Clear/StoreR1Clear.unity
+    guid: 01fcdd88d1c14de4998779ffbbd5dc95
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

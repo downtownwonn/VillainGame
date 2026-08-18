@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: ecb2cb3fdb4ec0740809dea9abaddbed
+guid: 70623c61ca26d4c48bcc550ef0f3e153
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -643958608011681267
-    second: bini_0
+      213: -1741065307101949228
+    second: "\u1100\u1167\u11BC\u1112\u1169\u110B\u116F\u11AB \u110B\u1161\u110B\u1175\u1110\u1166\u11B7
+      \u1102\u116E\u1101\u1175ver_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +97,18 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bini_0
+      name: "\u1100\u1167\u11BC\u1112\u1169\u110B\u116F\u11AB \u110B\u1161\u110B\u1175\u1110\u1166\u11B7
+        \u1102\u116E\u1101\u1175ver_0"
       rect:
         serializedVersion: 2
-        x: 107
-        y: 88
-        width: 779
-        height: 795
+        x: 78
+        y: 15
+        width: 392
+        height: 444
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d02a86fce033017f0800000000000000
-      internalID: -643958608011681267
+      spriteID: 4d29e67e35e76d7e0800000000000000
+      internalID: -1741065307101949228
       vertices: []
       indices: 
       edges: []
@@ -148,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bini_0: -643958608011681267
+      "\u1100\u1167\u11BC\u1112\u1169\u110B\u116F\u11AB \u110B\u1161\u110B\u1175\u1110\u1166\u11B7 \u1102\u116E\u1101\u1175ver_0": -1741065307101949228
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

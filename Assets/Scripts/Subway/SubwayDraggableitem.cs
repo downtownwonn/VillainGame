@@ -18,24 +18,29 @@ public class SubwayDraggableItem : MonoBehaviour,
     public Action<PointerEventData> OnDragEnded;
 
 
-    void Awake()
+    private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
 
         canvasGroup = GetComponent<CanvasGroup>();
 
         if (canvasGroup == null)
+        {
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
 
         canvas = GetComponentInParent<Canvas>();
     }
 
 
+    // =========================================================
+    // 드래그 시작
+    // =========================================================
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         Image img = GetComponent<Image>();
 
-        // 아이템이 없는 슬롯이면 드래그하지 않음
         if (img == null || img.sprite == null)
         {
             eventData.pointerDrag = null;
@@ -47,14 +52,16 @@ public class SubwayDraggableItem : MonoBehaviour,
         originalPosition = rectTransform.anchoredPosition;
         originalParent = transform.parent;
 
-        // 드래그 중에는 Canvas의 가장 위로 올림
         transform.SetParent(canvas.transform);
         transform.SetAsLastSibling();
 
-        // 드래그 중에는 다른 UI의 Raycast를 방해하지 않음
         canvasGroup.blocksRaycasts = false;
     }
 
+
+    // =========================================================
+    // 드래그 중
+    // =========================================================
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -63,18 +70,22 @@ public class SubwayDraggableItem : MonoBehaviour,
     }
 
 
+    // =========================================================
+    // 드래그 종료
+    // =========================================================
+
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
 
-
-        // =========================================================
-        // R2
-        // 상모를 장구 부원에게 드래그했는지 확인
-        // =========================================================
-
         InventoryItemData draggedItemData =
             GetComponent<InventoryItemData>();
+
+
+        // =====================================================
+        // R2
+        // 상모 → 장구 부원
+        // =====================================================
 
         if (draggedItemData != null &&
             draggedItemData.itemType == ItemType.Sangmo)
@@ -86,11 +97,17 @@ public class SubwayDraggableItem : MonoBehaviour,
 
                 if (jangguCharacter != null)
                 {
-                    // 장구 부원이 춤추기 시작
                     jangguCharacter.ReceiveSangmo();
 
-                    // 사용한 상모 아이템 제거
-                    gameObject.SetActive(false);
+                    Image usedItemImage = GetComponent<Image>();
+
+                    if (usedItemImage != null)
+                    {
+                        usedItemImage.sprite = null;
+                        usedItemImage.enabled = false;
+                    }
+
+                    ReturnToOriginalPosition();
 
                     return;
                 }
@@ -98,10 +115,91 @@ public class SubwayDraggableItem : MonoBehaviour,
         }
 
 
-        // =========================================================
-        // 기존 R1
+        // =====================================================
+        // R2
+        // 장구 → 단소 살인마
+        // =====================================================
+
+        if (draggedItemData != null &&
+            draggedItemData.itemType == ItemType.Janggu)
+        {
+            foreach (GameObject obj in eventData.hovered)
+            {
+                DansoVillain villain =
+                    obj.GetComponent<DansoVillain>();
+
+                if (villain != null)
+                {
+                    villain.ReceiveJanggu();
+
+                    Image usedItemImage = GetComponent<Image>();
+
+                    if (usedItemImage != null)
+                    {
+                        usedItemImage.sprite = null;
+                        usedItemImage.enabled = false;
+                    }
+
+                    ReturnToOriginalPosition();
+
+                    return;
+                }
+            }
+        }
+
+
+        // =====================================================
+        // R1
+        // 가위 → 백팩 빌런
+        // =====================================================
+
+        if (draggedItemData != null &&
+            draggedItemData.itemType == ItemType.Scissors)
+        {
+            Vector3 worldPosition =
+                Camera.main.ScreenToWorldPoint(eventData.position);
+
+            worldPosition.z = 0f;
+
+            Collider2D hit =
+                Physics2D.OverlapPoint(worldPosition);
+
+            if (hit != null)
+            {
+                BackpackVillainTarget backpack =
+                    hit.GetComponent<BackpackVillainTarget>();
+
+                if (backpack == null)
+                {
+                    backpack =
+                        hit.GetComponentInParent<BackpackVillainTarget>();
+                }
+
+                if (backpack != null)
+                {
+                    Image scissorsImage =
+                        GetComponent<Image>();
+
+                    bool used =
+                        backpack.UseScissors(scissorsImage);
+
+                    if (used)
+                    {
+                        Debug.Log("가위 → 백팩 빌런 성공!");
+
+                        ReturnToOriginalPosition();
+
+                        return;
+                    }
+                }
+            }
+        }
+
+
+        // =====================================================
+        // R1
         // 인벤토리 아이템끼리 합치기
-        // =========================================================
+        // =====================================================
 
         Image targetImage = null;
 
@@ -112,11 +210,9 @@ public class SubwayDraggableItem : MonoBehaviour,
             if (image == null)
                 continue;
 
-            // 자기 자신이면 무시
             if (image == GetComponent<Image>())
                 continue;
 
-            // 아이템이 없는 슬롯이면 무시
             if (image.sprite == null)
                 continue;
 
@@ -131,9 +227,10 @@ public class SubwayDraggableItem : MonoBehaviour,
         }
 
 
-        // =========================================================
-        // 아이템 합치기
-        // =========================================================
+        // =====================================================
+        // R1
+        // 손잡이 + 손잡이 = 가위
+        // =====================================================
 
         if (targetImage != null)
         {
@@ -146,33 +243,49 @@ public class SubwayDraggableItem : MonoBehaviour,
             if (combined)
             {
                 return;
-            }
+                }
         }
 
 
-        // =========================================================
-        // 아무것도 성공하지 못했으면 원래 자리로 돌아감
-        // =========================================================
+        // =====================================================
+        // 아무것도 성공하지 않았으면 원래 자리로
+        // =====================================================
 
-        transform.SetParent(originalParent);
-        rectTransform.anchoredPosition = originalPosition;
+        ReturnToOriginalPosition();
 
-        OnDragEnded?.Invoke(eventData);
+        if (OnDragEnded != null)
+        {
+            OnDragEnded.Invoke(eventData);
+        }
     }
 
+    // =========================================================
+    // 원래 인벤토리 슬롯으로 복귀
+    // =========================================================
 
     public void ReturnToOriginalPosition()
     {
-        transform.SetParent(originalParent);
+        if (originalParent != null)
+        {
+            transform.SetParent(originalParent);
+        }
+
         rectTransform.anchoredPosition = originalPosition;
     }
 
+
+    // =========================================================
+    // 인벤토리 아이템 클릭
+    // =========================================================
 
     public void OnPointerClick(PointerEventData eventData)
     {
         Image img = GetComponent<Image>();
 
-        if (img != null && img.sprite != null)
+        if (img == null || img.sprite == null)
+            return;
+
+        if (ItemPopupManager.Instance != null)
         {
             ItemPopupManager.Instance.ShowPopup(img.sprite);
         }

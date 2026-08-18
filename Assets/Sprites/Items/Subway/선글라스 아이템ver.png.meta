@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 3ce2b01072735264683c11e5d42ad7b2
+guid: 56f33b11868574371ac941de0dded57c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4024710785952163994
-    second: controller_0
-  - first:
-      213: -1661508637701066994
-    second: controller_1
-  - first:
-      213: 5197492861090702183
-    second: controller_2
+      213: -2187354570491441782
+    second: "\u1109\u1165\u11AB\u1100\u1173\u11AF\u1105\u1161\u1109\u1173 \u110B\u1161\u110B\u1175\u1110\u1166\u11B7ver_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: controller_0
+      name: "\u1109\u1165\u11AB\u1100\u1173\u11AF\u1105\u1161\u1109\u1173 \u110B\u1161\u110B\u1175\u1110\u1166\u11B7ver_0"
       rect:
         serializedVersion: 2
-        x: 104
-        y: 60
-        width: 938
-        height: 1133
+        x: 30
+        y: 155
+        width: 439
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 66753af2dda5528c0800000000000000
-      internalID: -4024710785952163994
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: controller_1
-      rect:
-        serializedVersion: 2
-        x: 1029
-        y: 773
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e0fa59272b221f8e0800000000000000
-      internalID: -1661508637701066994
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: controller_2
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 742
-        width: 11
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 763a0fb3834312840800000000000000
-      internalID: 5197492861090702183
+      spriteID: a8dc7047b94f4a1e0800000000000000
+      internalID: -2187354570491441782
       vertices: []
       indices: 
       edges: []
@@ -198,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      controller_0: -4024710785952163994
-      controller_1: -1661508637701066994
-      controller_2: 5197492861090702183
+      "\u1109\u1165\u11AB\u1100\u1173\u11AF\u1105\u1161\u1109\u1173 \u110B\u1161\u110B\u1175\u1110\u1166\u11B7ver_0": -2187354570491441782
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
