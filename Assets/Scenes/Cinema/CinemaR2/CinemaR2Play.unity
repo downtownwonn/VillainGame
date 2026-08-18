@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CouplePuzzleController
   fadePanel: {fileID: 1898782114}
-  fadeTime: 1.6
+  fadeTime: 0.2
   nextSceneName: CinemaR2Clear
   shoeUI: {fileID: 1417594277}
   coupleCollider: {fileID: 977057326}
@@ -239,7 +239,7 @@ MonoBehaviour:
   flyTime: 0.25
   bounceHeight: 0.18
   bounceTime: 0.18
-  fadeOutTime: 1.2
+  fadeOutTime: 0.5
 --- !u!4 &74343258
 Transform:
   m_ObjectHideFlags: 0
