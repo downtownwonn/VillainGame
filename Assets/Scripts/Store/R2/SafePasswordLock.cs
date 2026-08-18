@@ -3,7 +3,7 @@ using UnityEngine;
 public class SafePasswordLock : MonoBehaviour
 {
     [Header("비밀번호 설정")]
-    [SerializeField] private string correctPassword = "365"; // '*' 제외한 숫자만 입력 (버튼 눌러서 검사하므로)
+    [SerializeField] private string correctPassword = "386"; // '*' 제외한 숫자만 입력 (버튼 눌러서 검사하므로)
     private string currentInput = ""; // 현재 입력된 문자열
 
     [Header("열릴 때 활성화할 오브젝트")]
