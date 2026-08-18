@@ -997,7 +997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f7a4c2710d742669b877c86298f6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainItemPickup
-  itemIcon: {fileID: -6790444147683601998, guid: 183f1d65d153f4af2853aef9c8225ac2, type: 3}
+  itemIcon: {fileID: 763686758759983777, guid: f201c73c3e0b842d1a1a1724b1fbd6b1, type: 3}
   backgroundRenderer: {fileID: 0}
   newBackgroundSprite: {fileID: -4520547985982341975, guid: f7c1a25a4f6ad46b68da4695bf474396, type: 3}
 --- !u!1 &502349884
@@ -1215,6 +1215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BookPickup
   bookIcon: {fileID: 7995061706426159896, guid: 1a7b6bcc80e8b442095568ab922e5768, type: 3}
+  laptopPopupImage: {fileID: 502349886}
+  noSpeakerVersion: {fileID: -5040356945259387394, guid: ab1f28bb5af8c452b9fa5499777cc521, type: 3}
 --- !u!61 &560511696
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1986,7 +1988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &832178277
 Transform:
   m_ObjectHideFlags: 0
