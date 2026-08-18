@@ -365,6 +365,8 @@ MonoBehaviour:
   bookIcon: {fileID: -1843703254631439565, guid: c08b4b01fd0f74c72a117d53a96cbf4d, type: 3}
   laptopPopupImage: {fileID: 0}
   noSpeakerVersion: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: aef0267dccccc83469c3f2cc76317d36, type: 3}
+  audioSource: {fileID: 784123773}
 --- !u!212 &122214882
 SpriteRenderer:
   serializedVersion: 3
@@ -697,6 +699,8 @@ MonoBehaviour:
   bookIcon: {fileID: 1931242733552158302, guid: 12a8d3934b1854837a4125006d398da6, type: 3}
   laptopPopupImage: {fileID: 0}
   noSpeakerVersion: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: aef0267dccccc83469c3f2cc76317d36, type: 3}
+  audioSource: {fileID: 784123773}
 --- !u!212 &147815892
 SpriteRenderer:
   serializedVersion: 3
@@ -1281,10 +1285,14 @@ PrefabInstance:
     - target: {fileID: 276072123477685833, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1886357259}
     - target: {fileID: 276072123477685833, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 276072123477685833, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayUIClick
       objectReference: {fileID: 0}
     - target: {fileID: 276072123477685833, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1449,10 +1457,14 @@ PrefabInstance:
     - target: {fileID: 5730195052664297205, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1886357259}
     - target: {fileID: 5730195052664297205, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730195052664297205, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayUIClick
       objectReference: {fileID: 0}
     - target: {fileID: 5730195052664297205, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1977,6 +1989,8 @@ MonoBehaviour:
   bookIcon: {fileID: 7119347239250650302, guid: 1d9b61368eb16427f92c5a495cdb66ed, type: 3}
   laptopPopupImage: {fileID: 0}
   noSpeakerVersion: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: aef0267dccccc83469c3f2cc76317d36, type: 3}
+  audioSource: {fileID: 784123773}
 --- !u!114 &1419481071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2262,6 +2276,8 @@ MonoBehaviour:
   bookIcon: {fileID: 8124227339214125042, guid: effbdaf4ee91242ca804cf072dcc3042, type: 3}
   laptopPopupImage: {fileID: 0}
   noSpeakerVersion: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: aef0267dccccc83469c3f2cc76317d36, type: 3}
+  audioSource: {fileID: 784123773}
 --- !u!212 &1569336121
 SpriteRenderer:
   serializedVersion: 3
@@ -2873,6 +2889,8 @@ MonoBehaviour:
   bookIcon: {fileID: 3754675394264498710, guid: 8f485653ce64c4b768a90e3e026bd43f, type: 3}
   laptopPopupImage: {fileID: 0}
   noSpeakerVersion: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: aef0267dccccc83469c3f2cc76317d36, type: 3}
+  audioSource: {fileID: 784123773}
 --- !u!212 &1937350266
 SpriteRenderer:
   serializedVersion: 3
