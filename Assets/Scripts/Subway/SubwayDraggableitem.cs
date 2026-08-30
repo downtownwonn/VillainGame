@@ -80,8 +80,99 @@ public class SubwayDraggableItem : MonoBehaviour,
 
         InventoryItemData draggedItemData =
             GetComponent<InventoryItemData>();
+// =====================================================
+// R3
+// 경호원 3인조 → 자르반 할아버지
+// =====================================================
 
+if (draggedItemData != null &&
+    draggedItemData.itemType == ItemType.Bodyguards)
+{
+    Vector3 worldPosition =
+        Camera.main.ScreenToWorldPoint(eventData.position);
 
+    worldPosition.z = 0f;
+
+    Collider2D hit =
+        Physics2D.OverlapPoint(worldPosition);
+
+    if (hit != null)
+    {
+        JarvanVillain villain =
+            hit.GetComponent<JarvanVillain>();
+
+        if (villain == null)
+        {
+            villain =
+                hit.GetComponentInParent<JarvanVillain>();
+        }
+
+        if (villain != null)
+        {
+            Image bodyguardImage =
+                GetComponent<Image>();
+
+            bool used =
+                villain.UseBodyguards(bodyguardImage);
+
+            if (used)
+            {
+                ReturnToOriginalPosition();
+                return;
+            }
+        }
+    }
+}
+// =====================================================
+// R3
+// 선글라스 → 직장인
+// =====================================================
+
+if (draggedItemData != null &&
+    draggedItemData.itemType == ItemType.Sunglasses)
+{
+    Vector3 worldPosition =
+        Camera.main.ScreenToWorldPoint(eventData.position);
+
+    worldPosition.z = 0f;
+
+    Collider2D[] hits =
+        Physics2D.OverlapPointAll(worldPosition);
+
+    foreach (Collider2D hit in hits)
+    {
+        BodyguardCharacter bodyguard =
+            hit.GetComponent<BodyguardCharacter>();
+
+        if (bodyguard == null)
+        {
+            bodyguard =
+                hit.GetComponentInParent<BodyguardCharacter>();
+        }
+
+        if (bodyguard != null)
+        {
+            Debug.Log("선글라스를 직장인에게 사용!");
+
+            // 선글라스 착용
+            bodyguard.PutOnSunglasses();
+
+            // 사용한 선글라스 제거
+            Image sunglassesImage =
+                GetComponent<Image>();
+
+            if (sunglassesImage != null)
+            {
+                sunglassesImage.sprite = null;
+                sunglassesImage.enabled = false;
+            }
+
+            ReturnToOriginalPosition();
+
+            return;
+        }
+    }
+}
         // =====================================================
         // R2
         // 상모 → 장구 부원
