@@ -19,6 +19,13 @@ public class BackgroundManager : MonoBehaviour
     public GameObject rightObjects;
     public GameObject warehouseObjects;
 
+    [Header("Sound Effects")]
+    [Tooltip("문이 잠겨있을 때(덜컥거릴 때) 소리")]
+    public AudioClip lockedSound;
+
+    [Tooltip("문이 열릴 때 소리")]
+    public AudioClip openSound;
+
     // 창고가 열렸는지 여부
     private bool warehouseUnlocked = false;
 
@@ -70,8 +77,23 @@ public class BackgroundManager : MonoBehaviour
     // 창고문 클릭
     public void OpenWarehouse()
     {
+        // 🔒 1. 창고가 잠겨있는 경우
         if (!warehouseUnlocked)
-            return;
+        {
+            // 잠긴 소리(덜컥거리는 소리) 재생
+            if (lockedSound != null)
+            {
+                AudioSource.PlayClipAtPoint(lockedSound, Camera.main.transform.position);
+            }
+            return; // 문이 안 열리고 여기서 실행 중단
+        }
+
+        // 🔓 2. 창고가 열린 경우
+        // 문 열리는 소리 재생
+        if (openSound != null)
+        {
+            AudioSource.PlayClipAtPoint(openSound, Camera.main.transform.position);
+        }
 
         backgroundImage.sprite = warehouseBackground;
 
