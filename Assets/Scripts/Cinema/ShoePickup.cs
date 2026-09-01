@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShoePickup : MonoBehaviour
 {
     [Header("Inventory")]
-    public GameObject inventoryShoe;     // 인벤토리에 들어갈 신발 아이콘
+    public GameObject inventoryShoe;
 
     [Header("Audio")]
     public AudioSource audioSource;
-    public AudioClip pickupSound;        // 신발 획득 효과음
+    public AudioClip pickupSound;
 
     [Header("Settings")]
-    public bool disableObject = true;    // 클릭한 신발 오브젝트 숨길지 여부
+    public bool disableObject = true;
+
+    // 신발을 얻었는지 다른 스크립트에서 확인할 수 있게 함
+    public static bool IsShoePickedUp = false;
 
     private bool pickedUp = false;
 
@@ -21,15 +25,29 @@ public class ShoePickup : MonoBehaviour
 
         pickedUp = true;
 
+        // 신발 획득
+        IsShoePickedUp = true;
+
         // 신발 획득 효과음
         if (audioSource != null && pickupSound != null)
             audioSource.PlayOneShot(pickupSound);
 
-        // 인벤토리 신발 활성화
+        // 인벤토리에 신발 추가
         if (inventoryShoe != null)
-            inventoryShoe.SetActive(true);
+        {
+            Image shoeImage = inventoryShoe.GetComponent<Image>();
 
-        // 빌런 신발 숨기기
+            if (shoeImage != null)
+            {
+                InventoryManagerForCin.Instance.AddItem(shoeImage.sprite);
+            }
+        }
+
+        // 기존 인벤토리 아이콘 숨기기
+        if (inventoryShoe != null)
+            inventoryShoe.SetActive(false);
+
+        // 화면의 빌런 신발 숨기기
         if (disableObject)
             gameObject.SetActive(false);
     }
