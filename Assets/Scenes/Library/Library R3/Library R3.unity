@@ -1129,6 +1129,7 @@ MonoBehaviour:
   itemIcon: {fileID: 763686758759983777, guid: f201c73c3e0b842d1a1a1724b1fbd6b1, type: 3}
   backgroundRenderer: {fileID: 0}
   newBackgroundSprite: {fileID: -4520547985982341975, guid: f7c1a25a4f6ad46b68da4695bf474396, type: 3}
+  speakerObject: {fileID: 560511692}
 --- !u!1 &502349884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &560511693
 Transform:
   m_ObjectHideFlags: 0

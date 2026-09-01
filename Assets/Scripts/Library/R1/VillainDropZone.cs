@@ -4,17 +4,17 @@ using UnityEngine.UI;
 
 public class VillainDropZone : MonoBehaviour, IDropHandler
 {
-    public Transform stackParent;         // 책이 쌓일 위치 (부모)
-    public GameObject stackedBookPrefab;  // 쌓인 책 하나를 표현할 이미지 프리팹
-    public float stackHeight = 15f;       // 책 한 권마다 올라갈 높이
-    public int totalBooksNeeded = 5;      // 몇 권 모으면 퇴치되는지
+    public Transform stackParent;              // 책이 쌓일 위치 (부모)
+    public GameObject stackedBookPrefab;       // 쌓인 책 하나를 표현할 이미지 프리팹
+    public float stackHeight = 15f;            // 책 한 권마다 올라갈 높이
+    public int totalBooksNeeded = 5;           // 몇 권 모으면 퇴치되는지
 
     private int stackedCount = 0;
 
     [Header("빌런 다리 애니메이션")]
-    public Animator legAnimator;          // 다리 떠는 애니메이터 연결
-    public SpriteRenderer legSprite;      // 다리 SpriteRenderer 연결
-    public Sprite idleLegSprite;          // 안 떠는 기본 자세 프레임
+    public Animator legAnimator;               // 다리 떠는 애니메이터 연결
+    public SpriteRenderer legSprite;           // 다리 SpriteRenderer 연결
+    public Sprite idleLegSprite;               // 안 떠는 기본 자세 프레임
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -45,7 +45,10 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
         droppedImage.color = c;
 
         // 드래그했던 아이템 원래 자리로 (부모가 Canvas로 옮겨져 있으니 파괴하거나 초기화)
-        Destroy(droppedItem);
+        if (draggable != null)
+        {
+    draggable.ReturnToOriginalPosition();
+        }
 
         if (stackedCount >= totalBooksNeeded)
         {
