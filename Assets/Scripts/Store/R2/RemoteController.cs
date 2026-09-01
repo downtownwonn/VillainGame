@@ -1,6 +1,8 @@
+using System.Collections; // 코루틴(IEnumerator) 사용을 위해 필수
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems; // Event Trigger 사용을 위해 필수!
+using UnityEngine.SceneManagement; // 씬 전환을 위해 필수
+using UnityEngine.EventSystems; // Event Trigger 사용을 위해 필수
+using UnityEngine.UI; // Image 컴포넌트 사용을 위해 필수
 using TMPro;
 
 public class RemoteController : MonoBehaviour
@@ -21,9 +23,12 @@ public class RemoteController : MonoBehaviour
     [SerializeField] private int minTemp = 18;
     [SerializeField] private int maxTemp = 30;
 
-    [Header("재미있는 연출 및 씬 설정")]
+    [Header("씬 전환 및 페이드 연출 설정")]
+    [SerializeField] private Image fadeOverlay;            // 화면 전체를 덮는 검은색 UI Image
     [SerializeField] private string nextSceneName = "StoreR2Clear"; // 이동할 다음 씬 이름
     [SerializeField] private int targetFanPower = 20;               // 목표 작대기 개수
+    [SerializeField] private float delayBeforeFade = 1.0f; // 슬롯/작대기 완료 후 대기 시간 (1초)
+    [SerializeField] private float fadeDuration = 1.0f;    // 페이드 아웃에 걸리는 시간 (1초)
 
     [Header("꾹 누르기 속도 조절")]
     [SerializeField] private float initialDelay = 0.3f;  // 클릭 후 꾹 누르기로 인정되기까지 대기시간 (0.3초)
@@ -41,14 +46,26 @@ public class RemoteController : MonoBehaviour
     private float holdTimer = 0f;
     private bool isRepeating = false; // 0.3초 대기시간이 지났는지 여부
 
+    private bool isTransitioning = false; // 씬 전환 진행 중 여부
+
     private void Start()
     {
         UpdateUI();
+
+        // 씬 시작 시 fadeOverlay 초기화 (알파값 0 및 비활성화)
+        if (fadeOverlay != null)
+        {
+            Color c = fadeOverlay.color;
+            c.a = 0f;
+            fadeOverlay.color = c;
+            fadeOverlay.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
     {
-        if (!isPowerOn) return;
+        // 전원이 꺼져있거나 씬 전환 중일 때는 입력 처리 중단
+        if (!isPowerOn || isTransitioning) return;
 
         // [바람 세기 ▲] 꾹 누르는 중
         if (isFanUpHolding)
@@ -103,6 +120,8 @@ public class RemoteController : MonoBehaviour
 
     public void TogglePower()
     {
+        if (isTransitioning) return;
+
         isPowerOn = !isPowerOn;
         PlaySound(powerSound);
         UpdateUI();
@@ -110,7 +129,8 @@ public class RemoteController : MonoBehaviour
 
     public void TempUp()
     {
-        if (!isPowerOn) return;
+        if (!isPowerOn || isTransitioning) return;
+
         if (currentTemp < maxTemp)
         {
             currentTemp++;
@@ -121,7 +141,8 @@ public class RemoteController : MonoBehaviour
 
     public void TempDown()
     {
-        if (!isPowerOn) return;
+        if (!isPowerOn || isTransitioning) return;
+
         if (currentTemp > minTemp)
         {
             currentTemp--;
@@ -134,7 +155,7 @@ public class RemoteController : MonoBehaviour
 
     public void OnPointerDownFanUp()
     {
-        if (!isPowerOn) return;
+        if (!isPowerOn || isTransitioning) return;
 
         ResetHoldState();
         isFanUpHolding = true;
@@ -150,7 +171,7 @@ public class RemoteController : MonoBehaviour
 
     public void OnPointerDownFanDown()
     {
-        if (!isPowerOn) return;
+        if (!isPowerOn || isTransitioning) return;
 
         ResetHoldState();
         isFanDownHolding = true;
@@ -176,6 +197,8 @@ public class RemoteController : MonoBehaviour
     // 작대기 추가 처리
     private void AddFanPower()
     {
+        if (isTransitioning) return;
+
         currentFanPower++;
         PlaySound(buttonSound);
         UpdateUI();
@@ -184,13 +207,18 @@ public class RemoteController : MonoBehaviour
         {
             ResetHoldState();
             PlaySound(breakSound);
-            Invoke(nameof(LoadNextScene), 0.3f);
+            
+            // 목표치 도달 시 전환 플래그 켜고 코루틴 시작
+            isTransitioning = true;
+            StartCoroutine(FadeAndChangeSceneRoutine());
         }
     }
 
     // 작대기 줄이기 처리
     private void RemoveFanPower()
     {
+        if (isTransitioning) return;
+
         if (currentFanPower > 1) // 최소 1개 유지
         {
             currentFanPower--;
@@ -228,9 +256,39 @@ public class RemoteController : MonoBehaviour
         }
     }
 
-    private void LoadNextScene()
+    // 대기 -> Fade Out -> 씬 전환 코루틴
+    private IEnumerator FadeAndChangeSceneRoutine()
     {
-        SceneManager.LoadScene(nextSceneName);
+        // 1. 설정한 대기시간(delayBeforeFade)만큼 대기
+        yield return new WaitForSeconds(delayBeforeFade);
+
+        // 2. Fade Overlay 활성화 및 페이드 아웃
+        if (fadeOverlay != null)
+        {
+            fadeOverlay.gameObject.SetActive(true);
+
+            float timer = 0f;
+            Color fadeColor = fadeOverlay.color;
+
+            // 점점 어두워지기 (Fade Out)
+            while (timer < fadeDuration)
+            {
+                timer += Time.deltaTime;
+                fadeColor.a = Mathf.Clamp01(timer / fadeDuration);
+                fadeOverlay.color = fadeColor;
+                yield return null;
+            }
+        }
+
+        // 3. 씬 전환
+        if (!string.IsNullOrEmpty(nextSceneName))
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogError("Next Scene Name이 지정되지 않았습니다!");
+        }
     }
 
     private void PlaySound(AudioClip clip)

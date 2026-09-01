@@ -7,30 +7,64 @@ public class JangguCharacter : MonoBehaviour
     public GameObject dance1;
     public GameObject dance2;
 
+    private bool isDancing = false;
+    private Coroutine danceCoroutine;
+
+
     public void StartDancing()
     {
+        if (isDancing)
+            return;
+
+        isDancing = true;
+
         jangguCharacter.SetActive(false);
         dance1.SetActive(true);
         dance2.SetActive(false);
 
-        StartCoroutine(DanceAnimation());
+        StartDanceCoroutine();
     }
+
+
+    private void StartDanceCoroutine()
+    {
+        if (danceCoroutine != null)
+        {
+            StopCoroutine(danceCoroutine);
+        }
+
+        danceCoroutine = StartCoroutine(DanceAnimation());
+    }
+
 
     private IEnumerator DanceAnimation()
     {
-        while (true)
+        while (isDancing)
         {
+            dance1.SetActive(true);
+            dance2.SetActive(false);
+
             yield return new WaitForSeconds(0.5f);
 
             dance1.SetActive(false);
             dance2.SetActive(true);
 
             yield return new WaitForSeconds(0.5f);
-
-            dance2.SetActive(false);
-            dance1.SetActive(true);
         }
     }
+
+
+    private void OnEnable()
+    {
+        if (isDancing)
+        {
+            dance1.SetActive(true);
+            dance2.SetActive(false);
+
+            StartDanceCoroutine();
+        }
+    }
+
 
     public void ReceiveSangmo()
     {
