@@ -42,6 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: RightScenery
+    uniqueID: 4189748747
+    locked: 0
+  - name: LeftScenery
+    uniqueID: 30143009
+    locked: 0
   - name: Background
     uniqueID: 183212695
     locked: 0
