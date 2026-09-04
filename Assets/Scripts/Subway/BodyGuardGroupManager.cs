@@ -63,6 +63,11 @@ public class BodyguardGroupManager : MonoBehaviour
                 bodyguardItemSprite,
                 ItemType.Bodyguards
             );
+            SubwayItemGetPopup.Instance.ShowGetPopup(
+                "경호원 3인조",
+                bodyguardItemSprite
+            );
+            
         }
 
         Debug.Log("경호원 3인조 획득!");
