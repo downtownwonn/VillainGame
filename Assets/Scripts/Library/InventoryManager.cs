@@ -6,7 +6,6 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
 
     public Image[] slotIcons;
-    private int currentSlotIndex = 0;
 
     void Awake()
     {
@@ -15,20 +14,23 @@ public class InventoryManager : MonoBehaviour
 
     public bool AddItem(Sprite itemSprite)
     {
-        if (currentSlotIndex >= slotIcons.Length)
+        for (int i = 0; i < slotIcons.Length; i++)
         {
-            Debug.Log("인벤토리가 가득 찼어요!");
-            return false;
+            Image slot = slotIcons[i];
+
+            if (slot.sprite == null) // 비어있는 슬롯 판정
+            {
+                slot.sprite = itemSprite;
+
+                Color c = slot.color;
+                c.a = 1f;
+                slot.color = c;
+
+                return true;
+            }
         }
 
-        Image slot = slotIcons[currentSlotIndex];
-        slot.sprite = itemSprite;
-
-        Color c = slot.color;
-        c.a = 1f;
-        slot.color = c;
-
-        currentSlotIndex++;
-        return true;
+        Debug.Log("인벤토리가 가득 찼어요!");
+        return false;
     }
 }
