@@ -12,6 +12,11 @@ public class Subway_sceneviewmanager : MonoBehaviour
 
     public void GoToLeftShelf()
     {
+        if (SubwayItemPopupManager.Instance != null)
+        {
+            SubwayItemPopupManager.Instance.HidePopup();
+        }
+
         mainView.SetActive(false);
         leftShelfView.SetActive(true);
 
@@ -21,6 +26,11 @@ public class Subway_sceneviewmanager : MonoBehaviour
 
     public void GoToRightShelf()
     {
+        if (SubwayItemPopupManager.Instance != null)
+        {
+            SubwayItemPopupManager.Instance.HidePopup();
+        }
+
         mainView.SetActive(false);
         rightShelfView.SetActive(true);
 
@@ -30,13 +40,18 @@ public class Subway_sceneviewmanager : MonoBehaviour
 
     public void GoToMainView()
     {
+        if (SubwayItemPopupManager.Instance != null)
+        {
+            SubwayItemPopupManager.Instance.HidePopup();
+        }
+
         leftShelfView.SetActive(false);
         rightShelfView.SetActive(false);
 
         leftShelfUI.SetActive(false);
         rightShelfUI.SetActive(false);
 
-        mainView.SetActive(true);   // ← 이 줄 추가!
+        mainView.SetActive(true);
         mainViewUI.SetActive(true);
     }
 }
