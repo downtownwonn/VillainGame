@@ -3000,7 +3000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OutsideSceneryMove
   speed: 1
-  resetX: -4
+  resetX: 0
   startX: 15
 --- !u!1 &1030128392
 GameObject:
@@ -6487,7 +6487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OutsideSceneryMove_Left
   speed: 1
   resetX: -2
-  startX: -21
+  startX: -17
 --- !u!1 &1564463051
 GameObject:
   m_ObjectHideFlags: 0
