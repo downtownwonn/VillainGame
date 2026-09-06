@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uBB58 \uAF2C\uB098\uBCF4\uACE0 \uC790\uBE60\uC9D3\uB204?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a7f87abe95b802548a55e1f5931ca316, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d3479cfd15be5004b889e2b112dcc90d, type: 2}
   m_sharedMaterial: {fileID: 7607037343209336721, guid: 090897fa41470d04a96340101b054bb6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
