@@ -21,6 +21,8 @@ public class BackgroundChanger : MonoBehaviour
     {
         if (currentView > 0)
         {
+            CloseSubwayItemPopup();
+
             currentView--;
             UpdateView();
         }
@@ -30,8 +32,18 @@ public class BackgroundChanger : MonoBehaviour
     {
         if (currentView < 2)
         {
+            CloseSubwayItemPopup();
+
             currentView++;
             UpdateView();
+        }
+    }
+
+    private void CloseSubwayItemPopup()
+    {
+        if (SubwayItemPopupManager.Instance != null)
+        {
+            SubwayItemPopupManager.Instance.HidePopup();
         }
     }
 

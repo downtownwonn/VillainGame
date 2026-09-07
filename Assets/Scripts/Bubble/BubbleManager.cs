@@ -149,6 +149,9 @@ public class BubbleManager : MonoBehaviour
         {
             bubbleText.text = character.Dialogue;
 
+            Debug.Log("대사: [" + character.Dialogue + "]");
+
+
             // 텍스트는 좌우반전되지 않도록 유지
             bubbleText.rectTransform.localScale =
                 new Vector3(1f, 1f, 1f);

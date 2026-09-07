@@ -24,6 +24,16 @@ public class SunglassesItem : MonoBehaviour
             ItemType.Sunglasses
         );
 
+        if (SubwayItemGetPopup.Instance != null)
+        {
+            SubwayItemGetPopup.Instance.ShowGetPopup(
+                "선글라스",
+                inventorySprite
+            );
+        }
+
+Debug.Log("선글라스 획득!");
+
         Debug.Log("선글라스 획득!");
 
         collected = true;

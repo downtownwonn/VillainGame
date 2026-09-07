@@ -370,15 +370,26 @@ if (draggedItemData != null &&
     // =========================================================
 
     public void OnPointerClick(PointerEventData eventData)
+{
+    Image img = GetComponent<Image>();
+
+    // 빈 슬롯이면 아무 반응 없음
+    if (img == null || img.sprite == null)
+        return;
+
+    InventoryItemData itemData =
+        GetComponent<InventoryItemData>();
+
+    // 아이템 데이터가 없으면 아무 반응 없음
+    if (itemData == null)
+        return;
+
+    if (SubwayItemPopupManager.Instance != null)
     {
-        Image img = GetComponent<Image>();
-
-        if (img == null || img.sprite == null)
-            return;
-
-        if (ItemPopupManager.Instance != null)
-        {
-            ItemPopupManager.Instance.ShowPopup(img.sprite);
-        }
+        SubwayItemPopupManager.Instance.ShowPopup(
+            img.sprite,
+            itemData.itemType
+        );
     }
+}
 }

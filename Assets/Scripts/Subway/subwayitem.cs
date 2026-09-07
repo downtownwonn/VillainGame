@@ -34,6 +34,11 @@ public class SubwayItem : MonoBehaviour
             itemType
         );
 
+        SubwayItemGetPopup.Instance.ShowGetPopup(
+            itemName,
+            inventorySprite
+        );
+
         Debug.Log(itemName + " 획득");
 
         collected = true;
