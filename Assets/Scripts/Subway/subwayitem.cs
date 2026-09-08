@@ -19,7 +19,10 @@ public class SubwayItem : MonoBehaviour
     public Sprite inventorySprite;
     public ItemType itemType;
 
+    [SerializeField] private Sprite popupItemSprite;
+
     public SangmoCharacter sangmoCharacter;
+    
 
     private bool collected = false;
 
