@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e42d18bd9f6c25a4f8035f85cda3ec3b
+guid: 90ee2469e74d83348bd32200eb8ff6f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6962104688421045645
-    second: rubbergloves_0
+      213: 7367696030530369643
+    second: "\uCC10\uC9C4\uB9C9 \uD3B8\uC758\uC810 \uCC3D\uACE0_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rubbergloves_0
+      name: "\uCC10\uC9C4\uB9C9 \uD3B8\uC758\uC810 \uCC3D\uACE0_0"
       rect:
         serializedVersion: 2
-        x: 63
-        y: 46
-        width: 900
-        height: 1490
+        x: 0
+        y: 0
+        width: 1693
+        height: 929
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d850b6ac35d5e9060800000000000000
-      internalID: 6962104688421045645
+      spriteID: b6871d801805f3660800000000000000
+      internalID: 7367696030530369643
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      rubbergloves_0: 6962104688421045645
+      "\uCC10\uC9C4\uB9C9 \uD3B8\uC758\uC810 \uCC3D\uACE0_0": 7367696030530369643
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

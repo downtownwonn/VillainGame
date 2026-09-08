@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 95c6f20bdaa60e5448457f22e00b5132
+guid: b7a9ead4cf276e64f8d272598c64eef8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6526137211600882596
-    second: "\uB300\uAC78\uB808 \uBA38\uB9AC_0"
+      213: 1380856200851981205
+    second: gloves inventory_0
   - first:
-      213: -8695603826683481794
-    second: "\uB300\uAC78\uB808 \uBA38\uB9AC_1"
+      213: -4062443562338760827
+    second: gloves inventory_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uB300\uAC78\uB808 \uBA38\uB9AC_0"
+      name: gloves inventory_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 353
-        width: 1137
-        height: 830
+        x: 31
+        y: 17
+        width: 164
+        height: 401
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4abcdec873f719a50800000000000000
-      internalID: 6526137211600882596
+      spriteID: 5938da90669c92310800000000000000
+      internalID: 1380856200851981205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uB300\uAC78\uB808 \uBA38\uB9AC_1"
+      name: gloves inventory_1
       rect:
         serializedVersion: 2
-        x: 386
-        y: 103
-        width: 7
-        height: 8
+        x: 221
+        y: 5
+        width: 165
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e31f0031462035780800000000000000
-      internalID: -8695603826683481794
+      spriteID: 587c9b29a1d4f97c0800000000000000
+      internalID: -4062443562338760827
       vertices: []
       indices: 
       edges: []
@@ -163,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uB300\uAC78\uB808 \uBA38\uB9AC_0": 6526137211600882596
-      "\uB300\uAC78\uB808 \uBA38\uB9AC_1": -8695603826683481794
+      gloves inventory_0: 1380856200851981205
+      gloves inventory_1: -4062443562338760827
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
