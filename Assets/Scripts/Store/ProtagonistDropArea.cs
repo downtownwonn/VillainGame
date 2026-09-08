@@ -44,7 +44,7 @@ public class ProtagonistDropArea : MonoBehaviour, IDropHandler
                 Debug.Log("머리에 장착 완료!");
             }
             // 2. 손 장착 조건
-            else if (spriteName.Contains("rubbergloves") || spriteName.Contains("bong"))
+            else if (spriteName.Contains("glove") || spriteName.Contains("bong"))
             {
                 EquipItem(handSlot, itemImage.sprite);
                 isEquippedSuccess = true;

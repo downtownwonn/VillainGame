@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ed04028dd733ea7409333ee190cc3456
+guid: 39391f5e241468e42a81902d179d9e56
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2266090348261427834
-    second: mophandle_0
+      213: 9085312223947855685
+    second: mophead 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mophandle_0
+      name: mophead 1_0
       rect:
         serializedVersion: 2
-        x: 162
-        y: 18
-        width: 766
-        height: 1637
+        x: 73
+        y: 17
+        width: 129
+        height: 684
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7a401d5a25c27f10800000000000000
-      internalID: 2266090348261427834
+      spriteID: 5471de5e453851e70800000000000000
+      internalID: 9085312223947855685
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mophandle_0: 2266090348261427834
+      mophead 1_0: 9085312223947855685
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

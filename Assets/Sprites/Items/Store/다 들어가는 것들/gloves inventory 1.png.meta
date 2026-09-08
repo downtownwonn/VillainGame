@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 9421d6b159cb67d49beb5e90b2bdfdde
+guid: 9e2ae4462b1613649a03fc4ca1fd5f40
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5514264909137685141
-    second: mophead_0
+      213: 1380856200851981205
+    second: gloves inventory_0
+  - first:
+      213: -4062443562338760827
+    second: gloves inventory_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mophead_0
+      name: gloves inventory_0
       rect:
         serializedVersion: 2
-        x: 200
-        y: 0
-        width: 1127
-        height: 983
+        x: 31
+        y: 17
+        width: 164
+        height: 401
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b65527de7456973b0800000000000000
-      internalID: -5514264909137685141
+      spriteID: 5938da90669c92310800000000000000
+      internalID: 1380856200851981205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves inventory_1
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 5
+        width: 165
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 587c9b29a1d4f97c0800000000000000
+      internalID: -4062443562338760827
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mophead_0: -5514264909137685141
+      gloves inventory_0: 1380856200851981205
+      gloves inventory_1: -4062443562338760827
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

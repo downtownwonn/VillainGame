@@ -8,9 +8,6 @@ TextureImporter:
   - first:
       213: -1661508637701066994
     second: controller_1
-  - first:
-      213: 5197492861090702183
-    second: controller_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,10 +119,10 @@ TextureImporter:
       name: controller_0
       rect:
         serializedVersion: 2
-        x: 444
-        y: 1503
-        width: 43
-        height: 26
+        x: 174
+        y: 13
+        width: 207
+        height: 444
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +141,10 @@ TextureImporter:
       name: controller_1
       rect:
         serializedVersion: 2
-        x: 544
-        y: 1497
-        width: 21
-        height: 38
+        x: 259
+        y: 448
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,33 +159,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: controller_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 47
-        width: 861
-        height: 1437
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 763a0fb3834312840800000000000000
-      internalID: 5197492861090702183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -200,7 +175,6 @@ TextureImporter:
     nameFileIdTable:
       controller_0: -4024710785952163994
       controller_1: -1661508637701066994
-      controller_2: 5197492861090702183
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
