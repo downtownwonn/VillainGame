@@ -192,8 +192,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 400}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 130.8, y: 167.4}
+  m_SizeDelta: {x: 93.8, y: 90.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15645798
 MonoBehaviour:
@@ -496,9 +496,9 @@ RectTransform:
   m_Father: {fileID: 1696059433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 10}
-  m_SizeDelta: {x: 495.15, y: 90}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -254, y: -57}
+  m_SizeDelta: {x: -492, y: 90}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &170321150
 MonoBehaviour:
@@ -1286,6 +1286,7 @@ MonoBehaviour:
   itemIcon: {fileID: 763686758759983777, guid: f201c73c3e0b842d1a1a1724b1fbd6b1, type: 3}
   backgroundRenderer: {fileID: 0}
   newBackgroundSprite: {fileID: -4520547985982341975, guid: f7c1a25a4f6ad46b68da4695bf474396, type: 3}
+  popupItemSprite: {fileID: 763686758759983777, guid: f201c73c3e0b842d1a1a1724b1fbd6b1, type: 3}
 --- !u!1 &502349884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1506,7 @@ MonoBehaviour:
   noSpeakerVersion: {fileID: -5040356945259387394, guid: ab1f28bb5af8c452b9fa5499777cc521, type: 3}
   pickupSound: {fileID: 0}
   audioSource: {fileID: 0}
+  popupItemSprite: {fileID: 7995061706426159896, guid: 1a7b6bcc80e8b442095568ab922e5768, type: 3}
 --- !u!61 &560511696
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1912,8 +1914,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 449.635, y: -45}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 15, y: -45}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &651205408
 MonoBehaviour:
@@ -2117,8 +2119,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 348.60498, y: -45}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 15, y: -45}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733072555
 MonoBehaviour:
@@ -2897,8 +2899,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 146.545, y: -45}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 15, y: -45}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1061847547
 MonoBehaviour:
@@ -4426,8 +4428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 247.575, y: -45}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 15, y: -45}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1694950608
 MonoBehaviour:
@@ -5071,6 +5073,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7842420183874217154, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 763686758759983777, guid: f201c73c3e0b842d1a1a1724b1fbd6b1, type: 3}
     - target: {fileID: 8119674620320966480, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
       propertyPath: itemPopup
       value: 
@@ -5270,7 +5276,7 @@ RectTransform:
   m_GameObject: {fileID: 1953539176}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5662222, y: 2.5662222, z: 2.3329268}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 293339691}
@@ -5568,7 +5574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 320, y: 350}
+  m_AnchoredPosition: {x: 141.09, y: 149}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2114632343 stripped
