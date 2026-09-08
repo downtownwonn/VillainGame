@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BubbleCharacter : MonoBehaviour
 {
@@ -45,6 +46,12 @@ public class BubbleCharacter : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // UI 위를 클릭한 경우 캐릭터 클릭 무시
+        if (EventSystem.current != null &&
+            EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         if (BubbleManager.Instance == null)
         {
             return;
