@@ -45,6 +45,10 @@ public class BackgroundChanger : MonoBehaviour
         {
             SubwayItemPopupManager.Instance.HidePopup();
         }
+        if (BubbleManager.Instance != null)
+        {
+            BubbleManager.Instance.HideBubble();
+        }
     }
 
     void UpdateView()

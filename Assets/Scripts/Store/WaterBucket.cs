@@ -5,21 +5,33 @@ using UnityEngine.UI;
 
 public class WaterBucket : MonoBehaviour, IDropHandler
 {
-    [Header("bini를 넣었을 때 활성화할 Hat 오브젝트")]
-    [SerializeField] private GameObject hatObject; 
+    [Header("bini 설정")]
+    [SerializeField] private GameObject hatObject;
+    [Tooltip("비니(bini) 씻길 때 크기 비율")]
+    public float biniScale = 0.5f;
+    [Tooltip("비니(bini) Y축 시작 위치 오프셋")]
+    public float biniYOffset = 50.0f;
 
-    [Header("mophandle을 넣었을 때 활성화할 Black Mop Handle 오브젝트")]
+    [Header("mophandle 설정")]
     [SerializeField] private GameObject blackMopHandleObject;
+    [Tooltip("자루(mophandle) 씻길 때 크기 비율")]
+    public float mophandleScale = 0.8f; // 자루는 비니보다 더 길 수 있으므로 따로 설정
+    [Tooltip("자루(mophandle) Y축 시작 위치 오프셋")]
+    public float mophandleYOffset = 50.0f;
 
     [Header("사운드 설정")]
     [Tooltip("물에 씻는 효과음")]
     public AudioClip washSound;
 
-    [Header("연출 설정")]
-    [Tooltip("아이템이 씻기는 시간(초)")]
-    public float washDuration = 1.0f;
-    [Tooltip("아이템 흔들림 강도")]
-    public float shakeMagnitude = 15.0f;
+    [Header("위아래 씻는 연출 공통 설정")]
+    [Tooltip("아이템이 씻기는 총 시간(초)")]
+    public float washDuration = 2.0f;
+
+    [Tooltip("위아래로 움직이는 높이 폭")]
+    public float moveDistance = 30.0f;
+
+    [Tooltip("넣었다 뺐다 하는 속도")]
+    public float moveSpeed = 8.0f;
 
     private bool isWashing = false;
 
@@ -41,25 +53,23 @@ public class WaterBucket : MonoBehaviour, IDropHandler
                 // 1. bini 처리
                 if (spriteName.Contains("bini"))
                 {
-                    // 원래 슬롯은 깔끔하게 즉시 비움
                     ClearDroppedItem(droppedObject);
-
-                    // 임시 이미지를 만들어 씻는 연출 진행
-                    StartCoroutine(WashTempImageRoutine(itemSprite, hatObject));
+                    // 🔍 bini 전용 크기(biniScale)와 오프셋(biniYOffset) 전달
+                    StartCoroutine(WashTempImageRoutine(itemSprite, hatObject, biniScale, biniYOffset));
                 }
                 // 2. mophandle 처리
                 else if (spriteName.Contains("mophandle"))
                 {
                     ClearDroppedItem(droppedObject);
-
-                    StartCoroutine(WashTempImageRoutine(itemSprite, blackMopHandleObject));
+                    // 🔍 mophandle 전용 크기(mophandleScale)와 오프셋(mophandleYOffset) 전달
+                    StartCoroutine(WashTempImageRoutine(itemSprite, blackMopHandleObject, mophandleScale, mophandleYOffset));
                 }
             }
         }
     }
 
-    // 🌊 임시 이미지 생성 -> 흔들기 -> 삭제 -> 결과물 등장 코루틴
-    private IEnumerator WashTempImageRoutine(Sprite itemSprite, GameObject resultObject)
+    // 🌊 개별 scale과 yOffset을 인자로 받아 처리하는 코루틴
+    private IEnumerator WashTempImageRoutine(Sprite itemSprite, GameObject resultObject, float targetScale, float targetYOffset)
     {
         isWashing = true;
 
@@ -69,40 +79,40 @@ public class WaterBucket : MonoBehaviour, IDropHandler
             AudioSource.PlayClipAtPoint(washSound, Camera.main.transform.position);
         }
 
-        // 🖼️ 2. 흔들기용 임시 UI 오브젝트 즉석 생성
+        // 🖼️ 2. 임시 UI 오브젝트 생성
         GameObject tempItem = new GameObject("TempWashItem", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-        
-        // 물통의 부모(Canvas 등) 아래로 넣어주어 화면 맨 위에 보이도록 설정
         tempItem.transform.SetParent(transform.parent, false);
-        tempItem.transform.SetAsLastSibling(); // 맨 앞으로 올리기
+        tempItem.transform.SetAsLastSibling();
 
-        // 이미지 복사 및 크기 맞추기
         Image tempImage = tempItem.GetComponent<Image>();
         tempImage.sprite = itemSprite;
-        tempImage.SetNativeSize(); // 원래 이미지 비율 유지
+        tempImage.SetNativeSize();
 
-        // 위치를 물통 중앙으로 지정
+        // 🔍 3. 전달받은 아이템별 크기 적용
+        tempItem.transform.localScale = new Vector3(targetScale, targetScale, 1f);
+
+        // 📍 4. 전달받은 아이템별 Y 오프셋 위치 적용
         tempItem.transform.position = transform.position;
         Vector3 basePosition = tempItem.transform.localPosition;
+        basePosition.y += targetYOffset;
 
         float elapsedTime = 0f;
 
-        // 💦 3. 임시 이미지 흔들기
+        // 💦 5. 위아래 퐁당퐁당 연출
         while (elapsedTime < washDuration)
         {
-            float offsetX = Random.Range(-1f, 1f) * shakeMagnitude;
-            float offsetY = Random.Range(-1f, 1f) * shakeMagnitude;
-
-            tempItem.transform.localPosition = basePosition + new Vector3(offsetX, offsetY, 0);
-
             elapsedTime += Time.deltaTime;
+
+            float offsetY = Mathf.Sin(elapsedTime * moveSpeed) * moveDistance;
+            tempItem.transform.localPosition = new Vector3(basePosition.x, basePosition.y + offsetY, basePosition.z);
+
             yield return null;
         }
 
-        // 🗑️ 4. 다 씻었으니 임시 이미지 완전 삭제
+        // 🗑️ 6. 임시 오브젝트 삭제
         Destroy(tempItem);
 
-        // ✨ 5. 결과물(Hat / Black Mop Handle) 짜잔 나타남
+        // ✨ 7. 결과물 등장
         if (resultObject != null)
         {
             resultObject.SetActive(true);
