@@ -239,7 +239,7 @@ MonoBehaviour:
   fadeTime: 0.2
   nextSceneName: CinemaR2Clear
   shoeUI: {fileID: 1417594277}
-  coupleCollider: {fileID: 977057326}
+  coupleCollider: {fileID: 977057328}
   dropPoint: {fileID: 985555261}
   shoeEffect: {fileID: 988742607}
   coupleSprite: {fileID: 977057325}
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 188481546}
   - component: {fileID: 188481545}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: npc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -447,12 +447,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: "\uC774 \uC88B\uC740 \uB0A0\uC5D0 \uB0B4\uAC00 \uC65C \uC601\uD654\uAD00\uC5D0
+  dialogue: "\uC774 \uC88B\uC740 \uB0A0\uC5D0\n\uB0B4\uAC00 \uC65C \uC601\uD654\uAD00\uC5D0
     \uC640\uC11C"
-  bubbleType: 2
-  bubbleOffset: {x: 0, y: 0}
+  bubbleType: 3
+  bubbleOffset: {x: 0.5, y: 2}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &188481546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -878,11 +878,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: 
+  dialogue: ...
   bubbleType: 0
-  bubbleOffset: {x: 0, y: 0}
+  bubbleOffset: {x: -0.5, y: -0.5}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1 &363512654
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +894,6 @@ GameObject:
   - component: {fileID: 363512655}
   - component: {fileID: 363512656}
   - component: {fileID: 363512658}
-  - component: {fileID: 363512657}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -977,52 +976,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!61 &363512657
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363512654}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 2.1399999, w: 8.21}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.59, y: 13.14}
-    newSize: {x: 4.59, y: 13.14}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 4.59, y: 13.14}
-  m_EdgeRadius: 0
 --- !u!114 &363512658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1658,11 +1611,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: 
-  bubbleType: 0
-  bubbleOffset: {x: 0, y: 0}
+  dialogue: ...
+  bubbleType: 4
+  bubbleOffset: {x: 0.5, y: 1.5}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1 &604945601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1810,7 @@ GameObject:
   - component: {fileID: 630655322}
   - component: {fileID: 630655321}
   m_Layer: 0
-  m_Name: Player (2)
+  m_Name: npc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1996,11 +1949,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: 
+  dialogue: ...
   bubbleType: 0
-  bubbleOffset: {x: 0, y: 0}
+  bubbleOffset: {x: 0.8, y: 1.8}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1 &649312945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,7 +2313,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 743274010}
-  - component: {fileID: 743274011}
   m_Layer: 0
   m_Name: "\uD328\uB529npc"
   m_TagString: Untagged
@@ -2385,23 +2337,6 @@ Transform:
   - {fileID: 1819279961}
   m_Father: {fileID: 793746626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &743274011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 743274009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: 
-  bubbleType: 0
-  bubbleOffset: {x: 0, y: 0}
-  textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
 --- !u!1 &766891424
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,8 +3282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977057324}
   - component: {fileID: 977057325}
-  - component: {fileID: 977057326}
-  - component: {fileID: 977057327}
+  - component: {fileID: 977057328}
   m_Layer: 0
   m_Name: Villan Couple
   m_TagString: Untagged
@@ -3431,7 +3365,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!61 &977057326
+--- !u!61 &977057328
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3465,7 +3399,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.020477295, y: 1.3207756}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3475,25 +3409,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.111372, y: 4.3045516}
+  m_Size: {x: 3.31, y: 5.47}
   m_EdgeRadius: 0
---- !u!114 &977057327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977057323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: 
-  bubbleType: 0
-  bubbleOffset: {x: 0, y: 0}
-  textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
 --- !u!1 &985555260
 GameObject:
   m_ObjectHideFlags: 0
@@ -3921,6 +3838,7 @@ RectTransform:
   - {fileID: 785425740}
   - {fileID: 1898782113}
   - {fileID: 1751846241}
+  - {fileID: 1719534277}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4080,11 +3998,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: 
+  dialogue: ...
   bubbleType: 0
-  bubbleOffset: {x: 0, y: 0}
+  bubbleOffset: {x: -0.2, y: 0}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1001 &1367804544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5453,6 +5371,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1719534277}
   - component: {fileID: 1719534276}
+  - component: {fileID: 1719534279}
+  - component: {fileID: 1719534278}
   m_Layer: 0
   m_Name: "\u110B\u1175\u11AB\u1107\u1166\u11AB\u1110\u1169\u1105\u1175 \uC774\uBBF8\uC9C0"
   m_TagString: Untagged
@@ -5520,21 +5440,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!4 &1719534277
-Transform:
+--- !u!224 &1719534277
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719534275}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.6, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.835073, y: 0.6680584, z: 1.1134306}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1290846542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -399.99997, y: -229.36671}
+  m_SizeDelta: {x: 13.71, y: 2.78}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1719534278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719534275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1719534279
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719534275}
+  m_CullTransparentMesh: 1
 --- !u!1 &1751846240 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4436438502108402427, guid: 439029c571b9a234086a32f2f1594b54, type: 3}
@@ -5740,8 +5702,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1819279961}
   - component: {fileID: 1819279962}
+  - component: {fileID: 1819279963}
+  - component: {fileID: 1819279964}
   m_Layer: 0
-  m_Name: Player (1)
+  m_Name: npc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5822,6 +5786,69 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1819279963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819279960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
+  dialogue: ...
+  bubbleType: 4
+  bubbleOffset: {x: 0, y: 1.8}
+  textOffset: {x: 0, y: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
+--- !u!61 &1819279964
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819279960}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.85, y: 12.61}
+    newSize: {x: 4.59, y: 13.14}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.85, y: 12.61}
+  m_EdgeRadius: 0
 --- !u!1 &1820731039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5974,11 +6001,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: 
+  dialogue: ...
   bubbleType: 0
-  bubbleOffset: {x: 0, y: 0}
+  bubbleOffset: {x: -0.2, y: -0.2}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1 &1898782112
 GameObject:
   m_ObjectHideFlags: 0
@@ -6857,11 +6884,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: 
-  bubbleType: 0
-  bubbleOffset: {x: 0, y: 0}
+  dialogue: ...
+  bubbleType: 4
+  bubbleOffset: {x: 0.8, y: 0.8}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6877,5 +6904,4 @@ SceneRoots:
   - {fileID: 2083324603}
   - {fileID: 74343258}
   - {fileID: 252014630}
-  - {fileID: 1719534277}
   - {fileID: 1426090148}

@@ -154,10 +154,18 @@ if (draggedItemData != null &&
         {
             Debug.Log("선글라스를 직장인에게 사용!");
 
-            // 선글라스 착용
-            bodyguard.PutOnSunglasses();
+            // 선글라스 착용 성공 여부 확인
+            bool used = bodyguard.PutOnSunglasses();
 
-            // 사용한 선글라스 제거
+            // 이미 선글라스를 쓴 직장인이라면 사용하지 않음
+            if (!used)
+            {
+                Debug.Log("이미 선글라스를 착용한 직장원입니다.");
+                ReturnToOriginalPosition();
+                return;
+            }
+
+            // 착용 성공했을 때만 선글라스 제거
             Image sunglassesImage =
                 GetComponent<Image>();
 

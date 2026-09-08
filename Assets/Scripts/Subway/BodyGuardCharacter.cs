@@ -14,10 +14,10 @@ public class BodyguardCharacter : MonoBehaviour
     private bool isBodyguard = false;
 
 
-    public void PutOnSunglasses()
+    public bool PutOnSunglasses()
     {
-        if (hasSunglasses)
-            return;
+         if (hasSunglasses)
+             return false;
 
         hasSunglasses = true;
 
@@ -29,6 +29,8 @@ public class BodyguardCharacter : MonoBehaviour
         {
             groupManager.SunglassesCompleted(this);
         }
+
+        return true;
     }
 
 
