@@ -280,6 +280,25 @@ public class BubbleManager : MonoBehaviour
         bubbleRect.localPosition = localPosition;
     }
 
+    public void HideBubble()
+    {
+        // 기존 숨김 코루틴 중지
+        if (hideCoroutine != null)
+        {
+            StopCoroutine(hideCoroutine);
+            hideCoroutine = null;
+        }
+
+        // 말풍선 숨기기
+        if (bubbleObject != null)
+        {
+            bubbleObject.SetActive(false);
+        }
+
+        // 다시 클릭 가능하도록 초기화
+        isShowing = false;
+    }
+
     private IEnumerator HideBubbleAfterDelay()
     {
         yield return new WaitForSeconds(displayDuration);

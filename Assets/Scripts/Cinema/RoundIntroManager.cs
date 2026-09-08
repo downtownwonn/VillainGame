@@ -58,6 +58,6 @@ public class RoundIntroManager : MonoBehaviour
         }
 
         roundPanel.SetActive(false);
-        gameplayUI.SetActive(true);   // 다시 보여주기
+        gameplayUI.SetActive(true);
     }
 }
