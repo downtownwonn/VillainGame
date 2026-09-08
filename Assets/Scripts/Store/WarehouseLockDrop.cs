@@ -7,6 +7,10 @@ public class WarehouseLockDrop : MonoBehaviour, IDropHandler
 {
     public BackgroundManager backgroundManager;
 
+    [Header("사운드 설정")]
+    [Tooltip("자물쇠가 풀릴 때 재생할 효과음 클립")]
+    public AudioClip unlockSound; 
+
     public void OnDrop(PointerEventData eventData)
     {
         DraggableItemofStore item = eventData.pointerDrag.GetComponent<DraggableItemofStore>();
@@ -16,13 +20,25 @@ public class WarehouseLockDrop : MonoBehaviour, IDropHandler
 
         item.wasDropped = true;
 
+        // 🔊 1. 자물쇠 풀리는 소리 재생 (오브젝트가 비활성화되어도 소리가 끝까지 유지됨)
+        if (unlockSound != null)
+        {
+            AudioSource.PlayClipAtPoint(unlockSound, Camera.main.transform.position);
+        }
+
         // 인벤토리에서 열쇠 제거
         Image itemImage = item.GetComponent<Image>();
-        itemImage.sprite = null;
-        itemImage.color = new Color(1, 1, 1, 0);
+        if (itemImage != null)
+        {
+            itemImage.sprite = null;
+            itemImage.color = new Color(1, 1, 1, 0);
+        }
 
         // 창고 잠금 해제
-        backgroundManager.UnlockWarehouse();
+        if (backgroundManager != null)
+        {
+            backgroundManager.UnlockWarehouse();
+        }
 
         // 자물쇠 서서히 사라짐
         StartCoroutine(FadeOutLock());
@@ -32,28 +48,31 @@ public class WarehouseLockDrop : MonoBehaviour, IDropHandler
     {
         Image lockImage = GetComponent<Image>();
 
-        Color color = lockImage.color;
-
-        float fadeTime = 1f;
-        float currentTime = 0f;
-
-        while (currentTime < fadeTime)
+        if (lockImage != null)
         {
-            currentTime += Time.deltaTime;
+            Color color = lockImage.color;
 
-            color.a = Mathf.Lerp(1f, 0f, currentTime / fadeTime);
+            float fadeTime = 3f;
+            float currentTime = 0f;
 
+            while (currentTime < fadeTime)
+            {
+                currentTime += Time.deltaTime;
+
+                color.a = Mathf.Lerp(1f, 0f, currentTime / fadeTime);
+
+                lockImage.color = color;
+
+                yield return null;
+            }
+
+            // 완전히 투명하게
+            color.a = 0f;
             lockImage.color = color;
 
-            yield return null;
+            // 클릭을 막지 않도록 설정
+            lockImage.raycastTarget = false;
         }
-
-        // 완전히 투명하게
-        color.a = 0f;
-        lockImage.color = color;
-
-        // 클릭을 막지 않도록 설정
-        lockImage.raycastTarget = false;
 
         // 버튼도 비활성화
         Button button = GetComponent<Button>();

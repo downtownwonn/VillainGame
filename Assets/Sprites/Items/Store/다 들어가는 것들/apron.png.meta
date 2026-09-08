@@ -116,10 +116,10 @@ TextureImporter:
       name: apron_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 63
-        width: 972
-        height: 1426
+        x: 0
+        y: 32
+        width: 1156
+        height: 1249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
