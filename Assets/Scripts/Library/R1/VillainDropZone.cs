@@ -63,6 +63,10 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
             {
                 legSprite.sprite = idleLegSprite;
             }
+            if (ScreenFader.Instance != null)
+            {
+                ScreenFader.Instance.FadeOutAndHide();
+            }
         }
     }
 }
