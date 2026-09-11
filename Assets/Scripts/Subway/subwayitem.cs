@@ -37,10 +37,10 @@ public class SubwayItem : MonoBehaviour
             itemType
         );
 
-        SubwayItemGetPopup.Instance.ShowGetPopup(
-            itemName,
-            inventorySprite
-        );
+        if (ItemGetPopup.Instance != null)
+        {
+            ItemGetPopup.Instance.Show(popupItemSprite);
+        }  
 
         Debug.Log(itemName + " 획득");
 

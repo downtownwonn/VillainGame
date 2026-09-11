@@ -5,6 +5,8 @@ public class BodyguardGroupManager : MonoBehaviour
     public BodyguardCharacter[] bodyguards;
     public Sprite bodyguardItemSprite;
 
+    [SerializeField] private Sprite popupItemSprite;
+
     private int sunglassesCount = 0;
     private bool groupCollected = false;
 
@@ -63,11 +65,12 @@ public class BodyguardGroupManager : MonoBehaviour
                 bodyguardItemSprite,
                 ItemType.Bodyguards
             );
-            SubwayItemGetPopup.Instance.ShowGetPopup(
-                "경호원 3인조",
-                bodyguardItemSprite
-            );
-            
+
+            // 아이템 획득 팝업
+            if (ItemGetPopup.Instance != null)
+            {
+                ItemGetPopup.Instance.Show(popupItemSprite);
+            }
         }
 
         Debug.Log("경호원 3인조 획득!");
