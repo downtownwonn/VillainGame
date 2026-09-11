@@ -14,10 +14,18 @@ public class ItemInfoPopup : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemDescription;
 
+    [Header("Magnify")]
+    [SerializeField] private GameObject magnifyButton;
+    [SerializeField] private GameObject largeImagePopup;
+    [SerializeField] private Image largeItemImage;
+
     [Header("Sound")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip openSound;
     [SerializeField] private AudioClip closeSound;
+
+    // 현재 선택된 아이템의 큰 이미지
+    private Sprite currentLargeSprite;
 
     private void Awake()
     {
@@ -31,8 +39,24 @@ public class ItemInfoPopup : MonoBehaviour
 
         popup.SetActive(false);
         blocker.SetActive(false);
+
+        // 큰 이미지 팝업도 처음에는 꺼둠
+        if (largeImagePopup != null)
+        {
+            largeImagePopup.SetActive(false);
+        }
+
+        // 처음에는 돋보기 버튼도 꺼둠
+        if (magnifyButton != null)
+        {
+            magnifyButton.SetActive(false);
+        }
     }
 
+    // =========================================================
+    // 기존 아이템용 기존 Show 함수
+    // 이 함수의 기존 기능은 그대로 유지
+    // =========================================================
     public void Show(Sprite sprite, string name, string description)
     {
         if (sprite == null)
@@ -55,6 +79,65 @@ public class ItemInfoPopup : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // 영화 티켓처럼 큰 이미지가 필요한 아이템용
+    // =========================================================
+    public void ShowWithLargeImage(
+        Sprite sprite,
+        string name,
+        string description,
+        Sprite largeSprite)
+    {
+        // 기존 팝업 기능을 그대로 사용
+        Show(sprite, name, description);
+
+        // 큰 이미지 저장
+        currentLargeSprite = largeSprite;
+
+        // 큰 이미지가 있을 때만 돋보기 버튼 표시
+        if (magnifyButton != null)
+        {
+            magnifyButton.SetActive(largeSprite != null);
+        }
+    }
+
+    // =========================================================
+    // 돋보기 버튼
+    // =========================================================
+    public void OpenLargeImage()
+    {
+        if (currentLargeSprite == null)
+        {
+            Debug.LogWarning("ItemInfoPopup: 확대할 이미지가 없습니다.");
+            return;
+        }
+
+        if (largeItemImage != null)
+        {
+            largeItemImage.sprite = currentLargeSprite;
+            largeItemImage.preserveAspect = true;
+        }
+
+        if (largeImagePopup != null)
+        {
+            largeImagePopup.SetActive(true);
+        }
+    }
+
+    // =========================================================
+    // 큰 이미지 팝업 닫기
+    // =========================================================
+    public void CloseLargeImage()
+    {
+        if (largeImagePopup != null)
+        {
+            largeImagePopup.SetActive(false);
+        }
+    }
+
+    // =========================================================
+    // 기존 설명 팝업 닫기
+    // =========================================================
     public void Close()
     {
         if (!popup.activeSelf)
@@ -67,7 +150,21 @@ public class ItemInfoPopup : MonoBehaviour
             audioSource.PlayOneShot(closeSound);
         }
 
+        // 큰 이미지 팝업도 같이 닫아줌
+        if (largeImagePopup != null)
+        {
+            largeImagePopup.SetActive(false);
+        }
+
         popup.SetActive(false);
         blocker.SetActive(false);
+
+        // 다음 아이템을 위해 초기화
+        currentLargeSprite = null;
+
+        if (magnifyButton != null)
+        {
+            magnifyButton.SetActive(false);
+        }
     }
 }

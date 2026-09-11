@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ShoePickup : MonoBehaviour
 {
@@ -24,6 +25,14 @@ public class ShoePickup : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // UI를 클릭하고 있다면 신발을 클릭하지 않음
+        // (팝업 버튼, 팝업 배경 등을 클릭했을 때 신발이 먹히는 것을 방지)
+        if (EventSystem.current != null &&
+            EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (pickedUp)
             return;
 

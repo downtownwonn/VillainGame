@@ -13,4 +13,7 @@ public class ItemData : ScriptableObject
 
     [TextArea(3, 6)]
     public string description;
+
+    [Header("Optional")]
+    public Sprite largeItemSprite;
 }
