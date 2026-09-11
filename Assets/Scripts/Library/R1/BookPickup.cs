@@ -13,6 +13,9 @@ public class BookPickup : MonoBehaviour
     public AudioClip pickupSound;   // 인스펙터에서 효과음 파일 연결
     public AudioSource audioSource; // AudioManager의 AudioSource 연결
 
+    [Header("아이템 획득 팝업")]
+    public Sprite popupItemSprite;  // 획득 팝업창에 보여줄 이미지
+
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -34,6 +37,12 @@ public class BookPickup : MonoBehaviour
             if (laptopPopupImage != null && noSpeakerVersion != null)
             {
                 laptopPopupImage.sprite = noSpeakerVersion;
+            }
+
+            // 아이템 획득 팝업 표시
+            if (ItemGetPopup.Instance != null)
+            {
+                ItemGetPopup.Instance.Show(popupItemSprite);
             }
         }
     }

@@ -42,6 +42,7 @@ public class ItemInfoPopup : MonoBehaviour
         }
 
         itemImage.sprite = sprite;
+        itemImage.preserveAspect = true;
         itemName.text = name;
         itemDescription.text = description;
 
