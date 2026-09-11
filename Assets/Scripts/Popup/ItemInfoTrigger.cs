@@ -1,43 +1,55 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemInfoTrigger : MonoBehaviour, IPointerClickHandler
 {
-    [Header("Item Information")]
-    [SerializeField] private string itemName;
-
-    [TextArea(3, 6)]
-    [SerializeField] private string itemDescription;
-
-    private UnityEngine.UI.Image itemImage;
+    private Image itemImage;
+    private ItemInfoData itemInfoData;
 
     private void Awake()
     {
-        itemImage = GetComponent<UnityEngine.UI.Image>();
+        itemImage = GetComponent<Image>();
+        itemInfoData = GetComponent<ItemInfoData>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (itemImage == null)
+        if (itemImage == null || itemImage.sprite == null)
         {
             return;
         }
 
-        if (itemImage.sprite == null)
+        if (itemInfoData == null)
         {
+            Debug.LogWarning(
+                "ItemIcon에 ItemInfoData가 없습니다."
+            );
+            return;
+        }
+
+        if (itemInfoData.itemData == null)
+        {
+            Debug.LogWarning(
+                "현재 슬롯에 ItemData가 없습니다."
+            );
             return;
         }
 
         if (ItemInfoPopup.Instance == null)
         {
-            Debug.LogWarning("ItemInfoPopup이 존재하지 않습니다.");
+            Debug.LogWarning(
+                "ItemInfoPopup이 존재하지 않습니다."
+            );
             return;
         }
 
+        ItemData data = itemInfoData.itemData;
+
         ItemInfoPopup.Instance.Show(
-            itemImage.sprite,
-            itemName,
-            itemDescription
+            data.itemSprite,
+            data.itemName,
+            data.description
         );
     }
 }

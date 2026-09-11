@@ -8,9 +8,15 @@ public class FeatherTipPickup : MonoBehaviour
     public GameObject feather;
     public GameObject inventoryItem;
 
+    [Header("Inventory")]
+    [SerializeField] private Sprite featherSprite;
+
     [Header("Item Get Popup")]
     public Sprite popupItemSprite;
     public float popupDuration = 1.5f;
+
+    [Header("Item Data")]
+    [SerializeField] private ItemData itemData;
 
     [Header("Sounds")]
     public AudioSource featherDropSound;
@@ -57,20 +63,23 @@ public class FeatherTipPickup : MonoBehaviour
         if (feather != null)
             feather.SetActive(true);
 
-        // ¿Œ∫•≈‰∏Æø° ±Í≈– √ﬂ∞°
-        if (inventoryItem != null)
+        // ¿Œ∫•≈‰∏Æø° ±Í≈– √ﬂ∞°// ¿Œ∫•≈‰∏Æø° ±Í≈– √ﬂ∞°
+        if (itemData != null)
         {
-            Image featherImage = inventoryItem.GetComponent<Image>();
+            Debug.Log("±Í≈– AddItem Ω««‡: " + itemData.itemName);
 
-            if (featherImage != null)
-            {
-                InventoryManagerForCin.Instance.AddItem(featherImage.sprite);
-            }
+            bool result =
+                InventoryManagerForCin.Instance.AddItem(
+                    itemData,
+                    CinemaItemType.Feather
+                );
+
+            Debug.Log("±Í≈– AddItem ∞·∞˙: " + result);
         }
-
-        // ±‚¡∏ ¿Œ∫•≈‰∏Æ æ∆¿Ãƒ‹ º˚±‚±‚
-        if (inventoryItem != null)
-            inventoryItem.SetActive(false);
+        else
+        {
+            Debug.LogError("FeatherTipPickup: itemData∞° ∫ÒæÓ ¿÷Ω¿¥œ¥Ÿ!");
+        }
 
         // »πµÊ ∆Àæ˜ «•Ω√
         if (ItemGetPopup.Instance == null)
