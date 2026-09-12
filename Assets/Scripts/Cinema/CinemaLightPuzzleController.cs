@@ -147,6 +147,8 @@ public class CinemaLightPuzzleController : MonoBehaviour
             bgmSource.clip = miniGameBGM;
             bgmSource.loop = true;
             bgmSource.Play();
+
+            Debug.Log("★★★★★ 미니게임 BGM PLAY ★★★★★");
         }
 
         yield return StartCoroutine(BlinkRoutine());
@@ -275,6 +277,8 @@ public class CinemaLightPuzzleController : MonoBehaviour
 
     public void ClosePuzzle()
     {
+        Debug.Log("★★★★★ ClosePuzzle → 미니게임 BGM STOP ★★★★★");
+
         if (gameRoutine != null)
         {
             StopCoroutine(gameRoutine);
@@ -286,6 +290,8 @@ public class CinemaLightPuzzleController : MonoBehaviour
         // 미니게임 BGM 종료
         if (bgmSource != null)
             bgmSource.Stop();
+            Debug.Log("미니게임 BGM Stop 실행 / 현재 재생 여부: " + bgmSource.isPlaying);
+
 
         // 원래 게임 BGM 이어서 재생
         if (gameBGM != null)

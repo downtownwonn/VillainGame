@@ -24,6 +24,10 @@ public class ItemInfoPopup : MonoBehaviour
     [SerializeField] private AudioClip openSound;
     [SerializeField] private AudioClip closeSound;
 
+    [Header("Large Image Popup Sound")]
+    [SerializeField] private AudioClip largeOpenSound;
+    [SerializeField] private AudioClip largeCloseSound;
+
     // 현재 선택된 아이템의 큰 이미지
     private Sprite currentLargeSprite;
 
@@ -106,6 +110,8 @@ public class ItemInfoPopup : MonoBehaviour
     // =========================================================
     public void OpenLargeImage()
     {
+        Debug.Log("돋보기 버튼 클릭됨!");
+
         if (currentLargeSprite == null)
         {
             Debug.LogWarning("ItemInfoPopup: 확대할 이미지가 없습니다.");
@@ -121,6 +127,11 @@ public class ItemInfoPopup : MonoBehaviour
         if (largeImagePopup != null)
         {
             largeImagePopup.SetActive(true);
+            // 큰 이미지 팝업 열기 소리
+            if (audioSource != null && largeOpenSound != null)
+            {
+                audioSource.PlayOneShot(largeOpenSound);
+            }
         }
     }
 
@@ -131,6 +142,11 @@ public class ItemInfoPopup : MonoBehaviour
     {
         if (largeImagePopup != null)
         {
+            if (audioSource != null && largeCloseSound != null)
+            {
+                audioSource.PlayOneShot(largeCloseSound);
+            }
+
             largeImagePopup.SetActive(false);
         }
     }

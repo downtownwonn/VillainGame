@@ -16,19 +16,25 @@ public class ShoePickup : MonoBehaviour
     [Header("Popup")]
     [SerializeField] private Sprite popupItemSprite;
 
+    [Header("Popup Blocking")]
+    [SerializeField] private GameObject popupToBlock;
+
     [Header("Settings")]
+
+
+
+
     public bool disableObject = true;
 
     public static bool IsShoePickedUp = false;
 
     private bool pickedUp = false;
 
+
     private void OnMouseDown()
     {
-        // UI를 클릭하고 있다면 신발을 클릭하지 않음
-        // (팝업 버튼, 팝업 배경 등을 클릭했을 때 신발이 먹히는 것을 방지)
-        if (EventSystem.current != null &&
-            EventSystem.current.IsPointerOverGameObject())
+        // 팝업이 떠 있는 동안에는 신발 클릭 방지
+        if (popupToBlock != null && popupToBlock.activeInHierarchy)
         {
             return;
         }

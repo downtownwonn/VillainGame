@@ -46,10 +46,8 @@ public class ItemInfoTrigger : MonoBehaviour, IPointerClickHandler
 
         ItemData data = itemInfoData.itemData;
 
-        // =====================================================
-        // 큰 이미지가 등록된 아이템
-        // → 영화 티켓처럼 돋보기 기능 사용
-        // =====================================================
+        // 큰 이미지가 등록된 아이템이면
+        // 확대 기능이 있는 팝업을 사용
         if (data.largeItemSprite != null)
         {
             ItemInfoPopup.Instance.ShowWithLargeImage(
@@ -59,12 +57,9 @@ public class ItemInfoTrigger : MonoBehaviour, IPointerClickHandler
                 data.largeItemSprite
             );
         }
-        // =====================================================
-        // 일반 아이템
-        // → 기존 팝업 기능 그대로 사용
-        // =====================================================
         else
         {
+            // 기존 아이템은 기존 방식 그대로
             ItemInfoPopup.Instance.Show(
                 data.itemSprite,
                 data.itemName,
