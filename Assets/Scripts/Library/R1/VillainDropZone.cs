@@ -44,10 +44,10 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
         c.a = 0f;
         droppedImage.color = c;
 
-        // 드래그했던 아이템 원래 자리로 (부모가 Canvas로 옮겨져 있으니 파괴하거나 초기화)
+        // 드래그했던 아이템 원래 자리로
         if (draggable != null)
         {
-    draggable.ReturnToOriginalPosition();
+            draggable.ReturnToOriginalPosition();
         }
 
         if (stackedCount >= totalBooksNeeded)
@@ -62,10 +62,6 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
             if (legSprite != null && idleLegSprite != null)
             {
                 legSprite.sprite = idleLegSprite;
-            }
-            if (ScreenFader.Instance != null)
-            {
-                ScreenFader.Instance.FadeOutAndHide();
             }
         }
     }

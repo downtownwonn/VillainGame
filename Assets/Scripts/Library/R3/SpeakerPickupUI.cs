@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class SpeakerPickupUI : MonoBehaviour, IPointerClickHandler
 {
-    [Header("아이템 정보")]
-    public Sprite speakerIcon; // 인벤토리에 들어갈 아이콘
+    [Header("Item Data")]
+    [SerializeField] private ItemData itemData;
 
     [Header("팝업 이미지 교체용")]
     public Image laptopPopupImage;   // LaptopScreenPanel 자신의 Image 컴포넌트 연결
@@ -20,7 +20,7 @@ public class SpeakerPickupUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        bool added = InventoryManager.Instance.AddItem(speakerIcon);
+        bool added = InventoryManager.Instance.AddItem(itemData);
         if (added)
         {
             if (audioSource != null && pickupSound != null)

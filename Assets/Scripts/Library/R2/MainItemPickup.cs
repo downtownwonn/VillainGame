@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class MainItemPickup : MonoBehaviour
 {
-    public Sprite itemIcon;
+    [Header("Item Data")]
+    [SerializeField] private ItemData itemData;
+
     public SpriteRenderer backgroundRenderer;
     public Sprite newBackgroundSprite;
 
@@ -11,8 +13,7 @@ public class MainItemPickup : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("노트북 클릭됨");
-        bool added = InventoryManager.Instance.AddItem(itemIcon);
+        bool added = InventoryManager.Instance.AddItem(itemData);
         if (added)
         {
             if (backgroundRenderer != null && newBackgroundSprite != null)

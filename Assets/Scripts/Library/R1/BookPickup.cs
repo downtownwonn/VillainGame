@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class BookPickup : MonoBehaviour
 {
-    public Sprite bookIcon;
+    [Header("Item Data")]
+    [SerializeField] private ItemData itemData;
+
     private SpriteRenderer sr;
 
     [Header("팝업 이미지 교체용")]
@@ -23,7 +25,7 @@ public class BookPickup : MonoBehaviour
 
     void OnMouseDown()
     {
-        bool added = InventoryManager.Instance.AddItem(bookIcon);
+        bool added = InventoryManager.Instance.AddItem(itemData);
         if (added)
         {
             // 효과음 재생
