@@ -41,14 +41,23 @@ public class BackgroundChanger : MonoBehaviour
 
     private void CloseSubwayItemPopup()
     {
+         // 지하철 아이템 팝업
         if (SubwayItemPopupManager.Instance != null)
-        {
+           {
             SubwayItemPopupManager.Instance.HidePopup();
-        }
+           }
+
+        // 기존 말풍선
         if (BubbleManager.Instance != null)
-        {
+           {
             BubbleManager.Instance.HideBubble();
-        }
+           }
+
+        // 지하철 전용 말풍선
+        if (SubwayBubbleManager.Instance != null)
+           {
+            SubwayBubbleManager.Instance.HideBubble();
+           }
     }
 
     void UpdateView()

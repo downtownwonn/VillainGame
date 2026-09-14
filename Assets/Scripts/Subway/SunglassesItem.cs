@@ -4,6 +4,7 @@ public class SunglassesItem : MonoBehaviour
 {
     public Sprite inventorySprite;
     public SunglassesCharacter character;
+    [SerializeField] private Sprite popupItemSprite;
 
     private bool collected = false;
 
@@ -23,6 +24,12 @@ public class SunglassesItem : MonoBehaviour
             inventorySprite,
             ItemType.Sunglasses
         );
+
+        if (ItemGetPopup.Instance != null)
+        {
+            ItemGetPopup.Instance.Show(popupItemSprite);
+        }
+    
 
         if (SubwayItemGetPopup.Instance != null)
         {
