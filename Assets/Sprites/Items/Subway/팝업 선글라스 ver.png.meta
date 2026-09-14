@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 2554bad9189c5aa4d8aec90ff8bf2042
+guid: 518cceca5f71b4baf8d6d94d93624068
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7878592835882620599
-    second: "\uC544\uC774\uD15C\uC124\uBA85\uD31D\uC5C5\uCC3D\uAC1C\uAC1C\uC120_0"
+      213: 8493298427108172013
+    second: "\u1111\u1161\u11B8\u110B\u1165\u11B8 \u1109\u1165\u11AB\u1100\u1173\u11AF\u1105\u1161\u1109\u1173
+      ver_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +97,18 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC544\uC774\uD15C\uC124\uBA85\uD31D\uC5C5\uCC3D\uAC1C\uAC1C\uC120_0"
+      name: "\u1111\u1161\u11B8\u110B\u1165\u11B8 \u1109\u1165\u11AB\u1100\u1173\u11AF\u1105\u1161\u1109\u1173
+        ver_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1536
-        height: 1024
+        x: 31
+        y: 200
+        width: 439
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7b698b01172665d60800000000000000
-      internalID: 7878592835882620599
+      spriteID: de0aa278be14ed570800000000000000
+      internalID: 8493298427108172013
       vertices: []
       indices: 
       edges: []
@@ -148,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uC544\uC774\uD15C\uC124\uBA85\uD31D\uC5C5\uCC3D\uAC1C\uAC1C\uC120_0": 7878592835882620599
+      "\u1111\u1161\u11B8\u110B\u1165\u11B8 \u1109\u1165\u11AB\u1100\u1173\u11AF\u1105\u1161\u1109\u1173 ver_0": 8493298427108172013
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
