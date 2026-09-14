@@ -1,43 +1,70 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemInfoTrigger : MonoBehaviour, IPointerClickHandler
 {
-    [Header("Item Information")]
-    [SerializeField] private string itemName;
-
-    [TextArea(3, 6)]
-    [SerializeField] private string itemDescription;
-
-    private UnityEngine.UI.Image itemImage;
+    private Image itemImage;
+    private ItemInfoData itemInfoData;
 
     private void Awake()
     {
-        itemImage = GetComponent<UnityEngine.UI.Image>();
+        itemImage = GetComponent<Image>();
+        itemInfoData = GetComponent<ItemInfoData>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (itemImage == null)
+        if (itemImage == null || itemImage.sprite == null)
         {
             return;
         }
 
-        if (itemImage.sprite == null)
+        if (itemInfoData == null)
         {
+            Debug.LogWarning(
+                "ItemIcon에 ItemInfoData가 없습니다."
+            );
+            return;
+        }
+
+        if (itemInfoData.itemData == null)
+        {
+            Debug.LogWarning(
+                "현재 슬롯에 ItemData가 없습니다."
+            );
             return;
         }
 
         if (ItemInfoPopup.Instance == null)
         {
-            Debug.LogWarning("ItemInfoPopup이 존재하지 않습니다.");
+            Debug.LogWarning(
+                "ItemInfoPopup이 존재하지 않습니다."
+            );
             return;
         }
 
-        ItemInfoPopup.Instance.Show(
-            itemImage.sprite,
-            itemName,
-            itemDescription
-        );
+        ItemData data = itemInfoData.itemData;
+
+        // 큰 이미지가 등록된 아이템이면
+        // 확대 기능이 있는 팝업을 사용
+        if (data.largeItemSprite != null)
+        {
+            ItemInfoPopup.Instance.ShowWithLargeImage(
+                data.itemSprite,
+                data.itemName,
+                data.description,
+                data.largeItemSprite
+            );
+        }
+        else
+        {
+            // 기존 아이템은 기존 방식 그대로
+            ItemInfoPopup.Instance.Show(
+                data.itemSprite,
+                data.itemName,
+                data.description
+            );
+        }
     }
 }

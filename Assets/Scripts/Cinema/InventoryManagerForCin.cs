@@ -8,8 +8,6 @@ public class InventoryManagerForCin : MonoBehaviour
     [Header("Inventory Slot Icons")]
     public Image[] slotIcons;
 
-    // 슬롯 1은 영화 티켓이 사용하므로
-    // 아이템은 슬롯 2부터 들어간다.
     private int currentSlotIndex = 1;
 
     void Awake()
@@ -17,11 +15,17 @@ public class InventoryManagerForCin : MonoBehaviour
         Instance = this;
     }
 
-    public bool AddItem(Sprite itemSprite)
+    public bool AddItem(ItemData itemData, CinemaItemType itemType)
     {
-        if (itemSprite == null)
+        if (itemData == null)
         {
-            Debug.LogError("AddItem: itemSprite가 비어 있습니다!");
+            Debug.LogError("AddItem: ItemData가 비어 있습니다!");
+            return false;
+        }
+
+        if (itemData.itemSprite == null)
+        {
+            Debug.LogError("AddItem: ItemData의 itemSprite가 비어 있습니다!");
             return false;
         }
 
@@ -45,15 +49,45 @@ public class InventoryManagerForCin : MonoBehaviour
             return false;
         }
 
-        // 아이템 이미지 설정
-        slot.sprite = itemSprite;
+        // 아이템 이미지 넣기
+        slot.sprite = itemData.itemSprite;
+        slot.preserveAspect = true;
+        slot.enabled = true;
 
-        // 이미지 보이기
         Color c = slot.color;
         c.a = 1f;
         slot.color = c;
 
-        // 다음 아이템은 다음 슬롯
+        // 기존 CinemaItemType 저장
+        CinemaInventoryItemData cinemaData =
+            slot.GetComponent<CinemaInventoryItemData>();
+
+        if (cinemaData != null)
+        {
+            cinemaData.itemType = itemType;
+        }
+        else
+        {
+            Debug.LogError(
+                "해당 ItemIcon에 CinemaInventoryItemData가 없습니다!"
+            );
+        }
+
+        // 아이템 설명 정보 저장
+        ItemInfoData infoData =
+            slot.GetComponent<ItemInfoData>();
+
+        if (infoData != null)
+        {
+            infoData.itemData = itemData;
+        }
+        else
+        {
+            Debug.LogError(
+                "해당 ItemIcon에 ItemInfoData가 없습니다!"
+            );
+        }
+
         currentSlotIndex++;
 
         return true;

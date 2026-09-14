@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
@@ -15,6 +15,20 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public bool wasDropped = false;
 
     public Action<PointerEventData> OnDragEnded;
+
+    public CinemaItemType ItemType
+    {
+        get
+        {
+            CinemaInventoryItemData data =
+                GetComponent<CinemaInventoryItemData>();
+
+            if (data == null)
+                return CinemaItemType.None;
+
+            return data.itemType;
+        }
+    }
 
     void Awake()
     {
@@ -31,13 +45,14 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         Image img = GetComponent<Image>();
 
-        if (img.sprite == null)
+        if (img == null || img.sprite == null)
         {
             eventData.pointerDrag = null;
             return;
         }
 
         wasDropped = false;
+
         originalPosition = rectTransform.anchoredPosition;
         originalParent = transform.parent;
 
@@ -46,12 +61,13 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         canvasGroup.blocksRaycasts = false;
 
-        Debug.Log("pointerDrag = " + eventData.pointerDrag);
+        Debug.Log("드래그 아이템 = " + ItemType);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        rectTransform.anchoredPosition +=
+            eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -73,13 +89,5 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         transform.SetParent(originalParent);
         rectTransform.anchoredPosition = originalPosition;
-    }
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Image img = GetComponent<Image>();
-        if (img.sprite != null)
-        {
-            ItemPopupManager.Instance.ShowPopup(img.sprite);
-        }
     }
 }
