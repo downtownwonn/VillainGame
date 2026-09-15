@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af152bbab6ef35946a3c8b5a94ae8b28, type: 3}
+  m_Name: Janggu
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemSprite: {fileID: -8764520677262734590, guid: f7917d7b45c6748d1bc71b1b612376ee, type: 3}
+  itemName: "\uC7A5\uAD6C"
+  description: "\uD48D\uBB3C\uD328 \uBD80\uC6D0\uC758 \uC7A5\uAD6C\n\uD765\uC774
+    \uB09C\uB2E4 \uD765\uC774 \uB098~"
+  largeItemSprite: {fileID: 0}
