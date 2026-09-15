@@ -526,6 +526,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170321148}
   m_CullTransparentMesh: 1
+--- !u!82 &206938069 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6773382695294211295, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
+  m_PrefabInstance: {fileID: 2052349887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &238891115 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 103045367259125186, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
@@ -994,6 +999,18 @@ MonoBehaviour:
       - m_Target: {fileID: 310959614}
         m_TargetAssemblyTypeName: ClosePanel, Assembly-CSharp
         m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1402851509}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlayUIClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4762,8 +4779,8 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 42a01629613e344ab96a894b2fe7c147, type: 2}
   laptopPopupImage: {fileID: 262179367}
   noSpeakerVersion: {fileID: -5040356945259387394, guid: ab1f28bb5af8c452b9fa5499777cc521, type: 3}
-  pickupSound: {fileID: 0}
-  audioSource: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
+  audioSource: {fileID: 206938069}
   popupItemSprite: {fileID: 7995061706426159896, guid: 1a7b6bcc80e8b442095568ab922e5768, type: 3}
 --- !u!114 &1782267734
 MonoBehaviour:

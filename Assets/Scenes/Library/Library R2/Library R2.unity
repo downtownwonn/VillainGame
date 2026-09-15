@@ -1128,6 +1128,8 @@ MonoBehaviour:
   backgroundRenderer: {fileID: 1202185652}
   newBackgroundSprite: {fileID: -5712334152491364902, guid: ad3d6b34f8537486b8bd370084192d47, type: 3}
   popupItemSprite: {fileID: -7657380316256729191, guid: 2f93145879d3c452cbeeddde4a3aacc0, type: 3}
+  pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
+  audioSource: {fileID: 1925823862}
 --- !u!61 &347104342
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4300,8 +4302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: 100}
-  m_SizeDelta: {x: 195.2, y: 233.2}
+  m_AnchoredPosition: {x: -156.72536, y: 82.21904}
+  m_SizeDelta: {x: 199.5273, y: 264.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675222165
 MonoBehaviour:
@@ -5054,6 +5056,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
+--- !u!82 &1925823862 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6773382695294211295, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
+  m_PrefabInstance: {fileID: 1833096443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1926860538
 MonoBehaviour:
   m_ObjectHideFlags: 0

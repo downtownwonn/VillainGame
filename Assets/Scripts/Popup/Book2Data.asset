@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af152bbab6ef35946a3c8b5a94ae8b28, type: 3}
   m_Name: Book2Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 1931242733552158302, guid: 12a8d3934b1854837a4125006d398da6, type: 3}
   itemName: 
   description: "\uCC45\uC7A5\uC5D0\uC11C \uAC00\uC838\uC628 \uCC45.\n\uC544\uC8FC
     \uB450\uAECD\uB2E4\uB2E4."
-  largeItemSprite: {fileID: 1931242733552158302, guid: 12a8d3934b1854837a4125006d398da6, type: 3}
+  largeItemSprite: {fileID: 0}

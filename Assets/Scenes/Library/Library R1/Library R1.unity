@@ -494,7 +494,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 57a59e24938344dcdadf6cf3c7f48b89, type: 2}
   laptopPopupImage: {fileID: 0}
   noSpeakerVersion: {fileID: 0}
-  pickupSound: {fileID: 8300000, guid: aef0267dccccc83469c3f2cc76317d36, type: 3}
+  pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
   audioSource: {fileID: 1727358167}
   popupItemSprite: {fileID: -1843703254631439565, guid: c08b4b01fd0f74c72a117d53a96cbf4d, type: 3}
 --- !u!212 &122214882
@@ -805,7 +805,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: f9c1cd4925e7d46e9832383255fefca0, type: 2}
   laptopPopupImage: {fileID: 0}
   noSpeakerVersion: {fileID: 0}
-  pickupSound: {fileID: 8300000, guid: aef0267dccccc83469c3f2cc76317d36, type: 3}
+  pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
   audioSource: {fileID: 1727358167}
   popupItemSprite: {fileID: 1931242733552158302, guid: 12a8d3934b1854837a4125006d398da6, type: 3}
 --- !u!212 &147815892
@@ -1703,6 +1703,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4304670020377443279, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
       propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304670020377443279, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
+      propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4916553402486831368, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
@@ -2875,7 +2879,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 4647403abfd8b49b8b90ca8e8b1edc64, type: 2}
   laptopPopupImage: {fileID: 0}
   noSpeakerVersion: {fileID: 0}
-  pickupSound: {fileID: 8300000, guid: aef0267dccccc83469c3f2cc76317d36, type: 3}
+  pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
   audioSource: {fileID: 1727358167}
   popupItemSprite: {fileID: 7119347239250650302, guid: 1d9b61368eb16427f92c5a495cdb66ed, type: 3}
 --- !u!114 &1419481071
@@ -3193,7 +3197,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 7841803c6ca9e49e3b273f3e5821070f, type: 2}
   laptopPopupImage: {fileID: 0}
   noSpeakerVersion: {fileID: 0}
-  pickupSound: {fileID: 8300000, guid: aef0267dccccc83469c3f2cc76317d36, type: 3}
+  pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
   audioSource: {fileID: 1727358167}
   popupItemSprite: {fileID: 8124227339214125042, guid: effbdaf4ee91242ca804cf072dcc3042, type: 3}
 --- !u!212 &1569336121
@@ -3622,6 +3626,10 @@ PrefabInstance:
     - target: {fileID: 2496531838015135621, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
       propertyPath: m_Name
       value: ItemInfoPopupCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496531838015135621, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5634193154888598689, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
       propertyPath: m_Pivot.x
@@ -4249,7 +4257,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: ea31235ec3cf14c63984e3e41cbbc9c3, type: 2}
   laptopPopupImage: {fileID: 0}
   noSpeakerVersion: {fileID: 0}
-  pickupSound: {fileID: 8300000, guid: aef0267dccccc83469c3f2cc76317d36, type: 3}
+  pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
   audioSource: {fileID: 1727358167}
   popupItemSprite: {fileID: 3754675394264498710, guid: 8f485653ce64c4b768a90e3e026bd43f, type: 3}
 --- !u!212 &1937350266
@@ -4914,8 +4922,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -100}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 201.10735, y: -54.59784}
+  m_SizeDelta: {x: 202.2147, y: 109.1956}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2054141846
 MonoBehaviour:
