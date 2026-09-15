@@ -14,8 +14,8 @@ public class VillainTickleController : MonoBehaviour
     public int shakeCount = 3;
 
     [Header("Feather Motion")]
-    public float featherMoveDistance = 25f;
     public float featherMoveSpeed = 12f;
+    public float featherMoveAngle = 15f;
 
     [Header("Villain Fade")]
     public float villainFadeDuration = 1.5f;
@@ -86,37 +86,36 @@ public class VillainTickleController : MonoBehaviour
         float timer = 0f;
 
         Debug.Log("¨é °£Áö·³ ¸ð¼Ç ½ÃÀÛ");
+        Quaternion featherStartRotation = Quaternion.identity;
+
+        if (feather != null)
+        {
+            featherStartRotation = feather.localRotation;
+        }
 
         while (timer < tickleDuration)
         {
             timer += Time.deltaTime;
 
-            // ±êÅÐ ¿òÁ÷ÀÓ
+            // =====================================
+            // ±êÅÐ È¸Àü
+            // =====================================
+
             if (feather != null)
             {
-                float x =
+                float featherAngle =
                     Mathf.Sin(timer * featherMoveSpeed)
-                    * featherMoveDistance;
+                    * featherMoveAngle;
 
-                float y =
-                    Mathf.Cos(timer * featherMoveSpeed * 1.4f)
-                    * (featherMoveDistance * 0.35f);
-
-                feather.position =
-                    featherStartPosition +
-                    new Vector3(x, y, 0f);
+                feather.localRotation =
+                    featherStartRotation *
+                    Quaternion.Euler(0f, 0f, featherAngle);
             }
 
+            // =====================================
             // ºô·± »ìÂ¦ È¸Àü
-            float progress = timer / tickleDuration;
+            // =====================================
 
-            float shake =
-                Mathf.Sin(progress * Mathf.PI * shakeCount * 2f)
-                * shakeAngle;
-
-            villainObject.transform.localRotation =
-                originalRotation *
-                Quaternion.Euler(0f, 0f, shake);
 
             yield return null;
         }
