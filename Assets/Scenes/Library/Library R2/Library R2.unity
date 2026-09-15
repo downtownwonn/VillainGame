@@ -1041,7 +1041,7 @@ MonoBehaviour:
   bubbleType: 2
   bubbleOffset: {x: -1, y: 1}
   textOffset: {x: 40, y: 3}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1 &325632052
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,7 +2604,7 @@ MonoBehaviour:
   bubbleType: 2
   bubbleOffset: {x: -1.5, y: -0.5}
   textOffset: {x: 35, y: 5}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &1019575958
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4013,7 +4013,7 @@ MonoBehaviour:
   bubbleType: 6
   bubbleOffset: {x: 0, y: 0.6}
   textOffset: {x: 40, y: 3}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &1475849108
 BoxCollider2D:
   m_ObjectHideFlags: 0

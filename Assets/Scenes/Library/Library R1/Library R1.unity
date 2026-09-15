@@ -4443,7 +4443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uC758\uC790 \uBC11\uC5D0 \uC313\uC744 \uBB3C\uAC74\uC774 \n\uD544\uC694\uD574!"
   bubbleType: 3
-  bubbleOffset: {x: 0.5, y: 2}
+  bubbleOffset: {x: -0.5, y: 1}
   textOffset: {x: 0, y: 0}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &1949441343
@@ -4982,6 +4982,8 @@ MonoBehaviour:
   legAnimator: {fileID: 70715172}
   legSprite: {fileID: 2033420536}
   idleLegSprite: {fileID: -6403228078284494779, guid: cff58e0522d344f47b574fc47b85521d, type: 3}
+  stackSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
