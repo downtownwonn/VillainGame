@@ -8,7 +8,6 @@ public class SubwayInventoryManager : MonoBehaviour
     public Image[] itemIcons;
     public Sprite scissorsSprite;
 
-
     private void Awake()
     {
         Instance = this;
@@ -19,35 +18,40 @@ public class SubwayInventoryManager : MonoBehaviour
         }
     }
 
-
     // =========================================================
     // 아이템 획득
     // =========================================================
 
-    public void AddItem(Sprite sprite, ItemType itemType)
+    public void AddItem(ItemData itemData, ItemType itemType)
     {
+        if (itemData == null)
+        {
+            Debug.LogError("ItemData가 없습니다.");
+            return;
+        }
+
         for (int i = 0; i < itemIcons.Length; i++)
         {
             Image slot = itemIcons[i];
 
-            // 비어 있는 슬롯 찾기
             if (!slot.enabled || slot.sprite == null)
             {
-                slot.sprite = sprite;
+                slot.sprite = itemData.itemSprite;
                 slot.preserveAspect = true;
                 slot.enabled = true;
 
-                InventoryItemData data =
+                // 기존 ItemType 기능 유지
+                InventoryItemData inventoryData =
                     slot.GetComponent<InventoryItemData>();
 
-                if (data != null)
+                if (inventoryData != null)
                 {
-                    data.itemType = itemType;
+                    inventoryData.itemType = itemType;
 
                     Debug.Log(
                         "인벤토리 슬롯 " + i +
                         "에 들어간 아이템 타입 = " +
-                        data.itemType
+                        inventoryData.itemType
                     );
                 }
                 else
@@ -58,13 +62,28 @@ public class SubwayInventoryManager : MonoBehaviour
                     );
                 }
 
+                // ItemInfoPopup용 ItemData 연결
+                ItemInfoData infoData =
+                    slot.GetComponent<ItemInfoData>();
+
+                if (infoData != null)
+                {
+                    infoData.itemData = itemData;
+                }
+                else
+                {
+                    Debug.LogWarning(
+                        "인벤토리 슬롯 " + i +
+                        "에 ItemInfoData가 없습니다!"
+                    );
+                }
+
                 return;
             }
         }
 
         Debug.LogWarning("인벤토리에 빈 슬롯이 없습니다.");
     }
-
 
     // =========================================================
     // 슬롯 완전히 비우기
@@ -78,21 +97,32 @@ public class SubwayInventoryManager : MonoBehaviour
         slot.sprite = null;
         slot.enabled = false;
 
-        InventoryItemData data =
+        InventoryItemData inventoryData =
             slot.GetComponent<InventoryItemData>();
 
-        if (data != null)
+        if (inventoryData != null)
         {
-            data.itemType = default;
+            inventoryData.itemType = default;
+        }
+
+        ItemInfoData infoData =
+            slot.GetComponent<ItemInfoData>();
+
+        if (infoData != null)
+        {
+            infoData.itemData = null;
         }
     }
-
 
     // =========================================================
     // 아이템 합치기
     // =========================================================
 
-    public bool TryCombine(Image first, Image second)
+    public bool TryCombine(
+        Image first,
+        Image second,
+        ItemData scissorsItemData
+    )
     {
         InventoryItemData firstData =
             first.GetComponent<InventoryItemData>();
@@ -106,7 +136,6 @@ public class SubwayInventoryManager : MonoBehaviour
             return false;
         }
 
-
         bool canCombine =
             (firstData.itemType == ItemType.HandleLeft &&
              secondData.itemType == ItemType.HandleRight)
@@ -114,17 +143,11 @@ public class SubwayInventoryManager : MonoBehaviour
             (firstData.itemType == ItemType.HandleRight &&
              secondData.itemType == ItemType.HandleLeft);
 
-
         if (!canCombine)
         {
             Debug.Log("합칠 수 없는 아이템입니다.");
             return false;
         }
-
-
-        Debug.Log("손잡이 2개를 합쳐 가위 생성!");
-        Debug.Log("scissorsSprite = " + scissorsSprite);
-
 
         // ---------------------------------------------------------
         // 두 번째 슬롯을 가위로 변경
@@ -136,13 +159,29 @@ public class SubwayInventoryManager : MonoBehaviour
 
         secondData.itemType = ItemType.Scissors;
 
+        // ---------------------------------------------------------
+        // 가위 ItemData 연결
+        // ---------------------------------------------------------
+
+        ItemInfoData secondInfoData =
+            second.GetComponent<ItemInfoData>();
+
+        if (secondInfoData != null)
+        {
+            secondInfoData.itemData = scissorsItemData;
+        }
+        else
+        {
+            Debug.LogWarning(
+                "가위 슬롯에 ItemInfoData가 없습니다."
+            );
+        }
 
         // ---------------------------------------------------------
         // 첫 번째 슬롯 비우기
         // ---------------------------------------------------------
 
         ClearSlot(first);
-
 
         // ---------------------------------------------------------
         // 드래그한 아이콘의 위치 복구
@@ -155,7 +194,6 @@ public class SubwayInventoryManager : MonoBehaviour
         {
             draggable.ReturnToOriginalPosition();
         }
-
 
         return true;
     }

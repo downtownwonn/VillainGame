@@ -4,6 +4,11 @@ public class SunglassesItem : MonoBehaviour
 {
     public Sprite inventorySprite;
     public SunglassesCharacter character;
+
+    [Header("Item Data")]
+    [SerializeField] private ItemData itemData;
+
+    [Header("Item Get Popup")]
     [SerializeField] private Sprite popupItemSprite;
 
     private bool collected = false;
@@ -19,27 +24,23 @@ public class SunglassesItem : MonoBehaviour
             return;
         }
 
+        if (itemData == null)
+        {
+            Debug.LogError(gameObject.name + "에 ItemData가 연결되지 않았습니다.");
+            return;
+        }
+
         // 선글라스를 인벤토리에 넣기
         SubwayInventoryManager.Instance.AddItem(
-            inventorySprite,
+            itemData,
             ItemType.Sunglasses
         );
 
+        // 아이템 획득 팝업
         if (ItemGetPopup.Instance != null)
         {
             ItemGetPopup.Instance.Show(popupItemSprite);
         }
-    
-
-        if (SubwayItemGetPopup.Instance != null)
-        {
-            SubwayItemGetPopup.Instance.ShowGetPopup(
-                "선글라스",
-                inventorySprite
-            );
-        }
-
-Debug.Log("선글라스 획득!");
 
         Debug.Log("선글라스 획득!");
 

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af152bbab6ef35946a3c8b5a94ae8b28, type: 3}
+  m_Name: BodyGuard
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemSprite: {fileID: -1741065307101949228, guid: 70623c61ca26d4c48bcc550ef0f3e153, type: 3}
+  itemName: "\uACBD\uD638\uC6D0 3\uC778\uC870"
+  description: "\uAC11\uC791\uC2A4\uB7EC\uC6B4 \uACBD\uD638\uC6D0 3\uC778\uC870 \uB4F1\uC7A5\n\uB204\uAD74
+    \uACBD\uD638\uD558\uB294\uAC70\uC9C0...?"
+  largeItemSprite: {fileID: 0}
