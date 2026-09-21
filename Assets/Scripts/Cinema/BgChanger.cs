@@ -6,6 +6,7 @@ public class BackgroundChanger : MonoBehaviour
     public GameObject mainBackground;
     public GameObject leftBackground;
     public GameObject rightBackground;
+    public GameObject heartEffect;
 
     public Button leftButton;
     public Button rightButton;
@@ -68,5 +69,10 @@ public class BackgroundChanger : MonoBehaviour
 
         leftButton.gameObject.SetActive(currentView != 0);
         rightButton.gameObject.SetActive(currentView != 2);
+
+        if (heartEffect != null)
+        {
+            heartEffect.SetActive(currentView == 2);
+        }
     }
 }
