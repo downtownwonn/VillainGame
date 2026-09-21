@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 9e2ae4462b1613649a03fc4ca1fd5f40
+guid: b9a8116972e2e064fad230590644f59d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1380856200851981205
-    second: gloves inventory_0
+      213: 6962104688421045645
+    second: rubbergloves_0
   - first:
-      213: -4062443562338760827
-    second: gloves inventory_1
+      213: -6107796595460225860
+    second: rubbergloves_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gloves inventory_0
+      name: rubbergloves_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 17
-        width: 164
-        height: 401
+        x: 54
+        y: 31
+        width: 277
+        height: 682
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5938da90669c92310800000000000000
-      internalID: 1380856200851981205
+      spriteID: d850b6ac35d5e9060800000000000000
+      internalID: 6962104688421045645
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gloves inventory_1
+      name: rubbergloves_1
       rect:
         serializedVersion: 2
-        x: 221
-        y: 5
-        width: 165
-        height: 400
+        x: 378
+        y: 9
+        width: 278
+        height: 682
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 587c9b29a1d4f97c0800000000000000
-      internalID: -4062443562338760827
+      spriteID: cb4c04f5b5fbc3ba0800000000000000
+      internalID: -6107796595460225860
       vertices: []
       indices: 
       edges: []
@@ -163,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      gloves inventory_0: 1380856200851981205
-      gloves inventory_1: -4062443562338760827
+      rubbergloves_0: 6962104688421045645
+      rubbergloves_1: -6107796595460225860
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

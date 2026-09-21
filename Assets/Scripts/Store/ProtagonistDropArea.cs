@@ -1,15 +1,18 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // 씬 전환을 위해 필요
+using UnityEngine.SceneManagement;
 
-public class ProtagonistDropArea : MonoBehaviour, IDropHandler
+public class ProtagonistDropArea : MonoBehaviour
 {
-    [Header("부위별 착용 슬롯 Images")]
-    public Image headSlot; // 머리
-    public Image handSlot; // 손
-    public Image glasses_bodySlot; // 몸통,안경
+    [Header("부위별 장착 오브젝트 (GameObject)")]
+    public GameObject headObject; // 머리 장착 오브젝트 (머리에 씌울 모자/수세미 등)
+    public GameObject handObject; // 손 장착 오브젝트 (손에 쥘 장갑/봉 등)
+    public GameObject bodyObject; // 몸통/안경 장착 오브젝트 (앞치마/안경 등)
+
+    [Header("사운드 설정")]
+    [Tooltip("옷이나 장비를 착용할 때 재생할 효과음")]
+    public AudioClip equipSound;
 
     [Header("씬 전환 설정")]
     public Image fadeOverlay; // 화면 전체를 덮는 검은색 UI Image
@@ -19,97 +22,69 @@ public class ProtagonistDropArea : MonoBehaviour, IDropHandler
 
     private bool isTransitioning = false;
 
-    public void OnDrop(PointerEventData eventData)
+    // DraggableItemofStore에서 드래그가 끝났을 때 이 함수를 호출해줍니다.
+    // 이렇게 변경
+    public void OnItemDropped(DraggableItemofStore item)
     {
-        // 씬 전환 진행 중일 때는 드롭 처리 중단
         if (isTransitioning) return;
 
-        DraggableItemofStore item = eventData.pointerDrag?.GetComponent<DraggableItemofStore>();
-
-        if (item == null)
-            return;
-
         Image itemImage = item.GetComponent<Image>();
+        if (itemImage == null || itemImage.sprite == null) return;
 
-        if (itemImage != null && itemImage.sprite != null)
+        string spriteName = itemImage.sprite.name;
+        bool isEquippedSuccess = false;
+
+        // 1. 머리 장착 조건
+        if (spriteName.Contains("mophead") || spriteName.Contains("hat") || spriteName.Contains("Squ"))
         {
-            string spriteName = itemImage.sprite.name;
-            bool isEquippedSuccess = false;
+            if (headObject != null) headObject.SetActive(true);
+            isEquippedSuccess = true;
+        }
+        // 2. 손 장착 조건
+        else if (spriteName.Contains("glove") || spriteName.Contains("bong"))
+        {
+            if (handObject != null) handObject.SetActive(true);
+            isEquippedSuccess = true;
+        }
+        // 3. 몸통 장착 조건
+        else if (spriteName.Contains("apron") || spriteName.Contains("glasses"))
+        {
+            if (bodyObject != null) bodyObject.SetActive(true);
+            isEquippedSuccess = true;
+        }
 
-            // 1. 머리 장착 조건
-            if (spriteName.Contains("mophead") || spriteName.Contains("hat") || spriteName.Contains("Squ"))
+        if (isEquippedSuccess)
+        {
+            if (equipSound != null)
             {
-                EquipItem(headSlot, itemImage.sprite);
-                isEquippedSuccess = true;
-                Debug.Log("머리에 장착 완료!");
-            }
-            // 2. 손 장착 조건
-            else if (spriteName.Contains("glove") || spriteName.Contains("bong"))
-            {
-                EquipItem(handSlot, itemImage.sprite);
-                isEquippedSuccess = true;
-                Debug.Log("손에 장착 완료!");
-            }
-            // 3. 몸통 장착 조건
-            else if (spriteName.Contains("apron") || spriteName.Contains("glasses"))
-            {
-                EquipItem(glasses_bodySlot, itemImage.sprite);
-                isEquippedSuccess = true;
-                Debug.Log("몸통or안경에 장착 완료!");
-            }
-            else
-            {
-                Debug.LogWarning("맞는 장착 부위가 없습니다: " + spriteName);
+                AudioSource.PlayClipAtPoint(equipSound, Camera.main.transform.position);
             }
 
-            // ★ 맞는 부위에 장착되었을 때만 비우기 처리
-            if (isEquippedSuccess)
-            {
-                item.wasDropped = true;
-                item.ClearItem();
+            item.wasDropped = true;
+            item.ClearItem(); // 아이템 이미지를 비우고 원래 인벤토리 자리로 복귀
 
-                // 모든 슬롯이 채워졌는지 검사
-                CheckAllSlotsEquipped();
-            }
+            CheckAllSlotsEquipped();
         }
     }
-
-    private void EquipItem(Image targetSlot, Sprite newSprite)
-    {
-        if (targetSlot != null)
-        {
-            targetSlot.sprite = newSprite;
-
-            Color c = targetSlot.color;
-            c.a = 1f; // 알파값 100%로 켜주기
-            targetSlot.color = c;
-            targetSlot.gameObject.SetActive(true);
-        }
-    }
-
-    // 3개 슬롯이 모두 채워졌는지 확인하는 메서드
+    // 3개 오브젝트가 모두 활성화되었는지 확인하는 메서드
     private void CheckAllSlotsEquipped()
     {
-        if (IsSlotFilled(headSlot) && IsSlotFilled(handSlot) && IsSlotFilled(glasses_bodySlot))
+        bool isHeadDone = headObject == null || headObject.activeSelf;
+        bool isHandDone = handObject == null || handObject.activeSelf;
+        bool isBodyDone = bodyObject == null || bodyObject.activeSelf;
+
+        if (isHeadDone && isHandDone && isBodyDone)
         {
             isTransitioning = true;
             StartCoroutine(FadeAndChangeSceneRoutine());
         }
     }
 
-    // 슬롯이 활성화되어 있고 스프라이트가 존재하는지 체크
-    private bool IsSlotFilled(Image slot)
-    {
-        return slot != null && slot.gameObject.activeSelf && slot.sprite != null;
-    }
-
     // 1초 대기 -> Fade Out 코루틴
     private IEnumerator FadeAndChangeSceneRoutine()
     {
-        // 1. 설정한 대기시간(1초)만큼 대기
         yield return new WaitForSeconds(delayBeforeFade);
 
-        // 2. Fade Overlay 활성화
         if (fadeOverlay != null)
         {
             fadeOverlay.gameObject.SetActive(true);
@@ -117,7 +92,6 @@ public class ProtagonistDropArea : MonoBehaviour, IDropHandler
             float timer = 0f;
             Color fadeColor = fadeOverlay.color;
 
-            // 점점 어두워지기 (Fade Out)
             while (timer < fadeDuration)
             {
                 timer += Time.deltaTime;
@@ -127,7 +101,6 @@ public class ProtagonistDropArea : MonoBehaviour, IDropHandler
             }
         }
 
-        // 3. 씬 전환
         if (!string.IsNullOrEmpty(nextSceneName))
         {
             SceneManager.LoadScene(nextSceneName);

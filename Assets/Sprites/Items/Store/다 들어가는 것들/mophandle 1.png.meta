@@ -116,10 +116,10 @@ TextureImporter:
       name: mophandle 1_0
       rect:
         serializedVersion: 2
-        x: 107
-        y: 0
-        width: 165
-        height: 659
+        x: 39
+        y: 3
+        width: 69
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

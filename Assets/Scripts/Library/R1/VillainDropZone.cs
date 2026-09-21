@@ -16,6 +16,10 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
     public SpriteRenderer legSprite;           // 다리 SpriteRenderer 연결
     public Sprite idleLegSprite;               // 안 떠는 기본 자세 프레임
 
+    [Header("효과음")]
+    public AudioClip stackSound;    // 책 한 권 쌓일 때마다 재생할 효과음
+    public AudioSource audioSource; // AudioManager의 AudioSource 연결
+
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("OnDrop 호출됨! pointerDrag = " + eventData.pointerDrag);
@@ -38,16 +42,22 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
 
         stackedCount++;
 
+        // 책 쌓이는 효과음 재생
+        if (audioSource != null && stackSound != null)
+        {
+            audioSource.PlayOneShot(stackSound);
+        }
+
         // 원래 인벤토리 슬롯 비우기
         droppedImage.sprite = null;
         Color c = droppedImage.color;
         c.a = 0f;
         droppedImage.color = c;
 
-        // 드래그했던 아이템 원래 자리로 (부모가 Canvas로 옮겨져 있으니 파괴하거나 초기화)
+        // 드래그했던 아이템 원래 자리로
         if (draggable != null)
         {
-    draggable.ReturnToOriginalPosition();
+            draggable.ReturnToOriginalPosition();
         }
 
         if (stackedCount >= totalBooksNeeded)
@@ -62,10 +72,6 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
             if (legSprite != null && idleLegSprite != null)
             {
                 legSprite.sprite = idleLegSprite;
-            }
-            if (ScreenFader.Instance != null)
-            {
-                ScreenFader.Instance.FadeOutAndHide();
             }
         }
     }
