@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af152bbab6ef35946a3c8b5a94ae8b28, type: 3}
+  m_Name: SpeakerData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemSprite: {fileID: 7995061706426159896, guid: 1a7b6bcc80e8b442095568ab922e5768, type: 3}
+  itemName: 
+  description: "\uC774 \uC2A4\uD53C\uCEE4\uB9CC \uC788\uC73C\uBA74\n\uB0B4 \uB9C8\uC74C\uB300\uB85C
+    \uBCFC\uB968 \uD06C\uAE30\uB97C \uC870\uC808\uD560 \uC218 \uC788\uACA0\uC5B4!"
+  largeItemSprite: {fileID: 0}

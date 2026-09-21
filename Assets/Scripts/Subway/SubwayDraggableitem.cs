@@ -17,6 +17,8 @@ public class SubwayDraggableItem : MonoBehaviour,
 
     public Action<PointerEventData> OnDragEnded;
 
+    [Header("Scissors Item Data")]
+    [SerializeField] private ItemData scissorsItemData;
 
     private void Awake()
     {
@@ -80,108 +82,118 @@ public class SubwayDraggableItem : MonoBehaviour,
 
         InventoryItemData draggedItemData =
             GetComponent<InventoryItemData>();
-// =====================================================
-// R3
-// 경호원 3인조 → 자르반 할아버지
-// =====================================================
 
-if (draggedItemData != null &&
-    draggedItemData.itemType == ItemType.Bodyguards)
-{
-    Vector3 worldPosition =
-        Camera.main.ScreenToWorldPoint(eventData.position);
 
-    worldPosition.z = 0f;
-
-    Collider2D hit =
-        Physics2D.OverlapPoint(worldPosition);
-
-    if (hit != null)
-    {
-        JarvanVillain villain =
-            hit.GetComponent<JarvanVillain>();
-
-        if (villain == null)
-        {
-            villain =
-                hit.GetComponentInParent<JarvanVillain>();
-        }
-
-        if (villain != null)
-        {
-            Image bodyguardImage =
-                GetComponent<Image>();
-
-            bool used =
-                villain.UseBodyguards(bodyguardImage);
-
-            if (used)
-            {
-                ReturnToOriginalPosition();
-                return;
-            }
-        }
-    }
-}
-// =====================================================
-// R3
-// 선글라스 → 직장인
-// =====================================================
-
-if (draggedItemData != null &&
-    draggedItemData.itemType == ItemType.Sunglasses)
-{
-    Vector3 worldPosition =
-        Camera.main.ScreenToWorldPoint(eventData.position);
-
-    worldPosition.z = 0f;
-
-    Collider2D[] hits =
-        Physics2D.OverlapPointAll(worldPosition);
-
-    foreach (Collider2D hit in hits)
-    {
-        BodyguardCharacter bodyguard =
-            hit.GetComponent<BodyguardCharacter>();
-
-        if (bodyguard == null)
-        {
-            bodyguard =
-                hit.GetComponentInParent<BodyguardCharacter>();
-        }
-
-        if (bodyguard != null)
-        {
-            Debug.Log("선글라스를 직장인에게 사용!");
-
-            // 선글라스 착용 성공 여부 확인
-            bool used = bodyguard.PutOnSunglasses();
-
-            // 이미 선글라스를 쓴 직장인이라면 사용하지 않음
-            if (!used)
-            {
-                Debug.Log("이미 선글라스를 착용한 직장원입니다.");
-                ReturnToOriginalPosition();
-                return;
-            }
-
-            // 착용 성공했을 때만 선글라스 제거
-            Image sunglassesImage =
-                GetComponent<Image>();
-
-            if (sunglassesImage != null)
-            {
-                sunglassesImage.sprite = null;
-                sunglassesImage.enabled = false;
-            }
-
-            ReturnToOriginalPosition();
-
-            return;
-        }
-    }
-}
         // =====================================================
+        // R3
+        // 경호원 3인조 → 자르반 할아버지
+        // =====================================================
+
+        if (draggedItemData != null &&
+            draggedItemData.itemType == ItemType.Bodyguards)
+        {
+            Vector3 worldPosition =
+                Camera.main.ScreenToWorldPoint(eventData.position);
+
+            worldPosition.z = 0f;
+
+            Collider2D hit =
+                Physics2D.OverlapPoint(worldPosition);
+
+            if (hit != null)
+            {
+                JarvanVillain villain =
+                    hit.GetComponent<JarvanVillain>();
+
+                if (villain == null)
+                {
+                    villain =
+                        hit.GetComponentInParent<JarvanVillain>();
+                }
+
+                if (villain != null)
+                {
+                    Image bodyguardImage =
+                        GetComponent<Image>();
+
+                    bool used =
+                        villain.UseBodyguards(bodyguardImage);
+
+                    if (used)
+                    {
+                        ReturnToOriginalPosition();
+                        return;
+                    }
+                }
+            }
+        }
+
+
+        // =====================================================
+        // R3
+        // 선글라스 → 직장인
+        // =====================================================
+
+        if (draggedItemData != null &&
+            draggedItemData.itemType == ItemType.Sunglasses)
+        {
+            Vector3 worldPosition =
+                Camera.main.ScreenToWorldPoint(eventData.position);
+
+            worldPosition.z = 0f;
+
+            Collider2D[] hits =
+                Physics2D.OverlapPointAll(worldPosition);
+
+            foreach (Collider2D hit in hits)
+            {
+                BodyguardCharacter bodyguard =
+                    hit.GetComponent<BodyguardCharacter>();
+
+                if (bodyguard == null)
+                {
+                    bodyguard =
+                        hit.GetComponentInParent<BodyguardCharacter>();
+                }
+
+                if (bodyguard != null)
+                {
+                    Debug.Log("선글라스를 직장인에게 사용!");
+
+                    // 선글라스 착용 성공 여부 확인
+                    bool used =
+                        bodyguard.PutOnSunglasses();
+
+                    // 이미 선글라스를 쓴 직장인이라면 사용하지 않음
+                    if (!used)
+                    {
+                        Debug.Log(
+                            "이미 선글라스를 착용한 직장원입니다."
+                        );
+
+                        ReturnToOriginalPosition();
+                        return;
+                    }
+
+                    // 착용 성공했을 때만 선글라스 제거
+                    Image sunglassesImage =
+                        GetComponent<Image>();
+
+                    if (sunglassesImage != null)
+                    {
+                        sunglassesImage.sprite = null;
+                        sunglassesImage.enabled = false;
+                    }
+
+                    ReturnToOriginalPosition();
+
+                    return;
+                }
+            }
+        }
+
+
+       // =====================================================
         // R2
         // 상모 → 장구 부원
         // =====================================================
@@ -198,7 +210,8 @@ if (draggedItemData != null &&
                 {
                     jangguCharacter.ReceiveSangmo();
 
-                    Image usedItemImage = GetComponent<Image>();
+                    Image usedItemImage =
+                        GetComponent<Image>();
 
                     if (usedItemImage != null)
                     {
@@ -231,7 +244,8 @@ if (draggedItemData != null &&
                 {
                     villain.ReceiveJanggu();
 
-                    Image usedItemImage = GetComponent<Image>();
+                    Image usedItemImage =
+                        GetComponent<Image>();
 
                     if (usedItemImage != null)
                     {
@@ -304,7 +318,8 @@ if (draggedItemData != null &&
 
         foreach (GameObject obj in eventData.hovered)
         {
-            Image image = obj.GetComponent<Image>();
+            Image image =
+                obj.GetComponent<Image>();
 
             if (image == null)
                 continue;
@@ -336,13 +351,14 @@ if (draggedItemData != null &&
             bool combined =
                 SubwayInventoryManager.Instance.TryCombine(
                     GetComponent<Image>(),
-                    targetImage
+                    targetImage,
+                    scissorsItemData
                 );
 
             if (combined)
             {
                 return;
-                }
+            }
         }
 
 
@@ -357,6 +373,7 @@ if (draggedItemData != null &&
             OnDragEnded.Invoke(eventData);
         }
     }
+
 
     // =========================================================
     // 원래 인벤토리 슬롯으로 복귀
@@ -378,26 +395,20 @@ if (draggedItemData != null &&
     // =========================================================
 
     public void OnPointerClick(PointerEventData eventData)
-{
-    Image img = GetComponent<Image>();
-
-    // 빈 슬롯이면 아무 반응 없음
-    if (img == null || img.sprite == null)
-        return;
-
-    InventoryItemData itemData =
-        GetComponent<InventoryItemData>();
-
-    // 아이템 데이터가 없으면 아무 반응 없음
-    if (itemData == null)
-        return;
-
-    if (SubwayItemPopupManager.Instance != null)
     {
-        SubwayItemPopupManager.Instance.ShowPopup(
-            img.sprite,
-            itemData.itemType
-        );
+        Image img = GetComponent<Image>();
+
+        // 빈 슬롯이면 아무 반응 없음
+        if (img == null || img.sprite == null)
+            return;
+
+        // 새 아이템 설명 팝업 시스템 사용
+        ItemInfoTrigger trigger =
+            GetComponent<ItemInfoTrigger>();
+
+        if (trigger != null)
+        {
+            trigger.OnPointerClick(eventData);
+        }
     }
-}
 }

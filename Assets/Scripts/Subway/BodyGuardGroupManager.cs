@@ -5,6 +5,10 @@ public class BodyguardGroupManager : MonoBehaviour
     public BodyguardCharacter[] bodyguards;
     public Sprite bodyguardItemSprite;
 
+    [Header("Item Data")]
+    [SerializeField] private ItemData itemData;
+
+    [Header("Item Get Popup")]
     [SerializeField] private Sprite popupItemSprite;
 
     private int sunglassesCount = 0;
@@ -61,8 +65,17 @@ public class BodyguardGroupManager : MonoBehaviour
         // 경호원 3인조 아이템을 인벤토리에 추가
         if (SubwayInventoryManager.Instance != null)
         {
+            if (itemData == null)
+            {
+                Debug.LogError(
+                    gameObject.name +
+                    "에 경호원 3인조 ItemData가 연결되지 않았습니다."
+                );
+                return;
+            }
+
             SubwayInventoryManager.Instance.AddItem(
-                bodyguardItemSprite,
+                itemData,
                 ItemType.Bodyguards
             );
 
