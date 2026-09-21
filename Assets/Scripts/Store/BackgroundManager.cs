@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BackgroundManager : MonoBehaviour
 {
     [Header("Background")]
-    public Image backgroundImage;
+    public SpriteRenderer backgroundImage;
 
     public Sprite leftBackground;
     public Sprite rightBackground;
@@ -31,7 +30,7 @@ public class BackgroundManager : MonoBehaviour
 
     void Start()
     {
-        // 시작 화면
+        // 시작 화면 (왼쪽 방)
         backgroundImage.sprite = leftBackground;
 
         leftButton.SetActive(false);
@@ -42,7 +41,7 @@ public class BackgroundManager : MonoBehaviour
         warehouseObjects.SetActive(false);
     }
 
-    // 오른쪽 화면
+    // 오른쪽 화면으로 이동
     public void MoveRight()
     {
         backgroundImage.sprite = rightBackground;
@@ -55,7 +54,7 @@ public class BackgroundManager : MonoBehaviour
         warehouseObjects.SetActive(false);
     }
 
-    // 왼쪽 화면
+    // 왼쪽 화면으로 이동 (오른쪽 방 -> 왼쪽 방)
     public void MoveLeft()
     {
         backgroundImage.sprite = leftBackground;
@@ -66,6 +65,21 @@ public class BackgroundManager : MonoBehaviour
         leftObjects.SetActive(true);
         rightObjects.SetActive(false);
         warehouseObjects.SetActive(false);
+    }
+
+    // ★ 왼쪽 버튼을 눌렀을 때 현재 위치에 따라 다르게 동작하도록 처리하는 함수
+    public void OnClickLeftButton()
+    {
+        // 현재 창고 안에 있다면 -> 오른쪽 방으로 돌아감
+        if (warehouseObjects.activeSelf)
+        {
+            BackToRightRoom();
+        }
+        else
+        {
+            // 그 외(오른쪽 방에 있다면) -> 왼쪽 방으로 이동
+            MoveLeft();
+        }
     }
 
     // 열쇠를 사용하면 호출
@@ -80,16 +94,14 @@ public class BackgroundManager : MonoBehaviour
         // 🔒 1. 창고가 잠겨있는 경우
         if (!warehouseUnlocked)
         {
-            // 잠긴 소리(덜컥거리는 소리) 재생
             if (lockedSound != null)
             {
                 AudioSource.PlayClipAtPoint(lockedSound, Camera.main.transform.position);
             }
-            return; // 문이 안 열리고 여기서 실행 중단
+            return;
         }
 
         // 🔓 2. 창고가 열린 경우
-        // 문 열리는 소리 재생
         if (openSound != null)
         {
             AudioSource.PlayClipAtPoint(openSound, Camera.main.transform.position);
@@ -97,7 +109,8 @@ public class BackgroundManager : MonoBehaviour
 
         backgroundImage.sprite = warehouseBackground;
 
-        leftButton.SetActive(false);
+
+        leftButton.SetActive(true);
         rightButton.SetActive(false);
 
         leftObjects.SetActive(false);

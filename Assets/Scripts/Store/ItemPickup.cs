@@ -3,6 +3,12 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public Sprite itemSprite;
+    public AudioClip pickupSound; // 획득 소리 파일
+
+    private void OnMouseDown()
+    {
+        PickUpItem();
+    }
 
     public void PickUpItem()
     {
@@ -10,7 +16,12 @@ public class ItemPickup : MonoBehaviour
 
         if (itemAdded)
         {
-            // 팝업 표시 코드 추가
+            // 오브젝트가 꺼져도 소리가 끊기지 않고 위치에서 재생됨
+            if (pickupSound != null)
+            {
+                AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+            }
+
             if (ItemGetPopup.Instance != null)
             {
                 ItemGetPopup.Instance.Show(itemSprite);

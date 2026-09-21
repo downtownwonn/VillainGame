@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 3063841963128474276
     second: hat_0
+  - first:
+      213: 4573925484415590691
+    second: hat_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,10 +119,10 @@ TextureImporter:
       name: hat_0
       rect:
         serializedVersion: 2
-        x: 168
-        y: 0
-        width: 1187
-        height: 1004
+        x: 46
+        y: 47
+        width: 1195
+        height: 1077
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,11 +137,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: hat_1
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 45
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 321a2bf8ef8d97f30800000000000000
+      internalID: 4573925484415590691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -149,6 +174,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       hat_0: 3063841963128474276
+      hat_1: 4573925484415590691
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
