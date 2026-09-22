@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpeakerData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemSprite: {fileID: 7995061706426159896, guid: 1a7b6bcc80e8b442095568ab922e5768, type: 3}
-  itemName: 
+  itemName: "\uC2A4\uD53C\uCEE4"
   description: "\uC774 \uC2A4\uD53C\uCEE4\uB9CC \uC788\uC73C\uBA74\n\uB0B4 \uB9C8\uC74C\uB300\uB85C
     \uBCFC\uB968 \uD06C\uAE30\uB97C \uC870\uC808\uD560 \uC218 \uC788\uACA0\uC5B4!"
   largeItemSprite: {fileID: 0}
