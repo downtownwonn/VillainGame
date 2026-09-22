@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Book4Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemSprite: {fileID: -1843703254631439565, guid: c08b4b01fd0f74c72a117d53a96cbf4d, type: 3}
-  itemName: 
-  description: "\uCC45\uC7A5\uC5D0\uC11C \uAC00\uC7C8\uC628 \uCC45."
+  itemName: "<\uC544\uBB34\uB3C4 \uC5C6\uB294 4\uCE35>"
+  description: "\uC73C\uC2A4\uC2A4\uD55C \uD45C\uC9C0\uC758 \uCC45\uC774\uB2E4\u2026\n\uC660\uC9C0
+    \uC77D\uACE0 \uC2F6\uC9C0 \uC54A\uC9C0\uB9CC, \uCC45\uC7A5\uC744 \uB118\uAE30\uBA74
+    \n\uBB34\uC5B8\uAC00 \uBB34\uC11C\uC6B4 \uC77C\uC774 \uBC8C\uC5B4\uC9C8 \uAC83\uB9CC
+    \uAC19\uB2E4."
   largeItemSprite: {fileID: 0}

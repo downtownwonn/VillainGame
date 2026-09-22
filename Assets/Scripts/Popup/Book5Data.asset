@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Book5Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemSprite: {fileID: 3754675394264498710, guid: 8f485653ce64c4b768a90e3e026bd43f, type: 3}
-  itemName: 
-  description: "\uCC45\uC7A5\uC5D0\uC11C \uAC00\uC838\uC628 \uCC45,\n\uC624\uB298
-    \uC774 \uCC45\uC744 \uC77D\uAE30\uB294 \uAE00\uB800\uB2E4. "
+  itemName: "<\uC5B4\uB978\uC774 \uB418\uB294 \uC5F0\uC2B5>"
+  description: "\uC790\uAE30\uACC4\uBC1C\uC11C\uB97C \uD68D\uB4DD\uD588\uB2E4!\n
+    \uACFC\uC5F0 \uC774 \uCC45\uC744 \uC77D\uC73C\uBA74 \uB098\uB3C4 \uB2EC\uB77C\uC9C8
+    \uC218 \uC788\uC744\uAE4C? "
   largeItemSprite: {fileID: 0}
