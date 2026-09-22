@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af152bbab6ef35946a3c8b5a94ae8b28, type: 3}
+  m_Name: hatdata
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemSprite: {fileID: 3063841963128474276, guid: f899f980e678ffc46b2485ee6eb9ff12, type: 3}
+  itemName: "\uB9C8\uC220\uBAA8\uC790"
+  description: "\uAC80\uC740\uC0C9 \uB9C8\uC220\uBAA8\uC790.\n\uBE44\uB2C8\uB97C
+    \uC5FC\uC0C9\uD588\uB354\uB2C8 \uB9C8\uC220\uBAA8\uC790\uAC00 \uB418\uC5C8\uB2E4."
+  largeItemSprite: {fileID: 0}

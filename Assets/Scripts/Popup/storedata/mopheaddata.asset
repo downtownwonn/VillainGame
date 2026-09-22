@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af152bbab6ef35946a3c8b5a94ae8b28, type: 3}
+  m_Name: mopheaddata
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemSprite: {fileID: 21300000, guid: 0dd0bff0eecb70e48b2e03b417f08a83, type: 3}
+  itemName: "\uB300\uAC78\uB808 \uBA38\uB9AC"
+  description: "\uCC3D\uACE0\uC5D0 \uC788\uB358 \uB300\uAC78\uB808 \uBA38\uB9AC.\n\uB9C8\uCE58
+    \uAC00\uBC1C\uCC98\uB7FC \uBCF4\uC778\uB2E4."
+  largeItemSprite: {fileID: 0}

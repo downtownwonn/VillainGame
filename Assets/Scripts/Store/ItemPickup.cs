@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    public Sprite itemSprite;
-    public AudioClip pickupSound; // 획득 소리 파일
+    [Header("Item Data")]
+    [SerializeField] private ItemData itemData;
+
+    [Header("Sound")]
+    public AudioClip pickupSound;
 
     private void OnMouseDown()
     {
@@ -12,11 +15,16 @@ public class ItemPickup : MonoBehaviour
 
     public void PickUpItem()
     {
-        bool itemAdded = StoreInventoryManager.Instance.AddItem(itemSprite);
+        if (itemData == null)
+        {
+            Debug.LogWarning($"{gameObject.name}에 ItemData가 연결되지 않았습니다!");
+            return;
+        }
+
+        bool itemAdded = StoreInventoryManager.Instance.AddItem(itemData);
 
         if (itemAdded)
         {
-            // 오브젝트가 꺼져도 소리가 끊기지 않고 위치에서 재생됨
             if (pickupSound != null)
             {
                 AudioSource.PlayClipAtPoint(pickupSound, transform.position);
@@ -24,7 +32,8 @@ public class ItemPickup : MonoBehaviour
 
             if (ItemGetPopup.Instance != null)
             {
-                ItemGetPopup.Instance.Show(itemSprite);
+                // [수정] ItemSprite -> itemSprite (소문자 i)
+                ItemGetPopup.Instance.Show(itemData.itemSprite);
             }
 
             gameObject.SetActive(false);

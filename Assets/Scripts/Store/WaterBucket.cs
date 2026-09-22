@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaterBucket : MonoBehaviour
 {
@@ -42,14 +43,14 @@ public class WaterBucket : MonoBehaviour
 
         if (draggableItem != null)
         {
-            // 드롭된 아이템에서 스프라이트 추출 (UI Image 또는 SpriteRenderer 모두 대응)
+            // UI Image 또는 SpriteRenderer에서 스프라이트 추출
             Sprite itemSprite = null;
-            var droppedImage = draggableItem.GetComponent<UnityEngine.UI.Image>();
+            Image droppedImage = draggableItem.GetComponent<Image>();
             if (droppedImage != null) itemSprite = droppedImage.sprite;
 
             if (itemSprite == null)
             {
-                var droppedSr = draggableItem.GetComponent<SpriteRenderer>();
+                SpriteRenderer droppedSr = draggableItem.GetComponent<SpriteRenderer>();
                 if (droppedSr != null) itemSprite = droppedSr.sprite;
             }
 
@@ -75,13 +76,12 @@ public class WaterBucket : MonoBehaviour
     {
         isWashing = true;
 
-        // 1. 새로운 월드 오브젝트 생성 및 SpriteRenderer 부착
+        // 1. 세척 연출용 월드 오브젝트 생성 (월드 공간 렌더링)
         GameObject tempItem = new GameObject("TempWashItem");
         SpriteRenderer tempRenderer = tempItem.AddComponent<SpriteRenderer>();
         tempRenderer.sprite = itemSprite;
 
-        // 🌊 [핵심 레이어 처리] 
-        // WaterBucket 자신 또는 자식 오브젝트에서 양동이의 SpriteRenderer를 안전하게 찾음
+        // 2. 양동이 SpriteRenderer 가져오기 및 Sorting Order 설정 (양동이 뒤로 가도록 -1)
         SpriteRenderer bucketRenderer = GetComponent<SpriteRenderer>();
         if (bucketRenderer == null)
         {
@@ -90,36 +90,33 @@ public class WaterBucket : MonoBehaviour
 
         if (bucketRenderer != null)
         {
-            // 양동이와 같은 레이어를 쓰되, 순서만 정확히 1칸 뒤로 설정 (-1)
             tempRenderer.sortingLayerID = bucketRenderer.sortingLayerID;
-            tempRenderer.sortingOrder = bucketRenderer.sortingOrder - 1;
+            tempRenderer.sortingOrder = bucketRenderer.sortingOrder - 1; // 양동이 바로 뒤
         }
         else
         {
-            // 양동이에 렌더러가 아예 없다면 기본값으로 지정
             tempRenderer.sortingOrder = -1;
         }
 
-        // 크기 적용
+        // 3. 스케일 적용
         tempItem.transform.localScale = new Vector3(targetScale, targetScale, 1f);
 
-        // 2. 월드 좌표 기준으로 위치 설정
+        // 4. 양동이 월드 위치 기준으로 시작 위치 및 입수 위치 설정
         Vector3 startPos = transform.position;
         startPos.y += targetYOffset;
         tempItem.transform.position = startPos;
 
         Vector3 sinkPos = startPos;
-        sinkPos.y -= sinkDepth; // 물속으로 들어간 월드 위치
+        sinkPos.y -= sinkDepth;
 
-        float elapsedTime = 0f;
-
-        // 🔊 3. 씻는 소리 재생
+        // 5. 효과음 재생
         if (washSound != null)
         {
             AudioSource.PlayClipAtPoint(washSound, Camera.main.transform.position);
         }
 
-        // 4. [입수 모션] 물속으로 쑥 들어감
+        // 6. [입수 모션] 양동이 물속으로 내려감
+        float elapsedTime = 0f;
         while (elapsedTime < enterDuration)
         {
             elapsedTime += Time.deltaTime;
@@ -130,10 +127,10 @@ public class WaterBucket : MonoBehaviour
             yield return null;
         }
 
-        // 5. [세척 대기] 물속에서 머무는 시간
+        // 7. [세척 대기]
         yield return new WaitForSeconds(washDuration);
 
-        // 6. [출수 모션] 물속에서 다시 위로 쑥 빠져나옴
+        // 8. [출수 모션] 다시 위로 올라옴
         elapsedTime = 0f;
         while (elapsedTime < exitDuration)
         {
@@ -145,10 +142,10 @@ public class WaterBucket : MonoBehaviour
             yield return null;
         }
 
-        // 7. 임시 오브젝트 제거
+        // 9. 임시 비니/자루 삭제
         Destroy(tempItem);
 
-        // 8. 결과물 등장
+        // 10. 결과물(hat 또는 bong) 월드 오브젝트 활성화
         if (resultObject != null)
         {
             resultObject.SetActive(true);

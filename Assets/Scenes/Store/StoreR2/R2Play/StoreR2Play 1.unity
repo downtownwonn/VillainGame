@@ -4040,7 +4040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 21300000, guid: 3ce2b01072735264683c11e5d42ad7b2, type: 3}
+  itemData: {fileID: 11400000, guid: 4ab0e4db642907e4a9b24f452afa2e67, type: 2}
   pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
 --- !u!114 &996152456
 MonoBehaviour:

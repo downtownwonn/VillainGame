@@ -541,7 +541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &282101822
 Transform:
   m_ObjectHideFlags: 0
@@ -912,7 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 21300000, guid: 164220abf0c31b7459ce0ed48430dc43, type: 3}
+  itemData: {fileID: 11400000, guid: 9062906854a50d9438917bdbf5e752d4, type: 2}
   pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
 --- !u!212 &384070433
 SpriteRenderer:
@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 21300000, guid: f723af37cbe07a24d9e743e38c09aec2, type: 3}
+  itemData: {fileID: 11400000, guid: 1daa3e28f6da833458e9f5eb8870a84f, type: 2}
   pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
 --- !u!212 &463233340
 SpriteRenderer:
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   enterDuration: 0.5
   washDuration: 2
   exitDuration: 0.5
-  sinkDepth: 40
+  sinkDepth: 1
 --- !u!212 &1210368928
 SpriteRenderer:
   serializedVersion: 3
@@ -3697,7 +3697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1630686270
 Transform:
   m_ObjectHideFlags: 0
@@ -3767,7 +3767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: -643958608011681267, guid: ecb2cb3fdb4ec0740809dea9abaddbed, type: 3}
+  itemData: {fileID: 11400000, guid: 832b161012665004a9792a450f3e3806, type: 2}
   pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
 --- !u!212 &1686297173
 SpriteRenderer:
@@ -4088,7 +4088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 1247127379658415201, guid: 4e851367bc1df0643b3c13a0be9f46d1, type: 3}
+  itemData: {fileID: 11400000, guid: 354fd5499821fd44abdfe3b97d4a063f, type: 2}
   pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
 --- !u!212 &1706935169
 SpriteRenderer:
@@ -4643,7 +4643,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1972696062635709663, guid: 50218d0c02c9d5c4b80c83dda50765ba, type: 3}
+  m_Sprite: {fileID: 7367696030530369643, guid: 90ee2469e74d83348bd32200eb8ff6f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5871,7 +5871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 3063841963128474276, guid: f899f980e678ffc46b2485ee6eb9ff12, type: 3}
+  itemData: {fileID: 11400000, guid: 65d3dd29ed9ecd74381aa44a202de65e, type: 2}
   pickupSound: {fileID: 8300000, guid: a79963bb1454314488fafe0446615753, type: 3}
 --- !u!212 &2113267128
 SpriteRenderer:
