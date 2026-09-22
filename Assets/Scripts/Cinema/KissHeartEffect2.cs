@@ -1,29 +1,25 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class KissHeartEffect : MonoBehaviour
 {
     [Header("Heart")]
-    [Tooltip("뿅뿅 튀어나올 하트 PNG")]
-    public Image heartPrefab;
+    [Tooltip("뿅뿅 튀어나올 하트 프리팹")]
+    public GameObject heartPrefab;
 
     [Header("Spawn")]
-    [Tooltip("하트가 생성될 위치")]
-    public RectTransform spawnArea;
-
-    [Tooltip("하트 생성 간격")]
-    public float spawnInterval = 0.4f;
+    [Tooltip("하트가 처음 생성되는 위치")]
+    public Transform spawnPoint;
 
     [Header("Motion")]
     [Tooltip("하트가 위로 올라가는 거리")]
-    public float moveDistance = 80f;
+    public float moveDistance = 1.0f;
 
     [Tooltip("하트 하나가 나타났다 사라지는 시간")]
-    public float moveDuration = 1f;
+    public float moveDuration = 1.0f;
 
     [Tooltip("좌우로 퍼지는 정도")]
-    public float randomX = 30f;
+    public float randomX = 0.3f;
 
     [Tooltip("하트가 좌우로 기울어지는 최대 각도")]
     public float randomAngle = 15f;
@@ -42,102 +38,100 @@ public class KissHeartEffect : MonoBehaviour
     [Tooltip("뿅! 하고 커지는 데 걸리는 시간")]
     public float popDuration = 0.15f;
 
+    [Header("Spawn Timing")]
+    [Tooltip("하트 생성 간격")]
+    public float spawnInterval = 0.4f;
+
+    private readonly System.Collections.Generic.List<GameObject> activeHearts =
+    new System.Collections.Generic.List<GameObject>();
+
     private void Start()
     {
+        Debug.Log("하트 효과 시작! Time.timeScale = " + Time.timeScale);
+
         StartCoroutine(HeartLoop());
     }
+
 
     private IEnumerator HeartLoop()
     {
         while (true)
         {
+            Debug.Log("HeartLoop START");
+
             SpawnHeart();
 
-            yield return new WaitForSeconds(spawnInterval);
+            Debug.Log("WAIT START");
+
+            yield return new WaitForSecondsRealtime(spawnInterval);
+
+            Debug.Log("WAIT COMPLETE");
         }
     }
 
     private void SpawnHeart()
     {
-        if (heartPrefab == null || spawnArea == null)
+        if (heartPrefab == null || spawnPoint == null)
         {
-            Debug.LogWarning("KissHeartEffect: Heart Prefab 또는 Spawn Area가 없습니다.");
+            Debug.LogWarning(
+                "KissHeartEffect: Heart Prefab 또는 Spawn Point가 없습니다."
+            );
+
             return;
         }
 
-        Image heart = Instantiate(
+        GameObject heart = Instantiate(
             heartPrefab,
-            spawnArea
+            spawnPoint.position,
+            Quaternion.identity
         );
+        activeHearts.Add(heart);
 
-        RectTransform rect = heart.rectTransform;
-
-        // =====================================
-        // 시작 위치
-        // =====================================
-
-        rect.anchoredPosition = new Vector2(
-            Random.Range(-randomX, randomX),
-            0f
-        );
-
-        // =====================================
-        // 시작 크기
-        // =====================================
-
-        rect.localScale =
-            Vector3.one * startScale;
-
-        // =====================================
-        // 랜덤 회전
-        // =====================================
+        Debug.Log(" 하트 생성됨!");
 
         float randomRotation =
             Random.Range(-randomAngle, randomAngle);
 
-        rect.localRotation =
+        heart.transform.rotation =
             Quaternion.Euler(
                 0f,
                 0f,
                 randomRotation
             );
 
-        // =====================================
-        // 투명도 초기화
-        // =====================================
-
-        Color color = heart.color;
-        color.a = 1f;
-        heart.color = color;
-
-        // =====================================
-        // 애니메이션 시작
-        // =====================================
+        heart.transform.localScale =
+            Vector3.one * startScale;
 
         StartCoroutine(AnimateHeart(heart));
     }
 
-    private IEnumerator AnimateHeart(Image heart)
+    private IEnumerator AnimateHeart(GameObject heart)
     {
-        RectTransform rect = heart.rectTransform;
+        Transform heartTransform = heart.transform;
 
-        Vector2 startPosition =
-            rect.anchoredPosition;
+        Vector3 startPosition = heartTransform.position;
+
+        Vector3 targetPosition =
+            startPosition +
+            new Vector3(
+                Random.Range(-randomX, randomX),
+                moveDistance,
+                0f
+            );
 
         float timer = 0f;
 
-        // =====================================
-        // ① 뿅! 하고 커지기
-        // =====================================
+        Debug.Log("POP START");
 
+
+        // Pop animation
         while (timer < popDuration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
 
             float progress =
                 Mathf.Clamp01(timer / popDuration);
 
-            // 부드럽게 커짐
             float scale =
                 Mathf.Lerp(
                     startScale,
@@ -145,61 +139,44 @@ public class KissHeartEffect : MonoBehaviour
                     EaseOutBack(progress)
                 );
 
-            rect.localScale =
+            heartTransform.localScale =
                 Vector3.one * scale;
 
             yield return null;
         }
 
-        // 최대 크기 확정
-        rect.localScale =
+        heartTransform.localScale =
             Vector3.one * peakScale;
 
-        // =====================================
-        // ② 위로 튀어오르면서 작아지고 사라짐
-        // =====================================
+        Debug.Log("POP COMPLETE");
 
+
+        // Move animation
         timer = 0f;
 
         float remainingDuration =
             moveDuration - popDuration;
 
+        Debug.Log("MOVE START");
+
+
         while (timer < remainingDuration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
 
             float progress =
                 Mathf.Clamp01(
                     timer / remainingDuration
                 );
 
-            // -----------------------------
-            // 위로 이동
-            // -----------------------------
 
-            float y =
-                Mathf.Lerp(
-                    0f,
-                    moveDistance,
+            heartTransform.position =
+                Vector3.Lerp(
+                    startPosition,
+                    targetPosition,
                     EaseOutCubic(progress)
                 );
 
-            // -----------------------------
-            // 좌우 살짝 흔들림
-            // -----------------------------
-
-            float x =
-                Mathf.Sin(
-                    progress * Mathf.PI
-                ) * Random.Range(-15f, 15f);
-
-            rect.anchoredPosition =
-                startPosition +
-                new Vector2(x, y);
-
-            // -----------------------------
-            // 점점 작아짐
-            // -----------------------------
 
             float scale =
                 Mathf.Lerp(
@@ -208,38 +185,39 @@ public class KissHeartEffect : MonoBehaviour
                     progress
                 );
 
-            rect.localScale =
+            heartTransform.localScale =
                 Vector3.one * scale;
 
-            // -----------------------------
-            // 점점 투명해짐
-            // -----------------------------
 
-            Color color = heart.color;
+            SpriteRenderer spriteRenderer =
+                heart.GetComponent<SpriteRenderer>();
 
-            color.a =
-                Mathf.Lerp(
-                    1f,
-                    0f,
-                    progress
-                );
+            if (spriteRenderer != null)
+            {
+                Color color =
+                    spriteRenderer.color;
 
-            heart.color = color;
+                color.a =
+                    Mathf.Lerp(
+                        1f,
+                        0f,
+                        progress
+                    );
+
+                spriteRenderer.color = color;
+            }
 
             yield return null;
         }
 
-        // =====================================
-        // ③ 완전히 제거
-        // =====================================
 
-        Destroy(heart.gameObject);
+        Debug.Log("MOVE COMPLETE");
+
+        activeHearts.Remove(heart);
+
+
+        Destroy(heart);
     }
-
-    // =====================================
-    // Ease Out Back
-    // 처음에 살짝 튀어나오는 느낌
-    // =====================================
 
     private float EaseOutBack(float t)
     {
@@ -251,14 +229,32 @@ public class KissHeartEffect : MonoBehaviour
                c1 * Mathf.Pow(t - 1f, 2f);
     }
 
-    // =====================================
-    // Ease Out Cubic
-    // 위로 갈수록 부드러워짐
-    // =====================================
 
     private float EaseOutCubic(float t)
     {
         return 1f -
                Mathf.Pow(1f - t, 3f);
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("HeartEffect DISABLED");
+
+        StopAllCoroutines();
+
+        for (int i = activeHearts.Count - 1; i >= 0; i--)
+        {
+            if (activeHearts[i] != null)
+            {
+                Destroy(activeHearts[i]);
+            }
+        }
+
+        activeHearts.Clear();
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("HeartEffect DESTROYED");
     }
 }
