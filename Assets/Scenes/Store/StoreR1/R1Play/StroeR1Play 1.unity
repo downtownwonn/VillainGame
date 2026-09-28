@@ -2411,7 +2411,7 @@ MonoBehaviour:
   headObject: {fileID: 80510254}
   handObject: {fileID: 2140022086}
   bodyObject: {fileID: 813282932}
-  equipSound: {fileID: 0}
+  equipSound: {fileID: 8300000, guid: c4a70afba0732e14e851234c22ab6fbe, type: 3}
   fadeOverlay: {fileID: 962221802}
   nextSceneName: StoreR1Clear
   delayBeforeFade: 1

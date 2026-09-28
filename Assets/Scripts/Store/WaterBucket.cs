@@ -73,6 +73,10 @@ public class WaterBucket : MonoBehaviour
     public AudioClip wash2ExitSound;
     public AudioClip wash3EnterSound;
 
+    [Header("이펙트 설정")]
+    [Tooltip("물 튀기는 효과 프리팹 (Particle System 등)")]
+    public GameObject splashEffectPrefab;
+
     private bool isWashing = false;
 
     public void OnItemDropped(DraggableItemofStore draggableItem)
@@ -143,11 +147,11 @@ public class WaterBucket : MonoBehaviour
         if (bucketRenderer != null)
         {
             tempRenderer.sortingLayerID = bucketRenderer.sortingLayerID;
-            tempRenderer.sortingOrder = bucketRenderer.sortingOrder - 1; // 양동이 뒤
+            tempRenderer.sortingOrder = bucketRenderer.sortingOrder - 2; // 양동이 뒤
         }
         else
         {
-            tempRenderer.sortingOrder = -1;
+            tempRenderer.sortingOrder = -2;
         }
 
         // 3. 스케일 및 회전 적용
@@ -165,23 +169,33 @@ public class WaterBucket : MonoBehaviour
         Vector3 thirdSinkPos = startPos;
         thirdSinkPos.y -= thirdSinkDep;
 
-        // 6. [첫 번째] 들어가고(사운드) -> 대기 -> 나오고(사운드)
+        // 6. [첫 번째] 들어가고(사운드+물튐) -> 대기 -> 나오고(사운드+물튐)
         PlaySound(wash1EnterSound);
+        PlaySplash(startPos);
         yield return StartCoroutine(DoMoveMotion(tempItem, startPos, normalSinkPos, e1));
+        
         yield return new WaitForSeconds(w1);
+        
         PlaySound(wash1ExitSound);
+        PlaySplash(startPos);
         yield return StartCoroutine(DoMoveMotion(tempItem, normalSinkPos, startPos, x1));
 
-        // 7. [두 번째] 들어가고(사운드) -> 대기 -> 나오고(사운드)
+        // 7. [두 번째] 들어가고(사운드+물튐) -> 대기 -> 나오고(사운드+물튐)
         PlaySound(wash2EnterSound);
+        PlaySplash(startPos);
         yield return StartCoroutine(DoMoveMotion(tempItem, startPos, normalSinkPos, e2));
+        
         yield return new WaitForSeconds(w2);
+        
         PlaySound(wash2ExitSound);
+        PlaySplash(startPos);
         yield return StartCoroutine(DoMoveMotion(tempItem, normalSinkPos, startPos, x2));
 
-        // 8. [세 번째] 깊이 들어가고(사운드) -> 대기 -> 소멸
+        // 8. [세 번째] 깊이 들어가고(사운드+물튐) -> 대기 -> 소멸
         PlaySound(wash3EnterSound);
+        PlaySplash(startPos);
         yield return StartCoroutine(DoMoveMotion(tempItem, startPos, thirdSinkPos, e3));
+        
         yield return new WaitForSeconds(w3);
         Destroy(tempItem);
 
@@ -192,7 +206,7 @@ public class WaterBucket : MonoBehaviour
             if (resultSr != null && bucketRenderer != null)
             {
                 resultSr.sortingLayerID = bucketRenderer.sortingLayerID;
-                resultSr.sortingOrder = bucketRenderer.sortingOrder - 1;
+                resultSr.sortingOrder = bucketRenderer.sortingOrder - 2;
             }
 
             Collider2D resultCol = resultObject.GetComponent<Collider2D>();
@@ -201,7 +215,7 @@ public class WaterBucket : MonoBehaviour
             Vector3 finalTargetPos = resultObject.transform.position;
             Vector3 spawnStartPos = finalTargetPos;
             spawnStartPos.y -= riseH;
-            
+
             resultObject.transform.position = spawnStartPos;
             resultObject.SetActive(true);
 
@@ -227,6 +241,15 @@ public class WaterBucket : MonoBehaviour
         if (clip != null)
         {
             AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
+        }
+    }
+
+    private void PlaySplash(Vector3 pos)
+    {
+        if (splashEffectPrefab != null)
+        {
+            GameObject splash = Instantiate(splashEffectPrefab, pos, Quaternion.identity);
+            Destroy(splash, 2f); // 2초 후 자동 파괴 (이펙트 길이에 맞게 조절 가능)
         }
     }
 
