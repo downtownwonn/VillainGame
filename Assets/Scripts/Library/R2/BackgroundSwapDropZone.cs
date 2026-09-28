@@ -11,6 +11,10 @@ public class BackgroundSwapDropZone : MonoBehaviour, IDropHandler
     public Vector3 wigLocalPosition = new Vector3(-2.1f, 0.67f, 0f);
     public Vector3 wigLocalScale = new Vector3(0.25f, 0.25f, 1f);
 
+    [Header("효과음")]
+    public AudioClip swapSound;
+    public AudioSource audioSource;
+
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("OnDrop 호출됨!");
@@ -30,6 +34,12 @@ public class BackgroundSwapDropZone : MonoBehaviour, IDropHandler
         // 가발 전용 위치/크기 적용
         backgroundRenderer.transform.localPosition = wigLocalPosition;
         backgroundRenderer.transform.localScale = wigLocalScale;
+
+        // 효과음 재생
+        if (audioSource != null && swapSound != null)
+        {
+            audioSource.PlayOneShot(swapSound);
+        }
 
         // 인벤토리 슬롯 비우기
         droppedImage.sprite = null;

@@ -2984,7 +2984,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1184881587}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlayUIClick
         m_Mode: 1
@@ -4597,8 +4597,8 @@ MonoBehaviour:
   - {fileID: 3082717242226741463, guid: 698eef11bc12a41e7a8bcb372883be0e, type: 3}
   - {fileID: -1669739640715497315, guid: 980641d0db1d244fab7a6ca156427abc, type: 3}
   - {fileID: -6856312136695207559, guid: a6496771a273e48df986fba9d03a106e, type: 3}
-  placeSound: {fileID: 0}
-  audioSource: {fileID: 0}
+  placeSound: {fileID: 8300000, guid: f1a42fa05cdbf4cadacd6b171c34f1e0, type: 3}
+  audioSource: {fileID: 1727358167}
 --- !u!114 &1896918064
 MonoBehaviour:
   m_ObjectHideFlags: 0

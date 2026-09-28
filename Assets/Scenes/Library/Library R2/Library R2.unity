@@ -1023,7 +1023,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 8.099999, y: 21.902483}
+  m_Size: {x: 10, y: 20}
   m_EdgeRadius: 0
 --- !u!114 &305073978
 MonoBehaviour:
@@ -3171,6 +3171,7 @@ MonoBehaviour:
   mainBackground: {fileID: 1111903039}
   leftBackground: {fileID: 832178276}
   rightBackground: {fileID: 136804501}
+  heartEffect: {fileID: 0}
   leftButton: {fileID: 75767789}
   rightButton: {fileID: 1121532547}
 --- !u!1 &1232809430
@@ -4321,6 +4322,8 @@ MonoBehaviour:
   newBackgroundSprite: {fileID: 6180559812979696310, guid: b318ab6c60e7743cf9a52e10070672af, type: 3}
   wigLocalPosition: {x: -2.1, y: 0.67, z: 0}
   wigLocalScale: {x: 0.25, y: 0.25, z: 1}
+  swapSound: {fileID: 8300000, guid: be9426c3041284be1bb356b083f7847e, type: 3}
+  audioSource: {fileID: 238484541}
 --- !u!114 &1675222166
 MonoBehaviour:
   m_ObjectHideFlags: 0
