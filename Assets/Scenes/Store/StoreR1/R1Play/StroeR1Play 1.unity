@@ -2411,7 +2411,7 @@ MonoBehaviour:
   headObject: {fileID: 80510254}
   handObject: {fileID: 2140022086}
   bodyObject: {fileID: 813282932}
-  equipSound: {fileID: 0}
+  equipSound: {fileID: 8300000, guid: c4a70afba0732e14e851234c22ab6fbe, type: 3}
   fadeOverlay: {fileID: 962221802}
   nextSceneName: StoreR1Clear
   delayBeforeFade: 1
@@ -4879,7 +4879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: ~~~
+  dialogue: "\uB9D0\uBCF4\uB8E8 \uB808\uB4DC \uD558\uB098"
   bubbleType: 2
   bubbleOffset: {x: 0, y: 1.5}
   textOffset: {x: 0, y: 0}

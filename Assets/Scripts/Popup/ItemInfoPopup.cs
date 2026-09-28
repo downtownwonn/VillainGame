@@ -28,7 +28,7 @@ public class ItemInfoPopup : MonoBehaviour
     [SerializeField] private AudioClip largeOpenSound;
     [SerializeField] private AudioClip largeCloseSound;
 
-    // ÇöÀç ¼±ÅÃµÈ ¾ÆÀÌÅÛÀÇ Å« ÀÌ¹ÌÁö
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å« ï¿½Ì¹ï¿½ï¿½ï¿½
     private Sprite currentLargeSprite;
 
     private void Awake()
@@ -44,13 +44,13 @@ public class ItemInfoPopup : MonoBehaviour
         popup.SetActive(false);
         blocker.SetActive(false);
 
-        // Å« ÀÌ¹ÌÁö ÆË¾÷µµ Ã³À½¿¡´Â ²¨µÒ
+        // Å« ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (largeImagePopup != null)
         {
             largeImagePopup.SetActive(false);
         }
 
-        // Ã³À½¿¡´Â µ¸º¸±â ¹öÆ°µµ ²¨µÒ
+        // Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (magnifyButton != null)
         {
             magnifyButton.SetActive(false);
@@ -58,14 +58,14 @@ public class ItemInfoPopup : MonoBehaviour
     }
 
     // =========================================================
-    // ±âÁ¸ ¾ÆÀÌÅÛ¿ë ±âÁ¸ Show ÇÔ¼ö
-    // ÀÌ ÇÔ¼öÀÇ ±âÁ¸ ±â´ÉÀº ±×´ë·Î À¯Áö
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Show ï¿½Ô¼ï¿½
+    // ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     // =========================================================
     public void Show(Sprite sprite, string name, string description)
     {
         if (sprite == null)
         {
-            Debug.LogWarning("ItemInfoPopup: ¾ÆÀÌÅÛ Sprite°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogWarning("ItemInfoPopup: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Spriteï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
 
@@ -84,7 +84,7 @@ public class ItemInfoPopup : MonoBehaviour
     }
 
     // =========================================================
-    // ¿µÈ­ Æ¼ÄÏÃ³·³ Å« ÀÌ¹ÌÁö°¡ ÇÊ¿äÇÑ ¾ÆÀÌÅÛ¿ë
+    // ï¿½ï¿½È­ Æ¼ï¿½ï¿½Ã³ï¿½ï¿½ Å« ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Û¿ï¿½
     // =========================================================
     public void ShowWithLargeImage(
         Sprite sprite,
@@ -92,13 +92,13 @@ public class ItemInfoPopup : MonoBehaviour
         string description,
         Sprite largeSprite)
     {
-        // ±âÁ¸ ÆË¾÷ ±â´ÉÀ» ±×´ë·Î »ç¿ë
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½ï¿½ï¿½
         Show(sprite, name, description);
 
-        // Å« ÀÌ¹ÌÁö ÀúÀå
+        // Å« ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         currentLargeSprite = largeSprite;
 
-        // Å« ÀÌ¹ÌÁö°¡ ÀÖÀ» ¶§¸¸ µ¸º¸±â ¹öÆ° Ç¥½Ã
+        // Å« ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° Ç¥ï¿½ï¿½
         if (magnifyButton != null)
         {
             magnifyButton.SetActive(largeSprite != null);
@@ -106,15 +106,15 @@ public class ItemInfoPopup : MonoBehaviour
     }
 
     // =========================================================
-    // µ¸º¸±â ¹öÆ°
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
     // =========================================================
     public void OpenLargeImage()
     {
-        Debug.Log("µ¸º¸±â ¹öÆ° Å¬¸¯µÊ!");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° Å¬ï¿½ï¿½ï¿½ï¿½!");
 
         if (currentLargeSprite == null)
         {
-            Debug.LogWarning("ItemInfoPopup: È®´ëÇÒ ÀÌ¹ÌÁö°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogWarning("ItemInfoPopup: È®ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
 
@@ -127,7 +127,7 @@ public class ItemInfoPopup : MonoBehaviour
         if (largeImagePopup != null)
         {
             largeImagePopup.SetActive(true);
-            // Å« ÀÌ¹ÌÁö ÆË¾÷ ¿­±â ¼Ò¸®
+            // Å« ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½
             if (audioSource != null && largeOpenSound != null)
             {
                 audioSource.PlayOneShot(largeOpenSound);
@@ -136,7 +136,7 @@ public class ItemInfoPopup : MonoBehaviour
     }
 
     // =========================================================
-    // Å« ÀÌ¹ÌÁö ÆË¾÷ ´Ý±â
+    // Å« ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ ï¿½Ý±ï¿½
     // =========================================================
     public void CloseLargeImage()
     {
@@ -152,7 +152,7 @@ public class ItemInfoPopup : MonoBehaviour
     }
 
     // =========================================================
-    // ±âÁ¸ ¼³¸í ÆË¾÷ ´Ý±â
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ ï¿½Ý±ï¿½
     // =========================================================
     public void Close()
     {
@@ -166,7 +166,7 @@ public class ItemInfoPopup : MonoBehaviour
             audioSource.PlayOneShot(closeSound);
         }
 
-        // Å« ÀÌ¹ÌÁö ÆË¾÷µµ °°ÀÌ ´Ý¾ÆÁÜ
+        // Å« ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¾ï¿½ï¿½ï¿½
         if (largeImagePopup != null)
         {
             largeImagePopup.SetActive(false);
@@ -175,7 +175,7 @@ public class ItemInfoPopup : MonoBehaviour
         popup.SetActive(false);
         blocker.SetActive(false);
 
-        // ´ÙÀ½ ¾ÆÀÌÅÛÀ» À§ÇØ ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         currentLargeSprite = null;
 
         if (magnifyButton != null)
