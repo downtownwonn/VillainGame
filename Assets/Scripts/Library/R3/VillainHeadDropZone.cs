@@ -10,6 +10,10 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
     public SpriteRenderer backgroundRenderer; // 바뀔 배경의 Sprite Renderer
     public Sprite newBackgroundSprite;        // 바뀐 후의 배경 이미지
 
+    [Header("배경음악")]
+    public AudioSource bgmSource;         // 기존 배경음악
+    public AudioSource extraMusicSource;  // 추가로 틀어둔 내 음악
+
     private bool isPlaced = false;   // 스피커가 놓였는지 여부
 
     public void OnDrop(PointerEventData eventData)
@@ -23,7 +27,6 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
         Image droppedImage = droppedItem.GetComponent<Image>();
         if (droppedImage == null || droppedImage.sprite == null) return;
 
-        // 빌런 머리 위에 스피커 이미지 표시
         headSpeakerImage.sprite = droppedImage.sprite;
         Color c = headSpeakerImage.color;
         c.a = 1f;
@@ -31,7 +34,6 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
 
         isPlaced = true;
 
-        // 인벤토리 슬롯 비우기
         droppedImage.sprite = null;
         Color slotColor = droppedImage.color;
         slotColor.a = 0f;
@@ -42,17 +44,19 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // 스피커가 놓인 상태에서 클릭하면 무음으로 교체
         if (isPlaced && muteSprite != null)
         {
             headSpeakerImage.sprite = muteSprite;
             Debug.Log("무음으로 변경됨!");
 
-            // 배경도 함께 교체
             if (backgroundRenderer != null && newBackgroundSprite != null)
             {
                 backgroundRenderer.sprite = newBackgroundSprite;
             }
+
+            // 배경음악 전부 정지
+            if (bgmSource != null) bgmSource.Stop();
+            if (extraMusicSource != null) extraMusicSource.Stop();
         }
     }
 }
