@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4e851367bc1df0643b3c13a0be9f46d1
+guid: c6f1b216c78b0944caf3a0c1fbc25fa6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1247127379658415201
-    second: glasses2_0
+      213: 4563019510597242424
+    second: "\uD14C\uC774\uBE0C\uBE14_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: glasses2_0
+      name: "\uD14C\uC774\uBE0C\uBE14_0"
       rect:
         serializedVersion: 2
-        x: 18
-        y: 23
-        width: 1495
-        height: 981
+        x: 0
+        y: 0
+        width: 425
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 16c14368ebfae4110800000000000000
-      internalID: 1247127379658415201
+      spriteID: 83e4358a11a135f30800000000000000
+      internalID: 4563019510597242424
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      glasses2_0: 1247127379658415201
+      "\uD14C\uC774\uBE0C\uBE14_0": 4563019510597242424
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
