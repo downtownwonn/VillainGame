@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -6,10 +7,12 @@ using TMPro;
 public class RoundIntroManager : MonoBehaviour
 {
     public GameObject roundPanel;
-    public GameObject gameplayUI;   // 추가
+    public GameObject gameplayUI;
 
     public Image panelImage;
     public TextMeshProUGUI roundText;
+
+    private List<Collider2D> gameplayColliders = new List<Collider2D>();
 
     void Start()
     {
@@ -18,7 +21,9 @@ public class RoundIntroManager : MonoBehaviour
 
     IEnumerator ShowRoundPanel()
     {
-        // 인트로 시작
+        // 게임 Collider 전부 잠금
+        LockGameplayColliders();
+
         gameplayUI.SetActive(false);
         roundPanel.SetActive(true);
 
@@ -33,7 +38,6 @@ public class RoundIntroManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // 텍스트 페이드
         float t = 0f;
         float textFadeTime = 0.8f;
 
@@ -45,7 +49,6 @@ public class RoundIntroManager : MonoBehaviour
             yield return null;
         }
 
-        // 배경 페이드
         t = 0f;
         float bgFadeTime = 1.6f;
 
@@ -59,5 +62,39 @@ public class RoundIntroManager : MonoBehaviour
 
         roundPanel.SetActive(false);
         gameplayUI.SetActive(true);
+
+        // 게임 Collider 다시 활성화
+        UnlockGameplayColliders();
+    }
+
+    void LockGameplayColliders()
+    {
+        gameplayColliders.Clear();
+
+        Collider2D[] colliders = FindObjectsByType<Collider2D>(
+            FindObjectsInactive.Exclude
+        );
+
+        foreach (Collider2D col in colliders)
+        {
+            if (col.enabled)
+            {
+                gameplayColliders.Add(col);
+                col.enabled = false;
+            }
+        }
+    }
+
+    void UnlockGameplayColliders()
+    {
+        foreach (Collider2D col in gameplayColliders)
+        {
+            if (col != null)
+            {
+                col.enabled = true;
+            }
+        }
+
+        gameplayColliders.Clear();
     }
 }

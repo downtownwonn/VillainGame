@@ -7,21 +7,27 @@ public class ChangePlayer : MonoBehaviour
     public GameObject bendPlayer;
     public GameObject Canvas;
 
+    [Header("Box")]
+    public OpenClosedBox openBox;
+
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip bendSound;
 
-    bool changed = false;
+    private bool changed = false;
 
     void Start()
     {
-        bendPlayer.SetActive(false); // 시작하면 숙인 사람 숨김
+        // 시작하면 숙인 사람 숨김
+        bendPlayer.SetActive(false);
+
         Canvas.SetActive(true);
     }
 
     void OnMouseDown()
     {
-        if (changed) return;
+        if (changed)
+            return;
 
         changed = true;
         StartCoroutine(ChangePlayerRoutine());
@@ -38,8 +44,14 @@ public class ChangePlayer : MonoBehaviour
             yield return new WaitForSeconds(0.4f);
         }
 
-        // 이미지 변경
+        // 사람 자세 변경
         sitPlayer.SetActive(false);
         bendPlayer.SetActive(true);
+
+        // 사람이 숙인 후에만 박스 클릭 가능
+        if (openBox != null)
+        {
+            openBox.EnableBoxClick();
+        }
     }
 }
