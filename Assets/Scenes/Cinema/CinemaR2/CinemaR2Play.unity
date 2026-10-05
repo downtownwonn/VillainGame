@@ -130,12 +130,12 @@ GameObject:
   - component: {fileID: 224773}
   - component: {fileID: 224774}
   m_Layer: 0
-  m_Name: HearEffect
+  m_Name: HeartEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &224773
 Transform:
   m_ObjectHideFlags: 0
@@ -7005,7 +7005,7 @@ MonoBehaviour:
   mainBackground: {fileID: 793746624}
   leftBackground: {fileID: 1565687215}
   rightBackground: {fileID: 1793243729}
-  heartEffect: {fileID: 224772}
+  heartEffect: {fileID: 224774}
   leftButton: {fileID: 1415360429}
   rightButton: {fileID: 1503750193}
 --- !u!114 &2076239350
