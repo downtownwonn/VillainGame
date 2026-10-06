@@ -30,6 +30,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Cinema/CinemaR3/CinemaR3Clear.unity
     guid: 8564de5790aa2594d8bc73d3c69e059d
   - enabled: 1
+    path: Assets/Scenes/Library/Library R1/R1Clear/R1clear.unity
+    guid: 398e5521f17274bcfa4f68d039f9f703
+  - enabled: 1
+    path: Assets/Scenes/Library/Library R2/R2Clear/R2clear.unity
+    guid: f4d4e44930d5142d3bc438bdc45daaf8
+  - enabled: 1
+    path: Assets/Scenes/Library/Library R3/R3Clear/R3clear.unity
+    guid: 4d1a3540183eb4f96be5ac65aeaf92ef
+  - enabled: 1
     path: Assets/Scenes/Store/StoreR2/R2Clear/StoreR2Clear.unity
     guid: 3e4418723f5a028459363986f5ed1cd1
   - enabled: 1

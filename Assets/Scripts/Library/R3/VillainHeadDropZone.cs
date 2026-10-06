@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHandler
@@ -14,7 +16,12 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
     public AudioSource bgmSource;         // 기존 배경음악
     public AudioSource extraMusicSource;  // 추가로 틀어둔 내 음악
 
+    [Header("클리어 씬 이동 (비워두면 이동 안 함)")]
+    public string clearSceneName = "";
+    public float delayBeforeClear = 1.5f;
+
     private bool isPlaced = false;   // 스피커가 놓였는지 여부
+    private bool isCleared = false;  // 중복 실행 방지
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -44,8 +51,12 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (isCleared) return;
+
         if (isPlaced && muteSprite != null)
         {
+            isCleared = true;
+
             headSpeakerImage.sprite = muteSprite;
             Debug.Log("무음으로 변경됨!");
 
@@ -57,6 +68,17 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
             // 배경음악 전부 정지
             if (bgmSource != null) bgmSource.Stop();
             if (extraMusicSource != null) extraMusicSource.Stop();
+
+            // 일정 시간 후 클리어 씬으로 이동
+            if (!string.IsNullOrEmpty(clearSceneName))
+                StartCoroutine(GoToClearScene());
         }
+    }
+
+    private IEnumerator GoToClearScene()
+    {
+        yield return new WaitForSeconds(delayBeforeClear);
+        Debug.Log("클리어 씬으로 이동: " + clearSceneName);
+        SceneManager.LoadScene(clearSceneName);
     }
 }

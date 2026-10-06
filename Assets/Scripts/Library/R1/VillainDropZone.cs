@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class VillainDropZone : MonoBehaviour, IDropHandler
@@ -10,6 +12,7 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
     public int totalBooksNeeded = 5;           // 몇 권 모으면 퇴치되는지
 
     private int stackedCount = 0;
+    private bool isCleared = false;
 
     [Header("빌런 다리 애니메이션")]
     public Animator legAnimator;               // 다리 떠는 애니메이터 연결
@@ -20,9 +23,15 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
     public AudioClip stackSound;    // 책 한 권 쌓일 때마다 재생할 효과음
     public AudioSource audioSource; // AudioManager의 AudioSource 연결
 
+    [Header("클리어 씬 이동 (비워두면 이동 안 함)")]
+    public string clearSceneName = "";
+    public float delayBeforeClear = 1.5f;
+
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("OnDrop 호출됨! pointerDrag = " + eventData.pointerDrag);
+
+        if (isCleared) return;
 
         GameObject droppedItem = eventData.pointerDrag;
         if (droppedItem == null) return;
@@ -63,6 +72,7 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
         if (stackedCount >= totalBooksNeeded)
         {
             Debug.Log("빌런 퇴치 성공!");
+            isCleared = true;
 
             // 다리 애니메이션 정지
             if (legAnimator != null)
@@ -73,6 +83,16 @@ public class VillainDropZone : MonoBehaviour, IDropHandler
             {
                 legSprite.sprite = idleLegSprite;
             }
+
+            if (!string.IsNullOrEmpty(clearSceneName))
+                StartCoroutine(GoToClearScene());
         }
+    }
+
+    private IEnumerator GoToClearScene()
+    {
+        yield return new WaitForSeconds(delayBeforeClear);
+        Debug.Log("클리어 씬으로 이동: " + clearSceneName);
+        SceneManager.LoadScene(clearSceneName);
     }
 }
