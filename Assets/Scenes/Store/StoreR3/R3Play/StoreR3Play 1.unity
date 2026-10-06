@@ -2025,7 +2025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: "\uB9D0\uBCF4\uB8E8 \uB808\uB4DC \uD558\uB098"
+  dialogue: "\uC774\uAC70\uB791 \uBC14\uAFD4 \uC784"
   bubbleType: 2
   bubbleOffset: {x: 0, y: 1.5}
   textOffset: {x: 0, y: 0}
