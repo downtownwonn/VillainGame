@@ -11,8 +11,7 @@ public class SafePasswordLock : MonoBehaviour
 
     [Header("UI 텍스트 설정")]
     [SerializeField] private TextMeshProUGUI displayText; 
-    [SerializeField] private string defaultPrompt = "비밀번호 입력"; 
-    [SerializeField] private int maxDisplayLength = 6; // 화면에 최대로 표시할 글자 수
+    [SerializeField] private string defaultPrompt = "비밀번호를 입력하세요"; // 안내 문구
 
     [Header("UI 색상 설정")]
     [SerializeField] private Color normalColor = Color.white;  // 평소 / 숫자 입력 중 색상
@@ -33,7 +32,7 @@ public class SafePasswordLock : MonoBehaviour
 
     private void Start()
     {
-        UpdateDisplay(defaultPrompt, normalColor);
+        UpdateDisplay(GetMaskedInput(), normalColor);
     }
 
     /// <summary>
@@ -49,16 +48,39 @@ public class SafePasswordLock : MonoBehaviour
             return;
         }
 
-        currentInput += inputChar;
-
-        // 글자 수가 설정한 최대 길이를 초과하면 앞에서부터 잘라냄
-        string displayInput = currentInput;
-        if (displayInput.Length > maxDisplayLength)
+        // 비밀번호 자릿수(correctPassword.Length)까지만 입력을 받도록 제한
+        if (currentInput.Length < correctPassword.Length)
         {
-            displayInput = displayInput.Substring(displayInput.Length - maxDisplayLength);
+            currentInput += inputChar;
         }
 
-        UpdateDisplay(displayInput, normalColor);
+        UpdateDisplay(GetMaskedInput(), normalColor);
+    }
+
+    /// <summary>
+    /// 항상 안내 문구와 띄어진 마스킹 문자열을 함께 반환 (예: "비밀번호를 입력하세요 3 _ _")
+    /// </summary>
+    private string GetMaskedInput()
+    {
+        int passwordLength = correctPassword.Length;
+        System.Collections.Generic.List<string> chars = new System.Collections.Generic.List<string>();
+
+        for (int i = 0; i < passwordLength; i++)
+        {
+            if (i < currentInput.Length)
+            {
+                chars.Add(currentInput[i].ToString()); // 입력된 글자 추가
+            }
+            else
+            {
+                chars.Add("_"); // 아직 입력되지 않은 자리는 '_' 추가
+            }
+        }
+
+        string masked = string.Join(" ", chars);
+
+        // 항상 안내 문구와 마스킹된 문자열을 조합해서 반환
+        return defaultPrompt + " " + masked;
     }
 
     /// <summary>
@@ -68,7 +90,6 @@ public class SafePasswordLock : MonoBehaviour
     {
         if (currentInput == correctPassword)
         {
-            // 정답 맞추면 대기 코루틴 실행
             StartCoroutine(OpenSafeRoutine());
         }
         else
@@ -85,16 +106,11 @@ public class SafePasswordLock : MonoBehaviour
     {
         isUnlocked = true;
 
-        // 성공 메시지 및 초록색 변경
         UpdateDisplay("금고문이 열렸습니다!", successColor);
-
-        // 성공 사운드 재생
         PlaySound(successSound);
 
-        // 설정한 openDelay(초)만큼 대기
         yield return new WaitForSeconds(openDelay);
 
-        // 대기 후 열린 배경 및 내부 물체 활성화
         if (openBackground != null) openBackground.SetActive(true);
         if (internalItems != null) internalItems.SetActive(true);
 
@@ -130,7 +146,7 @@ public class SafePasswordLock : MonoBehaviour
     public void ClearInput()
     {
         currentInput = "";
-        UpdateDisplay(defaultPrompt, normalColor);
+        UpdateDisplay(GetMaskedInput(), normalColor);
     }
 
     /// <summary>

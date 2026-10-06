@@ -4,10 +4,18 @@ using UnityEngine.UI;
 
 public class WaterBucket : MonoBehaviour
 {
+    [Header("세척 연출용 이미지 설정")]
+    [Tooltip("비니 세척 시 보여줄 스프라이트 이미지")]
+    [SerializeField] private Sprite biniWashSprite;
+    [Tooltip("자루 세척 시 보여줄 스프라이트 이미지")]
+    [SerializeField] private Sprite mophandleWashSprite;
+
     [Header("Bini 설정")]
     [SerializeField] private GameObject hatObject;
     [Tooltip("비니 씻길 때 크기 비율")]
     public float biniScale = 0.5f;
+    [Tooltip("비니 X축 시작 위치 오프셋 (월드 단위)")]
+    public float biniXOffset = 0f;
     [Tooltip("비니 Y축 시작 위치 오프셋 (월드 단위)")]
     public float biniYOffset = 0.5f;
     [Tooltip("비니가 아래에서 위로 떠오르는 거리")]
@@ -39,6 +47,8 @@ public class WaterBucket : MonoBehaviour
     [SerializeField] private GameObject blackMopHandleObject;
     [Tooltip("자루 씻길 때 크기 비율")]
     public float mophandleScale = 0.8f; 
+    [Tooltip("자루 X축 시작 위치 오프셋 (월드 단위)")]
+    public float mophandleXOffset = 0f;
     [Tooltip("자루 Y축 시작 위치 오프셋 (월드 단위)")]
     public float mophandleYOffset = 0.5f;
     [Tooltip("자루가 아래에서 위로 떠오르는 거리")]
@@ -102,8 +112,10 @@ public class WaterBucket : MonoBehaviour
                 if (spriteName.Contains("bini"))
                 {
                     ClearDroppedItem(draggableItem);
+                    Sprite targetSprite = biniWashSprite != null ? biniWashSprite : itemSprite;
+
                     StartCoroutine(WashTempImageRoutine(
-                        itemSprite, hatObject, biniScale, biniYOffset, biniRotationZ,
+                        targetSprite, hatObject, biniScale, biniXOffset, biniYOffset, biniRotationZ,
                         bini1EnterDuration, bini1WaitDuration, bini1ExitDuration,
                         bini2EnterDuration, bini2WaitDuration, bini2ExitDuration,
                         bini3EnterDuration, bini3WaitDuration,
@@ -112,8 +124,10 @@ public class WaterBucket : MonoBehaviour
                 else if (spriteName.Contains("mophandle"))
                 {
                     ClearDroppedItem(draggableItem);
+                    Sprite targetSprite = mophandleWashSprite != null ? mophandleWashSprite : itemSprite;
+
                     StartCoroutine(WashTempImageRoutine(
-                        itemSprite, blackMopHandleObject, mophandleScale, mophandleYOffset, mophandleRotationZ,
+                        targetSprite, blackMopHandleObject, mophandleScale, mophandleXOffset, mophandleYOffset, mophandleRotationZ,
                         mophandle1EnterDuration, mophandle1WaitDuration, mophandle1ExitDuration,
                         mophandle2EnterDuration, mophandle2WaitDuration, mophandle2ExitDuration,
                         mophandle3EnterDuration, mophandle3WaitDuration,
@@ -124,7 +138,7 @@ public class WaterBucket : MonoBehaviour
     }
 
     private IEnumerator WashTempImageRoutine(
-        Sprite itemSprite, GameObject resultObject, float targetScale, float targetYOffset, float targetRotZ,
+        Sprite itemSprite, GameObject resultObject, float targetScale, float targetXOffset, float targetYOffset, float targetRotZ,
         float e1, float w1, float x1,
         float e2, float w2, float x2,
         float e3, float w3,
@@ -132,14 +146,12 @@ public class WaterBucket : MonoBehaviour
     {
         isWashing = true;
 
-        // 양동이 스프라이트 및 렌더러 가져오기 (레이어 설정용)
         SpriteRenderer bucketRenderer = GetComponent<SpriteRenderer>();
         if (bucketRenderer == null)
         {
             bucketRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
-        // 1. 세척 연출용 월드 오브젝트 생성
         GameObject tempItem = new GameObject("TempWashItem");
         SpriteRenderer tempRenderer = tempItem.AddComponent<SpriteRenderer>();
         tempRenderer.sprite = itemSprite;
@@ -147,19 +159,18 @@ public class WaterBucket : MonoBehaviour
         if (bucketRenderer != null)
         {
             tempRenderer.sortingLayerID = bucketRenderer.sortingLayerID;
-            tempRenderer.sortingOrder = bucketRenderer.sortingOrder - 2; // 양동이 뒤
+            tempRenderer.sortingOrder = bucketRenderer.sortingOrder - 2;
         }
         else
         {
             tempRenderer.sortingOrder = -2;
         }
 
-        // 3. 스케일 및 회전 적용
         tempItem.transform.localScale = new Vector3(targetScale, targetScale, 1f);
         tempItem.transform.rotation = Quaternion.Euler(0f, 0f, targetRotZ);
 
-        // 4. 위치 계산
         Vector3 startPos = transform.position;
+        startPos.x += targetXOffset;
         startPos.y += targetYOffset;
         tempItem.transform.position = startPos;
 
@@ -169,7 +180,6 @@ public class WaterBucket : MonoBehaviour
         Vector3 thirdSinkPos = startPos;
         thirdSinkPos.y -= thirdSinkDep;
 
-        // 6. [첫 번째] 들어가고(사운드+물튐) -> 대기 -> 나오고(사운드+물튐)
         PlaySound(wash1EnterSound);
         PlaySplash(startPos);
         yield return StartCoroutine(DoMoveMotion(tempItem, startPos, normalSinkPos, e1));
@@ -180,7 +190,6 @@ public class WaterBucket : MonoBehaviour
         PlaySplash(startPos);
         yield return StartCoroutine(DoMoveMotion(tempItem, normalSinkPos, startPos, x1));
 
-        // 7. [두 번째] 들어가고(사운드+물튐) -> 대기 -> 나오고(사운드+물튐)
         PlaySound(wash2EnterSound);
         PlaySplash(startPos);
         yield return StartCoroutine(DoMoveMotion(tempItem, startPos, normalSinkPos, e2));
@@ -191,7 +200,6 @@ public class WaterBucket : MonoBehaviour
         PlaySplash(startPos);
         yield return StartCoroutine(DoMoveMotion(tempItem, normalSinkPos, startPos, x2));
 
-        // 8. [세 번째] 깊이 들어가고(사운드+물튐) -> 대기 -> 소멸
         PlaySound(wash3EnterSound);
         PlaySplash(startPos);
         yield return StartCoroutine(DoMoveMotion(tempItem, startPos, thirdSinkPos, e3));
@@ -199,7 +207,6 @@ public class WaterBucket : MonoBehaviour
         yield return new WaitForSeconds(w3);
         Destroy(tempItem);
 
-        // 9. 결과물 연출 시작 (양동이 뒤쪽에서 아래에서 위로 부드럽게 떠오름)
         if (resultObject != null)
         {
             SpriteRenderer resultSr = resultObject.GetComponent<SpriteRenderer>();
@@ -249,7 +256,7 @@ public class WaterBucket : MonoBehaviour
         if (splashEffectPrefab != null)
         {
             GameObject splash = Instantiate(splashEffectPrefab, pos, Quaternion.identity);
-            Destroy(splash, 2f); // 2초 후 자동 파괴 (이펙트 길이에 맞게 조절 가능)
+            Destroy(splash, 2f);
         }
     }
 
