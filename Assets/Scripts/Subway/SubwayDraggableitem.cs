@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -122,6 +123,7 @@ public class SubwayDraggableItem : MonoBehaviour,
                     if (used)
                     {
                         ReturnToOriginalPosition();
+                        StartCoroutine(ClearAndFade());
                         return;
                     }
                 }
@@ -255,6 +257,8 @@ public class SubwayDraggableItem : MonoBehaviour,
 
                     ReturnToOriginalPosition();
 
+                    StartCoroutine(ClearAndFade());
+
                     return;
                 }
             }
@@ -301,6 +305,8 @@ public class SubwayDraggableItem : MonoBehaviour,
                         Debug.Log("가위 → 백팩 빌런 성공!");
 
                         ReturnToOriginalPosition();
+
+                        StartCoroutine(ClearAndFade());
 
                         return;
                     }
@@ -410,5 +416,20 @@ public class SubwayDraggableItem : MonoBehaviour,
         {
             trigger.OnPointerClick(eventData);
         }
+    }
+    private IEnumerator ClearAndFade()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        if (SubwayFadeManager.Instance != null)
+        {
+            yield return StartCoroutine(
+                SubwayFadeManager.Instance.FadeOut(1f)
+            );
+        }
+
+    // 여기서 컷신으로 전환
+    // 예:
+    // SubwaySceneViewManager.Instance.ShowRound1Story();
     }
 }
