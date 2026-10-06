@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af152bbab6ef35946a3c8b5a94ae8b28, type: 3}
   m_Name: binidata
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemSprite: {fileID: -643958608011681267, guid: ecb2cb3fdb4ec0740809dea9abaddbed, type: 3}
+  itemSprite: {fileID: -643958608011681267, guid: d24f547729260ca4795a161de8c44ed6, type: 3}
   itemName: "\uBE44\uB2C8"
-  description: "\uACF5\uD56D\uB3C4\uB451 \uC544\uC800\uC528\uAC00 \uB193\uACE0\uAC04
-    \uBE44\uB2C8.\n\uC880 \uC5BC\uB8E9\uC774 \uC788\uB294 \uAC83 \uAC19\uB2E4."
+  description: "\uC5D0\uC5B4\uCEE8\uC774 \uB0A0\uB824\uBC84\uB9B0 \uBE44\uB2C8.\n\uC880
+    \uC5BC\uB8E9\uC774 \uC788\uB294 \uAC83 \uAC19\uB2E4."
   largeItemSprite: {fileID: 0}

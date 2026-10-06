@@ -10,11 +10,29 @@ public class OpenClosedBox : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip openSound;
 
-    bool opened = false;
+    private bool opened = false;
+    private bool canOpen = false;
+
+    // 사람이 숙인 후 ChangePlayer에서 호출
+    public void EnableBoxClick()
+    {
+        canOpen = true;
+
+        Debug.Log("조명 조절기 박스 클릭 가능!");
+    }
 
     void OnMouseDown()
     {
-        if (opened) return;
+        // 사람이 숙이기 전에는 클릭해도 아무것도 하지 않음
+        if (!canOpen)
+        {
+            Debug.Log("아직 박스를 열 수 없습니다.");
+            return;
+        }
+
+        // 이미 열렸으면 무시
+        if (opened)
+            return;
 
         opened = true;
         StartCoroutine(OpenBoxRoutine());
@@ -27,7 +45,6 @@ public class OpenClosedBox : MonoBehaviour
         {
             audioSource.PlayOneShot(openSound);
 
-            // 효과음이 끝날 때까지 대기
             yield return new WaitForSeconds(0.8f);
         }
 

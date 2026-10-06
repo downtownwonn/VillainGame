@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af152bbab6ef35946a3c8b5a94ae8b28, type: 3}
   m_Name: keydata
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemSprite: {fileID: 4919404235312482556, guid: 206a62167567437499735cd5e1f60b7a, type: 3}
+  itemSprite: {fileID: -8072826589935752583, guid: 9bf5ae68199787f429371674ac94fc9c, type: 3}
   itemName: "\uC5F4\uC1E0"
   description: "\uB0A1\uACE0 \uB179\uC2A8 \uC5F4\uC1E0.\n\uBB34\uC5B8\uAC00\uB97C
     \uC5F4 \uC218 \uC788\uC744 \uAC83 \uAC19\uB2E4."
