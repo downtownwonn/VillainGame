@@ -1163,6 +1163,7 @@ GameObject:
   - component: {fileID: 305073975}
   - component: {fileID: 305073978}
   - component: {fileID: 305073977}
+  - component: {fileID: 305073979}
   m_Layer: 0
   m_Name: "\uB0A8\uC790\uBA38\uB9AC"
   m_TagString: Untagged
@@ -1279,7 +1280,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.14195013, y: 0.17743587}
+  m_Offset: {x: 0.14195013, y: 0.35206652}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1289,7 +1290,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 13.122878, y: 23.6197}
+  m_Size: {x: 13.122878, y: 23.549847}
   m_EdgeRadius: 0
 --- !u!114 &305073978
 MonoBehaviour:
@@ -1306,8 +1307,20 @@ MonoBehaviour:
   dialogue: "\uC544 \uC2DC\uB044\uB7EC\uC6CC..."
   bubbleType: 2
   bubbleOffset: {x: -1, y: 1}
-  textOffset: {x: 40, y: 3}
+  textOffset: {x: 40, y: 1}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
+--- !u!114 &305073979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305073974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32525661a4c3f40f6a5ebe66e8283087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WigDropTarget
 --- !u!1 &325632052
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,7 +2959,7 @@ MonoBehaviour:
   dialogue: "\uAE08\uBC1C\uC5B8\uB2C8 \uB3C4\uC640\uC918\uC694"
   bubbleType: 2
   bubbleOffset: {x: -1.5, y: -0.5}
-  textOffset: {x: 35, y: 5}
+  textOffset: {x: 35, y: 1}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &1019575958
 BoxCollider2D:
@@ -4606,11 +4619,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 397110459185008581, guid: 439029c571b9a234086a32f2f1594b54, type: 3}
       propertyPath: m_fontSize
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 397110459185008581, guid: 439029c571b9a234086a32f2f1594b54, type: 3}
       propertyPath: m_fontSizeBase
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 397110459185008581, guid: 439029c571b9a234086a32f2f1594b54, type: 3}
       propertyPath: m_sharedMaterial
@@ -4821,6 +4834,9 @@ MonoBehaviour:
   wigLocalScale: {x: 0.25, y: 0.25, z: 1}
   swapSound: {fileID: 8300000, guid: be9426c3041284be1bb356b083f7847e, type: 3}
   audioSource: {fileID: 238484541}
+  clearSceneName: R2Clear
+  delayBeforeClear: 1.5
+  wigIconSprite: {fileID: 0}
 --- !u!114 &1675222166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5213,6 +5229,10 @@ PrefabInstance:
     - target: {fileID: 1550650669184868162, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159025690280866703, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3399173255392336663, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
       propertyPath: m_Color.a

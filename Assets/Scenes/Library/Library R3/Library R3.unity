@@ -154,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130.8, y: 167.4}
-  m_SizeDelta: {x: 93.8, y: 90.7}
+  m_AnchoredPosition: {x: 139.3777, y: 131.38}
+  m_SizeDelta: {x: 110.9553, y: 162.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15645798
 MonoBehaviour:
@@ -175,6 +175,8 @@ MonoBehaviour:
   newBackgroundSprite: {fileID: 4397199564817523281, guid: 0f504c5a30e8141799e22a81bebe1dc4, type: 3}
   bgmSource: {fileID: 1411805383}
   extraMusicSource: {fileID: 1402851511}
+  clearSceneName: R3clear
+  delayBeforeClear: 1.5
 --- !u!114 &15645799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2550,7 +2552,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.0794046}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2560,7 +2562,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 8.57, y: 9.81}
+  m_Size: {x: 8.57, y: 7.651192}
   m_EdgeRadius: 0
 --- !u!1 &1033178263
 GameObject:
@@ -4399,6 +4401,9 @@ MonoBehaviour:
   wigLocalScale: {x: 0.25, y: 0.25, z: 1}
   swapSound: {fileID: 0}
   audioSource: {fileID: 0}
+  clearSceneName: Library R2 Clear
+  delayBeforeClear: 1.5
+  wigIconSprite: {fileID: 0}
 --- !u!114 &1675222166
 MonoBehaviour:
   m_ObjectHideFlags: 0

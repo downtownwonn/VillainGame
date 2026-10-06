@@ -119,6 +119,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &25691941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 25691943}
+  - component: {fileID: 25691942}
+  m_Layer: 0
+  m_Name: ArrowLock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &25691942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25691941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c71f891dfc2d4cde865044801313f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArrowLockOnPanel
+  panels:
+  - {fileID: 1800709152}
+  arrowButtons:
+  - {fileID: 1060089158}
+  hideArrows: 1
+--- !u!4 &25691943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25691941}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.85995, y: -0.41246, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &55899994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1294,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 276072123477685833, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
   m_PrefabInstance: {fileID: 805771052}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1060089158}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -1882,6 +1931,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1769481299}
   m_SourcePrefab: {fileID: 100100000, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
+--- !u!114 &823577453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5730195052664297205, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
+  m_PrefabInstance: {fileID: 805771052}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &832178276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,6 +2360,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050302180}
   m_CullTransparentMesh: 1
+--- !u!1 &1060089158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3184615026949236377, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
+  m_PrefabInstance: {fileID: 805771052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1111903039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,17 +2400,6 @@ Transform:
   - {fileID: 647911841}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1121454886 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5730195052664297205, guid: 16ae8c2700f15491d8b7db59cfcd8503, type: 3}
-  m_PrefabInstance: {fileID: 805771052}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1123207660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,7 +2621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneViewManager
   mainView: {fileID: 1111903039}
   leftShelfView: {fileID: 832178276}
-  rightShelfView: {fileID: 136804501}
+  rightShelfView: {fileID: 0}
   mainViewUI: {fileID: 0}
   leftShelfUI: {fileID: 0}
   rightShelfUI: {fileID: 0}
@@ -2620,11 +2674,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::library_BgChanger
   mainBackground: {fileID: 1111903039}
   leftBackground: {fileID: 832178276}
-  rightBackground: {fileID: 136804501}
+  rightBackground: {fileID: 0}
   leftButton: {fileID: 577107508}
-  rightButton: {fileID: 1121454886}
+  rightButton: {fileID: 823577453}
   villainDropZone: {fileID: 0}
   stackedBooksContainer: {fileID: 0}
+  hasRightView: 0
 --- !u!1 &1270714037
 GameObject:
   m_ObjectHideFlags: 0
@@ -4196,7 +4251,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: -60, y: -90}
+  m_SizeDelta: {x: -60, y: -80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1800709154
 MonoBehaviour:
@@ -5443,3 +5498,4 @@ SceneRoots:
   - {fileID: 857775538}
   - {fileID: 855462019}
   - {fileID: 1708833968}
+  - {fileID: 25691943}

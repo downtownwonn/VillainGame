@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Book1Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemSprite: {fileID: 7119347239250650302, guid: 1d9b61368eb16427f92c5a495cdb66ed, type: 3}
-  itemName: "<\uBD04\uB0A0\uC758 \uD3B8\uC9C0>"
-  description: "\uB85C\uB9E8\uC2A4 \uC18C\uC124\uC744 \uC5BB\uC5C8\uB2E4!!\n\uB450\uADFC\uB450\uADFC
-    \uC124\uB808\uB294 \uC0AC\uB791 \uC774\uC57C\uAE30\uAC00 \uB2F4\uACA8 \uC788\uB294
-    \uAC83 \uAC19\uB2E4."
+  itemName: "<\uB370\uBBF8\uC548>"
+  description: "\uB0A1\uC740 \uCC45 \uD55C \uAD8C\uC744 \uBC1C\uACAC\uD588\uB2E4.
+    \uD398\uC774\uC9C0\uB97C \uB118\uAE38\uC218\uB85D\n\uB0B4\uAC00 \uC54C\uACE0
+    \uC788\uB358 \uC138\uACC4\uC758 \uACBD\uACC4\uAC00 \uC870\uAE08\uC529\n\uD750\uB824\uC9C0\uB294
+    \uAE30\uBD84\uC774 \uB4E0\uB2E4."
   largeItemSprite: {fileID: 0}

@@ -46,7 +46,7 @@ public class BubbleCharacter : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // UI À§¸¦ Å¬¸¯ÇÑ °æ¿ì Ä³¸¯ÅÍ Å¬¸¯ ¹«½Ã
+        // UI ìœ„ë¥¼ í´ë¦­í•œ ê²½ìš° ìºë¦­í„° í´ë¦­ ë¬´ì‹œ
         if (EventSystem.current != null &&
             EventSystem.current.IsPointerOverGameObject())
         {
