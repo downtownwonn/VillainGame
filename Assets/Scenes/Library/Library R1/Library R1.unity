@@ -4250,8 +4250,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: -60, y: -80}
+  m_AnchoredPosition: {x: 0, y: 37.5}
+  m_SizeDelta: {x: 0, y: -75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1800709154
 MonoBehaviour:
@@ -4654,6 +4654,8 @@ MonoBehaviour:
   - {fileID: -6856312136695207559, guid: a6496771a273e48df986fba9d03a106e, type: 3}
   placeSound: {fileID: 8300000, guid: f1a42fa05cdbf4cadacd6b171c34f1e0, type: 3}
   audioSource: {fileID: 1727358167}
+  clearSceneName: 
+  delayBeforeClear: 1.5
 --- !u!114 &1896918064
 MonoBehaviour:
   m_ObjectHideFlags: 0
