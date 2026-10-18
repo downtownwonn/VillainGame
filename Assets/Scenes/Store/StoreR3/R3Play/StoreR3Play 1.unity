@@ -585,7 +585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &282101822
 Transform:
   m_ObjectHideFlags: 0
@@ -2026,7 +2026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: "\uC774\uAC70\uB791 \uBC14\uAFD4 \uC784"
+  dialogue: "\uC774\uAC70\uB791 \uBC14\uAFD4 \uC774\uB140\uC11D\uC544"
   bubbleType: 2
   bubbleOffset: {x: 0, y: 1.5}
   textOffset: {x: 0, y: 0}
@@ -2515,7 +2515,7 @@ MonoBehaviour:
   handObject: {fileID: 1694276014}
   bodyObject: {fileID: 301006282}
   equipSound: {fileID: 8300000, guid: c4a70afba0732e14e851234c22ab6fbe, type: 3}
-  fadeOverlay: {fileID: 0}
+  fadeOverlay: {fileID: 1259830531}
   nextSceneName: StoreR1Clear
   delayBeforeFade: 1
   fadeDuration: 1
@@ -6998,7 +6998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2010086027
 Transform:
   m_ObjectHideFlags: 0
