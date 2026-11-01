@@ -159,11 +159,11 @@ public class WaterBucket : MonoBehaviour
         if (bucketRenderer != null)
         {
             tempRenderer.sortingLayerID = bucketRenderer.sortingLayerID;
-            tempRenderer.sortingOrder = bucketRenderer.sortingOrder - 2;
+            tempRenderer.sortingOrder = bucketRenderer.sortingOrder + 1;
         }
         else
         {
-            tempRenderer.sortingOrder = -2;
+            tempRenderer.sortingOrder = 1;
         }
 
         tempItem.transform.localScale = new Vector3(targetScale, targetScale, 1f);
@@ -210,12 +210,7 @@ public class WaterBucket : MonoBehaviour
         if (resultObject != null)
         {
             SpriteRenderer resultSr = resultObject.GetComponent<SpriteRenderer>();
-            if (resultSr != null && bucketRenderer != null)
-            {
-                resultSr.sortingLayerID = bucketRenderer.sortingLayerID;
-                resultSr.sortingOrder = bucketRenderer.sortingOrder - 2;
-            }
-
+          
             Collider2D resultCol = resultObject.GetComponent<Collider2D>();
             if (resultCol != null) resultCol.enabled = false;
 
