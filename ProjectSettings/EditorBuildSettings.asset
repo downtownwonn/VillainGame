@@ -9,8 +9,50 @@ EditorBuildSettings:
     path: Assets/Scenes/StartS.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/StageSelect.unity
+    guid: 81f0caa8b3a044eb9b65f21a0b2f0003
+  - enabled: 1
     path: Assets/Scenes/Cinema/CinemaR1/CinemaR1Story.unity
     guid: c06f14bc765efb943993f611f5c3d111
+  - enabled: 1
+    path: Assets/Scenes/Cinema/CinemaR2/CinemaR2Story.unity
+    guid: e6d331237605def47bdaa8a2fc951719
+  - enabled: 1
+    path: Assets/Scenes/Cinema/CinemaR3/CinemaR3Story.unity
+    guid: 4a543080c6e48e648b89b0b2f8c21fda
+  - enabled: 1
+    path: Assets/Scenes/Library/Library R1/LibraryR1Story.unity
+    guid: c1da012d73749f844a6ceca6e805b732
+  - enabled: 1
+    path: Assets/Scenes/Library/Library R2/LibraryR2Story.unity
+    guid: 64bc0425e84395c469828a1108fdfe0b
+  - enabled: 1
+    path: Assets/Scenes/Library/Library R3/LibraryR3Story.unity
+    guid: 055f3dae80083324d8d2ed9ec8ce6047
+  - enabled: 1
+    path: Assets/Scenes/Subway/SubwayR1/SubwayR1Story.unity
+    guid: 8faaf610a106d7c45ab674997d38d2d7
+  - enabled: 1
+    path: Assets/Scenes/Subway/SubwayR2/SubwayR2Story.unity
+    guid: e91c67a3669ba534ebaf78172702ecdf
+  - enabled: 1
+    path: Assets/Scenes/Subway/SubwayR3/SubwayR3Story.unity
+    guid: 1c5e8a295f590ab4595f4fdb0d1bd3d9
+  - enabled: 1
+    path: Assets/Scenes/Subway/SubwayR1/SubwayR1Play.unity
+    guid: 1c41769eff14d0f40a73c144057e7aaf
+  - enabled: 1
+    path: Assets/Scenes/Subway/SubwayR1/SubwayR1Clear.unity
+    guid: d98bffc3f1bca3448bbe75288d773d69
+  - enabled: 1
+    path: Assets/Scenes/Store/StoreR1/StoreR1Story.unity
+    guid: 24fee3b3e9abc0944a2fcd862f4d32c9
+  - enabled: 1
+    path: Assets/Scenes/Store/StoreR2/StoreR2Story.unity
+    guid: a88722d80a0470140b874e489caab100
+  - enabled: 1
+    path: Assets/Scenes/Store/StoreR3/StoreR3Story.unity
+    guid: 698c12cfcc039384d95899d960955696
   - enabled: 1
     path: Assets/Scenes/Cinema/CinemaR1/CinemaR1Play.unity
     guid: d4b9a300792645743a6432026331bbf3
