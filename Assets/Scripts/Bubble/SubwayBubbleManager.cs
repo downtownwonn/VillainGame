@@ -15,8 +15,22 @@ public class SubwayBubbleManager : MonoBehaviour
     [Header("Bubble Sprites")]
     [SerializeField] private Sprite[] bubbleSprites;
 
+    [Header("Visible Height Ratios")]
+    [Tooltip("Each cropped sprite's visible alpha height divided by its sprite-rect height. Update these when replacing the bubble sprites.")]
+    [SerializeField]
+    private float[] visibleHeightRatios =
+    {
+        126f / 128f, // 풍1 sprite rect
+        126f / 128f, // 풍2 sprite rect
+        126f / 128f, // 풍3 sprite rect
+        201f / 203f  // 풍4: taller, multi-line bubble
+    };
+
     [Header("Bubble Canvas")]
     [SerializeField] private Canvas canvas;
+
+    [Header("Bubble Image Scale")]
+    [SerializeField, Range(0.1f, 1f)] private float bubbleDisplayScale = 0.5f;
 
     [Header("Bubble Default Sizes")]
     [SerializeField]
@@ -136,7 +150,7 @@ public class SubwayBubbleManager : MonoBehaviour
                 sizeIndex < bubbleSizes.Length)
             {
                 bubbleImage.rectTransform.sizeDelta =
-                    bubbleSizes[sizeIndex];
+                    GetBubbleDisplaySize(sizeIndex) * bubbleDisplayScale;
             }
         }
 
@@ -202,6 +216,49 @@ public class SubwayBubbleManager : MonoBehaviour
         }
 
         hideCoroutine = StartCoroutine(HideBubbleAfterDelay());
+    }
+
+    private Vector2 GetBubbleDisplaySize(int sizeIndex)
+    {
+        Vector2 configuredSize = bubbleSizes[sizeIndex];
+
+        // Keep the taller sprite at its authored size for multi-line dialogue.
+        if (sizeIndex >= 3 ||
+            bubbleSprites == null ||
+            bubbleSprites.Length <= 2 ||
+            bubbleSprites[sizeIndex] == null ||
+            bubbleSprites[2] == null ||
+            visibleHeightRatios == null ||
+            visibleHeightRatios.Length <= sizeIndex ||
+            visibleHeightRatios.Length <= 2)
+        {
+            return configuredSize;
+        }
+
+        Sprite sprite = bubbleSprites[sizeIndex];
+        Sprite referenceSprite = bubbleSprites[2];
+        float visibleRatio = visibleHeightRatios[sizeIndex];
+        float referenceVisibleRatio = visibleHeightRatios[2];
+
+        if (visibleRatio <= 0f || referenceVisibleRatio <= 0f ||
+            sprite.rect.height <= 0f || referenceSprite.rect.height <= 0f)
+        {
+            return configuredSize;
+        }
+
+        // Match the visible alpha height of the long, single-line type while
+        // preserving each sprite's original aspect ratio.
+        Vector2 referenceSize = bubbleSizes[2];
+        float referenceFitScale = Mathf.Min(
+            referenceSize.x / referenceSprite.rect.width,
+            referenceSize.y / referenceSprite.rect.height);
+        float targetVisibleHeight =
+            referenceSprite.rect.height * referenceFitScale * referenceVisibleRatio;
+
+        float fullSpriteHeight = targetVisibleHeight / visibleRatio;
+        float aspectRatio = sprite.rect.width / sprite.rect.height;
+
+        return new Vector2(fullSpriteHeight * aspectRatio, fullSpriteHeight);
     }
 
     private void SetBubblePosition(SubwayBubbleCharacter character)
