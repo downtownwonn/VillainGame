@@ -352,21 +352,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CouplePuzzleController
   fadePanel: {fileID: 1898782114}
-  fadeTime: 0.2
+  fadeTime: 1
   nextSceneName: CinemaR2Clear
   shoeUI: {fileID: 1721002357}
   coupleCollider: {fileID: 977057328}
   dropPoint: {fileID: 985555261}
   shoeEffect: {fileID: 988742607}
-  coupleSprite: {fileID: 977057325}
   audioSource: {fileID: 1607713497}
   shoeDropSound: {fileID: 8300000, guid: e4f0fe88005b8d04ebeae53a03249320, type: 3}
   vomitSound: {fileID: 8300000, guid: 8559a4d11429c604a9b7068b5076c3e9, type: 3}
-  walkSound: {fileID: 8300000, guid: 6b7ad7263c7adfa4f830c6aee832135b, type: 3}
-  flyTime: 0.25
+  flyTime: 0.35
   bounceHeight: 0.18
   bounceTime: 0.18
-  fadeOutTime: 0.5
 --- !u!4 &74343258
 Transform:
   m_ObjectHideFlags: 0
@@ -6054,6 +6051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
   wasDropped: 0
+  keepVisualSizeWhileDragging: 1
 --- !u!114 &1721002358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6076,7 +6074,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -591260542885086067, guid: 1ba1eebb391fb26449719b1f4118a976, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

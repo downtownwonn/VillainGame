@@ -17,9 +17,6 @@ public class VillainTickleController : MonoBehaviour
     public float featherMoveSpeed = 12f;
     public float featherMoveAngle = 15f;
 
-    [Header("Villain Fade")]
-    public float villainFadeDuration = 1.5f;
-
     [Header("Sounds")]
     public AudioSource tickleSound;
     public AudioSource walkingSound;
@@ -34,7 +31,6 @@ public class VillainTickleController : MonoBehaviour
     private bool isTickling = false;
 
     private Quaternion originalRotation;
-    private SpriteRenderer[] villainSprites;
 
     public void StartTickle(GameObject draggedFeather)
     {
@@ -47,9 +43,6 @@ public class VillainTickleController : MonoBehaviour
             villainObject = gameObject;
 
         originalRotation = villainObject.transform.localRotation;
-
-        villainSprites =
-            villainObject.GetComponentsInChildren<SpriteRenderer>();
 
         StartCoroutine(TickleSequence(draggedFeather));
     }
@@ -93,9 +86,19 @@ public class VillainTickleController : MonoBehaviour
             featherStartRotation = feather.localRotation;
         }
 
+        bool fadeStarted = false;
+        Coroutine screenFadeCoroutine = null;
+        float fadeStartTime = Mathf.Max(0f, tickleDuration - sceneFadeDuration);
+
         while (timer < tickleDuration)
         {
             timer += Time.deltaTime;
+
+            if (!fadeStarted && timer >= fadeStartTime)
+            {
+                fadeStarted = true;
+                screenFadeCoroutine = StartCoroutine(FadeOutScreen(draggedFeather));
+            }
 
             // =====================================
             // 깃털 회전
@@ -146,15 +149,13 @@ public class VillainTickleController : MonoBehaviour
         // ④ 잠깐 대기
         // =====================================
 
-        yield return new WaitForSeconds(0.2f);
+        if (!fadeStarted)
+        {
+            screenFadeCoroutine = StartCoroutine(FadeOutScreen(draggedFeather));
+        }
 
-        Debug.Log("⑥ 빌런 페이드아웃 시작");
-
-        // =====================================
-        // ⑤ 빌런 페이드아웃
-        // =====================================
-
-        yield return StartCoroutine(FadeOutVillain());
+        if (screenFadeCoroutine != null)
+            yield return screenFadeCoroutine;
 
         Debug.Log("⑦ 빌런 페이드아웃 완료");
 
@@ -201,7 +202,7 @@ public class VillainTickleController : MonoBehaviour
 
         Debug.Log("화면 페이드아웃 시작");
 
-        yield return StartCoroutine(FadeOutScreen());
+
 
         Debug.Log("화면 페이드아웃 완료");
 
@@ -226,88 +227,72 @@ public class VillainTickleController : MonoBehaviour
     // 빌런 페이드아웃
     // =====================================
 
-    private IEnumerator FadeOutVillain()
+    private IEnumerator FadeOutScreen(GameObject draggedFeather)
     {
-        Debug.Log(" FadeOutVillain 코루틴 시작");
+        Graphic[] featherGraphics = draggedFeather != null
+            ? draggedFeather.GetComponentsInChildren<Graphic>(true)
+            : new Graphic[0];
+        Color[] originalFeatherColors = new Color[featherGraphics.Length];
 
-        float timer = 0f;
-
-        while (timer < villainFadeDuration)
+        for (int i = 0; i < featherGraphics.Length; i++)
         {
-            timer += Time.deltaTime;
-
-            float alpha =
-                Mathf.Lerp(1f, 0f, timer / villainFadeDuration);
-
-            if (villainSprites != null)
-            {
-                foreach (SpriteRenderer sprite in villainSprites)
-                {
-                    if (sprite == null)
-                        continue;
-
-                    Color color = sprite.color;
-                    color.a = alpha;
-                    sprite.color = color;
-                }
-            }
-
-            yield return null;
+            if (featherGraphics[i] != null)
+                originalFeatherColors[i] = featherGraphics[i].color;
         }
 
-        Debug.Log(" 빌런 알파값 0 완료");
-
-        if (villainSprites != null)
-        {
-            foreach (SpriteRenderer sprite in villainSprites)
-            {
-                if (sprite == null)
-                    continue;
-
-                Color color = sprite.color;
-                color.a = 0f;
-                sprite.color = color;
-            }
-        }
-
-        Debug.Log(" FadeOutVillain 코루틴 끝");
-    }
-
-    // =====================================
-    // 화면 페이드아웃
-    // =====================================
-
-    private IEnumerator FadeOutScreen()
-    {
-        if (fadeImage == null)
+        if (fadeImage == null && featherGraphics.Length == 0)
             yield break;
 
+        float duration = Mathf.Max(0f, sceneFadeDuration);
         float timer = 0f;
 
-        Color color = fadeImage.color;
-        color.a = 0f;
-        fadeImage.color = color;
+        if (fadeImage != null)
+        {
+            Color fadeColor = fadeImage.color;
+            fadeColor.a = 0f;
+            fadeImage.color = fadeColor;
+        }
 
-        while (timer < sceneFadeDuration)
+        while (timer < duration)
         {
             timer += Time.deltaTime;
+            float alpha = duration > 0f ? Mathf.Clamp01(timer / duration) : 1f;
 
-            float alpha =
-                Mathf.Lerp(
-                    0f,
-                    1f,
-                    timer / sceneFadeDuration
-                );
+            if (fadeImage != null)
+            {
+                Color fadeColor = fadeImage.color;
+                fadeColor.a = alpha;
+                fadeImage.color = fadeColor;
+            }
 
-            color = fadeImage.color;
-            color.a = alpha;
-            fadeImage.color = color;
+            for (int i = 0; i < featherGraphics.Length; i++)
+            {
+                if (featherGraphics[i] == null)
+                    continue;
+
+                Color featherColor = originalFeatherColors[i];
+                featherColor.a = Mathf.Lerp(originalFeatherColors[i].a, 0f, alpha);
+                featherGraphics[i].color = featherColor;
+            }
 
             yield return null;
         }
 
-        color = fadeImage.color;
-        color.a = 1f;
-        fadeImage.color = color;
+        if (fadeImage != null)
+        {
+            Color fadeColor = fadeImage.color;
+            fadeColor.a = 1f;
+            fadeImage.color = fadeColor;
+        }
+
+        for (int i = 0; i < featherGraphics.Length; i++)
+        {
+            if (featherGraphics[i] == null)
+                continue;
+
+            Color featherColor = originalFeatherColors[i];
+            featherColor.a = 0f;
+            featherGraphics[i].color = featherColor;
+        }
     }
 }
