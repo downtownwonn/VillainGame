@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SubwayDraggableItem : MonoBehaviour,
@@ -428,8 +429,17 @@ public class SubwayDraggableItem : MonoBehaviour,
             );
         }
 
-    // 여기서 컷신으로 전환
-    // 예:
-    // SubwaySceneViewManager.Instance.ShowRound1Story();
+        if (SceneManager.GetActiveScene().name == "SubwayR1Play")
+        {
+            const string clearSceneName = "SubwayR1Clear";
+            if (Application.CanStreamedLevelBeLoaded(clearSceneName))
+            {
+                SceneManager.LoadScene(clearSceneName);
+            }
+            else
+            {
+                Debug.LogError($"'{clearSceneName}' 씬을 Build Profiles에 추가해야 합니다.");
+            }
+        }
     }
 }
