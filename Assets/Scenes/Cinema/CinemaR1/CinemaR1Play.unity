@@ -4450,16 +4450,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VillainTickleController
   villainObject: {fileID: 1576307905}
-  tickleDuration: 2
+  tickleDuration: 3
   shakeAngle: 3
   shakeCount: 3
   featherMoveSpeed: 8
   featherMoveAngle: 15
-  villainFadeDuration: 0.2
   tickleSound: {fileID: 0}
   walkingSound: {fileID: 0}
   fadeImage: {fileID: 557396373}
-  sceneFadeDuration: 0.8
+  sceneFadeDuration: 1
   nextSceneName: CinemaR1Clear
 --- !u!1 &1582376991
 GameObject:

@@ -23,19 +23,16 @@ public class CouplePuzzleController : MonoBehaviour
     public Collider2D coupleCollider;
     public Transform dropPoint;
     public GameObject shoeEffect;
-    public SpriteRenderer coupleSprite;
 
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip shoeDropSound;
     public AudioClip vomitSound;
-    public AudioClip walkSound;
 
     [Header("Animation")]
     public float flyTime = 0.25f;
     public float bounceHeight = 0.18f;
     public float bounceTime = 0.18f;
-    public float fadeOutTime = 1.2f;
 
     Camera cam;
     bool solved;
@@ -78,6 +75,8 @@ public class CouplePuzzleController : MonoBehaviour
 
     IEnumerator PuzzleRoutine()
     {
+        Coroutine transition = StartCoroutine(FadeAndLoadScene());
+
         shoeUI.gameObject.SetActive(false);
 
         shoeEffect.SetActive(true);
@@ -150,54 +149,18 @@ public class CouplePuzzleController : MonoBehaviour
 
         yield return new WaitForSeconds(0.4f);
 
-        //----------------------------------
-        // Couple Fade Out
-        //----------------------------------
-
-        Color c = coupleSprite.color;
-
-        t = 0;
-
-        while (t < fadeOutTime)
-        {
-            t += Time.deltaTime;
-
-            c.a =
-                Mathf.Lerp(
-                    1,
-                    0,
-                    t / fadeOutTime);
-
-            coupleSprite.color = c;
-
-            yield return null;
-        }
-
-        coupleSprite.gameObject.SetActive(false);
-
-        //==============================
-        // Fade & Scene Load
-        //==============================
-
-        StartCoroutine(FadeAndLoadScene());
+        yield return transition;
     }
 
 
     IEnumerator FadeAndLoadScene()
     {
         // 걸어가는 소리가 끝날 때까지 대기
-        if (walkSound != null)
-        {
-            yield return new WaitForSeconds(
-                Mathf.Max(0, walkSound.length - fadeTime)
-            );
-        }
-
-
         float t = 0;
 
         Color c = fadePanel.color;
-
+        c.a = 0f;
+        fadePanel.color = c;
 
         while (t < fadeTime)
         {
