@@ -210,7 +210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &24195650
 SpriteRenderer:
   serializedVersion: 3
@@ -2380,6 +2380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd252d91f514b3eb8cd763341c4936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
+  keepVisualSizeWhileDragging: 0
   wasDropped: 0
 --- !u!114 &643179005
 MonoBehaviour:
@@ -3051,6 +3052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd252d91f514b3eb8cd763341c4936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
+  keepVisualSizeWhileDragging: 0
   wasDropped: 0
 --- !u!114 &751288527
 MonoBehaviour:
@@ -5670,7 +5672,13 @@ MonoBehaviour:
   - {fileID: -4068797430262124152, guid: af28a565fa6d9744694f49935b1598d0, type: 3}
   - {fileID: -8644779258314668688, guid: 0052d6e9b65d1ad4ba02f0dab8980b5a, type: 3}
   - {fileID: 8098251915080867424, guid: f26e332d441e1f94182a6e8c9c901fd6, type: 3}
+  visibleHeightRatios:
+  - 0.984375
+  - 0.984375
+  - 0.984375
+  - 0.99014777
   canvas: {fileID: 1145056412}
+  bubbleDisplayScale: 0.5
   bubbleSizes:
   - {x: 100, y: 100}
   - {x: 150, y: 120}
@@ -5728,7 +5736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1352287522
 SpriteRenderer:
   serializedVersion: 3
@@ -6936,6 +6944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd252d91f514b3eb8cd763341c4936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
+  keepVisualSizeWhileDragging: 0
   wasDropped: 0
 --- !u!114 &1739394746
 MonoBehaviour:
@@ -7428,6 +7437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd252d91f514b3eb8cd763341c4936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
+  keepVisualSizeWhileDragging: 0
   wasDropped: 0
 --- !u!114 &1783016463
 MonoBehaviour:
