@@ -3,12 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
-/// <summary>Temporary full-screen subway demo video used while validating scene navigation.</summary>
+/// <summary>Plays a full-screen story or clear video, then advances to the configured scene.</summary>
 [DisallowMultipleComponent]
 public sealed class SubwayDemoVideoOverlay : MonoBehaviour
 {
     [SerializeField] private VideoClip demoClip;
-    [SerializeField] private bool loopVideo = true;
+    [SerializeField] private bool loopVideo;
     [SerializeField] private string nextSceneName;
 
     private RenderTexture renderTexture;
@@ -35,7 +35,7 @@ public sealed class SubwayDemoVideoOverlay : MonoBehaviour
         videoPlayer.clip = demoClip;
         videoPlayer.renderMode = VideoRenderMode.RenderTexture;
         videoPlayer.targetTexture = renderTexture;
-        videoPlayer.audioOutputMode = VideoAudioOutputMode.None;
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
         videoPlayer.isLooping = loopVideo;
         videoPlayer.playOnAwake = false;
         videoPlayer.waitForFirstFrame = true;
