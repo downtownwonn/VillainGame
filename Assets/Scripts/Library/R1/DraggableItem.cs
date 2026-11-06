@@ -11,6 +11,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Transform originalParent;
     private Canvas canvas;
 
+    [SerializeField] private bool keepVisualSizeWhileDragging;
+    private Vector2 originalAnchorMin;
+    private Vector2 originalAnchorMax;
+    private Vector2 originalSizeDelta;
+    private Vector2 dragVisualSize;
+
     [HideInInspector]
     public bool wasDropped = false;
 
@@ -56,8 +62,23 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         originalPosition = rectTransform.anchoredPosition;
         originalParent = transform.parent;
 
+        if (keepVisualSizeWhileDragging)
+        {
+            originalAnchorMin = rectTransform.anchorMin;
+            originalAnchorMax = rectTransform.anchorMax;
+            originalSizeDelta = rectTransform.sizeDelta;
+            dragVisualSize = rectTransform.rect.size;
+        }
+
         transform.SetParent(canvas.transform);
         transform.SetAsLastSibling();
+
+        if (keepVisualSizeWhileDragging)
+        {
+            rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            rectTransform.sizeDelta = dragVisualSize;
+        }
 
         canvasGroup.blocksRaycasts = false;
 
@@ -79,6 +100,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (!wasDropped)
         {
             transform.SetParent(originalParent);
+            RestoreOriginalLayout();
             rectTransform.anchoredPosition = originalPosition;
         }
 
@@ -88,6 +110,17 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void ReturnToOriginalPosition()
     {
         transform.SetParent(originalParent);
+        RestoreOriginalLayout();
         rectTransform.anchoredPosition = originalPosition;
+    }
+
+    private void RestoreOriginalLayout()
+    {
+        if (!keepVisualSizeWhileDragging)
+            return;
+
+        rectTransform.anchorMin = originalAnchorMin;
+        rectTransform.anchorMax = originalAnchorMax;
+        rectTransform.sizeDelta = originalSizeDelta;
     }
 }

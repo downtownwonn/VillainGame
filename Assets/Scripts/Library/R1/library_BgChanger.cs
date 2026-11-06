@@ -55,18 +55,11 @@ public class library_BgChanger : MonoBehaviour
         if (rightBackground != null)
             rightBackground.SetActive(hasRightView && currentView == 2);
 
-        if (hasRightView)
-        {
-            // 기존 동작 그대로 (R2, R3 등)
-            leftButton.gameObject.SetActive(currentView != 0);
-            rightButton.gameObject.SetActive(currentView != 2);
-        }
-        else
-        {
-            // R1: 메인 = 왼쪽 화살표만, 왼쪽 화면 = 좌우 화살표 모두
-            leftButton.gameObject.SetActive(true);
-            rightButton.gameObject.SetActive(currentView == 0);
-        }
+        // 맨 왼쪽(0)이면 왼쪽 화살표 숨김, 맨 끝(MaxView)이면 오른쪽 화살표 숨김
+        // R1 (hasRightView 꺼짐): 메인 = 왼쪽 화살표만, 왼쪽 화면 = 오른쪽 화살표만
+        // R2, R3 (hasRightView 켜짐): 기존 동작과 동일
+        leftButton.gameObject.SetActive(currentView != 0);
+        rightButton.gameObject.SetActive(currentView != MaxView);
 
         if (villainDropZone != null)
             villainDropZone.SetActive(currentView == 1);
