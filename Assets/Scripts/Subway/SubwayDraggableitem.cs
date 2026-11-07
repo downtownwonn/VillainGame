@@ -197,36 +197,64 @@ public class SubwayDraggableItem : MonoBehaviour,
 
 
        // =====================================================
-        // R2
-        // 상모 → 장구 부원
-        // =====================================================
+       // R2
+       // 상모 → 장구 부원
+       // =====================================================
 
-        if (draggedItemData != null &&
-            draggedItemData.itemType == ItemType.Sangmo)
-        {
-            foreach (GameObject obj in eventData.hovered)
-            {
+       if (draggedItemData != null &&
+           draggedItemData.itemType == ItemType.Sangmo)
+       {
+           Vector3 worldPosition =
+                Camera.main.ScreenToWorldPoint(eventData.position);
+
+           worldPosition.z = 0f;
+
+           Collider2D[] hits =
+                Physics2D.OverlapPointAll(worldPosition);
+
+           Debug.Log("[R2] 상모 드롭 감지! 충돌 개수: " + hits.Length);
+
+           foreach (Collider2D hit in hits)
+           {
                 JangguCharacter jangguCharacter =
-                    obj.GetComponent<JangguCharacter>();
+                    hit.GetComponent<JangguCharacter>();
+
+                if (jangguCharacter == null)
+                {
+                    jangguCharacter =
+                        hit.GetComponentInParent<JangguCharacter>();
+                }
+
+                if (jangguCharacter == null)
+                {
+                    jangguCharacter =
+                        hit.GetComponentInChildren<JangguCharacter>();
+                }
 
                 if (jangguCharacter != null)
                 {
+                    Debug.Log("[R2] 장구 부원 발견!");
+
                     jangguCharacter.ReceiveSangmo();
 
                     Image usedItemImage =
                         GetComponent<Image>();
 
-                    if (usedItemImage != null)
-                    {
-                        usedItemImage.sprite = null;
-                        usedItemImage.enabled = false;
-                    }
+                if (usedItemImage != null)
+                {
+                    usedItemImage.sprite = null;
+                    usedItemImage.enabled = false;
+                }
 
-                    ReturnToOriginalPosition();
+                ReturnToOriginalPosition();
 
-                    return;
+                Debug.Log("[R2] 상모 착용 성공!");
+
+                return;
                 }
             }
+
+            Debug.LogWarning("[R2] 장구 부원을 찾지 못했습니다.");
         }
 
 

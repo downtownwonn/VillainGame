@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 301564927}
   - component: {fileID: 301564926}
+  - component: {fileID: 778899001}
   m_Layer: 0
   m_Name: StageManager
   m_TagString: Untagged
@@ -986,6 +987,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008308808}
   m_CullTransparentMesh: 1
+--- !u!114 &778899001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301564925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f0caa8b3a044eb9b65f21a0b2f0005, type: 3}
+  m_Name: AnimationVideo
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayDemoVideoOverlay
+  demoClip: {fileID: 32900000, guid: 5cfce77959427024a88de0738360781b, type: 3}
+  loopVideo: 0
+  nextSceneName: LibraryR2Story
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
