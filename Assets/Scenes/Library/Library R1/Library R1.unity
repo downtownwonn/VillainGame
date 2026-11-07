@@ -4890,7 +4890,7 @@ MonoBehaviour:
   - {fileID: 4726018753192152609, guid: cba6dff86c512469fa57efbaa6989886, type: 3}
   placeSound: {fileID: 8300000, guid: f1a42fa05cdbf4cadacd6b171c34f1e0, type: 3}
   audioSource: {fileID: 1727358167}
-  clearSceneName: 
+  clearSceneName: R1clear
   delayBeforeClear: 1.5
 --- !u!114 &1896918064
 MonoBehaviour:
