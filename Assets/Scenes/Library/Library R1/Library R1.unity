@@ -1055,6 +1055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd252d91f514b3eb8cd763341c4936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
+  keepVisualSizeWhileDragging: 0
   wasDropped: 0
 --- !u!114 &347906953
 MonoBehaviour:
@@ -4882,11 +4883,11 @@ MonoBehaviour:
   legAnimator: {fileID: 1800709156}
   legImage: {fileID: 1800709154}
   stageSprites:
-  - {fileID: -2506592927449305477, guid: 6c493e1ea4fa94471a839657d12341d8, type: 3}
-  - {fileID: -1489596484632136512, guid: 4939c7d96c4824d9194aa5f372835cd9, type: 3}
-  - {fileID: 3082717242226741463, guid: 698eef11bc12a41e7a8bcb372883be0e, type: 3}
-  - {fileID: -1669739640715497315, guid: 980641d0db1d244fab7a6ca156427abc, type: 3}
-  - {fileID: -6856312136695207559, guid: a6496771a273e48df986fba9d03a106e, type: 3}
+  - {fileID: -6963864738926210830, guid: f14507173203c4c37a6c18588abf497b, type: 3}
+  - {fileID: 1723880426266299608, guid: fe13344c9a27640ccb7a32d34ae2e990, type: 3}
+  - {fileID: 764526748635994772, guid: c34f78a8f4c404ce98368ecf4c97ac10, type: 3}
+  - {fileID: -6487774292512496323, guid: 322d807cee5804b59bbb960608bd73b2, type: 3}
+  - {fileID: 4726018753192152609, guid: cba6dff86c512469fa57efbaa6989886, type: 3}
   placeSound: {fileID: 8300000, guid: f1a42fa05cdbf4cadacd6b171c34f1e0, type: 3}
   audioSource: {fileID: 1727358167}
   clearSceneName: 
