@@ -5120,7 +5120,7 @@ MonoBehaviour:
   wigLocalScale: {x: 0.3, y: 0.3, z: 1}
   swapSound: {fileID: 8300000, guid: be9426c3041284be1bb356b083f7847e, type: 3}
   audioSource: {fileID: 238484541}
-  clearSceneName: R2Clear
+  clearSceneName: R2clear
   delayBeforeClear: 1.5
   wigIconSprite: {fileID: 0}
 --- !u!114 &1675222166

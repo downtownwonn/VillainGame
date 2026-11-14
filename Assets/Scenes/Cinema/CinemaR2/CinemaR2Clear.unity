@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f0caa8b3a044eb9b65f21a0b2f0005, type: 3}
   m_Name: AnimationVideo
   m_EditorClassIdentifier: Assembly-CSharp::SubwayDemoVideoOverlay
-  demoClip: {fileID: 32900000, guid: 108a86a4564831c488a16310a1f1445a, type: 3}
+  demoClip: {fileID: 32900000, guid: 6299ce0f77b0b3f993b3798709504bc6, type: 3}
   loopVideo: 0
   nextSceneName: CinemaR3Story
 --- !u!1660057539 &9223372036854775807

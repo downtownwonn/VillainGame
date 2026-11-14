@@ -486,7 +486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 4919404235312482556, guid: 206a62167567437499735cd5e1f60b7a, type: 3}
+  itemData: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!114 &98493094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2624789ce5e4444498de6ce359b6b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
-  backgroundImage: {fileID: 12213382}
+  backgroundImage: {fileID: 0}
   leftBackground: {fileID: 1972696062635709663, guid: 50218d0c02c9d5c4b80c83dda50765ba, type: 3}
   rightBackground: {fileID: 2368663467483437618, guid: 96de88b77c5d5924c9bab677138c9a5d, type: 3}
   warehouseBackground: {fileID: 7367696030530369643, guid: 90ee2469e74d83348bd32200eb8ff6f4, type: 3}
@@ -1572,7 +1573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 21300000, guid: 9639ff5505e97454fbff1f538c1d1507, type: 3}
+  itemData: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!114 &387082281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2800,9 +2802,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ce803644561f547b683f3ada6f67d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProtagonistDropArea
-  headSlot: {fileID: 80510256}
-  handSlot: {fileID: 2140022088}
-  glasses_bodySlot: {fileID: 813282934}
+  headObject: {fileID: 0}
+  handObject: {fileID: 0}
+  bodyObject: {fileID: 0}
+  equipSound: {fileID: 0}
   fadeOverlay: {fileID: 962221802}
   nextSceneName: StoreR1Clear
   delayBeforeFade: 1
@@ -2887,7 +2890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &813282933
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3962,7 +3965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 21300000, guid: b7a9ead4cf276e64f8d272598c64eef8, type: 3}
+  itemData: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!114 &1162510624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4830,7 +4834,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 21300000, guid: 0dd0bff0eecb70e48b2e03b417f08a83, type: 3}
+  itemData: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!114 &1558367888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5258,7 +5263,7 @@ RectTransform:
   m_GameObject: {fileID: 1652383497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.94322693, y: 0.94322693, z: 0.94322693}
+  m_LocalScale: {x: 0.94322693, y: 1.5, z: 0.94322693}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 223073283}
@@ -5288,7 +5293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2200098557763288111, guid: 0f086a95c2b36be4abc39d31a87afbd3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

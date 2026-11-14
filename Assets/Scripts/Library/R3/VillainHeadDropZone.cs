@@ -19,9 +19,18 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
     [Header("클리어 씬 이동 (비워두면 이동 안 함)")]
     public string clearSceneName = "";
     public float delayBeforeClear = 1.5f;
+    [SerializeField] private float fadeDuration = 1f;
 
     private bool isPlaced = false;   // 스피커가 놓였는지 여부
     private bool isCleared = false;  // 중복 실행 방지
+
+    private void Awake()
+    {
+        // 머리 위 스피커 이미지는 표시만 담당한다. 레이캐스트를 막으면
+        // 아래 DropZone으로 클릭 이벤트가 전달되지 않을 수 있다.
+        if (headSpeakerImage != null)
+            headSpeakerImage.raycastTarget = false;
+    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -53,7 +62,7 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
     {
         if (isCleared) return;
 
-        if (isPlaced && muteSprite != null)
+        if (isPlaced && muteSprite != null && headSpeakerImage != null)
         {
             isCleared = true;
 
@@ -69,7 +78,7 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
             if (bgmSource != null) bgmSource.Stop();
             if (extraMusicSource != null) extraMusicSource.Stop();
 
-            // 일정 시간 후 클리어 씬으로 이동
+            // 클리어 연출 후 검은 화면으로 페이드아웃하고 씬을 전환한다.
             if (!string.IsNullOrEmpty(clearSceneName))
                 StartCoroutine(GoToClearScene());
         }
@@ -79,6 +88,44 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
     {
         yield return new WaitForSeconds(delayBeforeClear);
         Debug.Log("클리어 씬으로 이동: " + clearSceneName);
+
+        Image fadeImage = CreateFadeOverlay();
+        Color color = Color.black;
+        color.a = 0f;
+        fadeImage.color = color;
+
+        float duration = Mathf.Max(0.01f, fadeDuration);
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            color.a = Mathf.Clamp01(elapsed / duration);
+            fadeImage.color = color;
+            yield return null;
+        }
+
+        color.a = 1f;
+        fadeImage.color = color;
         SceneManager.LoadScene(clearSceneName);
+    }
+
+    private Image CreateFadeOverlay()
+    {
+        GameObject overlay = new GameObject("ClearFadeOverlay", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(Image));
+        Canvas canvas = overlay.GetComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.overrideSorting = true;
+        canvas.sortingOrder = 32767;
+
+        RectTransform rect = overlay.GetComponent<RectTransform>();
+        rect.anchorMin = Vector2.zero;
+        rect.anchorMax = Vector2.one;
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
+
+        Image image = overlay.GetComponent<Image>();
+        image.color = new Color(0f, 0f, 0f, 0f);
+        image.raycastTarget = false;
+        return image;
     }
 }
