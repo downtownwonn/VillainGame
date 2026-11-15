@@ -214,7 +214,7 @@ public sealed class StageSelectScreen : MonoBehaviour
 
     private IEnumerator EnableInputAfterDelay(CanvasGroup inputGate)
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(1f);
         if (inputGate != null)
         {
             inputGate.interactable = true;

@@ -65,6 +65,9 @@ public sealed class MenuAudioManager : MonoBehaviour
         transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
 
+        bgmVolume = GlobalSceneAudioVolume.BgmVolume;
+        buttonVolume = GlobalSceneAudioVolume.SfxVolume;
+
         bgmSource = GetComponent<AudioSource>();
         if (bgmSource == null)
         {
@@ -210,6 +213,7 @@ public sealed class MenuAudioManager : MonoBehaviour
         }
 
         Instance.bgmVolume = Mathf.Clamp01(volume);
+        GlobalSceneAudioVolume.SetBgmVolume(Instance.bgmVolume);
         Instance.ApplyBgmVolume();
     }
 
@@ -246,6 +250,7 @@ public sealed class MenuAudioManager : MonoBehaviour
         if (Instance == null) return false;
         Instance.bgmMuted = !Instance.bgmMuted;
         Instance.ApplyBgmVolume();
+        GlobalSceneAudioVolume.Refresh();
         return Instance.bgmMuted;
     }
 
@@ -259,6 +264,7 @@ public sealed class MenuAudioManager : MonoBehaviour
         if (Instance != null)
         {
             Instance.buttonVolume = Mathf.Clamp01(volume);
+            GlobalSceneAudioVolume.SetSfxVolume(Instance.buttonVolume);
         }
     }
 
@@ -266,6 +272,7 @@ public sealed class MenuAudioManager : MonoBehaviour
     {
         if (Instance == null) return false;
         Instance.buttonMuted = !Instance.buttonMuted;
+        GlobalSceneAudioVolume.Refresh();
         return Instance.buttonMuted;
     }
 

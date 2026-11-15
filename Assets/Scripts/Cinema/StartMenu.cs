@@ -17,10 +17,6 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private AudioClip buttonClickClip;
     [SerializeField] private TMP_FontAsset menuFont;
     [Header("Volume Icons")]
-    [Tooltip("The note icon used for the BGM control.")]
-    [SerializeField] private Sprite bgmIconSprite;
-    [Tooltip("The three sliced speaker icon sprites, ordered left-to-right as _0, _1, _2.")]
-    [SerializeField] private Sprite[] sfxIconSprites = new Sprite[3];
     [Tooltip("Optional sprite for the circular BGM and SFX volume slider knobs.")]
     [SerializeField] private Sprite volumeKnobSprite;
 
@@ -36,6 +32,8 @@ public class StartMenu : MonoBehaviour
 
     private void ApplyMenuTheme()
     {
+        MenuUITheme.LoadAudioControlIconSet();
+
         Transform uiRoot = bgmSlider != null ? bgmSlider.transform.parent : null;
         if (uiRoot == null)
         {
@@ -61,12 +59,15 @@ public class StartMenu : MonoBehaviour
         }
 
         bgmSlider.gameObject.SetActive(false);
-        MenuUITheme.CreateVerticalAudioControl(
-            uiRoot, true, new Vector2(840f, 465f), new Vector2(840f, 335f), 190f,
-            MenuAudioManager.GetBgmVolume(), MenuAudioManager.SetBgmVolume, bgmIconSprite, null, volumeKnobSprite);
-        MenuUITheme.CreateVerticalAudioControl(
-            uiRoot, false, new Vector2(900f, 465f), new Vector2(900f, 335f), 190f,
-            MenuAudioManager.GetButtonVolume(), MenuAudioManager.SetButtonVolume, null, sfxIconSprites, volumeKnobSprite);
+        Slider bgmControl = MenuUITheme.CreateVerticalAudioControl(
+            uiRoot, true, new Vector2(760f, 465f), new Vector2(760f, 349f), 127f,
+            MenuAudioManager.GetBgmVolume(), MenuAudioManager.SetBgmVolume, null, null, volumeKnobSprite);
+        Slider sfxControl = MenuUITheme.CreateVerticalAudioControl(
+            uiRoot, false, new Vector2(846.56f, 465f), new Vector2(846.56f, 349f), 127f,
+            MenuAudioManager.GetButtonVolume(), MenuAudioManager.SetButtonVolume, null, null, volumeKnobSprite);
+        AudioControlGroup controlGroup = uiRoot.GetComponent<AudioControlGroup>();
+        if (controlGroup == null) controlGroup = uiRoot.gameObject.AddComponent<AudioControlGroup>();
+        controlGroup.Configure(uiRoot, null, bgmControl, sfxControl);
     }
 
     private void StyleMenuButton(Transform buttonTransform)

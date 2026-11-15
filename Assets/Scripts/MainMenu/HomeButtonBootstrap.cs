@@ -41,13 +41,17 @@ public static class HomeButtonBootstrap
         if (!IsGameplayScene(scene.name))
             return;
 
+        MenuAudioManager.Ensure(null, null);
+
         if (GameObject.Find(HomeCanvasName) != null)
         {
             SetHomeButtonAlpha(1f);
             return;
         }
 
-        Sprite homeSprite = Resources.Load<Sprite>("HomeButton");
+        Sprite homeSprite = MenuUITheme.ConfiguredHomeSprite;
+        if (homeSprite == null)
+            homeSprite = Resources.Load<Sprite>("HomeButton");
         if (homeSprite == null)
         {
             Debug.LogError("Home button sprite not found at Resources/HomeButton.");
@@ -79,22 +83,37 @@ public static class HomeButtonBootstrap
         rect.anchorMax = new Vector2(1f, 1f);
         rect.pivot = new Vector2(1f, 1f);
         rect.anchoredPosition = new Vector2(-32f, -28f);
-        rect.sizeDelta = new Vector2(67.2f, 67.2f);
+        rect.sizeDelta = new Vector2(70.56f, 70.56f);
 
         Image image = buttonObject.GetComponent<Image>();
-        image.sprite = scene.name.StartsWith("Cinema") ? CreateWhiteSprite(homeSprite) : homeSprite;
+        image.sprite = homeSprite;
+        // The configured home sprite is full-color artwork, not a monochrome
+        // glyph; the white-gaps shader would turn its opaque pixels black.
+        image.material = null;
         image.preserveAspect = true;
         image.raycastTarget = true;
 
         Button button = buttonObject.GetComponent<Button>();
         button.targetGraphic = image;
         button.onClick.AddListener(() => SceneManager.LoadScene(StartSceneName));
+
+        // Keep the same two volume controls available during gameplay, just left of Home.
+        Slider bgmControl = MenuUITheme.CreateVerticalAudioControl(
+            canvas.transform, true, new Vector2(719.6f, 476.72f), new Vector2(719.6f, 361f), 127f,
+            MenuAudioManager.GetBgmVolume(), MenuAudioManager.SetBgmVolume,
+            whiteCinemaTheme: scene.name.StartsWith("Cinema"));
+        Slider sfxControl = MenuUITheme.CreateVerticalAudioControl(
+            canvas.transform, false, new Vector2(806.16f, 476.72f), new Vector2(806.16f, 361f), 127f,
+            MenuAudioManager.GetButtonVolume(), MenuAudioManager.SetButtonVolume,
+            whiteCinemaTheme: scene.name.StartsWith("Cinema"));
+        AudioControlGroup controlGroup = canvasObject.AddComponent<AudioControlGroup>();
+        controlGroup.Configure(canvas.transform, rect, bgmControl, sfxControl);
     }
 
     private static bool IsGameplayScene(string sceneName)
     {
         return sceneName != StartSceneName && sceneName != StageSelectSceneName &&
-               sceneName.Contains("Play");
+               (sceneName.Contains("Play") || sceneName == "Library R1" || sceneName == "Library R2");
     }
 
     public static void SetCinemaHomeButtonAlpha(float alpha)
@@ -123,23 +142,6 @@ public static class HomeButtonBootstrap
             homeButtonCanvasGroup.alpha = Mathf.Clamp01(alpha);
     }
 
-    private static Sprite CreateWhiteSprite(Sprite source)
-    {
-        Rect sourceRect = source.rect;
-        int width = Mathf.RoundToInt(sourceRect.width);
-        int height = Mathf.RoundToInt(sourceRect.height);
-        Color[] pixels = source.texture.GetPixels(
-            Mathf.RoundToInt(sourceRect.x), Mathf.RoundToInt(sourceRect.y), width, height);
-
-        for (int i = 0; i < pixels.Length; i++)
-            pixels[i] = new Color(1f, 1f, 1f, pixels[i].a);
-
-        Texture2D whiteTexture = new Texture2D(width, height, TextureFormat.RGBA32, false);
-        whiteTexture.SetPixels(pixels);
-        whiteTexture.Apply();
-        return Sprite.Create(whiteTexture, new Rect(0f, 0f, width, height),
-            source.pivot / source.rect.size, source.pixelsPerUnit);
-    }
 }
 
 
