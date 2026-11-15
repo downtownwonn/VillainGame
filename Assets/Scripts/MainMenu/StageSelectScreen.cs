@@ -47,6 +47,7 @@ public sealed class StageSelectScreen : MonoBehaviour
     };
 
     private readonly Image[] generatedStageImages = new Image[4];
+    private readonly CanvasGroup[] generatedStageCanvasGroups = new CanvasGroup[4];
     private readonly Sprite[] generatedFullTitleSprites = new Sprite[4];
     private readonly RectTransform[] generatedStageCards = new RectTransform[4];
     private readonly float[] stageCardWidths = { 480f, 480f, 480f, 480f };
@@ -81,6 +82,10 @@ public sealed class StageSelectScreen : MonoBehaviour
         Canvas canvas = canvasObject.GetComponent<Canvas>();
         stageCanvasRect = canvasObject.GetComponent<RectTransform>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        CanvasGroup inputGate = canvasObject.AddComponent<CanvasGroup>();
+        inputGate.interactable = false;
+        inputGate.blocksRaycasts = true;
+        StartCoroutine(EnableInputAfterDelay(inputGate));
         CanvasScaler scaler = canvasObject.GetComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1920f, 1080f);
@@ -103,6 +108,7 @@ public sealed class StageSelectScreen : MonoBehaviour
             row.anchoredPosition = new Vector2((i + 0.5f) * 480f - 960f, 0f);
             row.sizeDelta = new Vector2(480f, 0f);
             generatedStageCards[i] = row;
+            generatedStageCanvasGroups[i] = image.gameObject.AddComponent<CanvasGroup>();
 
             Button button = image.gameObject.AddComponent<Button>();
             button.targetGraphic = image;
@@ -206,6 +212,16 @@ public sealed class StageSelectScreen : MonoBehaviour
 
     }
 
+    private IEnumerator EnableInputAfterDelay(CanvasGroup inputGate)
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        if (inputGate != null)
+        {
+            inputGate.interactable = true;
+            inputGate.blocksRaycasts = true;
+        }
+    }
+
     private void LateUpdate()
     {
         UpdateStageCardWidths();
@@ -263,9 +279,15 @@ public sealed class StageSelectScreen : MonoBehaviour
             {
                 float finalWidth = i == transitionStageIndex ? totalWidth : 0f;
                 stageCardWidths[i] = Mathf.Lerp(transitionStartCardWidths[i], finalWidth, transitionProgress);
+                if (generatedStageCanvasGroups[i] != null)
+                    generatedStageCanvasGroups[i].alpha = i == transitionStageIndex
+                        ? 1f
+                        : 1f - Mathf.Clamp01(transitionProgress / 0.2f);
             }
             else
             {
+                if (generatedStageCanvasGroups[i] != null)
+                    generatedStageCanvasGroups[i].alpha = 1f;
                 float targetWidth = i == hoveredStageIndex ? expandedWidth :
                     (hoveredStageIndex >= 0 ? otherWidth : normalWidth);
                 stageCardWidths[i] = Mathf.Lerp(stageCardWidths[i], targetWidth, interpolation);
@@ -354,14 +376,15 @@ public sealed class StageSelectScreen : MonoBehaviour
     {
         transitionFadeImage.raycastTarget = true;
         const float transitionDuration = 4f;
-        const float fadeDuration = 2f;
+        const float sceneFadeDuration = 1f;
+        const float sceneFadeStart = transitionDuration - sceneFadeDuration;
         float elapsed = 0f;
 
         while (elapsed < transitionDuration)
         {
             elapsed += Time.unscaledDeltaTime;
             transitionProgress = Mathf.Clamp01(elapsed / transitionDuration);
-            float alpha = Mathf.Clamp01(elapsed / fadeDuration);
+            float alpha = Mathf.Clamp01((elapsed - sceneFadeStart) / sceneFadeDuration);
             transitionFadeImage.color = new Color(0f, 0f, 0f, alpha);
             MenuAudioManager.SetTransitionBgmFade(alpha);
             yield return null;

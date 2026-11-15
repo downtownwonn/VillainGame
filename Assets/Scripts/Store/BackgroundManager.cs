@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BackgroundManager : MonoBehaviour
 {
     [Header("Background")]
-    public SpriteRenderer backgroundImage;
+    public Image backgroundImage;
 
     public Sprite leftBackground;
     public Sprite rightBackground;
