@@ -375,7 +375,7 @@ public sealed class StageSelectScreen : MonoBehaviour
     private IEnumerator FadeToStoryScene(string sceneName)
     {
         transitionFadeImage.raycastTarget = true;
-        const float transitionDuration = 4f;
+        const float transitionDuration = 2f;
         const float sceneFadeDuration = 1f;
         const float sceneFadeStart = transitionDuration - sceneFadeDuration;
         float elapsed = 0f;
