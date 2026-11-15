@@ -282,7 +282,7 @@ public sealed class StageSelectScreen : MonoBehaviour
                 if (generatedStageCanvasGroups[i] != null)
                     generatedStageCanvasGroups[i].alpha = i == transitionStageIndex
                         ? 1f
-                        : 1f - Mathf.Clamp01(transitionProgress / 0.2f);
+                        : 1f - Mathf.Clamp01(transitionProgress / 0.7f);
             }
             else
             {
@@ -376,7 +376,7 @@ public sealed class StageSelectScreen : MonoBehaviour
     {
         transitionFadeImage.raycastTarget = true;
         const float transitionDuration = 2f;
-        const float sceneFadeDuration = 1f;
+        const float sceneFadeDuration = 1.5f;
         const float sceneFadeStart = transitionDuration - sceneFadeDuration;
         float elapsed = 0f;
 

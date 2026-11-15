@@ -127,6 +127,7 @@ public class ItemInfoPopup : MonoBehaviour
         if (largeImagePopup != null)
         {
             largeImagePopup.SetActive(true);
+            HomeButtonBootstrap.SetCinemaHomeButtonAlpha(0.5f);
             // ū �̹��� �˾� ���� �Ҹ�
             if (audioSource != null && largeOpenSound != null)
             {
@@ -148,6 +149,7 @@ public class ItemInfoPopup : MonoBehaviour
             }
 
             largeImagePopup.SetActive(false);
+            HomeButtonBootstrap.SetCinemaHomeButtonAlpha(1f);
         }
     }
 
@@ -171,6 +173,7 @@ public class ItemInfoPopup : MonoBehaviour
         {
             largeImagePopup.SetActive(false);
         }
+        HomeButtonBootstrap.SetCinemaHomeButtonAlpha(1f);
 
         popup.SetActive(false);
         blocker.SetActive(false);

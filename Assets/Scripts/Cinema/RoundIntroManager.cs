@@ -65,6 +65,7 @@ public class RoundIntroManager : MonoBehaviour
 
         // 게임 Collider 다시 활성화
         UnlockGameplayColliders();
+        HomeButtonBootstrap.ShowForGameplayScene();
     }
 
     void LockGameplayColliders()

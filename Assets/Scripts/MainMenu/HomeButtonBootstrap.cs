@@ -4,12 +4,13 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-/// <summary>Adds a persistent home button to every scene except the two main menu screens.</summary>
+/// <summary>Adds the home button to gameplay scenes after their round intro finishes.</summary>
 public static class HomeButtonBootstrap
 {
     private const string StartSceneName = "StartS";
     private const string StageSelectSceneName = "StageSelect";
     private const string HomeCanvasName = "GlobalHomeButtonCanvas";
+    private static CanvasGroup homeButtonCanvasGroup;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initialize()
@@ -19,11 +20,32 @@ public static class HomeButtonBootstrap
 
     private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == StartSceneName || scene.name == StageSelectSceneName)
+        if (!IsGameplayScene(scene.name))
+        {
+            GameObject existingCanvas = GameObject.Find(HomeCanvasName);
+            if (existingCanvas != null)
+                Object.Destroy(existingCanvas);
+            homeButtonCanvasGroup = null;
+            return;
+        }
+
+        if (GameObject.Find(HomeCanvasName) != null)
+        {
+            SetHomeButtonAlpha(1f);
+        }
+    }
+
+    public static void ShowForGameplayScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        if (!IsGameplayScene(scene.name))
             return;
 
         if (GameObject.Find(HomeCanvasName) != null)
+        {
+            SetHomeButtonAlpha(1f);
             return;
+        }
 
         Sprite homeSprite = Resources.Load<Sprite>("HomeButton");
         if (homeSprite == null)
@@ -50,6 +72,7 @@ public static class HomeButtonBootstrap
 
         GameObject buttonObject = new GameObject("HomeButton", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
         buttonObject.transform.SetParent(canvasObject.transform, false);
+        homeButtonCanvasGroup = buttonObject.AddComponent<CanvasGroup>();
 
         RectTransform rect = buttonObject.GetComponent<RectTransform>();
         rect.anchorMin = new Vector2(1f, 1f);
@@ -66,6 +89,38 @@ public static class HomeButtonBootstrap
         Button button = buttonObject.GetComponent<Button>();
         button.targetGraphic = image;
         button.onClick.AddListener(() => SceneManager.LoadScene(StartSceneName));
+    }
+
+    private static bool IsGameplayScene(string sceneName)
+    {
+        return sceneName != StartSceneName && sceneName != StageSelectSceneName &&
+               sceneName.Contains("Play");
+    }
+
+    public static void SetCinemaHomeButtonAlpha(float alpha)
+    {
+        if (!SceneManager.GetActiveScene().name.StartsWith("Cinema"))
+            return;
+
+        SetHomeButtonAlpha(alpha);
+    }
+
+    private static void SetHomeButtonAlpha(float alpha)
+    {
+        if (homeButtonCanvasGroup == null)
+        {
+            GameObject canvasObject = GameObject.Find(HomeCanvasName);
+            Transform buttonTransform = canvasObject != null ? canvasObject.transform.Find("HomeButton") : null;
+            if (buttonTransform != null)
+            {
+                homeButtonCanvasGroup = buttonTransform.GetComponent<CanvasGroup>();
+                if (homeButtonCanvasGroup == null)
+                    homeButtonCanvasGroup = buttonTransform.gameObject.AddComponent<CanvasGroup>();
+            }
+        }
+
+        if (homeButtonCanvasGroup != null)
+            homeButtonCanvasGroup.alpha = Mathf.Clamp01(alpha);
     }
 
     private static Sprite CreateWhiteSprite(Sprite source)

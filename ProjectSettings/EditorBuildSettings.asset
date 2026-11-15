@@ -111,13 +111,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Subway/SubwayR3/SubwayR3Clear.unity
     guid: f3f0f6e91063f6c418dd3408653eb7cb
   - enabled: 1
-    path: Assets/Scenes/Store/StoreR1/StroeR1Play.unity
-    guid: 87fbd3b2067ba3642ba48f70a403a13a
+    path: Assets/Scenes/Store/StoreR1/StroeR1Play 1.unity
+    guid: e8fe9a7d5fde20c4388147f6412d4521
   - enabled: 1
-    path: Assets/Scenes/Store/StoreR2/StoreR2Play.unity
-    guid: 1652feb247e2f4b41b9193868ff4b5b3
+    path: Assets/Scenes/Store/StoreR2/StoreR2Play 1.unity
+    guid: c3f849d46f0d0fa498bfb43858288cec
   - enabled: 1
-    path: Assets/Scenes/Store/StoreR3/StoreR3Play.unity
-    guid: bff92b7370aaaae4f96dea68cf033d78
+    path: Assets/Scenes/Store/StoreR3/StoreR3Play 1.unity
+    guid: 83e33d2e79b67bc43bebab353295c639
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SubwayDemoVideoOverlay
   demoClip: {fileID: 32900000, guid: eb7c2e51724922149015b4ab1af67eb2, type: 3}
   loopVideo: 0
-  nextSceneName: StoreR2Play
+  nextSceneName: StoreR2Play 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
