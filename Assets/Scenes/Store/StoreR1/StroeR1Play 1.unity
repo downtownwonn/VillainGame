@@ -1089,7 +1089,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2624789ce5e4444498de6ce359b6b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager
-  backgroundImage: {fileID: 12213385}
+  backgroundImage: {fileID: 0}
+  backgroundSpriteRenderer: {fileID: 12213385}
   leftBackground: {fileID: 1972696062635709663, guid: 50218d0c02c9d5c4b80c83dda50765ba, type: 3}
   rightBackground: {fileID: 2368663467483437618, guid: 96de88b77c5d5924c9bab677138c9a5d, type: 3}
   warehouseBackground: {fileID: 7367696030530369643, guid: 90ee2469e74d83348bd32200eb8ff6f4, type: 3}

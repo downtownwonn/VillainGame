@@ -5,6 +5,7 @@ public class BackgroundManager : MonoBehaviour
 {
     [Header("Background")]
     public Image backgroundImage;
+    public SpriteRenderer backgroundSpriteRenderer;
 
     public Sprite leftBackground;
     public Sprite rightBackground;
@@ -29,10 +30,19 @@ public class BackgroundManager : MonoBehaviour
     // 창고가 열렸는지 여부
     private bool warehouseUnlocked = false;
 
+    private void SetBackgroundSprite(Sprite sprite)
+    {
+        if (backgroundImage != null)
+            backgroundImage.sprite = sprite;
+
+        if (backgroundSpriteRenderer != null)
+            backgroundSpriteRenderer.sprite = sprite;
+    }
+
     void Start()
     {
         // 시작 화면 (왼쪽 방)
-        backgroundImage.sprite = leftBackground;
+        SetBackgroundSprite(leftBackground);
 
         leftButton.SetActive(false);
         rightButton.SetActive(true);
@@ -45,7 +55,7 @@ public class BackgroundManager : MonoBehaviour
     // 오른쪽 화면으로 이동
     public void MoveRight()
     {
-        backgroundImage.sprite = rightBackground;
+        SetBackgroundSprite(rightBackground);
 
         leftButton.SetActive(true);
         rightButton.SetActive(false);
@@ -58,7 +68,7 @@ public class BackgroundManager : MonoBehaviour
     // 왼쪽 화면으로 이동 (오른쪽 방 -> 왼쪽 방)
     public void MoveLeft()
     {
-        backgroundImage.sprite = leftBackground;
+        SetBackgroundSprite(leftBackground);
 
         leftButton.SetActive(false);
         rightButton.SetActive(true);
@@ -108,7 +118,7 @@ public class BackgroundManager : MonoBehaviour
             AudioSource.PlayClipAtPoint(openSound, Camera.main.transform.position);
         }
 
-        backgroundImage.sprite = warehouseBackground;
+        SetBackgroundSprite(warehouseBackground);
 
 
         leftButton.SetActive(true);
@@ -122,7 +132,7 @@ public class BackgroundManager : MonoBehaviour
     // 창고에서 오른쪽 화면으로 돌아가기
     public void BackToRightRoom()
     {
-        backgroundImage.sprite = rightBackground;
+        SetBackgroundSprite(rightBackground);
 
         leftButton.SetActive(true);
         rightButton.SetActive(false);
