@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8cf94de878cf0463fa97114fb73777f5
+guid: ed4cbc8f70bab4ff7941c4b4a150b4b5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7693055402984720764
-    second: character_back_cutout_0
+      213: -4528842246968764156
+    second: "\u1103\u1169\u1109\u1165\u1100\u116A\u11ABnpc1_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_back_cutout_0
+      name: "\u1103\u1169\u1109\u1165\u1100\u116A\u11ABnpc1_0"
       rect:
         serializedVersion: 2
-        x: 9
-        y: 8
-        width: 263
-        height: 809
+        x: 108
+        y: 89
+        width: 193
+        height: 584
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 48632bbded6cc3590800000000000000
-      internalID: -7693055402984720764
+      spriteID: 40915a1a8f15621c0800000000000000
+      internalID: -4528842246968764156
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      character_back_cutout_0: -7693055402984720764
+      "\u1103\u1169\u1109\u1165\u1100\u116A\u11ABnpc1_0": -4528842246968764156
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
