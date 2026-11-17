@@ -169,6 +169,12 @@ public sealed class MenuAudioManager : MonoBehaviour
         }
     }
 
+    public static void PlayControlClick(AudioClip clip)
+    {
+        if (Instance != null && Instance.sfxSource != null && clip != null && !Instance.buttonMuted)
+            Instance.sfxSource.PlayOneShot(clip, Instance.buttonVolume);
+    }
+
     public static void PlaySliderRelease()
     {
         if (Instance != null && Instance.sfxSource != null && Instance.sliderReleaseClip != null && !Instance.buttonMuted)
@@ -273,6 +279,23 @@ public sealed class MenuAudioManager : MonoBehaviour
         if (Instance == null) return false;
         Instance.buttonMuted = !Instance.buttonMuted;
         GlobalSceneAudioVolume.Refresh();
+        return Instance.buttonMuted;
+    }
+
+    public static bool ToggleButtonMuteWithClick(AudioClip clip)
+    {
+        if (Instance == null) return false;
+
+        bool wasMuted = Instance.buttonMuted;
+        if (!wasMuted)
+            PlayControlClick(clip);
+
+        Instance.buttonMuted = !wasMuted;
+        GlobalSceneAudioVolume.Refresh();
+
+        if (wasMuted)
+            PlayControlClick(clip);
+
         return Instance.buttonMuted;
     }
 

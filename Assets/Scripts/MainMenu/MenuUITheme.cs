@@ -19,6 +19,7 @@ public static class MenuUITheme
     private static Sprite configuredSfxSprite;
     private static Sprite configuredKnobSprite;
     private static Sprite configuredHomeSprite;
+    private static AudioClip configuredControlClickClip;
     private static Material circleIconMaterial;
 
     public static Sprite ConfiguredHomeSprite
@@ -30,6 +31,15 @@ public static class MenuUITheme
         }
     }
     public static Material GetCircularIconMaterial() => CircleIconMaterial;
+
+    public static AudioClip ConfiguredControlClickClip
+    {
+        get
+        {
+            EnsureConfiguredIcons();
+            return configuredControlClickClip;
+        }
+    }
 
     private static Material CircleIconMaterial
     {
@@ -58,6 +68,7 @@ public static class MenuUITheme
         configuredSfxSprite = iconSet.sfxIcon;
         configuredHomeSprite = iconSet.homeIcon;
         configuredKnobSprite = iconSet.volumeKnob;
+        configuredControlClickClip = iconSet.controlClickClip;
     }
 
     private static void EnsureConfiguredIcons()
@@ -418,7 +429,16 @@ public static class MenuUITheme
         button.transition = Selectable.Transition.None;
         button.onClick.AddListener(() =>
         {
-            bool muted = musicIcon ? MenuAudioManager.ToggleBgmMute() : MenuAudioManager.ToggleButtonMute();
+            bool muted;
+            if (musicIcon)
+            {
+                MenuAudioManager.PlayControlClick(configuredControlClickClip);
+                muted = MenuAudioManager.ToggleBgmMute();
+            }
+            else
+            {
+                muted = MenuAudioManager.ToggleButtonMuteWithClick(configuredControlClickClip);
+            }
             canvasGroup.alpha = muted ? 0.5f : 1f;
         });
         return button;

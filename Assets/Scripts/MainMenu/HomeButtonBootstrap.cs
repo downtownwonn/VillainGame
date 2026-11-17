@@ -96,6 +96,7 @@ public static class HomeButtonBootstrap
 
         Button button = buttonObject.GetComponent<Button>();
         button.targetGraphic = image;
+        button.onClick.AddListener(() => MenuAudioManager.PlayControlClick(MenuUITheme.ConfiguredControlClickClip));
 
         // Keep the same two volume controls available during gameplay, just left of Home.
         Button bgmButton = MenuUITheme.CreateAudioMuteButton(

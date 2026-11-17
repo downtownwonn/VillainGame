@@ -12,10 +12,14 @@ public sealed class SceneTransitionManager : MonoBehaviour
     private Image coverImage;
     private AsyncOperation pendingLoad;
     private string pendingSceneName;
+    private bool transitionStarted;
     private bool activationStarted;
 
     public static bool PrepareScene(string sceneName)
     {
+        if (instance != null && instance.activationStarted)
+            return false;
+
         if (instance != null && instance.pendingLoad != null && !instance.pendingLoad.isDone)
         {
             if (instance.pendingSceneName == sceneName)
@@ -71,6 +75,10 @@ public sealed class SceneTransitionManager : MonoBehaviour
         if (!PrepareScene(sceneName))
             return;
 
+        if (instance.transitionStarted || instance.activationStarted)
+            return;
+
+        instance.transitionStarted = true;
         instance.StartCoroutine(instance.FadeOutAndActivate(fadeOutDuration));
     }
 
@@ -124,6 +132,7 @@ public sealed class SceneTransitionManager : MonoBehaviour
 
         color.a = 1f;
         coverImage.color = color;
+        activationStarted = true;
         yield return ActivateAndReveal();
     }
 

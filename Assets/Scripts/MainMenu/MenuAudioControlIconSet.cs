@@ -7,4 +7,5 @@ public sealed class MenuAudioControlIconSet : ScriptableObject
     public Sprite sfxIcon;
     public Sprite homeIcon;
     public Sprite volumeKnob;
+    public AudioClip controlClickClip;
 }
