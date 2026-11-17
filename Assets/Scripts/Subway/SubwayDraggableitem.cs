@@ -449,6 +449,8 @@ public class SubwayDraggableItem : MonoBehaviour,
     private IEnumerator ClearAndFade()
     {
         yield return new WaitForSeconds(0.2f);
+        bool isRoundOne = SceneManager.GetActiveScene().name == "SubwayR1Play";
+        if (isRoundOne && !SceneTransitionManager.PrepareScene("SubwayR1Clear")) yield break;
 
         if (SubwayFadeManager.Instance != null)
         {
@@ -457,12 +459,12 @@ public class SubwayDraggableItem : MonoBehaviour,
             );
         }
 
-        if (SceneManager.GetActiveScene().name == "SubwayR1Play")
+        if (isRoundOne)
         {
             const string clearSceneName = "SubwayR1Clear";
             if (Application.CanStreamedLevelBeLoaded(clearSceneName))
             {
-                SceneManager.LoadScene(clearSceneName);
+                SceneTransitionManager.ActivatePreparedScene();
             }
             else
             {

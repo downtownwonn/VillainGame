@@ -374,6 +374,7 @@ public sealed class StageSelectScreen : MonoBehaviour
 
     private IEnumerator FadeToStoryScene(string sceneName)
     {
+        if (!SceneTransitionManager.PrepareScene(sceneName)) yield break;
         transitionFadeImage.raycastTarget = true;
         const float transitionDuration = 2f;
         const float sceneFadeDuration = 1.5f;
@@ -393,7 +394,7 @@ public sealed class StageSelectScreen : MonoBehaviour
         transitionProgress = 1f;
         transitionFadeImage.color = Color.black;
         MenuAudioManager.StopBgmForSceneTransition();
-        SceneManager.LoadScene(sceneName);
+        SceneTransitionManager.ActivatePreparedScene();
     }
 
     private void BackToMainMenu()
@@ -401,7 +402,7 @@ public sealed class StageSelectScreen : MonoBehaviour
         MenuAudioManager.PlayButtonClick();
         if (Application.CanStreamedLevelBeLoaded("StartS"))
         {
-            SceneManager.LoadScene("StartS");
+            SceneTransitionManager.BeginTransition("StartS");
         }
         else
         {

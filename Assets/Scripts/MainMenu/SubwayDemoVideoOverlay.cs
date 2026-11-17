@@ -97,7 +97,7 @@ public sealed class SubwayDemoVideoOverlay : MonoBehaviour
     {
         if (Application.CanStreamedLevelBeLoaded(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName);
+            SceneTransitionManager.BeginTransition(nextSceneName);
         }
         else
         {

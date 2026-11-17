@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
@@ -95,19 +96,34 @@ public static class HomeButtonBootstrap
 
         Button button = buttonObject.GetComponent<Button>();
         button.targetGraphic = image;
-        button.onClick.AddListener(() => SceneManager.LoadScene(StartSceneName));
 
         // Keep the same two volume controls available during gameplay, just left of Home.
-        Slider bgmControl = MenuUITheme.CreateVerticalAudioControl(
-            canvas.transform, true, new Vector2(719.6f, 476.72f), new Vector2(719.6f, 361f), 127f,
-            MenuAudioManager.GetBgmVolume(), MenuAudioManager.SetBgmVolume,
-            whiteCinemaTheme: scene.name.StartsWith("Cinema"));
-        Slider sfxControl = MenuUITheme.CreateVerticalAudioControl(
-            canvas.transform, false, new Vector2(806.16f, 476.72f), new Vector2(806.16f, 361f), 127f,
-            MenuAudioManager.GetButtonVolume(), MenuAudioManager.SetButtonVolume,
-            whiteCinemaTheme: scene.name.StartsWith("Cinema"));
-        AudioControlGroup controlGroup = canvasObject.AddComponent<AudioControlGroup>();
-        controlGroup.Configure(canvas.transform, rect, bgmControl, sfxControl);
+        Button bgmButton = MenuUITheme.CreateAudioMuteButton(
+            canvas.transform, true, new Vector2(719.6f, 476.72f));
+        Button sfxButton = MenuUITheme.CreateAudioMuteButton(
+            canvas.transform, false, new Vector2(806.16f, 476.72f));
+
+        // Keep the transition overlay above the gameplay controls. It stays
+        // transparent and ignores clicks until the home button is pressed.
+        GameObject fadeObject = new GameObject("HomeSceneFade", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        fadeObject.transform.SetParent(canvas.transform, false);
+        Image fadeImage = fadeObject.GetComponent<Image>();
+        fadeImage.color = new Color(0f, 0f, 0f, 0f);
+        fadeImage.raycastTarget = false;
+        RectTransform fadeRect = fadeObject.GetComponent<RectTransform>();
+        fadeRect.anchorMin = Vector2.zero;
+        fadeRect.anchorMax = Vector2.one;
+        fadeRect.offsetMin = Vector2.zero;
+        fadeRect.offsetMax = Vector2.zero;
+
+        HomeButtonSceneTransition transition = canvasObject.AddComponent<HomeButtonSceneTransition>();
+        transition.Configure(fadeImage, new[]
+        {
+            homeButtonCanvasGroup,
+            bgmButton.GetComponent<CanvasGroup>(),
+            sfxButton.GetComponent<CanvasGroup>()
+        });
+        button.onClick.AddListener(() => transition.GoToStartScene(button, StartSceneName));
     }
 
     private static bool IsGameplayScene(string sceneName)
@@ -122,6 +138,17 @@ public static class HomeButtonBootstrap
             return;
 
         SetHomeButtonAlpha(alpha);
+    }
+
+    public static IEnumerator FadeGameplayControls(float duration)
+    {
+        GameObject canvasObject = GameObject.Find(HomeCanvasName);
+        HomeButtonSceneTransition transition = canvasObject != null
+            ? canvasObject.GetComponent<HomeButtonSceneTransition>()
+            : null;
+
+        if (transition != null)
+            yield return transition.FadeControls(duration);
     }
 
     private static void SetHomeButtonAlpha(float alpha)

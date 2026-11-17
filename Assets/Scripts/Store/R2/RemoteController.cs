@@ -261,6 +261,8 @@ public class RemoteController : MonoBehaviour
     {
         // 1. 설정한 대기시간(delayBeforeFade)만큼 대기
         yield return new WaitForSeconds(delayBeforeFade);
+        if (!string.IsNullOrEmpty(nextSceneName) && !SceneTransitionManager.PrepareScene(nextSceneName)) yield break;
+        StartCoroutine(HomeButtonBootstrap.FadeGameplayControls(fadeDuration));
 
         // 2. Fade Overlay 활성화 및 페이드 아웃
         if (fadeOverlay != null)
@@ -283,7 +285,7 @@ public class RemoteController : MonoBehaviour
         // 3. 씬 전환
         if (!string.IsNullOrEmpty(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName);
+            SceneTransitionManager.ActivatePreparedScene();
         }
         else
         {

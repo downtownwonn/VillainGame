@@ -155,6 +155,8 @@ public class CouplePuzzleController : MonoBehaviour
 
     IEnumerator FadeAndLoadScene()
     {
+        if (!SceneTransitionManager.PrepareScene(nextSceneName)) yield break;
+        StartCoroutine(HomeButtonBootstrap.FadeGameplayControls(fadeTime));
         // 걸어가는 소리가 끝날 때까지 대기
         float t = 0;
 
@@ -181,7 +183,7 @@ public class CouplePuzzleController : MonoBehaviour
 
         if (!string.IsNullOrEmpty(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName);
+            SceneTransitionManager.ActivatePreparedScene();
         }
     }
 }

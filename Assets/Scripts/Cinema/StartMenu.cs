@@ -59,15 +59,8 @@ public class StartMenu : MonoBehaviour
         }
 
         bgmSlider.gameObject.SetActive(false);
-        Slider bgmControl = MenuUITheme.CreateVerticalAudioControl(
-            uiRoot, true, new Vector2(760f, 465f), new Vector2(760f, 349f), 127f,
-            MenuAudioManager.GetBgmVolume(), MenuAudioManager.SetBgmVolume, null, null, volumeKnobSprite);
-        Slider sfxControl = MenuUITheme.CreateVerticalAudioControl(
-            uiRoot, false, new Vector2(846.56f, 465f), new Vector2(846.56f, 349f), 127f,
-            MenuAudioManager.GetButtonVolume(), MenuAudioManager.SetButtonVolume, null, null, volumeKnobSprite);
-        AudioControlGroup controlGroup = uiRoot.GetComponent<AudioControlGroup>();
-        if (controlGroup == null) controlGroup = uiRoot.gameObject.AddComponent<AudioControlGroup>();
-        controlGroup.Configure(uiRoot, null, bgmControl, sfxControl);
+        MenuUITheme.CreateAudioMuteButton(uiRoot, true, new Vector2(806.16f, 465f), null, null);
+        MenuUITheme.CreateAudioMuteButton(uiRoot, false, new Vector2(892.72f, 465f), null, null);
     }
 
     private void StyleMenuButton(Transform buttonTransform)
@@ -103,7 +96,7 @@ public class StartMenu : MonoBehaviour
         MenuAudioManager.PlayButtonClick();
         if (Application.CanStreamedLevelBeLoaded(stageSelectSceneName))
         {
-            SceneManager.LoadScene(stageSelectSceneName);
+            SceneTransitionManager.BeginTransition(stageSelectSceneName);
             return;
         }
 

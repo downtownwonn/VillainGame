@@ -238,7 +238,7 @@ public class CinemaLightPuzzleController : MonoBehaviour
         if (clearDelay > 0)
             yield return new WaitForSecondsRealtime(clearDelay);
 
-        SceneManager.LoadScene("CinemaR3Clear");
+        SceneTransitionManager.BeginTransition("CinemaR3Clear");
     }
 
 

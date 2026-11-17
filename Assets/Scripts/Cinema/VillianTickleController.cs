@@ -220,7 +220,7 @@ public class VillainTickleController : MonoBehaviour
 
         Debug.Log("CinemaR1Clear æ¿¿∏∑Œ ¿Ãµø");
 
-        SceneManager.LoadScene("CinemaR1Clear");
+        SceneTransitionManager.ActivatePreparedScene();
     }
 
     // =====================================
@@ -244,7 +244,9 @@ public class VillainTickleController : MonoBehaviour
             yield break;
 
         float duration = Mathf.Max(0f, sceneFadeDuration);
+        if (!SceneTransitionManager.PrepareScene("CinemaR1Clear")) yield break;
         float timer = 0f;
+        StartCoroutine(HomeButtonBootstrap.FadeGameplayControls(duration));
 
         if (fadeImage != null)
         {

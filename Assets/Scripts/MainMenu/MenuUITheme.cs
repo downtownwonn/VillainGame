@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-/// <summary>Shared pixel-style colors, buttons, and line-and-knob volume controls.</summary>
+/// <summary>Shared pixel-style colors, buttons, and audio control icons.</summary>
 public static class MenuUITheme
 {
     public static readonly Color Panel = new Color32(13, 15, 15, 246);
@@ -343,6 +343,85 @@ public static class MenuUITheme
             slider.onValueChanged.AddListener(onValueChanged);
         }
         return slider;
+    }
+
+    public static Button CreateAudioMuteButton(
+        Transform parent,
+        bool musicIcon,
+        Vector2 iconPosition,
+        Sprite customIconSprite = null,
+        Sprite[] customIconParts = null)
+    {
+        EnsureConfiguredIcons();
+
+        if (musicIcon && customIconSprite == null)
+            customIconSprite = configuredBgmSprite;
+        if (!musicIcon && customIconSprite == null)
+            customIconSprite = configuredSfxSprite;
+
+        bool hasCompositeIcon = customIconParts != null && customIconParts.Length > 0;
+        GameObject iconObject = new GameObject(musicIcon ? "MusicIcon" : "SoundIcon", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        iconObject.transform.SetParent(parent, false);
+        RectTransform iconRect = iconObject.GetComponent<RectTransform>();
+        iconRect.anchorMin = iconRect.anchorMax = new Vector2(0.5f, 0.5f);
+        iconRect.anchoredPosition = iconPosition;
+        iconRect.sizeDelta = new Vector2(70.56f, 70.56f);
+
+        Image icon = iconObject.GetComponent<Image>();
+        icon.sprite = CircleSprite;
+        icon.color = new Color32(12, 12, 12, 255);
+        icon.preserveAspect = true;
+        icon.raycastTarget = true;
+        Outline outline = iconObject.AddComponent<Outline>();
+        outline.effectColor = new Color32(185, 185, 185, 230);
+        outline.effectDistance = new Vector2(1f, -1f);
+
+        if (customIconSprite != null)
+        {
+            icon.sprite = customIconSprite;
+            icon.color = Color.white;
+            icon.material = null;
+            outline.enabled = false;
+        }
+        else if (hasCompositeIcon)
+        {
+            icon.sprite = null;
+            icon.color = Color.clear;
+            icon.material = CircleIconMaterial;
+            outline.enabled = false;
+            CreateCompositeAudioIcon(iconObject.transform, iconRect, customIconParts, CircleIconMaterial);
+        }
+        else
+        {
+            GameObject glyphObject = new GameObject("Icon", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            glyphObject.transform.SetParent(iconObject.transform, false);
+            RectTransform glyphRect = glyphObject.GetComponent<RectTransform>();
+            glyphRect.anchorMin = Vector2.zero;
+            glyphRect.anchorMax = Vector2.one;
+            glyphRect.offsetMin = new Vector2(8f, 8f);
+            glyphRect.offsetMax = new Vector2(-8f, -8f);
+            Image glyph = glyphObject.GetComponent<Image>();
+            glyph.sprite = CreateAudioIcon(musicIcon);
+            glyph.color = Color.white;
+            glyph.material = CircleIconMaterial;
+            glyph.preserveAspect = true;
+            glyph.raycastTarget = false;
+        }
+
+        CanvasGroup canvasGroup = iconObject.AddComponent<CanvasGroup>();
+        canvasGroup.alpha = musicIcon
+            ? (MenuAudioManager.IsBgmMuted() ? 0.5f : 1f)
+            : (MenuAudioManager.IsButtonMuted() ? 0.5f : 1f);
+
+        Button button = iconObject.AddComponent<Button>();
+        button.targetGraphic = icon;
+        button.transition = Selectable.Transition.None;
+        button.onClick.AddListener(() =>
+        {
+            bool muted = musicIcon ? MenuAudioManager.ToggleBgmMute() : MenuAudioManager.ToggleButtonMute();
+            canvasGroup.alpha = muted ? 0.5f : 1f;
+        });
+        return button;
     }
 
     private static void AddSliderInteractionSounds(Slider slider)
