@@ -258,40 +258,72 @@ public class SubwayDraggableItem : MonoBehaviour,
         }
 
 
-        // =====================================================
-        // R2
-        // 장구 → 단소 살인마
-        // =====================================================
+        
+// =====================================================
+// R2
+// 장구 → 단소 살인마
+// =====================================================
 
-        if (draggedItemData != null &&
-            draggedItemData.itemType == ItemType.Janggu)
+if (draggedItemData != null &&
+    draggedItemData.itemType == ItemType.Janggu)
+{
+    Vector3 worldPosition =
+        Camera.main.ScreenToWorldPoint(eventData.position);
+
+    worldPosition.z = 0f;
+
+    Collider2D[] hits =
+        Physics2D.OverlapPointAll(worldPosition);
+
+    Debug.Log("[R2] 장구 드롭 감지! 충돌 개수: " + hits.Length);
+
+    foreach (Collider2D hit in hits)
+    {
+        Debug.Log("[R2] 충돌 오브젝트: " + hit.name);
+
+        DansoVillain villain =
+            hit.GetComponent<DansoVillain>();
+
+        if (villain == null)
         {
-            foreach (GameObject obj in eventData.hovered)
-            {
-                DansoVillain villain =
-                    obj.GetComponent<DansoVillain>();
-
-                if (villain != null)
-                {
-                    villain.ReceiveJanggu();
-
-                    Image usedItemImage =
-                        GetComponent<Image>();
-
-                    if (usedItemImage != null)
-                    {
-                        usedItemImage.sprite = null;
-                        usedItemImage.enabled = false;
-                    }
-
-                    ReturnToOriginalPosition();
-
-                    StartCoroutine(ClearAndFade());
-
-                    return;
-                }
-            }
+            villain =
+                hit.GetComponentInParent<DansoVillain>();
         }
+
+        if (villain == null)
+        {
+            villain =
+                hit.GetComponentInChildren<DansoVillain>();
+        }
+
+        if (villain != null)
+        {
+            Debug.Log("[R2] 단소 빌런 발견!");
+
+            villain.ReceiveJanggu();
+
+            Image usedItemImage =
+                GetComponent<Image>();
+
+            if (usedItemImage != null)
+            {
+                usedItemImage.sprite = null;
+                usedItemImage.enabled = false;
+            }
+
+            ReturnToOriginalPosition();
+
+            StartCoroutine(ClearAndFade());
+
+            Debug.Log("[R2] 장구 전달 성공!");
+
+            return;
+        }
+    }
+
+    Debug.LogWarning("[R2] 단소 빌런을 찾지 못했습니다.");
+}
+
 
 
         // =====================================================
