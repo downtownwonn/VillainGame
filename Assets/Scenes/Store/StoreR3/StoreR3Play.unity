@@ -791,7 +791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 21300000, guid: 164220abf0c31b7459ce0ed48430dc43, type: 3}
+  itemData: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!114 &384070433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,9 +1430,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ce803644561f547b683f3ada6f67d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProtagonistDropArea
-  headSlot: {fileID: 2071332723}
-  handSlot: {fileID: 2059722306}
-  glasses_bodySlot: {fileID: 29852277}
+  headObject: {fileID: 0}
+  handObject: {fileID: 0}
+  bodyObject: {fileID: 0}
+  equipSound: {fileID: 0}
   fadeOverlay: {fileID: 1259830531}
   nextSceneName: StoreR3Clear
   delayBeforeFade: 1
@@ -1689,7 +1691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d416e57711d9a4c9b8885b028ba498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundManager2
-  backgroundImage: {fileID: 1701615637}
+  backgroundImage: {fileID: 0}
   leftBackground: {fileID: 1972696062635709663, guid: 50218d0c02c9d5c4b80c83dda50765ba, type: 3}
   rightBackground: {fileID: 2368663467483437618, guid: 96de88b77c5d5924c9bab677138c9a5d, type: 3}
   warehouseBackground: {fileID: 7367696030530369643, guid: 90ee2469e74d83348bd32200eb8ff6f4, type: 3}
@@ -1698,6 +1700,7 @@ MonoBehaviour:
   leftObjects: {fileID: 1630686269}
   rightObjects: {fileID: 967782461}
   warehouseObjects: {fileID: 282101821}
+  openSound: {fileID: 0}
 --- !u!114 &890959070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,16 +1946,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57c55756beba6c4c91ccfdc1cb276d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaterBucket
+  biniWashSprite: {fileID: 0}
+  mophandleWashSprite: {fileID: 0}
   hatObject: {fileID: 2113267122}
   biniScale: 0.1
+  biniXOffset: 0
   biniYOffset: 50
+  biniRiseHeight: 1
+  biniRotationZ: 0
+  bini1EnterDuration: 0.5
+  bini1WaitDuration: 0.2
+  bini1ExitDuration: 0.5
+  bini2EnterDuration: 0.5
+  bini2WaitDuration: 0.2
+  bini2ExitDuration: 0.5
+  bini3EnterDuration: 0.5
+  bini3WaitDuration: 1
+  bini3SinkDepth: 1.5
+  bini1_2SinkDepth: 0.5
+  biniRiseDuration: 0.8
   blackMopHandleObject: {fileID: 384070429}
   mophandleScale: 0.35
+  mophandleXOffset: 0
   mophandleYOffset: 50
-  washSound: {fileID: 0}
-  washDuration: 2
-  moveDistance: 30
-  moveSpeed: 8
+  mophandleRiseHeight: 1
+  mophandleRotationZ: 90
+  mophandle1EnterDuration: 0.5
+  mophandle1WaitDuration: 0.2
+  mophandle1ExitDuration: 0.5
+  mophandle2EnterDuration: 0.5
+  mophandle2WaitDuration: 0.2
+  mophandle2ExitDuration: 0.5
+  mophandle3EnterDuration: 0.5
+  mophandle3WaitDuration: 1
+  mophandle3SinkDepth: 1.5
+  mophandle1_2SinkDepth: 0.5
+  mophandleRiseDuration: 0.8
+  wash1EnterSound: {fileID: 0}
+  wash1ExitSound: {fileID: 0}
+  wash2EnterSound: {fileID: 0}
+  wash2ExitSound: {fileID: 0}
+  wash3EnterSound: {fileID: 0}
+  splashEffectPrefab: {fileID: 0}
 --- !u!1 &1141105081
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,7 +2251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 21300000, guid: f723af37cbe07a24d9e743e38c09aec2, type: 3}
+  itemData: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!114 &1145008038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3113,7 +3149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: -643958608011681267, guid: ecb2cb3fdb4ec0740809dea9abaddbed, type: 3}
+  itemData: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!114 &1686297168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3377,7 +3414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 1247127379658415201, guid: 4e851367bc1df0643b3c13a0be9f46d1, type: 3}
+  itemData: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!114 &1706935168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5075,7 +5113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc0c9c7f30ac541aa603008008ba3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
-  itemSprite: {fileID: 21300000, guid: f899f980e678ffc46b2485ee6eb9ff12, type: 3}
+  itemData: {fileID: 0}
+  pickupSound: {fileID: 0}
 --- !u!114 &2113267127
 MonoBehaviour:
   m_ObjectHideFlags: 0

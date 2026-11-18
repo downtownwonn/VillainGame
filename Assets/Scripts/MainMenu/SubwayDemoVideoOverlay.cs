@@ -35,10 +35,11 @@ public sealed class SubwayDemoVideoOverlay : MonoBehaviour
         videoPlayer.clip = demoClip;
         videoPlayer.renderMode = VideoRenderMode.RenderTexture;
         videoPlayer.targetTexture = renderTexture;
-        videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
         videoPlayer.isLooping = loopVideo;
         videoPlayer.playOnAwake = false;
         videoPlayer.waitForFirstFrame = true;
+        videoPlayer.prepareCompleted += OnVideoPrepared;
         if (!loopVideo && !string.IsNullOrWhiteSpace(nextSceneName))
         {
             videoPlayer.loopPointReached += OnVideoFinished;
@@ -67,14 +68,36 @@ public sealed class SubwayDemoVideoOverlay : MonoBehaviour
         aspect.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
         aspect.aspectRatio = 16f / 9f;
 
-        videoPlayer.Play();
+        videoPlayer.Prepare();
+    }
+
+    private void OnVideoPrepared(VideoPlayer source)
+    {
+        ushort trackCount = source.audioTrackCount;
+        source.controlledAudioTrackCount = trackCount;
+        for (ushort track = 0; track < trackCount; track++)
+        {
+            source.EnableAudioTrack(track, true);
+            AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.loop = false;
+            audioSource.spatialBlend = 0f;
+            audioSource.volume = 1f;
+            source.SetTargetAudioSource(track, audioSource);
+        }
+
+        if (trackCount == 0)
+            Debug.LogWarning($"Video '{demoClip.name}' has no imported audio track.", this);
+
+        GlobalSceneAudioVolume.Refresh();
+        source.Play();
     }
 
     private void OnVideoFinished(VideoPlayer source)
     {
         if (Application.CanStreamedLevelBeLoaded(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName);
+            SceneTransitionManager.BeginTransition(nextSceneName);
         }
         else
         {

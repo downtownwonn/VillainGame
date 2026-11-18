@@ -1200,11 +1200,6 @@ MonoBehaviour:
   bgmClip: {fileID: 0}
   buttonClickClip: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
   menuFont: {fileID: 11400000, guid: c7435feae538cbf41948791e9cbf2635, type: 2}
-  bgmIconSprite: {fileID: -8521680228268228460, guid: 636776af568366d42bae343c088e058d, type: 3}
-  sfxIconSprites:
-  - {fileID: -5554843969807479590, guid: 6ff14832100df5b48a3063127f45ebed, type: 3}
-  - {fileID: -7849373433239716580, guid: 6ff14832100df5b48a3063127f45ebed, type: 3}
-  - {fileID: 358081747876699916, guid: 6ff14832100df5b48a3063127f45ebed, type: 3}
   volumeKnobSprite: {fileID: 4349909276197386045, guid: 19d4b53390a5b0a4dac26e2e83fa6711, type: 3}
 --- !u!1 &1221564449
 GameObject:

@@ -90,12 +90,14 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
         Debug.Log("클리어 씬으로 이동: " + clearSceneName);
 
         Image fadeImage = CreateFadeOverlay();
+        if (!SceneTransitionManager.PrepareScene(clearSceneName)) yield break;
         Color color = Color.black;
         color.a = 0f;
         fadeImage.color = color;
 
         float duration = Mathf.Max(0.01f, fadeDuration);
         float elapsed = 0f;
+        StartCoroutine(HomeButtonBootstrap.FadeGameplayControls(duration));
         while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
@@ -106,7 +108,7 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
 
         color.a = 1f;
         fadeImage.color = color;
-        SceneManager.LoadScene(clearSceneName);
+        SceneTransitionManager.ActivatePreparedScene();
     }
 
     private Image CreateFadeOverlay()

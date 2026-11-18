@@ -84,6 +84,8 @@ public class ProtagonistDropArea : MonoBehaviour
     private IEnumerator FadeAndChangeSceneRoutine()
     {
         yield return new WaitForSeconds(delayBeforeFade);
+        if (!string.IsNullOrEmpty(nextSceneName) && !SceneTransitionManager.PrepareScene(nextSceneName)) yield break;
+        StartCoroutine(HomeButtonBootstrap.FadeGameplayControls(fadeDuration));
 
         if (fadeOverlay != null)
         {
@@ -103,7 +105,7 @@ public class ProtagonistDropArea : MonoBehaviour
 
         if (!string.IsNullOrEmpty(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName);
+            SceneTransitionManager.ActivatePreparedScene();
         }
         else
         {

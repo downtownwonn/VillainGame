@@ -29,7 +29,7 @@ public class StageIntroManager : MonoBehaviour
     {
         if (canClick && Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("CinemaR1Play");
+            SceneTransitionManager.BeginTransition("CinemaR1Play");
         }
     }
 }

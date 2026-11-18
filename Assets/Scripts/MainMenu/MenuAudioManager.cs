@@ -65,6 +65,9 @@ public sealed class MenuAudioManager : MonoBehaviour
         transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
 
+        bgmVolume = GlobalSceneAudioVolume.BgmVolume;
+        buttonVolume = GlobalSceneAudioVolume.SfxVolume;
+
         bgmSource = GetComponent<AudioSource>();
         if (bgmSource == null)
         {
@@ -166,6 +169,12 @@ public sealed class MenuAudioManager : MonoBehaviour
         }
     }
 
+    public static void PlayControlClick(AudioClip clip)
+    {
+        if (Instance != null && Instance.sfxSource != null && clip != null && !Instance.buttonMuted)
+            Instance.sfxSource.PlayOneShot(clip, Instance.buttonVolume);
+    }
+
     public static void PlaySliderRelease()
     {
         if (Instance != null && Instance.sfxSource != null && Instance.sliderReleaseClip != null && !Instance.buttonMuted)
@@ -210,6 +219,7 @@ public sealed class MenuAudioManager : MonoBehaviour
         }
 
         Instance.bgmVolume = Mathf.Clamp01(volume);
+        GlobalSceneAudioVolume.SetBgmVolume(Instance.bgmVolume);
         Instance.ApplyBgmVolume();
     }
 
@@ -246,6 +256,7 @@ public sealed class MenuAudioManager : MonoBehaviour
         if (Instance == null) return false;
         Instance.bgmMuted = !Instance.bgmMuted;
         Instance.ApplyBgmVolume();
+        GlobalSceneAudioVolume.Refresh();
         return Instance.bgmMuted;
     }
 
@@ -259,6 +270,7 @@ public sealed class MenuAudioManager : MonoBehaviour
         if (Instance != null)
         {
             Instance.buttonVolume = Mathf.Clamp01(volume);
+            GlobalSceneAudioVolume.SetSfxVolume(Instance.buttonVolume);
         }
     }
 
@@ -266,6 +278,24 @@ public sealed class MenuAudioManager : MonoBehaviour
     {
         if (Instance == null) return false;
         Instance.buttonMuted = !Instance.buttonMuted;
+        GlobalSceneAudioVolume.Refresh();
+        return Instance.buttonMuted;
+    }
+
+    public static bool ToggleButtonMuteWithClick(AudioClip clip)
+    {
+        if (Instance == null) return false;
+
+        bool wasMuted = Instance.buttonMuted;
+        if (!wasMuted)
+            PlayControlClick(clip);
+
+        Instance.buttonMuted = !wasMuted;
+        GlobalSceneAudioVolume.Refresh();
+
+        if (wasMuted)
+            PlayControlClick(clip);
+
         return Instance.buttonMuted;
     }
 

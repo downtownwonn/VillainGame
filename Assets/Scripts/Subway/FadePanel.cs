@@ -41,6 +41,8 @@ public class SubwayFadeManager : MonoBehaviour
 
         float time = 0f;
 
+        StartCoroutine(HomeButtonBootstrap.FadeGameplayControls(duration));
+
         while (time < duration)
         {
             time += Time.deltaTime;

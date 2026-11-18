@@ -184,6 +184,8 @@ public class FeatherPuzzleController : MonoBehaviour
             if (walkSound != null)
                 yield return new WaitForSeconds(Mathf.Max(0, walkSound.length - fadeTime-0.5f));
 
+        if (!SceneTransitionManager.PrepareScene("CinemaR1Clear")) yield break;
+        StartCoroutine(HomeButtonBootstrap.FadeGameplayControls(fadeTime));
         float t = 0;
 
         Color c = fadePanel.color;
@@ -199,6 +201,6 @@ public class FeatherPuzzleController : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene("CinemaR1Clear");
+        SceneTransitionManager.ActivatePreparedScene();
     }
 }

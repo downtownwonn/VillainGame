@@ -102,6 +102,6 @@ public class BackgroundSwapDropZone : MonoBehaviour, IDropHandler
     {
         yield return new WaitForSeconds(delayBeforeClear);
         Debug.Log("클리어 씬으로 이동: " + clearSceneName);
-        SceneManager.LoadScene(clearSceneName);
+        SceneTransitionManager.BeginTransition(clearSceneName);
     }
 }

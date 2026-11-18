@@ -15,7 +15,7 @@ public sealed class ClearSceneAutoAdvance : MonoBehaviour
 
         if (Application.CanStreamedLevelBeLoaded(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName);
+            SceneTransitionManager.BeginTransition(nextSceneName);
         }
         else
         {
