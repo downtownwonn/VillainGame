@@ -648,7 +648,13 @@ MonoBehaviour:
   - {fileID: -4068797430262124152, guid: af28a565fa6d9744694f49935b1598d0, type: 3}
   - {fileID: -8644779258314668688, guid: 0052d6e9b65d1ad4ba02f0dab8980b5a, type: 3}
   - {fileID: 8098251915080867424, guid: f26e332d441e1f94182a6e8c9c901fd6, type: 3}
+  visibleHeightRatios:
+  - 0.984375
+  - 0.984375
+  - 0.984375
+  - 0.99014777
   canvas: {fileID: 2046816355}
+  bubbleDisplayScale: 0.5
   bubbleSizes:
   - {x: 100, y: 100}
   - {x: 150, y: 120}
@@ -718,7 +724,7 @@ RectTransform:
   m_GameObject: {fileID: 355484995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.7, z: 0.43646}
+  m_LocalScale: {x: 0.8, y: 0.7, z: 0.43646}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1184953601}
@@ -730,7 +736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 47}
+  m_AnchoredPosition: {x: -11, y: 20}
   m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &355484997
@@ -2652,6 +2658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd252d91f514b3eb8cd763341c4936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
+  keepVisualSizeWhileDragging: 0
   wasDropped: 0
 --- !u!114 &791251043
 MonoBehaviour:
@@ -3009,6 +3016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd252d91f514b3eb8cd763341c4936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
+  keepVisualSizeWhileDragging: 0
   wasDropped: 0
 --- !u!114 &933006336
 MonoBehaviour:
@@ -4574,6 +4582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd252d91f514b3eb8cd763341c4936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
+  keepVisualSizeWhileDragging: 0
   wasDropped: 0
 --- !u!114 &1136829397
 MonoBehaviour:
@@ -7280,6 +7289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bd252d91f514b3eb8cd763341c4936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem
+  keepVisualSizeWhileDragging: 0
   wasDropped: 0
 --- !u!114 &1746026687
 MonoBehaviour:

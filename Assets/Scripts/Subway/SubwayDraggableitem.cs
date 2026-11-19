@@ -478,30 +478,64 @@ if (draggedItemData != null &&
             trigger.OnPointerClick(eventData);
         }
     }
-    private IEnumerator ClearAndFade()
+    
+private IEnumerator ClearAndFade()
+{
+    yield return new WaitForSeconds(0.2f);
+
+    string currentScene =
+        SceneManager.GetActiveScene().name;
+
+    string clearSceneName = null;
+
+    // R1 클리어
+    if (currentScene == "SubwayR1Play")
     {
-        yield return new WaitForSeconds(0.2f);
-        bool isRoundOne = SceneManager.GetActiveScene().name == "SubwayR1Play";
-        if (isRoundOne && !SceneTransitionManager.PrepareScene("SubwayR1Clear")) yield break;
-
-        if (SubwayFadeManager.Instance != null)
-        {
-            yield return StartCoroutine(
-                SubwayFadeManager.Instance.FadeOut(1f)
-            );
-        }
-
-        if (isRoundOne)
-        {
-            const string clearSceneName = "SubwayR1Clear";
-            if (Application.CanStreamedLevelBeLoaded(clearSceneName))
-            {
-                SceneTransitionManager.ActivatePreparedScene();
-            }
-            else
-            {
-                Debug.LogError($"'{clearSceneName}' 씬을 Build Profiles에 추가해야 합니다.");
-            }
-        }
+        clearSceneName = "SubwayR1Clear";
     }
+    // R2 클리어
+    else if (currentScene == "SubwayR2Play")
+    {
+        clearSceneName = "SubwayR2Clear";
+    }
+    // R3 클리어
+    else if (currentScene == "SubwayR3Play")
+    {
+        clearSceneName = "SubwayR3Clear";
+    }
+
+    if (string.IsNullOrEmpty(clearSceneName))
+    {
+        Debug.LogError("클리어 씬을 찾지 못했습니다: " + currentScene);
+        yield break;
+    }
+
+    // 클리어 씬 등록 여부 확인
+    if (!Application.CanStreamedLevelBeLoaded(clearSceneName))
+    {
+        Debug.LogError("Build Profiles에 씬을 추가해주세요: " + clearSceneName);
+        yield break;
+    }
+
+    // 클리어 씬 미리 준비
+    if (!SceneTransitionManager.PrepareScene(clearSceneName))
+    {
+        Debug.LogError("클리어 씬 준비 실패: " + clearSceneName);
+        yield break;
+    }
+
+    // 화면 페이드아웃
+    if (SubwayFadeManager.Instance != null)
+    {
+        yield return StartCoroutine(
+            SubwayFadeManager.Instance.FadeOut(1f)
+        );
+    }
+
+    // 클리어 씬 활성화
+    SceneTransitionManager.ActivatePreparedScene();
+
+    Debug.Log("클리어 씬 전환 성공: " + clearSceneName);
+}
+
 }
