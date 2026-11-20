@@ -258,40 +258,72 @@ public class SubwayDraggableItem : MonoBehaviour,
         }
 
 
-        // =====================================================
-        // R2
-        // 장구 → 단소 살인마
-        // =====================================================
+        
+// =====================================================
+// R2
+// 장구 → 단소 살인마
+// =====================================================
 
-        if (draggedItemData != null &&
-            draggedItemData.itemType == ItemType.Janggu)
+if (draggedItemData != null &&
+    draggedItemData.itemType == ItemType.Janggu)
+{
+    Vector3 worldPosition =
+        Camera.main.ScreenToWorldPoint(eventData.position);
+
+    worldPosition.z = 0f;
+
+    Collider2D[] hits =
+        Physics2D.OverlapPointAll(worldPosition);
+
+    Debug.Log("[R2] 장구 드롭 감지! 충돌 개수: " + hits.Length);
+
+    foreach (Collider2D hit in hits)
+    {
+        Debug.Log("[R2] 충돌 오브젝트: " + hit.name);
+
+        DansoVillain villain =
+            hit.GetComponent<DansoVillain>();
+
+        if (villain == null)
         {
-            foreach (GameObject obj in eventData.hovered)
-            {
-                DansoVillain villain =
-                    obj.GetComponent<DansoVillain>();
-
-                if (villain != null)
-                {
-                    villain.ReceiveJanggu();
-
-                    Image usedItemImage =
-                        GetComponent<Image>();
-
-                    if (usedItemImage != null)
-                    {
-                        usedItemImage.sprite = null;
-                        usedItemImage.enabled = false;
-                    }
-
-                    ReturnToOriginalPosition();
-
-                    StartCoroutine(ClearAndFade());
-
-                    return;
-                }
-            }
+            villain =
+                hit.GetComponentInParent<DansoVillain>();
         }
+
+        if (villain == null)
+        {
+            villain =
+                hit.GetComponentInChildren<DansoVillain>();
+        }
+
+        if (villain != null)
+        {
+            Debug.Log("[R2] 단소 빌런 발견!");
+
+            villain.ReceiveJanggu();
+
+            Image usedItemImage =
+                GetComponent<Image>();
+
+            if (usedItemImage != null)
+            {
+                usedItemImage.sprite = null;
+                usedItemImage.enabled = false;
+            }
+
+            ReturnToOriginalPosition();
+
+            StartCoroutine(ClearAndFade());
+
+            Debug.Log("[R2] 장구 전달 성공!");
+
+            return;
+        }
+    }
+
+    Debug.LogWarning("[R2] 단소 빌런을 찾지 못했습니다.");
+}
+
 
 
         // =====================================================
@@ -446,30 +478,64 @@ public class SubwayDraggableItem : MonoBehaviour,
             trigger.OnPointerClick(eventData);
         }
     }
-    private IEnumerator ClearAndFade()
+    
+private IEnumerator ClearAndFade()
+{
+    yield return new WaitForSeconds(0.2f);
+
+    string currentScene =
+        SceneManager.GetActiveScene().name;
+
+    string clearSceneName = null;
+
+    // R1 클리어
+    if (currentScene == "SubwayR1Play")
     {
-        yield return new WaitForSeconds(0.2f);
-        bool isRoundOne = SceneManager.GetActiveScene().name == "SubwayR1Play";
-        if (isRoundOne && !SceneTransitionManager.PrepareScene("SubwayR1Clear")) yield break;
-
-        if (SubwayFadeManager.Instance != null)
-        {
-            yield return StartCoroutine(
-                SubwayFadeManager.Instance.FadeOut(1f)
-            );
-        }
-
-        if (isRoundOne)
-        {
-            const string clearSceneName = "SubwayR1Clear";
-            if (Application.CanStreamedLevelBeLoaded(clearSceneName))
-            {
-                SceneTransitionManager.ActivatePreparedScene();
-            }
-            else
-            {
-                Debug.LogError($"'{clearSceneName}' 씬을 Build Profiles에 추가해야 합니다.");
-            }
-        }
+        clearSceneName = "SubwayR1Clear";
     }
+    // R2 클리어
+    else if (currentScene == "SubwayR2Play")
+    {
+        clearSceneName = "SubwayR2Clear";
+    }
+    // R3 클리어
+    else if (currentScene == "SubwayR3Play")
+    {
+        clearSceneName = "SubwayR3Clear";
+    }
+
+    if (string.IsNullOrEmpty(clearSceneName))
+    {
+        Debug.LogError("클리어 씬을 찾지 못했습니다: " + currentScene);
+        yield break;
+    }
+
+    // 클리어 씬 등록 여부 확인
+    if (!Application.CanStreamedLevelBeLoaded(clearSceneName))
+    {
+        Debug.LogError("Build Profiles에 씬을 추가해주세요: " + clearSceneName);
+        yield break;
+    }
+
+    // 클리어 씬 미리 준비
+    if (!SceneTransitionManager.PrepareScene(clearSceneName))
+    {
+        Debug.LogError("클리어 씬 준비 실패: " + clearSceneName);
+        yield break;
+    }
+
+    // 화면 페이드아웃
+    if (SubwayFadeManager.Instance != null)
+    {
+        yield return StartCoroutine(
+            SubwayFadeManager.Instance.FadeOut(1f)
+        );
+    }
+
+    // 클리어 씬 활성화
+    SceneTransitionManager.ActivatePreparedScene();
+
+    Debug.Log("클리어 씬 전환 성공: " + clearSceneName);
+}
+
 }
