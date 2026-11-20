@@ -11,6 +11,7 @@ public class LegZoomTrigger : MonoBehaviour
 
         if (zoomPanel != null)
         {
+            HomeButtonBootstrap.TrackModalPanel(zoomPanel);
             Debug.Log("LegZoomTrigger: zoomPanel 활성화 시도 - " + zoomPanel.name);
             zoomPanel.SetActive(true);
         }

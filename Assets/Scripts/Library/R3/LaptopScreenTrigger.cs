@@ -10,6 +10,7 @@ public class LaptopScreenTrigger : MonoBehaviour
 
         if (laptopScreenPanel != null)
         {
+            HomeButtonBootstrap.TrackModalPanel(laptopScreenPanel);
             laptopScreenPanel.SetActive(true);
         }
     }

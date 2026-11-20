@@ -64,6 +64,7 @@ public class ItemGetPopup : MonoBehaviour
 
     private IEnumerator ShowPopup(float duration)
     {
+        HomeButtonBootstrap.TrackModalPanel(blocker);
         blocker.SetActive(true);
         popup.SetActive(true);
 

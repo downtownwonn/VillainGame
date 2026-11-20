@@ -114,6 +114,7 @@ public class CinemaLightPuzzleController : MonoBehaviour
 
         Debug.Log("OpenPuzzle called");
 
+        HomeButtonBootstrap.TrackModalPanel(boxPopup);
         boxPopup.SetActive(true);
 
         SetAllSeatColor(offColor);

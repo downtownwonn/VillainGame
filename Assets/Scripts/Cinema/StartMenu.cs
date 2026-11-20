@@ -30,6 +30,22 @@ public class StartMenu : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        // Reapply after every scene component has completed Awake so the startup
+        // order cannot leave the persistent BGM source idle.
+        if (bgmClip != null)
+        {
+            MenuAudioManager.Initialize(null, bgmClip, buttonClickClip);
+        }
+
+        // Older slider settings could have saved zero without setting mute.
+        if (!MenuAudioManager.IsBgmMuted() && MenuAudioManager.GetBgmVolume() <= 0.001f)
+        {
+            MenuAudioManager.SetBgmVolume(0.4f);
+        }
+    }
+
     private void ApplyMenuTheme()
     {
         MenuUITheme.LoadAudioControlIconSet();
@@ -41,14 +57,17 @@ public class StartMenu : MonoBehaviour
         }
 
         StyleMenuButton(uiRoot.Find("StartButton"));
+        RectTransform startRect = uiRoot.Find("StartButton") as RectTransform;
         Transform quitTransform = uiRoot.Find("QuitButton");
         StyleMenuButton(quitTransform);
-        if (quitTransform != null)
+        if (quitTransform != null && startRect != null)
         {
             RectTransform quitRect = quitTransform as RectTransform;
-            Vector2 formerQuitPosition = quitRect.anchoredPosition;
-            quitRect.anchoredPosition += Vector2.down * 96f;
-            CreateCreditsButton(uiRoot, formerQuitPosition, quitRect.sizeDelta);
+            startRect.anchoredPosition += Vector2.up * 30f;
+            const float buttonSpacing = 85f;
+            Vector2 creditsPosition = startRect.anchoredPosition + Vector2.down * buttonSpacing;
+            quitRect.anchoredPosition = startRect.anchoredPosition + Vector2.down * (buttonSpacing * 2f);
+            CreateCreditsButton(uiRoot, creditsPosition, quitRect.sizeDelta);
         }
 
         TMP_Text bgmLabel = null;
@@ -93,7 +112,7 @@ public class StartMenu : MonoBehaviour
         TMP_Text label = labelObject.GetComponent<TMP_Text>();
         label.text = "CREDITS";
         label.font = menuFont;
-        label.fontSize = 42f;
+        label.fontSize = 39f;
         label.color = Color.black;
         label.alignment = TextAlignmentOptions.Center;
         label.fontStyle = FontStyles.Bold;
@@ -152,12 +171,13 @@ public class StartMenu : MonoBehaviour
 
         const string credits =
             "<b>Production Team</b>\n" +
-            "Shin Hye-won — Sogang University, Art & Technology\n" +
-            "Kang Seo-hyun — Sogang University, Art & Technology\n" +
-            "Yang Seung-ha — Sogang University, Art & Technology\n" +
-            "Kim Gyu-hwa — Sogang University, Art & Technology\n\n" +
+            "Shin Hye-won — Stage 1, Team Leader; Sogang University, Art & Technology\n" +
+            "Kang Seo-hyun — Stage 2; Sogang University, Art & Technology\n" +
+            "Yang Seung-ha — Stage 3; Sogang University, Art & Technology\n" +
+            "Kim Gyu-hwa — Stage 4; Sogang University, Art & Technology\n\n" +
             "<b>Production & Resource Credits</b>\n" +
             "Character and background artwork: Created using generative AI based on artwork drawn by our team.\n" +
+            "Item images and game logo video: Created using generative AI.\n" +
             "Home button artwork: Generated with AI.\n" +
             "Volume icon: Sound icons by pojok d from Flaticon.\n" +
             "BGM icon: Music player icons by SumberRejeki from Flaticon.\n" +
@@ -249,7 +269,7 @@ public class StartMenu : MonoBehaviour
         if (label != null)
         {
             label.gameObject.SetActive(true);
-            label.fontSize = 42f;
+            label.fontSize = buttonTransform.name == "StartButton" || buttonTransform.name == "QuitButton" ? 41f : label.fontSize;
             label.color = Color.black;
             if (buttonTransform.name == "QuitButton")
             {
