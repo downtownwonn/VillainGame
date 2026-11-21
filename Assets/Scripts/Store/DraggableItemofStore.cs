@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-// 1. IPointerClickHandler 제거
 public class DraggableItemofStore : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private RectTransform rectTransform;
@@ -11,6 +10,18 @@ public class DraggableItemofStore : MonoBehaviour, IBeginDragHandler, IDragHandl
     private Vector2 originalPosition;
     private Transform originalParent;
     private Canvas canvas;
+
+    [Header("드래그 크기 설정")]
+    [Tooltip("드래그하는 동안 몇 배로 키울지 (1 = 그대로, 1.3 = 30% 크게)")]
+    [SerializeField] private float dragScale = 1.3f;
+    [Tooltip("칸에서 빠져나올 때 크기가 찌그러지지 않게 유지")]
+    [SerializeField] private bool keepVisualSizeWhileDragging = true;
+
+    private Vector3 originalScale;
+    private Vector2 originalAnchorMin;
+    private Vector2 originalAnchorMax;
+    private Vector2 originalSizeDelta;
+    private bool isDragging = false;
 
     [HideInInspector]
     public bool wasDropped = false;
@@ -26,6 +37,7 @@ public class DraggableItemofStore : MonoBehaviour, IBeginDragHandler, IDragHandl
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
         canvas = GetComponentInParent<Canvas>();
+        originalScale = rectTransform.localScale;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -39,11 +51,28 @@ public class DraggableItemofStore : MonoBehaviour, IBeginDragHandler, IDragHandl
         }
 
         wasDropped = false;
+        isDragging = true;
         originalPosition = rectTransform.anchoredPosition;
         originalParent = transform.parent;
 
+        // 칸 안에서 보이던 실제 크기 저장
+        Vector2 visualSize = rectTransform.rect.size;
+        originalAnchorMin = rectTransform.anchorMin;
+        originalAnchorMax = rectTransform.anchorMax;
+        originalSizeDelta = rectTransform.sizeDelta;
+
         transform.SetParent(canvas.transform);
         transform.SetAsLastSibling();
+
+        if (keepVisualSizeWhileDragging)
+        {
+            rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            rectTransform.sizeDelta = visualSize;
+        }
+
+        // 드래그 중 크게
+        rectTransform.localScale = originalScale * dragScale;
 
         canvasGroup.blocksRaycasts = false;
     }
@@ -78,7 +107,24 @@ public class DraggableItemofStore : MonoBehaviour, IBeginDragHandler, IDragHandl
         {
             transform.SetParent(originalParent);
         }
+
+        RestoreOriginalLayout();
         rectTransform.anchoredPosition = originalPosition;
+    }
+
+    private void RestoreOriginalLayout()
+    {
+        // 크기 원래대로
+        rectTransform.localScale = originalScale;
+
+        if (keepVisualSizeWhileDragging && isDragging)
+        {
+            rectTransform.anchorMin = originalAnchorMin;
+            rectTransform.anchorMax = originalAnchorMax;
+            rectTransform.sizeDelta = originalSizeDelta;
+        }
+
+        isDragging = false;
     }
 
     public void ClearItem()
@@ -95,6 +141,4 @@ public class DraggableItemofStore : MonoBehaviour, IBeginDragHandler, IDragHandl
         wasDropped = false;
         canvasGroup.blocksRaycasts = true;
     }
-
-    // 2. OnPointerClick 메서드 전체 삭제 완료
 }
