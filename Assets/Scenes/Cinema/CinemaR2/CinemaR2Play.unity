@@ -1240,7 +1240,7 @@ MonoBehaviour:
   bubbleType: 0
   bubbleOffset: {x: 0, y: 0}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1 &406524746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,15 +1559,15 @@ RectTransform:
   m_GameObject: {fileID: 507584802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.06666666, y: 0.08, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 64778203}
-  m_Father: {fileID: 2019374017}
+  m_Father: {fileID: 2093195140}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42, y: 30}
+  m_AnchoredPosition: {x: -850, y: 430}
   m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507584804
@@ -6905,12 +6905,11 @@ RectTransform:
   m_Children:
   - {fileID: 543780103}
   - {fileID: 1105519556}
-  - {fileID: 507584803}
   m_Father: {fileID: 2093195140}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30.000013, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2019374018
@@ -7102,6 +7101,7 @@ RectTransform:
   m_Children:
   - {fileID: 227615074}
   - {fileID: 2019374017}
+  - {fileID: 507584803}
   m_Father: {fileID: 333689882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

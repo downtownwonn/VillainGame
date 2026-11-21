@@ -15,5 +15,5 @@ MonoBehaviour:
   itemSprite: {fileID: -2187354570491441782, guid: 56f33b11868574371ac941de0dded57c, type: 3}
   itemName: "\uC120\uAE00\uB77C\uC2A4"
   description: "\uC5B4\uB974\uC2E0\uBD84\uB4E4\uC774 \uB07C\uACE0 \uACC4\uC2DC\uB358
-    \uC120\uAE00\uB77C\uC2A4\n\uC2EC\uC0C1\uCE58 \uC54A\uC740 \uC120\uAE00\uB77C\uC2A4\uB2E4"
+    \uC120\uAE00\uB77C\uC2A4.\n\uC2EC\uC0C1\uCE58 \uC54A\uC740 \uC120\uAE00\uB77C\uC2A4\uB2E4"
   largeItemSprite: {fileID: 0}

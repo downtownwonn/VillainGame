@@ -17,6 +17,7 @@ public class SafeManager : MonoBehaviour
         if (popupUI != null)
         {
             popupUI.SetActive(true); // 꺼져있던 PopupUI 켜기
+            HomeButtonBootstrap.SetModalPopupOpen(this, true);
         }
     }
 
@@ -26,6 +27,7 @@ public class SafeManager : MonoBehaviour
         if (popupUI != null)
         {
             popupUI.SetActive(false); // PopupUI 다시 숨기기
+            HomeButtonBootstrap.SetModalPopupOpen(this, false);
         }
     }
 }

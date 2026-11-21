@@ -21,6 +21,7 @@ public class ItemPopupManager : MonoBehaviour
     {
         popupImage.sprite = sprite;
         popupPanel.SetActive(true);
+        HomeButtonBootstrap.SetModalPopupOpen(this, true);
 
         // 노트북 화면 팝업일 때만 스피커 존 클릭 가능하게
         if (laptopIconSprite != null && sprite == laptopIconSprite && speakerObject != null)
@@ -32,5 +33,6 @@ public class ItemPopupManager : MonoBehaviour
     public void HidePopup()
     {
         popupPanel.SetActive(false);
+        HomeButtonBootstrap.SetModalPopupOpen(this, false);
     }
 }

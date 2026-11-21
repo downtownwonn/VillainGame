@@ -518,7 +518,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -339.99, y: 183.8}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &139801163
 MonoBehaviour:
@@ -3134,8 +3134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: "\uBE68\uB9AC \uB2E4\uB978 \uACF3\uC73C\uB85C \uAC14\uC73C\uBA74 \uC88B\uACD8\uC5B4\u3160\u3160"
-  bubbleType: 2
+  dialogue: "\uBE68\uB9AC \uB2E4\uB978 \uACF3\uC73C\uB85C \n\uAC00\uC8FC\uC138\uC694..."
+  bubbleType: 3
   bubbleOffset: {x: -1.5, y: -0.5}
   textOffset: {x: 35, y: 1}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}

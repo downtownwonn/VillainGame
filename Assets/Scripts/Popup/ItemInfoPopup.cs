@@ -74,8 +74,10 @@ public class ItemInfoPopup : MonoBehaviour
         itemName.text = name;
         itemDescription.text = description;
 
+        HomeButtonBootstrap.TrackModalPanel(blocker);
         blocker.SetActive(true);
         popup.SetActive(true);
+        HomeButtonBootstrap.SetModalPopupOpen(this, true);
 
         if (audioSource != null && openSound != null)
         {
@@ -177,6 +179,7 @@ public class ItemInfoPopup : MonoBehaviour
 
         popup.SetActive(false);
         blocker.SetActive(false);
+        HomeButtonBootstrap.SetModalPopupOpen(this, false);
 
         // ���� �������� ���� �ʱ�ȭ
         currentLargeSprite = null;

@@ -11,6 +11,11 @@ public static class HomeButtonBootstrap
     private const string StartSceneName = "StartS";
     private const string StageSelectSceneName = "StageSelect";
     private const string HomeCanvasName = "GlobalHomeButtonCanvas";
+    private const string FadeCanvasName = "GlobalHomeSceneFadeCanvas";
+    private const int ControlsSortingOrder = 10;
+    private static Canvas controlsCanvas;
+    private static CanvasGroup[] controlGroups;
+    private static float[] modalRestoreAlphas;
     private static CanvasGroup homeButtonCanvasGroup;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -21,12 +26,18 @@ public static class HomeButtonBootstrap
 
     private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        GameplayPopupState.Clear();
         if (!IsGameplayScene(scene.name))
         {
             GameObject existingCanvas = GameObject.Find(HomeCanvasName);
             if (existingCanvas != null)
                 Object.Destroy(existingCanvas);
+            GameObject existingFadeCanvas = GameObject.Find(FadeCanvasName);
+            if (existingFadeCanvas != null)
+                Object.Destroy(existingFadeCanvas);
             homeButtonCanvasGroup = null;
+            controlsCanvas = null;
+            controlGroups = null;
             return;
         }
 
@@ -68,7 +79,8 @@ public static class HomeButtonBootstrap
         GameObject canvasObject = new GameObject(HomeCanvasName, typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
         Canvas canvas = canvasObject.GetComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.sortingOrder = 1000;
+        canvas.sortingOrder = ControlsSortingOrder;
+        controlsCanvas = canvas;
 
         CanvasScaler scaler = canvasObject.GetComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
@@ -106,8 +118,16 @@ public static class HomeButtonBootstrap
 
         // Keep the transition overlay above the gameplay controls. It stays
         // transparent and ignores clicks until the home button is pressed.
+        GameObject fadeCanvasObject = new GameObject(FadeCanvasName, typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        Canvas fadeCanvas = fadeCanvasObject.GetComponent<Canvas>();
+        fadeCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        fadeCanvas.sortingOrder = 1000;
+        CanvasScaler fadeScaler = fadeCanvasObject.GetComponent<CanvasScaler>();
+        fadeScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        fadeScaler.referenceResolution = new Vector2(1920f, 1080f);
+        fadeScaler.matchWidthOrHeight = 0.5f;
         GameObject fadeObject = new GameObject("HomeSceneFade", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-        fadeObject.transform.SetParent(canvas.transform, false);
+        fadeObject.transform.SetParent(fadeCanvasObject.transform, false);
         Image fadeImage = fadeObject.GetComponent<Image>();
         fadeImage.color = new Color(0f, 0f, 0f, 0f);
         fadeImage.raycastTarget = false;
@@ -124,6 +144,7 @@ public static class HomeButtonBootstrap
             bgmButton.GetComponent<CanvasGroup>(),
             sfxButton.GetComponent<CanvasGroup>()
         });
+        controlGroups = new[] { homeButtonCanvasGroup, bgmButton.GetComponent<CanvasGroup>(), sfxButton.GetComponent<CanvasGroup>() };
         button.onClick.AddListener(() => transition.GoToStartScene(button, StartSceneName));
     }
 
@@ -138,6 +159,11 @@ public static class HomeButtonBootstrap
         if (!SceneManager.GetActiveScene().name.StartsWith("Cinema"))
             return;
 
+        // While a modal is open, the popup controller applies one shared
+        // opacity to all three controls. Do not dim Home a second time.
+        if (GameplayPopupState.IsAnyOpen)
+            return;
+
         SetHomeButtonAlpha(alpha);
     }
 
@@ -150,6 +176,68 @@ public static class HomeButtonBootstrap
 
         if (transition != null)
             yield return transition.FadeControls(duration);
+    }
+
+    public static void SetModalPopupOpen(Object owner, bool isOpen)
+    {
+        if (owner == null) return;
+        GameplayPopupState.SetOpen(owner, isOpen);
+    }
+
+    public static void TrackModalPanel(GameObject panel)
+    {
+        if (panel != null && panel.GetComponent<GameplayModalPanel>() == null)
+            panel.AddComponent<GameplayModalPanel>();
+    }
+
+    public static void RefreshPopupState()
+    {
+        bool modalOpen = GameplayPopupState.IsAnyOpen;
+        if (controlsCanvas == null)
+        {
+            GameObject canvasObject = GameObject.Find(HomeCanvasName);
+            if (canvasObject != null) controlsCanvas = canvasObject.GetComponent<Canvas>();
+        }
+        if (controlsCanvas != null)
+            controlsCanvas.sortingOrder = modalOpen ? -1 : ControlsSortingOrder;
+        if (controlGroups == null || controlGroups.Length == 0)
+        {
+            GameObject canvasObject = GameObject.Find(HomeCanvasName);
+            if (canvasObject != null)
+            {
+                Transform[] children = canvasObject.GetComponentsInChildren<Transform>(true);
+                var groups = new System.Collections.Generic.List<CanvasGroup>();
+                foreach (Transform child in children)
+                    if (child.name == "HomeButton" || child.name == "MusicIcon" || child.name == "SoundIcon")
+                    {
+                        CanvasGroup group = child.GetComponent<CanvasGroup>();
+                        if (group != null) groups.Add(group);
+                    }
+                controlGroups = groups.ToArray();
+            }
+        }
+        if (controlGroups != null && modalOpen && modalRestoreAlphas == null)
+        {
+            modalRestoreAlphas = new float[controlGroups.Length];
+            for (int i = 0; i < controlGroups.Length; i++)
+                modalRestoreAlphas[i] = controlGroups[i] != null ? controlGroups[i].alpha : 1f;
+        }
+        if (controlGroups != null)
+            foreach (CanvasGroup group in controlGroups)
+                if (group != null)
+                {
+                    group.interactable = !modalOpen;
+                    group.blocksRaycasts = !modalOpen;
+                }
+        if (controlGroups != null && !modalOpen && modalRestoreAlphas != null)
+        {
+            for (int i = 0; i < controlGroups.Length && i < modalRestoreAlphas.Length; i++)
+                if (controlGroups[i] != null) controlGroups[i].alpha = modalRestoreAlphas[i];
+            modalRestoreAlphas = null;
+        }
+        else if (controlGroups != null && modalOpen)
+            foreach (CanvasGroup group in controlGroups)
+                if (group != null) group.alpha = 0.5f;
     }
 
     private static void SetHomeButtonAlpha(float alpha)

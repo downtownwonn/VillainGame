@@ -78,12 +78,17 @@ public class SubwayItemPopupManager : MonoBehaviour
                 break;
         }
 
+        HomeButtonBootstrap.TrackModalPanel(popupPanel);
         popupPanel.SetActive(true);
+        HomeButtonBootstrap.SetModalPopupOpen(this, true);
     }
 
     public void HidePopup()
     {
         if (popupPanel != null)
+        {
             popupPanel.SetActive(false);
+            HomeButtonBootstrap.SetModalPopupOpen(this, false);
+        }
     }
 }

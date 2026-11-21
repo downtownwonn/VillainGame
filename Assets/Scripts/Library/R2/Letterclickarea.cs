@@ -9,6 +9,7 @@ public class LetterClickTrigger : MonoBehaviour
     {
         if (letterPanel != null)
         {
+            HomeButtonBootstrap.TrackModalPanel(letterPanel);
             letterPanel.SetActive(true);
         }
     }

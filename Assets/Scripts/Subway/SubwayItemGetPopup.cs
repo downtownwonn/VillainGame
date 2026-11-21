@@ -30,7 +30,9 @@ public class SubwayItemGetPopup : MonoBehaviour
             getImage.sprite = itemSprite;
         }
 
+        HomeButtonBootstrap.TrackModalPanel(popupPanel);
         popupPanel.SetActive(true);
+        HomeButtonBootstrap.SetModalPopupOpen(this, true);
 
         CancelInvoke(nameof(HideGetPopup));
         Invoke(nameof(HideGetPopup), 1.5f);
@@ -40,5 +42,6 @@ public class SubwayItemGetPopup : MonoBehaviour
     {
         if (popupPanel != null)
             popupPanel.SetActive(false);
+        HomeButtonBootstrap.SetModalPopupOpen(this, false);
     }
 }
