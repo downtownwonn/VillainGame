@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FeatherTipPickup : MonoBehaviour
+public class FeatherPickup : MonoBehaviour
 {
     [Header("Objects")]
     public GameObject feather;
@@ -21,6 +21,8 @@ public class FeatherTipPickup : MonoBehaviour
     [Header("Sounds")]
     public AudioSource featherDropSound;
 
+    [SerializeField] private bool singleClickPickup;
+
     private float lastClickTime = 0f;
     private const float doubleClickDelay = 0.3f;
 
@@ -29,6 +31,13 @@ public class FeatherTipPickup : MonoBehaviour
     void OnMouseDown()
     {
         if (pickedUp) return;
+
+        if (singleClickPickup)
+        {
+            pickedUp = true;
+            StartCoroutine(PickupSequence());
+            return;
+        }
 
         if (Time.time - lastClickTime < doubleClickDelay)
         {

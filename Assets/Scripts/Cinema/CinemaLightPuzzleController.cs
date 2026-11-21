@@ -222,7 +222,7 @@ public class CinemaLightPuzzleController : MonoBehaviour
         if (sfxSource != null && successClip != null)
         {
             sfxSource.PlayOneShot(successClip);
-            yield return new WaitForSecondsRealtime(successClip.length);
+            yield return new WaitForSecondsRealtime(1f);
         }
 
         // 조명 켜지는 효과음
