@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemSprite: {fileID: 21300000, guid: 0dd0bff0eecb70e48b2e03b417f08a83, type: 3}
   itemName: "\uB300\uAC78\uB808 \uBA38\uB9AC"
-  description: "\uCC3D\uACE0\uC5D0 \uC788\uB358 \uB300\uAC78\uB808 \uBA38\uB9AC.\n\uB9C8\uCE58
-    \uAC00\uBC1C\uCC98\uB7FC \uBCF4\uC778\uB2E4."
+  description: "\uCC3D\uACE0\uC5D0 \uC788\uB358 \uB300\uAC78\uB808 \uBA38\uB9AC.\n\uD55C
+    \uBC88\uB3C4 \uC4F0\uC9C0 \uC54A\uC740 \uAC83 \uAC19\uC774 \uAE68\uB057\uD574
+    \uBCF4\uC778\uB2E4."
   largeItemSprite: {fileID: 0}

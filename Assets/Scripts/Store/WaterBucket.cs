@@ -83,6 +83,12 @@ public class WaterBucket : MonoBehaviour
     public AudioClip wash2ExitSound;
     public AudioClip wash3EnterSound;
 
+    [Header("변신 사운드 (짜란! / 두둥!)")]
+    [Tooltip("비니가 바뀐 물체로 나타날 때 재생할 소리")]
+    public AudioClip biniResultSound;
+    [Tooltip("자루가 바뀐 물체로 나타날 때 재생할 소리")]
+    public AudioClip mophandleResultSound;
+
     [Header("이펙트 설정")]
     [Tooltip("물 튀기는 효과 프리팹 (Particle System 등)")]
     public GameObject splashEffectPrefab;
@@ -119,7 +125,7 @@ public class WaterBucket : MonoBehaviour
                         bini1EnterDuration, bini1WaitDuration, bini1ExitDuration,
                         bini2EnterDuration, bini2WaitDuration, bini2ExitDuration,
                         bini3EnterDuration, bini3WaitDuration,
-                        bini1_2SinkDepth, bini3SinkDepth, biniRiseDuration, biniRiseHeight));
+                        bini1_2SinkDepth, bini3SinkDepth, biniRiseDuration, biniRiseHeight, biniResultSound));
                 }
                 else if (spriteName.Contains("mophandle"))
                 {
@@ -131,7 +137,7 @@ public class WaterBucket : MonoBehaviour
                         mophandle1EnterDuration, mophandle1WaitDuration, mophandle1ExitDuration,
                         mophandle2EnterDuration, mophandle2WaitDuration, mophandle2ExitDuration,
                         mophandle3EnterDuration, mophandle3WaitDuration,
-                        mophandle1_2SinkDepth, mophandle3SinkDepth, mophandleRiseDuration, mophandleRiseHeight));
+                        mophandle1_2SinkDepth, mophandle3SinkDepth, mophandleRiseDuration, mophandleRiseHeight, mophandleResultSound));
                 }
             }
         }
@@ -142,7 +148,7 @@ public class WaterBucket : MonoBehaviour
         float e1, float w1, float x1,
         float e2, float w2, float x2,
         float e3, float w3,
-        float normalSinkDep, float thirdSinkDep, float riseDur, float riseH)
+        float normalSinkDep, float thirdSinkDep, float riseDur, float riseH, AudioClip resultSound)
     {
         isWashing = true;
 
@@ -220,6 +226,7 @@ public class WaterBucket : MonoBehaviour
 
             resultObject.transform.position = spawnStartPos;
             resultObject.SetActive(true);
+            PlaySound(resultSound);
 
             float elapsedTime = 0f;
             while (elapsedTime < riseDur)

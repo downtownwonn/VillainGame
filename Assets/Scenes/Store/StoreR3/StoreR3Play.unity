@@ -1987,6 +1987,8 @@ MonoBehaviour:
   wash2EnterSound: {fileID: 0}
   wash2ExitSound: {fileID: 0}
   wash3EnterSound: {fileID: 0}
+  biniResultSound: {fileID: 0}
+  mophandleResultSound: {fileID: 0}
   splashEffectPrefab: {fileID: 0}
 --- !u!1 &1141105081
 GameObject:
