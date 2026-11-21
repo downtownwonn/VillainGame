@@ -814,7 +814,7 @@ MonoBehaviour:
   bubbleType: 5
   bubbleOffset: {x: 0, y: 2}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &341990142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2083,7 +2083,7 @@ MonoBehaviour:
   bubbleType: 0
   bubbleOffset: {x: 2, y: 2}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!114 &673455911 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 397110459185008581, guid: 439029c571b9a234086a32f2f1594b54, type: 3}
@@ -5018,7 +5018,7 @@ MonoBehaviour:
   bubbleType: 0
   bubbleOffset: {x: 1, y: 2}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1 &1754145941
 GameObject:
   m_ObjectHideFlags: 0

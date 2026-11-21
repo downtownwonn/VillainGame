@@ -4166,7 +4166,7 @@ MonoBehaviour:
   bubbleType: 1
   bubbleOffset: {x: 0, y: 0}
   textOffset: {x: 160, y: 90}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1 &1056081533
 GameObject:
   m_ObjectHideFlags: 0
@@ -5497,7 +5497,7 @@ MonoBehaviour:
   bubbleType: 1
   bubbleOffset: {x: 0, y: 0}
   textOffset: {x: 160, y: 90}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &1299217457
 BoxCollider2D:
   m_ObjectHideFlags: 0
