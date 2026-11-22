@@ -160,9 +160,10 @@ public class SubwayBubbleManager : MonoBehaviour
 
         if (bubbleText != null)
         {
-            bubbleText.text = character.Dialogue;
+            string displayedDialogue = character.GetDialogueForDisplay();
+            bubbleText.text = displayedDialogue;
 
-            Debug.Log("대사: [" + character.Dialogue + "]");
+            Debug.Log("대사: [" + displayedDialogue + "]");
 
             bubbleText.rectTransform.localScale =
                 new Vector3(1f, 1f, 1f);

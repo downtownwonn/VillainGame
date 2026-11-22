@@ -1412,7 +1412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: "\uC800\uAE34 \uC65C\uC774\uB9AC\n\uC18C\uB780\uC2A4\uB7FD\uC9C0"
+  dialogue: "\uC800\uAE34 \uC65C\uC774\uB9AC \uC18C\uB780\uC2A4\uB7FD\uC9C0"
   bubbleType: 2
   bubbleOffset: {x: -1, y: 0}
   textOffset: {x: 35, y: 0}
@@ -3931,6 +3931,8 @@ MonoBehaviour:
   heartEffect: {fileID: 0}
   leftButton: {fileID: 75767789}
   rightButton: {fileID: 1121532547}
+  navigationBlockerPanel: {fileID: 0}
+  villainHeadDropZone: {fileID: 0}
 --- !u!1 &1232809430
 GameObject:
   m_ObjectHideFlags: 0

@@ -457,6 +457,8 @@ GameObject:
   m_Component:
   - component: {fileID: 123883728}
   - component: {fileID: 123883729}
+  - component: {fileID: 1900010002}
+  - component: {fileID: 1900010001}
   m_Layer: 0
   m_Name: "\uD3F0\uC9C8pc2_0"
   m_TagString: Untagged
@@ -1094,6 +1096,8 @@ GameObject:
   m_Component:
   - component: {fileID: 303591567}
   - component: {fileID: 303591568}
+  - component: {fileID: 1900010007}
+  - component: {fileID: 1900010006}
   m_Layer: 0
   m_Name: "\uB0A8PCside_0 (1)"
   m_TagString: Untagged
@@ -2207,6 +2211,7 @@ GameObject:
   - component: {fileID: 619370324}
   - component: {fileID: 619370323}
   - component: {fileID: 619370325}
+  - component: {fileID: 1900010008}
   m_Layer: 0
   m_Name: "\u1109\u1161\u11BC\u1106\u1169 \u1107\u116E\u110B\u116F\u11AB(\u1102\u116E\u1101\u1175)_0"
   m_TagString: Untagged
@@ -2298,7 +2303,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619370320}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -2325,7 +2330,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.2002405, y: 4.0315037}
+  m_Offset: {x: 0, y: 1.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -2335,7 +2340,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.9533007, y: 0.9725661}
+  m_Size: {x: 2.1, y: 2.5}
   m_EdgeRadius: 0
 --- !u!114 &619370324
 MonoBehaviour:
@@ -2825,6 +2830,7 @@ GameObject:
   - component: {fileID: 737273469}
   - component: {fileID: 737273471}
   - component: {fileID: 737273470}
+  - component: {fileID: 1900010005}
   m_Layer: 0
   m_Name: "\u1103\u1161\u11AB\u1109\u1169\u1109\u1161\u11AF\u110B\u1175\u11AB\u1106\u1161(\u1102\u116E\u1101\u1175)_0"
   m_TagString: Untagged
@@ -2919,6 +2925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504b6e97205c547f085f289b14ada513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DansoVillain
+  isR2ClearTarget: 0
 --- !u!61 &737273471
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2926,7 +2933,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737273467}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -4162,9 +4169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de96fcfbba56a42fc93c06c413e11d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubwayBubbleCharacter
-  dialogue: "\u314E\u314E"
-  bubbleType: 1
-  bubbleOffset: {x: 0, y: 0}
+  dialogue: " \uC81C\uBC1C \uC5EC\uAE34 \uC624\uC9C0 \uB9C8\uB77C..."
+  dialogueCycle: []
+  bubbleType: 2
+  bubbleOffset: {x: -0.3, y: 0}
   textOffset: {x: 160, y: 90}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!1 &1056081533
@@ -4266,6 +4274,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1062366401}
   - component: {fileID: 1062366402}
+  - component: {fileID: 1900010004}
+  - component: {fileID: 1900010003}
   m_Layer: 0
   m_Name: "\uD3F0\uC9C8pc2_0"
   m_TagString: Untagged
@@ -4385,6 +4395,8 @@ MonoBehaviour:
   heartEffect: {fileID: 0}
   leftButton: {fileID: 1212898436}
   rightButton: {fileID: 1402950164}
+  navigationBlockerPanel: {fileID: 0}
+  villainHeadDropZone: {fileID: 0}
 --- !u!114 &1064160588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4613,6 +4625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504b6e97205c547f085f289b14ada513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DansoVillain
+  isR2ClearTarget: 1
 --- !u!61 &1121661242
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5493,10 +5506,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de96fcfbba56a42fc93c06c413e11d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SubwayBubbleCharacter
-  dialogue: "(\uC81C\uBC1C \uC800\uB9AC\uAC00...)"
-  bubbleType: 1
-  bubbleOffset: {x: 0, y: 0}
-  textOffset: {x: 160, y: 90}
+  dialogue: "\uC65C \uD558\uD544 \uB0B4 \uC790\uB9AC\uC5D0\uC11C \u315C\u315C"
+  dialogueCycle: []
+  bubbleType: 2
+  bubbleOffset: {x: -0.66, y: -1}
+  textOffset: {x: 164, y: 90}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &1299217457
 BoxCollider2D:
@@ -6221,6 +6235,8 @@ GameObject:
   - component: {fileID: 1449259946}
   - component: {fileID: 1449259948}
   - component: {fileID: 1449259947}
+  - component: {fileID: 1900010009}
+  - component: {fileID: 1900010014}
   m_Layer: 0
   m_Name: "\u110C\u1161\u11BC\u1100\u116E \u1107\u116E\u110B\u116F\u11AB(\u1102\u116E\u1101\u1175)_0"
   m_TagString: Untagged
@@ -6829,6 +6845,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1581712413}
   - component: {fileID: 1581712414}
+  - component: {fileID: 1900010011}
+  - component: {fileID: 1900010010}
   m_Layer: 0
   m_Name: "\u110B\u1175\u11AF\u1107\u1161\u11AB \u1111\u116E\u11BC\u1106\u116E\u11AF\u1111\u1162\u110B\u116F\u11AB(\u1102\u116E\u1101\u1175)_0"
   m_TagString: Untagged
@@ -7394,6 +7412,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1760169048}
   - component: {fileID: 1760169049}
+  - component: {fileID: 1900010013}
+  - component: {fileID: 1900010012}
   m_Layer: 0
   m_Name: "\u110B\u1175\u11AF\u1107\u1161\u11AB \u1111\u116E\u11BC\u1106\u116E\u11AF\u1111\u1162\u110B\u116F\u11AB(\u1102\u116E\u1101\u1175)_0
     (1)"
@@ -7987,6 +8007,431 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1348964051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1900010001
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123883727}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.64, y: 12.98}
+    newSize: {x: 5.64, y: 12.98}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 5.64, y: 12.98}
+  m_EdgeRadius: 0
+--- !u!114 &1900010002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123883727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de96fcfbba56a42fc93c06c413e11d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayBubbleCharacter
+  dialogue: "\uD558..."
+  dialogueCycle: []
+  bubbleType: 0
+  bubbleOffset: {x: -1, y: -0.8}
+  textOffset: {x: 160, y: 90}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
+--- !u!61 &1900010003
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062366400}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.64, y: 12.98}
+    newSize: {x: 5.64, y: 12.98}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 5.64, y: 12.98}
+  m_EdgeRadius: 0
+--- !u!114 &1900010004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062366400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de96fcfbba56a42fc93c06c413e11d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayBubbleCharacter
+  dialogue: "\uC5B4\uB514\uC11C \uC720\uD29C\uBE0C \uCD2C\uC601\uD558\uB098?"
+  dialogueCycle:
+  - 
+  - 
+  bubbleType: 2
+  bubbleOffset: {x: -0.66, y: -0.43}
+  textOffset: {x: 163, y: 90}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
+--- !u!114 &1900010005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737273467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de96fcfbba56a42fc93c06c413e11d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayBubbleCharacter
+  dialogue: 
+  dialogueCycle:
+  - "*** \uB108\uB3C4 \uAE4C\uBD88\uB798? \uCF71!"
+  - "\uD130\uBC85\uD130\uBC85 \uB098\uC5D0 \uC77C\uC0C1..."
+  - "WHO ARE YOU? \uCF71\uC528!"
+  bubbleType: 6
+  bubbleOffset: {x: 1, y: 0}
+  textOffset: {x: 160, y: 90}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
+--- !u!61 &1900010006
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303591566}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.63, y: 12.97}
+    newSize: {x: 5.63, y: 12.97}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 5.63, y: 12.97}
+  m_EdgeRadius: 0
+--- !u!114 &1900010007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303591566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de96fcfbba56a42fc93c06c413e11d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayBubbleCharacter
+  dialogue: "\uC65C \uADF8\uB7EC\uC2E0\uB300..."
+  dialogueCycle: []
+  bubbleType: 5
+  bubbleOffset: {x: 0, y: 0}
+  textOffset: {x: 160, y: 90}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
+--- !u!114 &1900010008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619370320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de96fcfbba56a42fc93c06c413e11d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayBubbleCharacter
+  dialogue: ' ...'
+  dialogueCycle: []
+  bubbleType: 0
+  bubbleOffset: {x: 0, y: 3.62}
+  textOffset: {x: 160, y: 90}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
+--- !u!114 &1900010009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449259944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de96fcfbba56a42fc93c06c413e11d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayBubbleCharacter
+  dialogue: "\uD560 \uAC83\uB3C4 \uC5C6\uACE0 \uC2EC\uC2EC\uD558\uB124..."
+  dialogueCycle: []
+  bubbleType: 2
+  bubbleOffset: {x: -0.37, y: -0.13}
+  textOffset: {x: 160, y: 90}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
+--- !u!61 &1900010010
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581712412}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 2.13}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.08, y: 4.52}
+    newSize: {x: 1.52, y: 4.26}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.52, y: 4.26}
+  m_EdgeRadius: 0
+--- !u!114 &1900010011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581712412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de96fcfbba56a42fc93c06c413e11d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayBubbleCharacter
+  dialogue: ...
+  dialogueCycle: []
+  bubbleType: 4
+  bubbleOffset: {x: 2.8, y: 4}
+  textOffset: {x: 160, y: 90}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
+--- !u!61 &1900010012
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760169047}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 2.13}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.08, y: 4.52}
+    newSize: {x: 1.52, y: 4.26}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.52, y: 4.26}
+  m_EdgeRadius: 0
+--- !u!114 &1900010013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760169047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de96fcfbba56a42fc93c06c413e11d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SubwayBubbleCharacter
+  dialogue: ...
+  dialogueCycle: []
+  bubbleType: 4
+  bubbleOffset: {x: 2.7, y: 4}
+  textOffset: {x: 160, y: 90}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
+--- !u!61 &1900010014
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449259944}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 2.12}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.91, y: 4.24}
+    newSize: {x: 1.91, y: 4.24}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2, y: 4.4}
+  m_EdgeRadius: 0
 --- !u!1001 &1923122678
 PrefabInstance:
   m_ObjectHideFlags: 0

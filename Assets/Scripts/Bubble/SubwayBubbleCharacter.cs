@@ -7,6 +7,12 @@ public class SubwayBubbleCharacter : MonoBehaviour
     [TextArea(2, 5)]
     [SerializeField] private string dialogue;
 
+    [Header("Optional Dialogue Cycle")]
+    [Tooltip("If entries are set, the bubble advances through them each time it is shown.")]
+    [TextArea(2, 5)]
+    [SerializeField] private string[] dialogueCycle;
+    private int nextDialogueIndex;
+
     [Header("Bubble Type")]
     [SerializeField] private int bubbleType;
 
@@ -22,6 +28,19 @@ public class SubwayBubbleCharacter : MonoBehaviour
     public string Dialogue
     {
         get { return dialogue; }
+    }
+
+    public string GetDialogueForDisplay()
+    {
+        if (dialogueCycle == null || dialogueCycle.Length == 0)
+        {
+            return dialogue;
+        }
+
+        string nextDialogue = dialogueCycle[nextDialogueIndex];
+        nextDialogueIndex = (nextDialogueIndex + 1) % dialogueCycle.Length;
+
+        return string.IsNullOrEmpty(nextDialogue) ? dialogue : nextDialogue;
     }
 
     public int BubbleType
