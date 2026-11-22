@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// <summary>Fades gameplay out before returning to the start scene.</summary>
 public sealed class HomeButtonSceneTransition : MonoBehaviour
 {
-    private const float FadeDuration = 3f;
+    private const float FadeDuration = 2f;
     private Image fadeImage;
     private CanvasGroup[] controlGroups;
     private bool isTransitioning;

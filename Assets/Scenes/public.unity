@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c957ff16ec8cf8048abe0d4a0e4dbfad, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FeatherTipPickup
+  m_EditorClassIdentifier: Assembly-CSharp::FeatherPickup
   feather: {fileID: 794370868}
   inventoryItem: {fileID: 129513677}
   popupItemSprite: {fileID: 1500134969566573645, guid: 336a5af4eb2127741adb810344821002, type: 3}

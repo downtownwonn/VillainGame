@@ -495,7 +495,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -615839309
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: dcd1a2bbe6a91c446a0bdd910f9bbd77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1779,7 +1779,7 @@ Transform:
   m_GameObject: {fileID: 568241042}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.15, y: -5.28, z: 0}
+  m_LocalPosition: {x: -2.1, y: -5.89, z: 0}
   m_LocalScale: {x: 1.0279342, y: 0.9278566, z: 0.1196421}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1797,7 +1797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: "\uC774\uAC70\uB791 \uBC14\uAFD4 \uC774\uB140\uC11D\uC544"
+  dialogue: "\uC774\uAC70\uB791 \uBC14\uAFD4 \uC774 \uB140\uC11D\uC544"
   bubbleType: 2
   bubbleOffset: {x: 0, y: 1.5}
   textOffset: {x: 0, y: 0}
@@ -1851,7 +1851,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 103
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 310956819876653813, guid: 5e29421540807f445ae8a1143b00df40, type: 3}
+  m_Sprite: {fileID: 3764964118971272969, guid: 1ffee35ad7123cd4888c23b49507c0da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1900,7 +1900,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.07, y: 12.96}
+    oldSize: {x: 4.08, y: 12.97}
     newSize: {x: 7.61, y: 17.67}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3194,6 +3194,8 @@ MonoBehaviour:
   wash2EnterSound: {fileID: 8300000, guid: 729568d121f99104c9b0f05c8acbb64e, type: 3}
   wash2ExitSound: {fileID: 0}
   wash3EnterSound: {fileID: 8300000, guid: 591adf51c6c36cc47a580e9edb83feee, type: 3}
+  biniResultSound: {fileID: 8300000, guid: 8934ab656cad2a646af97f08530e7e31, type: 3}
+  mophandleResultSound: {fileID: 8300000, guid: 8934ab656cad2a646af97f08530e7e31, type: 3}
   splashEffectPrefab: {fileID: 0}
 --- !u!212 &1210368928
 SpriteRenderer:
@@ -3255,8 +3257,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!60 &1210368929
-PolygonCollider2D:
+--- !u!61 &1210368929
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3299,87 +3301,8 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.22999999, y: -1.6999999}
-      - {x: 0.38, y: -1.66}
-      - {x: 0.65999997, y: -1.53}
-      - {x: 0.88, y: -1.4499999}
-      - {x: 0.87, y: -1.5999999}
-      - {x: 0.96999997, y: -1.7099999}
-      - {x: 1, y: -1.73}
-      - {x: 1.14, y: -1.7199999}
-      - {x: 1.2099999, y: -1.66}
-      - {x: 1.23, y: -1.51}
-      - {x: 1.22, y: -1.4599999}
-      - {x: 1.17, y: -1.22}
-      - {x: 1.1899999, y: -0.89}
-      - {x: 1.24, y: -0.38}
-      - {x: 1.25, y: -0.17999999}
-      - {x: 1.36, y: -0.01}
-      - {x: 1.36, y: 0.19999999}
-      - {x: 1.3399999, y: 0.28}
-      - {x: 1.36, y: 0.42999998}
-      - {x: 1.36, y: 0.75}
-      - {x: 1.22, y: 1.28}
-      - {x: 1.15, y: 1.36}
-      - {x: 0.95, y: 1.4599999}
-      - {x: 1.01, y: 1.5799999}
-      - {x: 1.1, y: 1.8}
-      - {x: 1.15, y: 2.01}
-      - {x: 1.16, y: 2.08}
-      - {x: 1.09, y: 2.1399999}
-      - {x: 0.96999997, y: 2.1399999}
-      - {x: 0.93, y: 2.1299999}
-      - {x: 0.87, y: 1.9799999}
-      - {x: 0.77, y: 1.66}
-      - {x: 0.75, y: 1.51}
-      - {x: 0.64, y: 1.42}
-      - {x: 0.57, y: 1.35}
-      - {x: 0.48999998, y: 1.15}
-      - {x: 0.48999998, y: 1.0799999}
-      - {x: 0.39999998, y: 0.96999997}
-      - {x: 0.32999998, y: 0.94}
-      - {x: 0.26999998, y: 1.16}
-      - {x: 0.14999999, y: 1.24}
-      - {x: 0, y: 1.27}
-      - {x: -0.14, y: 1.28}
-      - {x: -0.26, y: 1.18}
-      - {x: -0.29, y: 1.12}
-      - {x: -0.34, y: 1.03}
-      - {x: -0.35999998, y: 0.91999996}
-      - {x: -0.35999998, y: 0.56}
-      - {x: -0.48, y: 0.53999996}
-      - {x: -0.71999997, y: 0.48999998}
-      - {x: -1.31, y: 0.34}
-      - {x: -1.36, y: 0.26999998}
-      - {x: -1.36, y: 0.17999999}
-      - {x: -1.35, y: 0.08}
-      - {x: -1.29, y: 0.03}
-      - {x: -1.25, y: -0.29}
-      - {x: -1.22, y: -0.5}
-      - {x: -1.3399999, y: -0.63}
-      - {x: -1.36, y: -0.71999997}
-      - {x: -1.36, y: -0.77}
-      - {x: -1.1899999, y: -0.94}
-      - {x: -1.14, y: -1.14}
-      - {x: -1.1, y: -1.18}
-      - {x: -1.1, y: -1.4399999}
-      - {x: -1.02, y: -1.56}
-      - {x: -0.96999997, y: -1.5799999}
-      - {x: -0.87, y: -1.5899999}
-      - {x: -0.77, y: -1.52}
-      - {x: -0.72999996, y: -1.38}
-      - {x: -0.56, y: -1.38}
-      - {x: -0.35, y: -1.53}
-      - {x: -0.089999996, y: -1.66}
-      - {x: -0.049999997, y: -2.01}
-      - {x: 0.04, y: -2.08}
-      - {x: 0.22, y: -2.08}
-      - {x: 0.29999998, y: -1.9799999}
-      - {x: 0.29999998, y: -1.9}
-      - {x: 0.29, y: -1.78}
-  m_UseDelaunayMesh: 1
+  m_Size: {x: 2.74, y: 4.3}
+  m_EdgeRadius: 0
 --- !u!1 &1259830530
 GameObject:
   m_ObjectHideFlags: 0
