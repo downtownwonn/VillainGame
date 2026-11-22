@@ -930,7 +930,7 @@ MonoBehaviour:
   bubbleType: 4
   bubbleOffset: {x: 1, y: 0}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &249552850
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3802,7 +3802,7 @@ MonoBehaviour:
   bubbleType: 2
   bubbleOffset: {x: 0, y: 0}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!212 &1448077163
 SpriteRenderer:
   serializedVersion: 3
@@ -3989,7 +3989,7 @@ MonoBehaviour:
   bubbleType: 5
   bubbleOffset: {x: 1, y: 0}
   textOffset: {x: 0, y: 0}
-  sound: {fileID: 0}
+  sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!212 &1510350936
 SpriteRenderer:
   serializedVersion: 3
