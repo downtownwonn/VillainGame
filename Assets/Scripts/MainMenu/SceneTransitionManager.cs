@@ -82,6 +82,39 @@ public sealed class SceneTransitionManager : MonoBehaviour
         instance.StartCoroutine(instance.FadeOutAndActivate(fadeOutDuration));
     }
 
+    public static void BeginTransitionAfter(string sceneName, float delaySeconds)
+    {
+        if (string.IsNullOrEmpty(sceneName))
+            return;
+
+        SceneTransitionManager manager = CreateInstance();
+        manager.coverImage.color = new Color(0f, 0f, 0f, 0f);
+        manager.coverImage.raycastTarget = true;
+        string sourceScenePath = SceneManager.GetActiveScene().path;
+        manager.StartCoroutine(manager.BeginTransitionAfterRoutine(sceneName, delaySeconds, sourceScenePath));
+    }
+
+    private IEnumerator BeginTransitionAfterRoutine(string sceneName, float delaySeconds, string sourceScenePath)
+    {
+        if (delaySeconds > 0f)
+            yield return new WaitForSecondsRealtime(delaySeconds);
+
+        if (SceneManager.GetActiveScene().path != sourceScenePath)
+        {
+            coverImage.raycastTarget = false;
+            yield break;
+        }
+
+        if (!PrepareScene(sceneName))
+        {
+            coverImage.raycastTarget = false;
+            yield break;
+        }
+
+        // Keep input blocked through the delay and immediately into the fade.
+        BeginTransition(sceneName);
+    }
+
     private static SceneTransitionManager CreateInstance()
     {
         if (instance != null)

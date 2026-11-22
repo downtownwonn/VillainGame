@@ -34,6 +34,12 @@ public class LegZoomLoopAudio : MonoBehaviour
 
     private void OnDisable()
     {
+        StopLoop();
+    }
+
+    public void StopLoop()
+    {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         if (audioSource != null) audioSource.Stop();
     }
 }

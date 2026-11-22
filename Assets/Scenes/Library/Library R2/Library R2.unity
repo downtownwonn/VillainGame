@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LetterClickTrigger
   letterPanel: {fileID: 901862656}
+  soundManager: {fileID: 607088547}
 --- !u!1 &39686769
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClosePanel
   panel: {fileID: 901862656}
+  soundManager: {fileID: 607088547}
 --- !u!114 &139801164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2015,7 +2017,7 @@ MonoBehaviour:
   objectClickSound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
   ambienceSource: {fileID: 1434546434}
   kissSource: {fileID: 725468294}
-  projectorSound: {fileID: 8300000, guid: 335f864c8f486b54e944cf8df8d28079, type: 3}
+  projectorSound: {fileID: 8300000, guid: 334d7226422d456c9f3e9bf7eebb3495, type: 3}
   kissSound: {fileID: 8300000, guid: 01de89a40d2e31d45bae717febc8e46a, type: 3}
 --- !u!4 &607088548
 Transform:
@@ -3546,6 +3548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LetterClickTrigger
   letterPanel: {fileID: 901862656}
+  soundManager: {fileID: 607088547}
 --- !u!1 &1111903039
 GameObject:
   m_ObjectHideFlags: 0
@@ -4495,7 +4498,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0

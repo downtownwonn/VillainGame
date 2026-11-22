@@ -16,6 +16,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Vector2 originalAnchorMax;
     private Vector2 originalSizeDelta;
     private Vector2 dragVisualSize;
+    private Vector3 inventoryBaseScale = Vector3.one;
+    private Vector3 inventoryIdleScale = Vector3.one;
+    private bool hasCustomInventoryScale;
 
     [HideInInspector]
     public bool wasDropped = false;
@@ -62,6 +65,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         originalPosition = rectTransform.anchoredPosition;
         originalParent = transform.parent;
 
+        if (hasCustomInventoryScale)
+        {
+            inventoryIdleScale = transform.localScale;
+            transform.localScale = inventoryBaseScale;
+        }
+
         if (keepVisualSizeWhileDragging)
         {
             originalAnchorMin = rectTransform.anchorMin;
@@ -102,6 +111,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             transform.SetParent(originalParent);
             RestoreOriginalLayout();
             rectTransform.anchoredPosition = originalPosition;
+            if (hasCustomInventoryScale)
+                transform.localScale = inventoryIdleScale;
         }
 
         OnDragEnded?.Invoke(eventData);
@@ -112,6 +123,20 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetParent(originalParent);
         RestoreOriginalLayout();
         rectTransform.anchoredPosition = originalPosition;
+        if (hasCustomInventoryScale)
+            transform.localScale = inventoryIdleScale;
+    }
+
+    public void SetInventoryScale(float scale)
+    {
+        if (!hasCustomInventoryScale)
+        {
+            inventoryBaseScale = transform.localScale;
+            hasCustomInventoryScale = true;
+        }
+
+        inventoryIdleScale = inventoryBaseScale * Mathf.Max(0f, scale);
+        transform.localScale = inventoryIdleScale;
     }
 
     private void RestoreOriginalLayout()

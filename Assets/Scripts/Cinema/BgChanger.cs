@@ -16,20 +16,50 @@ public class BackgroundChanger : MonoBehaviour
     public Button leftButton;
     public Button rightButton;
 
+    [Header("Optional navigation blocker")]
+    [Tooltip("이 패널이 열려 있는 동안 배경 전환 화살표를 무시합니다.")]
+    public GameObject navigationBlockerPanel;
+
+    [Header("Optional R3 speaker icon")]
+    public VillainHeadDropZone villainHeadDropZone;
+
     // 0 = Left
     // 1 = Main
     // 2 = Right
     private int currentView = 1;
+    private bool navigationBlockStateInitialized;
+    private bool wasNavigationBlocked;
+    private bool leftButtonWasEnabled;
+    private bool rightButtonWasEnabled;
 
 
     void Start()
     {
+        leftButtonWasEnabled = leftButton == null || leftButton.enabled;
+        rightButtonWasEnabled = rightButton == null || rightButton.enabled;
         UpdateView();
+    }
+
+    private void Update()
+    {
+        bool blocked = IsNavigationBlocked();
+        if (navigationBlockStateInitialized && blocked == wasNavigationBlocked)
+            return;
+
+        navigationBlockStateInitialized = true;
+        wasNavigationBlocked = blocked;
+
+        if (leftButton != null)
+            leftButton.enabled = blocked ? false : leftButtonWasEnabled;
+        if (rightButton != null)
+            rightButton.enabled = blocked ? false : rightButtonWasEnabled;
     }
 
 
     public void Left()
     {
+        if (IsNavigationBlocked()) return;
+
         if (currentView > 0)
         {
             CloseSubwayItemPopup();
@@ -43,6 +73,8 @@ public class BackgroundChanger : MonoBehaviour
 
     public void Right()
     {
+        if (IsNavigationBlocked()) return;
+
         if (currentView < 2)
         {
             CloseSubwayItemPopup();
@@ -51,6 +83,11 @@ public class BackgroundChanger : MonoBehaviour
 
             UpdateView();
         }
+    }
+
+    private bool IsNavigationBlocked()
+    {
+        return navigationBlockerPanel != null && navigationBlockerPanel.activeInHierarchy;
     }
 
 
@@ -97,6 +134,11 @@ public class BackgroundChanger : MonoBehaviour
         if (rightBackground != null)
         {
             rightBackground.SetActive(currentView == 2);
+        }
+
+        if (villainHeadDropZone != null)
+        {
+            villainHeadDropZone.SetMainViewVisible(currentView == 1);
         }
 
 
