@@ -1413,6 +1413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uC800\uAE34 \uC65C\uC774\uB9AC \uC18C\uB780\uC2A4\uB7FD\uC9C0"
+  dialogueLines: []
   bubbleType: 2
   bubbleOffset: {x: -1, y: 0}
   textOffset: {x: 35, y: 0}
@@ -2082,7 +2083,7 @@ MonoBehaviour:
   objectClickSound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
   ambienceSource: {fileID: 1434546434}
   kissSource: {fileID: 725468294}
-  projectorSound: {fileID: 8300000, guid: 334d7226422d456c9f3e9bf7eebb3495, type: 3}
+  projectorSound: {fileID: 0}
   kissSound: {fileID: 8300000, guid: 01de89a40d2e31d45bae717febc8e46a, type: 3}
 --- !u!4 &607088548
 Transform:
@@ -3201,9 +3202,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: "\uBE68\uB9AC \uB2E4\uB978 \uACF3\uC73C\uB85C \n\uAC00\uC8FC\uC138\uC694..."
-  bubbleType: 3
-  bubbleOffset: {x: -1.5, y: -0.5}
+  dialogue: "\uC544 \uC624\uB298 \uC6B4\uC218 \uC9C4\uC9DC \uC548 \uC88B\uB124"
+  dialogueLines: []
+  bubbleType: 6
+  bubbleOffset: {x: 0.5, y: -1.5}
   textOffset: {x: 35, y: 1}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &1019575958
@@ -3880,6 +3882,7 @@ MonoBehaviour:
   rightShelfUI: {fileID: 60529348}
   stackedBooksContainer: {fileID: 0}
   villainDropZone: {fileID: 0}
+  letterPanel: {fileID: 901862656}
 --- !u!4 &1229057496
 Transform:
   m_ObjectHideFlags: 0
@@ -4565,7 +4568,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4771,6 +4774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uC2DC\uB044\uB7EC\uC6CC..."
+  dialogueLines: []
   bubbleType: 5
   bubbleOffset: {x: 0, y: 0}
   textOffset: {x: 35, y: 0}
@@ -4928,6 +4932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uBC88\uD638 \uC880 \uC8FC\uC138\uC694\u2665"
+  dialogueLines: []
   bubbleType: 5
   bubbleOffset: {x: 0, y: 0.6}
   textOffset: {x: 40, y: 3}
@@ -6104,6 +6109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uC774 \uCC45\uC744 \uC77D\uC5B4\uBCFC\uAE4C"
+  dialogueLines: []
   bubbleType: 5
   bubbleOffset: {x: 1, y: 0}
   textOffset: {x: 35, y: 0}

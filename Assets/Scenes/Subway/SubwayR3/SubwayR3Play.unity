@@ -4200,6 +4200,9 @@ MonoBehaviour:
   bodyguardItemSprite: {fileID: -1741065307101949228, guid: 70623c61ca26d4c48bcc550ef0f3e153, type: 3}
   itemData: {fileID: 11400000, guid: 47121c60dd7f94a31be0723ab9b05d65, type: 2}
   popupItemSprite: {fileID: -1741065307101949228, guid: 70623c61ca26d4c48bcc550ef0f3e153, type: 3}
+  soundEffectsSource: {fileID: 745518603}
+  sunglassesEquipSound: {fileID: 8300000, guid: c4a70afba0732e14e851234c22ab6fbe, type: 3}
+  bodyguardRevealSound: {fileID: 8300000, guid: 504a66b7b45ad3f4a94a55cf61e72e17, type: 3}
 --- !u!1 &1106948341
 GameObject:
   m_ObjectHideFlags: 0

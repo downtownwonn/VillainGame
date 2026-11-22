@@ -5,6 +5,7 @@ public class LegZoomLoopAudio : MonoBehaviour
     [Header("확대 패널 반복 효과음")]
     [SerializeField] private AudioClip footTappingClip;
     [SerializeField, Min(0.1f)] private float playbackSpeed = 1f;
+    [SerializeField, Min(0f)] private float volume = 2f;
 
     private AudioSource audioSource;
 
@@ -17,6 +18,7 @@ public class LegZoomLoopAudio : MonoBehaviour
         audioSource.spatialBlend = 0f;
         audioSource.clip = footTappingClip;
         audioSource.pitch = playbackSpeed;
+        audioSource.volume = volume;
     }
 
     private void OnEnable()
@@ -29,6 +31,7 @@ public class LegZoomLoopAudio : MonoBehaviour
         audioSource.loop = true;
         audioSource.spatialBlend = 0f;
         audioSource.pitch = Mathf.Max(0.1f, playbackSpeed);
+        audioSource.volume = volume;
         audioSource.Play();
     }
 

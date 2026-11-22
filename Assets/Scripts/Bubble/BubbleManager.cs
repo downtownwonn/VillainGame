@@ -147,9 +147,10 @@ public class BubbleManager : MonoBehaviour
 
         if (bubbleText != null)
         {
-            bubbleText.text = character.Dialogue;
+            string currentDialogue = character.GetNextDialogue();
+            bubbleText.text = currentDialogue;
 
-            Debug.Log("대사: [" + character.Dialogue + "]");
+            Debug.Log("Dialogue: [" + currentDialogue + "]");
 
 
             // 텍스트는 좌우반전되지 않도록 유지

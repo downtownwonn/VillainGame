@@ -1251,7 +1251,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2872,7 +2872,7 @@ MonoBehaviour:
   objectClickSound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
   ambienceSource: {fileID: 378811061}
   kissSource: {fileID: 292659727}
-  projectorSound: {fileID: 8300000, guid: 334d7226422d456c9f3e9bf7eebb3495, type: 3}
+  projectorSound: {fileID: 0}
   kissSound: {fileID: 8300000, guid: 01de89a40d2e31d45bae717febc8e46a, type: 3}
 --- !u!4 &1184881588
 Transform:
@@ -3169,6 +3169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LegZoomTrigger
   zoomPanel: {fileID: 1800709152}
+  zoomBackdropSprite: {fileID: -1802690222457167825, guid: c0b7c0f99c96a144caa9276b5ea838a8, type: 3}
 --- !u!61 &1292817514
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4948,6 +4949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LegZoomLoopAudio
   footTappingClip: {fileID: 8300000, guid: 904503c917b4ebe46adc85b8a72721cd, type: 3}
   playbackSpeed: 1
+  volume: 2
 --- !u!1 &1819821619
 GameObject:
   m_ObjectHideFlags: 0
@@ -6098,6 +6100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LegZoomTrigger
   zoomPanel: {fileID: 1800709152}
+  zoomBackdropSprite: {fileID: -1802690222457167825, guid: c0b7c0f99c96a144caa9276b5ea838a8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

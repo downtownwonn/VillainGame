@@ -496,8 +496,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: "\u314E\u314E;;"
-  bubbleType: 4
+  dialogue: "\uD558\uD558...\n\uC601\uD654\uC5D0 \uC9D1\uC911\uC774 \uC815\uB9D0
+    \uC798 \uB418\uB124"
+  dialogueLines: []
+  bubbleType: 7
   bubbleOffset: {x: 0.5, y: 1.6}
   textOffset: {x: 0, y: 0}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
@@ -1270,8 +1272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: ...
-  bubbleType: 0
+  dialogue: "\uC640 \uC5F0\uCD9C \uBD10..."
+  dialogueLines: []
+  bubbleType: 1
   bubbleOffset: {x: 1, y: 2.5}
   textOffset: {x: 0, y: 0}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
@@ -2025,6 +2028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragScaleEffect
   dragScale: 1.5
+  dragScaleXY: {x: 1, y: 1}
 --- !u!114 &317524335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3322,6 +3326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: ...
+  dialogueLines: []
   bubbleType: 4
   bubbleOffset: {x: 0, y: 1.8}
   textOffset: {x: 0, y: 0}
@@ -3525,6 +3530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uD5C8\uD5C8..."
+  dialogueLines: []
   bubbleType: 0
   bubbleOffset: {x: 0.9, y: 1.8}
   textOffset: {x: 0, y: 0}
@@ -5290,6 +5296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragScaleEffect
   dragScale: 1.5
+  dragScaleXY: {x: 1, y: 1}
 --- !u!114 &675594267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7312,7 +7319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: ...
+  dialogue: "\uD5C8..."
+  dialogueLines: []
   bubbleType: 0
   bubbleOffset: {x: 0, y: 0}
   textOffset: {x: 0, y: 0}
@@ -8399,6 +8407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClosePanel
   panel: {fileID: 1833395934}
+  soundManager: {fileID: 0}
 --- !u!114 &1066967438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10685,6 +10694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: ...
+  dialogueLines: []
   bubbleType: 0
   bubbleOffset: {x: -0.4, y: -0.2}
   textOffset: {x: 0, y: 0}
@@ -15265,6 +15275,8 @@ MonoBehaviour:
   heartEffect: {fileID: 0}
   leftButton: {fileID: 1415360429}
   rightButton: {fileID: 1503750193}
+  navigationBlockerPanel: {fileID: 0}
+  villainHeadDropZone: {fileID: 0}
 --- !u!114 &2076239350
 MonoBehaviour:
   m_ObjectHideFlags: 0

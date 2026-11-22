@@ -3715,7 +3715,7 @@ MonoBehaviour:
   objectClickSound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
   ambienceSource: {fileID: 1516969691}
   kissSource: {fileID: 1223910999}
-  projectorSound: {fileID: 8300000, guid: 334d7226422d456c9f3e9bf7eebb3495, type: 3}
+  projectorSound: {fileID: 0}
   kissSound: {fileID: 8300000, guid: 01de89a40d2e31d45bae717febc8e46a, type: 3}
 --- !u!4 &1402851510
 Transform:

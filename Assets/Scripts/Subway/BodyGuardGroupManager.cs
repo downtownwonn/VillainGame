@@ -11,6 +11,11 @@ public class BodyguardGroupManager : MonoBehaviour
     [Header("Item Get Popup")]
     [SerializeField] private Sprite popupItemSprite;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource soundEffectsSource;
+    [SerializeField] private AudioClip sunglassesEquipSound;
+    [SerializeField] private AudioClip bodyguardRevealSound;
+
     private int sunglassesCount = 0;
     private bool groupCollected = false;
 
@@ -24,6 +29,13 @@ public class BodyguardGroupManager : MonoBehaviour
             sunglassesCount + " / " +
             bodyguards.Length
         );
+
+        // 앞의 두 명에게만 착용 효과음을 재생하고, 세 번째 완료 때는 TADA만 재생합니다.
+        if (sunglassesCount < bodyguards.Length &&
+            soundEffectsSource != null && sunglassesEquipSound != null)
+        {
+            soundEffectsSource.PlayOneShot(sunglassesEquipSound);
+        }
 
         if (sunglassesCount >= bodyguards.Length)
         {
@@ -42,6 +54,11 @@ public class BodyguardGroupManager : MonoBehaviour
             {
                 bodyguard.BecomeBodyguard();
             }
+        }
+
+        if (soundEffectsSource != null && bodyguardRevealSound != null)
+        {
+            soundEffectsSource.PlayOneShot(bodyguardRevealSound);
         }
     }
 
