@@ -8,6 +8,7 @@ public sealed class SceneTransitionManager : MonoBehaviour
 {
     private const float RevealDuration = 0.22f;
     private static SceneTransitionManager instance;
+    private static Sprite solidWhiteSprite;
 
     private Image coverImage;
     private AsyncOperation pendingLoad;
@@ -144,6 +145,15 @@ public sealed class SceneTransitionManager : MonoBehaviour
         rect.offsetMin = Vector2.zero;
         rect.offsetMax = Vector2.zero;
         instance.coverImage = imageObject.GetComponent<Image>();
+        if (solidWhiteSprite == null)
+        {
+            solidWhiteSprite = Sprite.Create(
+                Texture2D.whiteTexture,
+                new Rect(0f, 0f, 1f, 1f),
+                new Vector2(0.5f, 0.5f));
+        }
+        instance.coverImage.sprite = solidWhiteSprite;
+        instance.coverImage.type = Image.Type.Simple;
         instance.coverImage.color = new Color(0f, 0f, 0f, 0f);
         instance.coverImage.raycastTarget = false;
         return instance;
