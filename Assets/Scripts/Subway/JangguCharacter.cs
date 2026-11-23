@@ -10,6 +10,11 @@ public class JangguCharacter : MonoBehaviour
     private bool isDancing = false;
     private Coroutine danceCoroutine;
 
+    public bool IsDancing
+    {
+        get { return isDancing; }
+    }
+
 
     public void StartDancing()
     {

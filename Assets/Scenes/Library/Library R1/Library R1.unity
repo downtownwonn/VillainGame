@@ -3170,6 +3170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LegZoomTrigger
   zoomPanel: {fileID: 1800709152}
   zoomBackdropSprite: {fileID: -1802690222457167825, guid: c0b7c0f99c96a144caa9276b5ea838a8, type: 3}
+  inventoryBackdropSource: {fileID: 1047493513}
+  gameplayUiRoot: {fileID: 626913468}
 --- !u!61 &1292817514
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4580,7 +4582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2496531838015135621, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5634193154888598689, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
       propertyPath: m_Pivot.x

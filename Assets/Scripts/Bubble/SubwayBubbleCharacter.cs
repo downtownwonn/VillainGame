@@ -65,6 +65,14 @@ public class SubwayBubbleCharacter : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // 장구부원이 상모를 받고 춤추는 동안에는 기존 캐릭터의 넓은 콜라이더가
+        // 빈 공간 클릭까지 잡을 수 있으므로 말풍선을 띄우지 않는다.
+        JangguCharacter jangguCharacter = GetComponentInParent<JangguCharacter>();
+        if (jangguCharacter != null && jangguCharacter.IsDancing)
+        {
+            return;
+        }
+
         // UI ���� Ŭ���� ��� ĳ���� Ŭ�� ����
         if (EventSystem.current != null &&
             EventSystem.current.IsPointerOverGameObject())
