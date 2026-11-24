@@ -199,7 +199,7 @@ public static class HomeButtonBootstrap
             if (canvasObject != null) controlsCanvas = canvasObject.GetComponent<Canvas>();
         }
         if (controlsCanvas != null)
-            controlsCanvas.sortingOrder = modalOpen ? -1 : ControlsSortingOrder;
+            controlsCanvas.sortingOrder = modalOpen ? ControlsSortingOrder + 1 : ControlsSortingOrder;
         if (controlGroups == null || controlGroups.Length == 0)
         {
             GameObject canvasObject = GameObject.Find(HomeCanvasName);

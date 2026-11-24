@@ -2,18 +2,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 
 /// <summary>Plays a full-screen story or clear video, then advances to the configured scene.</summary>
 [DisallowMultipleComponent]
 public sealed class SubwayDemoVideoOverlay : MonoBehaviour
 {
+    private const float SkipButtonShowDelay = 3f;
+    private const float SkipButtonHideBeforeEnd = 1f;
+    private const int SkipButtonSortingOrder = 50;
+
     [SerializeField] private VideoClip demoClip;
     [SerializeField] private bool loopVideo;
     [SerializeField] private string nextSceneName;
 
     private RenderTexture renderTexture;
     private GameObject canvasObject;
+    private GameObject skipCanvasObject;
+    private GameObject skipButtonObject;
     private VideoPlayer videoPlayer;
+    private bool transitionRequested;
 
     private void Awake()
     {
@@ -70,7 +79,78 @@ public sealed class SubwayDemoVideoOverlay : MonoBehaviour
         // when an imported story clip uses a different aspect ratio.
         aspect.aspectRatio = GetClipAspectRatio(demoClip);
 
+        CreateSkipButton();
         videoPlayer.Prepare();
+    }
+
+    private void CreateSkipButton()
+    {
+        Sprite skipSprite = Resources.Load<Sprite>("UI/SkipButton_GameStyle");
+        if (skipSprite == null)
+        {
+            Debug.LogError("Skip button sprite was not found at Resources/UI/SkipButton_GameStyle.", this);
+            return;
+        }
+
+        if (EventSystem.current == null)
+        {
+            GameObject eventSystemObject = new GameObject(
+                "StoryVideoSkipEventSystem",
+                typeof(EventSystem),
+                typeof(InputSystemUIInputModule));
+            eventSystemObject.GetComponent<InputSystemUIInputModule>().AssignDefaultActions();
+        }
+
+        skipCanvasObject = new GameObject(
+            "StoryVideoSkipCanvas",
+            typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        Canvas skipCanvas = skipCanvasObject.GetComponent<Canvas>();
+        skipCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        skipCanvas.sortingOrder = SkipButtonSortingOrder;
+
+        CanvasScaler scaler = skipCanvasObject.GetComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1920f, 1080f);
+        scaler.matchWidthOrHeight = 0.5f;
+
+        GameObject buttonObject = new GameObject(
+            "SkipVideoButton",
+            typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
+        buttonObject.transform.SetParent(skipCanvasObject.transform, false);
+
+        RectTransform rect = buttonObject.GetComponent<RectTransform>();
+        rect.anchorMin = Vector2.one;
+        rect.anchorMax = Vector2.one;
+        rect.pivot = Vector2.one;
+        rect.anchoredPosition = new Vector2(-32f, -28f);
+        rect.sizeDelta = new Vector2(70.56f, 70.56f);
+
+        Image image = buttonObject.GetComponent<Image>();
+        image.sprite = skipSprite;
+        image.preserveAspect = true;
+        image.raycastTarget = true;
+
+        Button button = buttonObject.GetComponent<Button>();
+        button.targetGraphic = image;
+        button.onClick.AddListener(SkipVideo);
+
+        skipButtonObject = buttonObject;
+        skipButtonObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (skipButtonObject == null || videoPlayer == null || transitionRequested)
+            return;
+
+        double clipLength = demoClip.length;
+        double playbackTime = videoPlayer.time;
+        bool showSkipButton = videoPlayer.isPlaying &&
+                              playbackTime >= SkipButtonShowDelay &&
+                              clipLength - playbackTime > SkipButtonHideBeforeEnd;
+
+        if (skipButtonObject.activeSelf != showSkipButton)
+            skipButtonObject.SetActive(showSkipButton);
     }
 
     private static float GetClipAspectRatio(VideoClip clip)
@@ -105,14 +185,32 @@ public sealed class SubwayDemoVideoOverlay : MonoBehaviour
 
     private void OnVideoFinished(VideoPlayer source)
     {
-        if (Application.CanStreamedLevelBeLoaded(nextSceneName))
-        {
-            SceneTransitionManager.BeginTransition(nextSceneName);
-        }
-        else
+        TransitionToNextScene();
+    }
+
+    private void SkipVideo()
+    {
+        TransitionToNextScene();
+    }
+
+    private void TransitionToNextScene()
+    {
+        if (transitionRequested)
+            return;
+
+        if (!Application.CanStreamedLevelBeLoaded(nextSceneName))
         {
             Debug.LogError($"Demo video finished, but scene '{nextSceneName}' is not in Build Profiles.", this);
+            return;
         }
+
+        transitionRequested = true;
+        if (skipButtonObject != null)
+            skipButtonObject.SetActive(false);
+        if (videoPlayer != null)
+            videoPlayer.Pause();
+
+        SceneTransitionManager.BeginTransition(nextSceneName);
     }
 
     private void OnDestroy()

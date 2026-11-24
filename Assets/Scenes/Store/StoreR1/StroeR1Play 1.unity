@@ -6087,7 +6087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WarehouseLockDrop
   backgroundManager: {fileID: 180421648}
-  unlockSound: {fileID: 0}
+  unlockSound: {fileID: 8300000, guid: 442a3f5c94fcf7c4d83e47a47b968a26, type: 3}
 --- !u!60 &2026793622
 PolygonCollider2D:
   m_ObjectHideFlags: 0
