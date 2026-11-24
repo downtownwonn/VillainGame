@@ -13,12 +13,16 @@ public static class GameplayPopupState
         if (owner == null) return;
         if (isOpen) OpenPopups.Add(owner);
         else OpenPopups.Remove(owner);
+        BubbleManager.SetModalPopupOpen(IsAnyOpen);
+        SubwayBubbleManager.SetModalPopupOpen(IsAnyOpen);
         HomeButtonBootstrap.RefreshPopupState();
     }
 
     public static void Clear()
     {
         OpenPopups.Clear();
+        BubbleManager.SetModalPopupOpen(false);
+        SubwayBubbleManager.SetModalPopupOpen(false);
         HomeButtonBootstrap.RefreshPopupState();
     }
 

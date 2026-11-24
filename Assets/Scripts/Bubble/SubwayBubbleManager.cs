@@ -78,6 +78,10 @@ public class SubwayBubbleManager : MonoBehaviour
 
     private bool isShowing = false;
     private Coroutine hideCoroutine;
+    private int defaultCanvasSortingOrder;
+    private int defaultBubbleSiblingIndex;
+    private Transform defaultBubbleParent;
+    private bool modalPopupOpen;
 
     public bool IsShowing => isShowing;
 
@@ -90,10 +94,42 @@ public class SubwayBubbleManager : MonoBehaviour
         }
 
         Instance = this;
+        if (canvas != null) defaultCanvasSortingOrder = canvas.sortingOrder;
 
         if (bubbleObject != null)
         {
             bubbleObject.SetActive(false);
+        }
+    }
+
+    public static void SetModalPopupOpen(bool isOpen)
+    {
+        if (Instance != null)
+            Instance.ApplyModalPopupSorting(isOpen);
+    }
+
+    private void ApplyModalPopupSorting(bool isOpen)
+    {
+        if (modalPopupOpen == isOpen) return;
+        modalPopupOpen = isOpen;
+        if (isOpen)
+        {
+            if (canvas != null) canvas.sortingOrder = -100;
+            if (bubbleObject != null && bubbleObject.transform.parent != null)
+            {
+                defaultBubbleParent = bubbleObject.transform.parent;
+                defaultBubbleSiblingIndex = bubbleObject.transform.GetSiblingIndex();
+                bubbleObject.transform.SetAsFirstSibling();
+            }
+        }
+        else
+        {
+            if (canvas != null) canvas.sortingOrder = defaultCanvasSortingOrder;
+            if (bubbleObject != null && defaultBubbleParent != null && bubbleObject.transform.parent == defaultBubbleParent)
+            {
+                int lastIndex = defaultBubbleParent.childCount - 1;
+                bubbleObject.transform.SetSiblingIndex(Mathf.Clamp(defaultBubbleSiblingIndex, 0, lastIndex));
+            }
         }
     }
 
