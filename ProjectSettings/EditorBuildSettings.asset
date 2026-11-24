@@ -24,9 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Library/Library R1/LibraryR1Story.unity
     guid: c1da012d73749f844a6ceca6e805b732
   - enabled: 1
-    path: Assets/Scenes/Library/Library R1/trash.unity
-    guid: c7cb015577635064eb1e52aac465ced5
-  - enabled: 1
     path: Assets/Scenes/Library/Library R2/LibraryR2Story.unity
     guid: 64bc0425e84395c469828a1108fdfe0b
   - enabled: 1
