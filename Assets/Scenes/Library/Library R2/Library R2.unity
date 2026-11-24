@@ -4776,7 +4776,7 @@ MonoBehaviour:
   dialogue: "\uC2DC\uB044\uB7EC\uC6CC..."
   dialogueLines: []
   bubbleType: 5
-  bubbleOffset: {x: 0, y: 0}
+  bubbleOffset: {x: 0.5, y: 0}
   textOffset: {x: 35, y: 0}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &1469362420

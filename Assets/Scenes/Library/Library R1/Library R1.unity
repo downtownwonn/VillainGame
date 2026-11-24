@@ -928,7 +928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uC7AC\uBC0C\uAD70"
   bubbleType: 4
-  bubbleOffset: {x: 1, y: 0}
+  bubbleOffset: {x: 1.5, y: 0}
   textOffset: {x: 0, y: 0}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!61 &249552850
@@ -3990,7 +3990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uC774 \uCC45\uC744 \uC77D\uC5B4\uBCFC\uAE4C"
   bubbleType: 5
-  bubbleOffset: {x: 1, y: 0}
+  bubbleOffset: {x: 1.5, y: 0}
   textOffset: {x: 0, y: 0}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!212 &1510350936
@@ -5534,8 +5534,8 @@ Transform:
   m_GameObject: {fileID: 1949441339}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.11, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.3497909, y: 0.3320013, z: 1.093534}
+  m_LocalPosition: {x: -2.11, y: -0.48, z: 0}
+  m_LocalScale: {x: 0.36810884, y: 0.34298795, z: 1.093534}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1111903040}
