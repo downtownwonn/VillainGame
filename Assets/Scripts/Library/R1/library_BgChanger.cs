@@ -33,6 +33,7 @@ public class library_BgChanger : MonoBehaviour
     {
         if (currentView > 0)
         {
+            GameplayBubbleVisibility.HideAll();
             currentView--;
             UpdateView();
         }
@@ -42,6 +43,7 @@ public class library_BgChanger : MonoBehaviour
     {
         if (currentView < MaxView)
         {
+            GameplayBubbleVisibility.HideAll();
             currentView++;
             UpdateView();
         }

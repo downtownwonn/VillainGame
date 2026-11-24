@@ -24,6 +24,7 @@ public class MainItemPickup : MonoBehaviour
         bool added = InventoryManager.Instance.AddItem(itemData);
         if (added)
         {
+            GameplayBubbleVisibility.HideAll();
             // 효과음 재생
             if (audioSource != null && pickupSound != null)
             {

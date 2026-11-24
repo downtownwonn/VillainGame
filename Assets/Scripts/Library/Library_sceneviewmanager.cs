@@ -19,6 +19,7 @@ public class SceneViewManager : MonoBehaviour
     public void GoToLeftShelf()
     {
         if (IsLetterPanelOpen) return;
+        GameplayBubbleVisibility.HideAll();
 
         Debug.Log("=== GoToLeftShelf 실행됨 ===");
 
@@ -38,6 +39,7 @@ public class SceneViewManager : MonoBehaviour
     public void GoToRightShelf()
     {
         if (IsLetterPanelOpen) return;
+        GameplayBubbleVisibility.HideAll();
 
         mainView.SetActive(false);
         rightShelfView.SetActive(true);
@@ -54,6 +56,7 @@ public class SceneViewManager : MonoBehaviour
 
     public void GoToMainView()
     {
+        GameplayBubbleVisibility.HideAll();
         leftShelfView.SetActive(false);
         rightShelfView.SetActive(false);
 

@@ -12,6 +12,7 @@ public class Subway_sceneviewmanager : MonoBehaviour
 
     public void GoToLeftShelf()
     {
+        GameplayBubbleVisibility.HideAll();
         if (SubwayItemPopupManager.Instance != null)
         {
             SubwayItemPopupManager.Instance.HidePopup();
@@ -26,6 +27,7 @@ public class Subway_sceneviewmanager : MonoBehaviour
 
     public void GoToRightShelf()
     {
+        GameplayBubbleVisibility.HideAll();
         if (SubwayItemPopupManager.Instance != null)
         {
             SubwayItemPopupManager.Instance.HidePopup();
@@ -40,6 +42,7 @@ public class Subway_sceneviewmanager : MonoBehaviour
 
     public void GoToMainView()
     {
+        GameplayBubbleVisibility.HideAll();
         if (SubwayItemPopupManager.Instance != null)
         {
             SubwayItemPopupManager.Instance.HidePopup();

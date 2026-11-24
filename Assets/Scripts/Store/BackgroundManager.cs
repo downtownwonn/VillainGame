@@ -55,6 +55,7 @@ public class BackgroundManager : MonoBehaviour
     // 오른쪽 화면으로 이동
     public void MoveRight()
     {
+        GameplayBubbleVisibility.HideAll();
         SetBackgroundSprite(rightBackground);
 
         leftButton.SetActive(true);
@@ -68,6 +69,7 @@ public class BackgroundManager : MonoBehaviour
     // 왼쪽 화면으로 이동 (오른쪽 방 -> 왼쪽 방)
     public void MoveLeft()
     {
+        GameplayBubbleVisibility.HideAll();
         SetBackgroundSprite(leftBackground);
 
         leftButton.SetActive(false);
@@ -119,6 +121,7 @@ public class BackgroundManager : MonoBehaviour
         }
 
         SetBackgroundSprite(warehouseBackground);
+        GameplayBubbleVisibility.HideAll();
 
 
         leftButton.SetActive(true);
@@ -132,6 +135,7 @@ public class BackgroundManager : MonoBehaviour
     // 창고에서 오른쪽 화면으로 돌아가기
     public void BackToRightRoom()
     {
+        GameplayBubbleVisibility.HideAll();
         SetBackgroundSprite(rightBackground);
 
         leftButton.SetActive(true);

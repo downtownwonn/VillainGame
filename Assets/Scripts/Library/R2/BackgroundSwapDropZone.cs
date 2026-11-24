@@ -67,6 +67,7 @@ public class BackgroundSwapDropZone : MonoBehaviour, IDropHandler
         }
 
         isCleared = true;
+        GameplayBubbleVisibility.HideAll();
 
         // 이미지 교체
         backgroundRenderer.sprite = newBackgroundSprite;

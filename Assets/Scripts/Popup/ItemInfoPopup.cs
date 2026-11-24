@@ -77,6 +77,9 @@ public class ItemInfoPopup : MonoBehaviour
         HomeButtonBootstrap.TrackModalPanel(blocker);
         blocker.SetActive(true);
         popup.SetActive(true);
+        // GameplayModalPanel moves the blocker to the last sibling when enabled.
+        // Put the actual popup above that full-screen raycast target so its buttons remain clickable.
+        popup.transform.SetAsLastSibling();
         HomeButtonBootstrap.SetModalPopupOpen(this, true);
 
         if (audioSource != null && openSound != null)
@@ -129,6 +132,9 @@ public class ItemInfoPopup : MonoBehaviour
         if (largeImagePopup != null)
         {
             largeImagePopup.SetActive(true);
+            // The regular item popup is raised when it opens. Raise the zoom view after it
+            // so the large image and its close control render and receive clicks on top.
+            largeImagePopup.transform.SetAsLastSibling();
             HomeButtonBootstrap.SetCinemaHomeButtonAlpha(0.5f);
             // ū �̹��� �˾� ���� �Ҹ�
             if (audioSource != null && largeOpenSound != null)

@@ -43,6 +43,7 @@ public class BackgroundManager2 : MonoBehaviour
     // 오른쪽 화면으로 이동
     public void MoveRight()
     {
+        GameplayBubbleVisibility.HideAll();
         backgroundImage.sprite = rightBackground;
 
         leftButton.SetActive(true);
@@ -56,6 +57,7 @@ public class BackgroundManager2 : MonoBehaviour
     // 왼쪽 화면으로 이동 (오른쪽 방 -> 왼쪽 방)
     public void MoveLeft()
     {
+        GameplayBubbleVisibility.HideAll();
         backgroundImage.sprite = leftBackground;
 
         leftButton.SetActive(false);
@@ -84,6 +86,7 @@ public class BackgroundManager2 : MonoBehaviour
     // 창고문 클릭
     public void OpenWarehouse()
     {
+        GameplayBubbleVisibility.HideAll();
        
   
         AudioSource.PlayClipAtPoint(openSound, Camera.main.transform.position);
@@ -101,6 +104,7 @@ public class BackgroundManager2 : MonoBehaviour
     // 창고에서 오른쪽 화면으로 돌아가기
     public void BackToRightRoom()
     {
+        GameplayBubbleVisibility.HideAll();
         backgroundImage.sprite = rightBackground;
 
         leftButton.SetActive(true);

@@ -80,6 +80,7 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
         if (isPlaced && headSpeakerImage != null)
         {
             isCleared = true;
+            GameplayBubbleVisibility.HideAll();
 
             if (backgroundRenderer != null && newBackgroundSprite != null)
             {
