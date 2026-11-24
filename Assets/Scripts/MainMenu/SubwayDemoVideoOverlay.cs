@@ -39,6 +39,13 @@ public sealed class SubwayDemoVideoOverlay : MonoBehaviour
         };
         renderTexture.Create();
 
+        // RenderTextures can contain undefined GPU memory until the video
+        // decoder writes its first frame. Clear it so startup always shows black.
+        RenderTexture previousActive = RenderTexture.active;
+        RenderTexture.active = renderTexture;
+        GL.Clear(false, true, Color.black);
+        RenderTexture.active = previousActive;
+
         videoPlayer = gameObject.AddComponent<VideoPlayer>();
         videoPlayer.source = VideoSource.VideoClip;
         videoPlayer.clip = demoClip;
