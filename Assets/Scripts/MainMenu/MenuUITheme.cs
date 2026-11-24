@@ -7,6 +7,8 @@ using UnityEngine.UI;
 /// <summary>Shared pixel-style colors, buttons, and audio control icons.</summary>
 public static class MenuUITheme
 {
+    private const float AudioControlReferenceWidth = 1920f;
+    private const float AudioControlReferenceHeight = 1080f;
     public static readonly Color Panel = new Color32(13, 15, 15, 246);
     public static readonly Color Accent = new Color32(240, 240, 240, 255);
     public static readonly Color Track = new Color32(22, 22, 22, 245);
@@ -374,13 +376,14 @@ public static class MenuUITheme
         GameObject iconObject = new GameObject(musicIcon ? "MusicIcon" : "SoundIcon", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
         iconObject.transform.SetParent(parent, false);
         RectTransform iconRect = iconObject.GetComponent<RectTransform>();
-        RectTransform parentRect = parent as RectTransform;
-        if (parentRect != null)
+        if (parent is RectTransform)
         {
             // Preserve the reference layout while keeping the controls attached
             // to the top-right edge on displays with different aspect ratios.
             iconRect.anchorMin = iconRect.anchorMax = new Vector2(1f, 1f);
-            iconRect.anchoredPosition = iconPosition - parentRect.rect.size * 0.5f;
+            iconRect.anchoredPosition = iconPosition - new Vector2(
+                AudioControlReferenceWidth * 0.5f,
+                AudioControlReferenceHeight * 0.5f);
         }
         else
         {
