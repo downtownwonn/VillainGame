@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LegBookStackDropZone : MonoBehaviour, IDropHandler
@@ -36,6 +34,13 @@ public class LegBookStackDropZone : MonoBehaviour, IDropHandler
 
         stackedCount++;
 
+        // 첫 번째 책을 놓는 순간 다리 두드리는 반복 효과음을 멈춤
+        if (stackedCount == 1 && legAnimator != null)
+        {
+            LegZoomLoopAudio loopAudio = legAnimator.GetComponent<LegZoomLoopAudio>();
+            if (loopAudio != null) loopAudio.StopLoop();
+        }
+
         if (audioSource != null && placeSound != null)
             audioSource.PlayOneShot(placeSound);
 
@@ -59,14 +64,7 @@ public class LegBookStackDropZone : MonoBehaviour, IDropHandler
             Debug.Log("책 5권 쌓기 완료!");
 
             if (!string.IsNullOrEmpty(clearSceneName))
-                StartCoroutine(GoToClearScene());
+                SceneTransitionManager.BeginTransitionAfter(clearSceneName, delayBeforeClear);
         }
-    }
-
-    private IEnumerator GoToClearScene()
-    {
-        yield return new WaitForSeconds(delayBeforeClear);
-        Debug.Log("클리어 씬으로 이동: " + clearSceneName);
-        SceneTransitionManager.BeginTransition(clearSceneName);
     }
 }

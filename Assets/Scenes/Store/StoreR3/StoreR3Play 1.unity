@@ -1052,6 +1052,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
+  dragScale: 1
+  keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!114 &351024785
 MonoBehaviour:
@@ -1799,7 +1801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uC774\uAC70\uB791 \uBC14\uAFD4 \uC774 \uB140\uC11D\uC544"
   bubbleType: 2
-  bubbleOffset: {x: 0, y: 1.5}
+  bubbleOffset: {x: 0.3, y: 1.5}
   textOffset: {x: 0, y: 0}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!212 &568241046
@@ -2291,7 +2293,7 @@ MonoBehaviour:
   leftObjects: {fileID: 2010086026}
   rightObjects: {fileID: 967782461}
   warehouseObjects: {fileID: 282101821}
-  openSound: {fileID: 8300000, guid: 519a57dbe6345154ba480deacb0d624f, type: 3}
+  openSound: {fileID: 8300000, guid: da002760fbb40834b9082407fb2613dd, type: 3}
 --- !u!114 &890959070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2763,6 +2765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
+  dragScale: 1
+  keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!114 &940232856
 MonoBehaviour:
@@ -3455,6 +3459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
+  dragScale: 1
+  keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!114 &1284474885
 MonoBehaviour:
@@ -3737,7 +3743,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 519a57dbe6345154ba480deacb0d624f, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6460,6 +6466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
+  dragScale: 1
+  keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!114 &1917317442
 MonoBehaviour:
@@ -6576,6 +6584,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
+  dragScale: 1
+  keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!114 &1951322007
 MonoBehaviour:

@@ -360,7 +360,7 @@ MonoBehaviour:
   shoeEffect: {fileID: 988742607}
   audioSource: {fileID: 1607713497}
   shoeDropSound: {fileID: 8300000, guid: e4f0fe88005b8d04ebeae53a03249320, type: 3}
-  vomitSound: {fileID: 8300000, guid: 8559a4d11429c604a9b7068b5076c3e9, type: 3}
+  vomitSound: {fileID: 0}
   flyTime: 0.35
   bounceHeight: 0.18
   bounceTime: 0.18
@@ -487,6 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uC774 \uC88B\uC740 \uB0A0\uC5D0\n\uB0B4\uAC00 \uC65C \uC601\uD654\uAD00\uC5D0
     \uC640\uC11C"
+  dialogueLines: []
   bubbleType: 3
   bubbleOffset: {x: 0.5, y: 2}
   textOffset: {x: 0, y: 0}
@@ -1112,6 +1113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: ...
+  dialogueLines: []
   bubbleType: 0
   bubbleOffset: {x: -0.5, y: -0.5}
   textOffset: {x: 0, y: 0}
@@ -1238,6 +1240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: 
+  dialogueLines: []
   bubbleType: 0
   bubbleOffset: {x: 0, y: 0}
   textOffset: {x: 0, y: 0}
@@ -2017,6 +2020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: ...
+  dialogueLines: []
   bubbleType: 4
   bubbleOffset: {x: 0.5, y: 1.5}
   textOffset: {x: 0, y: 0}
@@ -2265,8 +2269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: ...
-  bubbleType: 0
+  dialogue: "\uC5E5? \uC774\uAC8C \uBB34\uC2A8 \uC18C\uB9AC\uC9C0?"
+  dialogueLines: []
+  bubbleType: 2
   bubbleOffset: {x: 0.8, y: 1.8}
   textOffset: {x: 0, y: 0}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
@@ -3225,6 +3230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClosePanel
   panel: {fileID: 785425739}
+  soundManager: {fileID: 0}
 --- !u!114 &825694176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4614,6 +4620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: ...
+  dialogueLines: []
   bubbleType: 0
   bubbleOffset: {x: -0.2, y: 0}
   textOffset: {x: 0, y: 0}
@@ -6321,6 +6328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: ...
+  dialogueLines: []
   bubbleType: 4
   bubbleOffset: {x: 0, y: 1.8}
   textOffset: {x: 0, y: 0}
@@ -6541,6 +6549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: ...
+  dialogueLines: []
   bubbleType: 0
   bubbleOffset: {x: -0.2, y: -0.2}
   textOffset: {x: 0, y: 0}
@@ -7010,6 +7019,8 @@ MonoBehaviour:
   heartEffect: {fileID: 224774}
   leftButton: {fileID: 1415360429}
   rightButton: {fileID: 1503750193}
+  navigationBlockerPanel: {fileID: 0}
+  villainHeadDropZone: {fileID: 0}
 --- !u!114 &2076239350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7608,8 +7619,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: ...
-  bubbleType: 4
+  dialogue: "\uC5ED\uC2DC \uC5F0\uAE30\uB294 \uD669\uC815\uBBFC\uC774\uC9C0"
+  dialogueLines: []
+  bubbleType: 6
   bubbleOffset: {x: 0.8, y: 0.8}
   textOffset: {x: 0, y: 0}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}

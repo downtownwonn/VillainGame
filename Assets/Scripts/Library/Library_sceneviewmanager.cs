@@ -12,9 +12,14 @@ public class SceneViewManager : MonoBehaviour
 
     public GameObject stackedBooksContainer;
     public GameObject villainDropZone; // ★ 새로 추가
+    public GameObject letterPanel;
+
+    private bool IsLetterPanelOpen => letterPanel != null && letterPanel.activeInHierarchy;
 
     public void GoToLeftShelf()
     {
+        if (IsLetterPanelOpen) return;
+
         Debug.Log("=== GoToLeftShelf 실행됨 ===");
 
         mainView.SetActive(false);
@@ -32,6 +37,8 @@ public class SceneViewManager : MonoBehaviour
 
     public void GoToRightShelf()
     {
+        if (IsLetterPanelOpen) return;
+
         mainView.SetActive(false);
         rightShelfView.SetActive(true);
 

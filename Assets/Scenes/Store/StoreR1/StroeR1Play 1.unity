@@ -1100,7 +1100,7 @@ MonoBehaviour:
   rightObjects: {fileID: 1524366296}
   warehouseObjects: {fileID: 1255321253}
   lockedSound: {fileID: 8300000, guid: 23f1b8de1b566ff4da820d6c38b508d3, type: 3}
-  openSound: {fileID: 8300000, guid: 519a57dbe6345154ba480deacb0d624f, type: 3}
+  openSound: {fileID: 8300000, guid: da002760fbb40834b9082407fb2613dd, type: 3}
 --- !u!114 &180421649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1393,6 +1393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
+  dragScale: 1
+  keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!1 &223073282
 GameObject:
@@ -2215,6 +2217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
+  dragScale: 1
+  keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!1 &499164127
 GameObject:
@@ -2486,6 +2490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
+  dragScale: 1
+  keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!1 &764661382
 GameObject:
@@ -2602,6 +2608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
+  dragScale: 1
+  keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!1 &780577463
 GameObject:
@@ -5305,9 +5313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f251cc08dcf21447a4b0e1df0ab221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
-  dialogue: "\uB9D0\uBCF4\uB8E8 \uB808\uB4DC \uD558\uB098 \uB2EC\uB77C\uACE0\uC694"
+  dialogue: "\uB9D0\uBCF4\uB8E8 \uD558\uB098 \uB2EC\uB77C\uACE0\uC694..."
   bubbleType: 2
-  bubbleOffset: {x: 0, y: 1.5}
+  bubbleOffset: {x: 0.25, y: 1}
   textOffset: {x: 0, y: 0}
   sound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
 --- !u!60 &1652383502
@@ -6079,7 +6087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WarehouseLockDrop
   backgroundManager: {fileID: 180421648}
-  unlockSound: {fileID: 8300000, guid: 442a3f5c94fcf7c4d83e47a47b968a26, type: 3}
+  unlockSound: {fileID: 0}
 --- !u!60 &2026793622
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6358,6 +6366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
+  dragScale: 1
+  keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!1 &2056147369
 GameObject:

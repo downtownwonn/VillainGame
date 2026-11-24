@@ -7,6 +7,12 @@ public class SubwayBubbleCharacter : MonoBehaviour
     [TextArea(2, 5)]
     [SerializeField] private string dialogue;
 
+    [Header("Optional Dialogue Cycle")]
+    [Tooltip("If entries are set, the bubble advances through them each time it is shown.")]
+    [TextArea(2, 5)]
+    [SerializeField] private string[] dialogueCycle;
+    private int nextDialogueIndex;
+
     [Header("Bubble Type")]
     [SerializeField] private int bubbleType;
 
@@ -22,6 +28,19 @@ public class SubwayBubbleCharacter : MonoBehaviour
     public string Dialogue
     {
         get { return dialogue; }
+    }
+
+    public string GetDialogueForDisplay()
+    {
+        if (dialogueCycle == null || dialogueCycle.Length == 0)
+        {
+            return dialogue;
+        }
+
+        string nextDialogue = dialogueCycle[nextDialogueIndex];
+        nextDialogueIndex = (nextDialogueIndex + 1) % dialogueCycle.Length;
+
+        return string.IsNullOrEmpty(nextDialogue) ? dialogue : nextDialogue;
     }
 
     public int BubbleType
@@ -46,6 +65,14 @@ public class SubwayBubbleCharacter : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // 장구부원이 상모를 받고 춤추는 동안에는 기존 캐릭터의 넓은 콜라이더가
+        // 빈 공간 클릭까지 잡을 수 있으므로 말풍선을 띄우지 않는다.
+        JangguCharacter jangguCharacter = GetComponentInParent<JangguCharacter>();
+        if (jangguCharacter != null && jangguCharacter.IsDancing)
+        {
+            return;
+        }
+
         // UI ���� Ŭ���� ��� ĳ���� Ŭ�� ����
         if (EventSystem.current != null &&
             EventSystem.current.IsPointerOverGameObject())

@@ -20,7 +20,7 @@ public class SpeakerPickupUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        bool added = InventoryManager.Instance.AddItem(itemData);
+        bool added = InventoryManager.Instance.AddItem(itemData, 0.7f);
         if (added)
         {
             if (audioSource != null && pickupSound != null)

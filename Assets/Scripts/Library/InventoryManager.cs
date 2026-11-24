@@ -12,7 +12,7 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
     }
 
-    public bool AddItem(ItemData itemData)
+    public bool AddItem(ItemData itemData, float inventoryIconScale = 1f)
     {
         if (itemData == null || itemData.itemSprite == null)
         {
@@ -31,6 +31,10 @@ public class InventoryManager : MonoBehaviour
                 Color c = slot.color;
                 c.a = 1f;
                 slot.color = c;
+
+                DraggableItem draggable = slot.GetComponent<DraggableItem>();
+                if (draggable != null)
+                    draggable.SetInventoryScale(inventoryIconScale);
 
                 // 설명 팝업 연동: 이 슬롯(ItemIcon)의 ItemInfoData에 itemData 채워주기
                 ItemInfoData infoData = slot.GetComponent<ItemInfoData>();

@@ -1251,7 +1251,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2872,7 +2872,7 @@ MonoBehaviour:
   objectClickSound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
   ambienceSource: {fileID: 378811061}
   kissSource: {fileID: 292659727}
-  projectorSound: {fileID: 8300000, guid: 335f864c8f486b54e944cf8df8d28079, type: 3}
+  projectorSound: {fileID: 0}
   kissSound: {fileID: 8300000, guid: 01de89a40d2e31d45bae717febc8e46a, type: 3}
 --- !u!4 &1184881588
 Transform:
@@ -3022,8 +3022,8 @@ Camera:
   m_GameObject: {fileID: 1270714037}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3169,6 +3169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LegZoomTrigger
   zoomPanel: {fileID: 1800709152}
+  zoomBackdropSprite: {fileID: -1802690222457167825, guid: c0b7c0f99c96a144caa9276b5ea838a8, type: 3}
+  inventoryBackdropSource: {fileID: 1047493513}
+  gameplayUiRoot: {fileID: 626913468}
 --- !u!61 &1292817514
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4579,7 +4582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2496531838015135621, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5634193154888598689, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
       propertyPath: m_Pivot.x
@@ -4948,6 +4951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LegZoomLoopAudio
   footTappingClip: {fileID: 8300000, guid: 904503c917b4ebe46adc85b8a72721cd, type: 3}
   playbackSpeed: 1
+  volume: 2
 --- !u!1 &1819821619
 GameObject:
   m_ObjectHideFlags: 0
@@ -6098,6 +6102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LegZoomTrigger
   zoomPanel: {fileID: 1800709152}
+  zoomBackdropSprite: {fileID: -1802690222457167825, guid: c0b7c0f99c96a144caa9276b5ea838a8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

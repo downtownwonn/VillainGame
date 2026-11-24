@@ -8,6 +8,7 @@ public sealed class SceneTransitionManager : MonoBehaviour
 {
     private const float RevealDuration = 0.22f;
     private static SceneTransitionManager instance;
+    private static Sprite solidWhiteSprite;
 
     private Image coverImage;
     private AsyncOperation pendingLoad;
@@ -82,6 +83,39 @@ public sealed class SceneTransitionManager : MonoBehaviour
         instance.StartCoroutine(instance.FadeOutAndActivate(fadeOutDuration));
     }
 
+    public static void BeginTransitionAfter(string sceneName, float delaySeconds)
+    {
+        if (string.IsNullOrEmpty(sceneName))
+            return;
+
+        SceneTransitionManager manager = CreateInstance();
+        manager.coverImage.color = new Color(0f, 0f, 0f, 0f);
+        manager.coverImage.raycastTarget = true;
+        string sourceScenePath = SceneManager.GetActiveScene().path;
+        manager.StartCoroutine(manager.BeginTransitionAfterRoutine(sceneName, delaySeconds, sourceScenePath));
+    }
+
+    private IEnumerator BeginTransitionAfterRoutine(string sceneName, float delaySeconds, string sourceScenePath)
+    {
+        if (delaySeconds > 0f)
+            yield return new WaitForSecondsRealtime(delaySeconds);
+
+        if (SceneManager.GetActiveScene().path != sourceScenePath)
+        {
+            coverImage.raycastTarget = false;
+            yield break;
+        }
+
+        if (!PrepareScene(sceneName))
+        {
+            coverImage.raycastTarget = false;
+            yield break;
+        }
+
+        // Keep input blocked through the delay and immediately into the fade.
+        BeginTransition(sceneName);
+    }
+
     private static SceneTransitionManager CreateInstance()
     {
         if (instance != null)
@@ -111,6 +145,15 @@ public sealed class SceneTransitionManager : MonoBehaviour
         rect.offsetMin = Vector2.zero;
         rect.offsetMax = Vector2.zero;
         instance.coverImage = imageObject.GetComponent<Image>();
+        if (solidWhiteSprite == null)
+        {
+            solidWhiteSprite = Sprite.Create(
+                Texture2D.whiteTexture,
+                new Rect(0f, 0f, 1f, 1f),
+                new Vector2(0.5f, 0.5f));
+        }
+        instance.coverImage.sprite = solidWhiteSprite;
+        instance.coverImage.type = Image.Type.Simple;
         instance.coverImage.color = new Color(0f, 0f, 0f, 0f);
         instance.coverImage.raycastTarget = false;
         return instance;

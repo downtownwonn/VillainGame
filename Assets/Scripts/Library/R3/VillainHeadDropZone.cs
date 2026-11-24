@@ -23,6 +23,7 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
 
     private bool isPlaced = false;   // 스피커가 놓였는지 여부
     private bool isCleared = false;  // 중복 실행 방지
+    private bool isMainViewVisible = true;
 
     private void Awake()
     {
@@ -30,6 +31,18 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
         // 아래 DropZone으로 클릭 이벤트가 전달되지 않을 수 있다.
         if (headSpeakerImage != null)
             headSpeakerImage.raycastTarget = false;
+    }
+
+    public void SetMainViewVisible(bool visible)
+    {
+        isMainViewVisible = visible;
+        RefreshHeadSpeakerVisibility();
+    }
+
+    private void RefreshHeadSpeakerVisibility()
+    {
+        if (headSpeakerImage != null)
+            headSpeakerImage.enabled = isPlaced && !isCleared && isMainViewVisible;
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -43,12 +56,14 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
         Image droppedImage = droppedItem.GetComponent<Image>();
         if (droppedImage == null || droppedImage.sprite == null) return;
 
+        headSpeakerImage.gameObject.SetActive(true);
         headSpeakerImage.sprite = droppedImage.sprite;
         Color c = headSpeakerImage.color;
         c.a = 1f;
         headSpeakerImage.color = c;
 
         isPlaced = true;
+        RefreshHeadSpeakerVisibility();
 
         droppedImage.sprite = null;
         Color slotColor = droppedImage.color;
@@ -62,17 +77,23 @@ public class VillainHeadDropZone : MonoBehaviour, IDropHandler, IPointerClickHan
     {
         if (isCleared) return;
 
-        if (isPlaced && muteSprite != null && headSpeakerImage != null)
+        if (isPlaced && headSpeakerImage != null)
         {
             isCleared = true;
-
-            headSpeakerImage.sprite = muteSprite;
-            Debug.Log("무음으로 변경됨!");
 
             if (backgroundRenderer != null && newBackgroundSprite != null)
             {
                 backgroundRenderer.sprite = newBackgroundSprite;
             }
+
+            // 클리어 전환 전 무음 스피커 이미지로 교체해 잠시 보여준다.
+            if (muteSprite != null)
+            {
+                headSpeakerImage.gameObject.SetActive(true);
+                headSpeakerImage.sprite = muteSprite;
+                headSpeakerImage.enabled = true;
+            }
+            Debug.Log("무음 스피커 이미지 표시 및 배경 전환 완료");
 
             // 배경음악 전부 정지
             if (bgmSource != null) bgmSource.Stop();

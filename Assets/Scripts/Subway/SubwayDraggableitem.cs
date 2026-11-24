@@ -261,7 +261,7 @@ public class SubwayDraggableItem : MonoBehaviour,
         
 // =====================================================
 // R2
-// 장구 → 단소 살인마
+// 장구 → 메인 배경 주인공 정자세
 // =====================================================
 
 if (draggedItemData != null &&
@@ -296,9 +296,9 @@ if (draggedItemData != null &&
                 hit.GetComponentInChildren<DansoVillain>();
         }
 
-        if (villain != null)
+        if (villain != null && villain.isR2ClearTarget)
         {
-            Debug.Log("[R2] 단소 빌런 발견!");
+            Debug.Log("[R2] 주인공 정자세 드롭 대상 발견!");
 
             villain.ReceiveJanggu();
 
@@ -321,7 +321,7 @@ if (draggedItemData != null &&
         }
     }
 
-    Debug.LogWarning("[R2] 단소 빌런을 찾지 못했습니다.");
+    Debug.LogWarning("[R2] 주인공 정자세를 찾지 못했습니다. 장구를 원래 위치로 돌립니다.");
 }
 
 

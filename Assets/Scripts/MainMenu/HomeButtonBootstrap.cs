@@ -151,7 +151,7 @@ public static class HomeButtonBootstrap
     private static bool IsGameplayScene(string sceneName)
     {
         return sceneName != StartSceneName && sceneName != StageSelectSceneName &&
-               (sceneName.Contains("Play") || sceneName == "Library R1" || sceneName == "Library R2");
+               (sceneName.Contains("Play") || sceneName == "Library R1" || sceneName == "Library R2" || sceneName == "Library R3");
     }
 
     public static void SetCinemaHomeButtonAlpha(float alpha)

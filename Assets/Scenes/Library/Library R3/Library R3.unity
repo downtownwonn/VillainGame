@@ -3503,6 +3503,8 @@ MonoBehaviour:
   heartEffect: {fileID: 0}
   leftButton: {fileID: 75767789}
   rightButton: {fileID: 1121532547}
+  navigationBlockerPanel: {fileID: 262179365}
+  villainHeadDropZone: {fileID: 15645798}
 --- !u!114 &1229057499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3780,8 +3782,8 @@ Camera:
   m_GameObject: {fileID: 1270714037}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4020,7 +4022,7 @@ MonoBehaviour:
   objectClickSound: {fileID: 8300000, guid: 4b27c44dd96ed3c48abdab557a5ccc9f, type: 3}
   ambienceSource: {fileID: 1516969691}
   kissSource: {fileID: 1223910999}
-  projectorSound: {fileID: 8300000, guid: 335f864c8f486b54e944cf8df8d28079, type: 3}
+  projectorSound: {fileID: 0}
   kissSound: {fileID: 8300000, guid: 01de89a40d2e31d45bae717febc8e46a, type: 3}
 --- !u!4 &1402851510
 Transform:
@@ -4055,7 +4057,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 1.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4443,7 +4445,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4955,7 +4957,7 @@ MonoBehaviour:
   wigLocalScale: {x: 0.25, y: 0.25, z: 1}
   swapSound: {fileID: 0}
   audioSource: {fileID: 0}
-  clearSceneName: Library R2 Clear
+  clearSceneName: R3clear
   delayBeforeClear: 1.5
   wigIconSprite: {fileID: 0}
 --- !u!114 &1675222166

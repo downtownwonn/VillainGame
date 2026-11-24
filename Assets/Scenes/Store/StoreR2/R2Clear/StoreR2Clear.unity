@@ -155,8 +155,8 @@ Camera:
   m_GameObject: {fileID: 1486365920}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f0caa8b3a044eb9b65f21a0b2f0005, type: 3}
   m_Name: AnimationVideo
   m_EditorClassIdentifier: Assembly-CSharp::SubwayDemoVideoOverlay
-  demoClip: {fileID: 32900000, guid: fa75c1da3875fc6469962fc23dcfd447, type: 3}
+  demoClip: {fileID: 32900000, guid: 626427294a035a349b4cc775bc23e96a, type: 3}
   loopVideo: 0
   nextSceneName: StoreR3Story
 --- !u!1660057539 &9223372036854775807

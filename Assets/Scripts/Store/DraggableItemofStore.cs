@@ -55,24 +55,67 @@ public class DraggableItemofStore : MonoBehaviour, IBeginDragHandler, IDragHandl
         originalPosition = rectTransform.anchoredPosition;
         originalParent = transform.parent;
 
-        // 칸 안에서 보이던 실제 크기 저장
-        Vector2 visualSize = rectTransform.rect.size;
         originalAnchorMin = rectTransform.anchorMin;
         originalAnchorMax = rectTransform.anchorMax;
         originalSizeDelta = rectTransform.sizeDelta;
 
-        transform.SetParent(canvas.transform);
+        Vector2 dragPosition = rectTransform.anchoredPosition;
+        Vector2 dragSize = rectTransform.rect.size;
+        RectTransform canvasRect = canvas != null ? canvas.transform as RectTransform : null;
+
+        // 인벤토리 부모와 캔버스 사이의 배율 차이를 반영해 화면에 보이는 크기를 캔버스 좌표로 변환합니다.
+        if (keepVisualSizeWhileDragging && canvasRect != null)
+        {
+            Vector3[] worldCorners = new Vector3[4];
+            rectTransform.GetWorldCorners(worldCorners);
+            Camera uiCamera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
+
+            Vector2 min = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
+            Vector2 max = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
+            bool converted = true;
+
+            for (int i = 0; i < worldCorners.Length; i++)
+            {
+                Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(uiCamera, worldCorners[i]);
+                if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                        canvasRect, screenPoint, uiCamera, out Vector2 canvasPoint))
+                {
+                    converted = false;
+                    break;
+                }
+
+                min = Vector2.Min(min, canvasPoint);
+                max = Vector2.Max(max, canvasPoint);
+            }
+
+            if (converted)
+            {
+                Vector3 worldCenter = rectTransform.position;
+                Vector2 screenCenter = RectTransformUtility.WorldToScreenPoint(uiCamera, worldCenter);
+                if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                        canvasRect, screenCenter, uiCamera, out Vector2 canvasCenter))
+                {
+                    dragPosition = canvasCenter;
+                    dragSize = max - min;
+                }
+            }
+        }
+
+        transform.SetParent(canvas != null ? canvas.transform : originalParent, false);
         transform.SetAsLastSibling();
 
-        if (keepVisualSizeWhileDragging)
+        if (keepVisualSizeWhileDragging && canvasRect != null)
         {
             rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
             rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
-            rectTransform.sizeDelta = visualSize;
+            rectTransform.sizeDelta = dragSize;
+            rectTransform.localScale = Vector3.one * dragScale;
+            rectTransform.anchoredPosition = dragPosition;
         }
-
-        // 드래그 중 크게
-        rectTransform.localScale = originalScale * dragScale;
+        else
+        {
+            rectTransform.localScale = originalScale * dragScale;
+        }
 
         canvasGroup.blocksRaycasts = false;
     }
