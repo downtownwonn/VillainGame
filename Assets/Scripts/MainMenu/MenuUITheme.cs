@@ -374,8 +374,19 @@ public static class MenuUITheme
         GameObject iconObject = new GameObject(musicIcon ? "MusicIcon" : "SoundIcon", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
         iconObject.transform.SetParent(parent, false);
         RectTransform iconRect = iconObject.GetComponent<RectTransform>();
-        iconRect.anchorMin = iconRect.anchorMax = new Vector2(0.5f, 0.5f);
-        iconRect.anchoredPosition = iconPosition;
+        RectTransform parentRect = parent as RectTransform;
+        if (parentRect != null)
+        {
+            // Preserve the reference layout while keeping the controls attached
+            // to the top-right edge on displays with different aspect ratios.
+            iconRect.anchorMin = iconRect.anchorMax = new Vector2(1f, 1f);
+            iconRect.anchoredPosition = iconPosition - parentRect.rect.size * 0.5f;
+        }
+        else
+        {
+            iconRect.anchorMin = iconRect.anchorMax = new Vector2(0.5f, 0.5f);
+            iconRect.anchoredPosition = iconPosition;
+        }
         iconRect.sizeDelta = new Vector2(70.56f, 70.56f);
 
         Image icon = iconObject.GetComponent<Image>();

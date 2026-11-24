@@ -66,9 +66,19 @@ public sealed class SubwayDemoVideoOverlay : MonoBehaviour
         rect.offsetMax = Vector2.zero;
         AspectRatioFitter aspect = imageObject.GetComponent<AspectRatioFitter>();
         aspect.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
-        aspect.aspectRatio = 16f / 9f;
+        // Use the clip's actual dimensions. A fixed 16:9 ratio can leave bars
+        // when an imported story clip uses a different aspect ratio.
+        aspect.aspectRatio = GetClipAspectRatio(demoClip);
 
         videoPlayer.Prepare();
+    }
+
+    private static float GetClipAspectRatio(VideoClip clip)
+    {
+        if (clip != null && clip.height > 0)
+            return (float)clip.width / clip.height;
+
+        return 16f / 9f;
     }
 
     private void OnVideoPrepared(VideoPlayer source)
