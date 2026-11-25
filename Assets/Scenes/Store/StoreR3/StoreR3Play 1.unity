@@ -541,7 +541,6 @@ RectTransform:
   m_Children:
   - {fileID: 1859112595}
   - {fileID: 593527101}
-  - {fileID: 1259830533}
   - {fileID: 1814734565}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -677,7 +676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &282101822
 Transform:
   m_ObjectHideFlags: 0
@@ -972,9 +971,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6180931547825426611, guid: 30af29bbce56fe845ad0c94bed7fd823, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1259830533}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30af29bbce56fe845ad0c94bed7fd823, type: 3}
+--- !u!224 &350697720 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6180931547825426611, guid: 30af29bbce56fe845ad0c94bed7fd823, type: 3}
+  m_PrefabInstance: {fileID: 350697719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &351024780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
-  dragScale: 1
+  dragScale: 1.3
   keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!114 &351024785
@@ -1200,7 +1207,7 @@ Transform:
   m_GameObject: {fileID: 384070429}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.6427876, w: 0.7660445}
-  m_LocalPosition: {x: 3.07, y: -0.79, z: 0}
+  m_LocalPosition: {x: 3.07, y: -0.79, z: -1}
   m_LocalScale: {x: 0.49856552, y: 0.50267714, z: 0.3915846}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1588,7 +1595,7 @@ Transform:
   m_GameObject: {fileID: 463233336}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.2600098, y: -0.769989, z: 0}
+  m_LocalPosition: {x: 3.2600098, y: -0.769989, z: -1}
   m_LocalScale: {x: 1.2345898, y: 0.84678, z: 0.85231996}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1800,6 +1807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BubbleCharacter
   dialogue: "\uC774\uAC70\uB791 \uBC14\uAFD4 \uC774 \uB140\uC11D\uC544"
+  dialogueLines: []
   bubbleType: 2
   bubbleOffset: {x: 0.3, y: 1.5}
   textOffset: {x: 0, y: 0}
@@ -2159,7 +2167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -0.000015258789}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &645839312
@@ -2765,7 +2773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
-  dragScale: 1
+  dragScale: 1.3
   keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!114 &940232856
@@ -3372,15 +3380,15 @@ RectTransform:
   m_GameObject: {fileID: 1259830530}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 5, z: 1}
+  m_LocalScale: {x: 14.398329, y: 11.998607, z: 2.3997214}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 152695732}
+  m_Father: {fileID: 350697720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.3440552, y: -9.408234}
-  m_SizeDelta: {x: -641.31104, y: -346.07147}
+  m_AnchoredPosition: {x: 97.921, y: 29.869}
+  m_SizeDelta: {x: -1714.776, y: -933.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1284474880
 GameObject:
@@ -3459,7 +3467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
-  dragScale: 1
+  dragScale: 1.3
   keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!114 &1284474885
@@ -4580,6 +4588,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5634193154888598689, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634193154888598689, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634193154888598689, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634193154888598689, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5634193154888598689, guid: 91d1ef97cc09b5145a7364826088ac2a, type: 3}
@@ -6466,7 +6486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
-  dragScale: 1
+  dragScale: 1.3
   keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!114 &1917317442
@@ -6584,7 +6604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd502908b6b2ba94e81135a01c5f2342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItemofStore
-  dragScale: 1
+  dragScale: 1.3
   keepVisualSizeWhileDragging: 1
   wasDropped: 0
 --- !u!114 &1951322007
@@ -6777,7 +6797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2010086027
 Transform:
   m_ObjectHideFlags: 0
@@ -6829,7 +6849,7 @@ Transform:
   m_GameObject: {fileID: 2113267122}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.76, y: -0.79, z: 0}
+  m_LocalPosition: {x: 3.76, y: -0.79, z: -1}
   m_LocalScale: {x: 0.15846342, y: 0.15846342, z: 0.15846342}
   m_ConstrainProportionsScale: 0
   m_Children: []
